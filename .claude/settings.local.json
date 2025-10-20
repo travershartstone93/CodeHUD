@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cargo build:*)",
+      "Bash(timeout:*)",
+      "Bash(RUST_BACKTRACE=1 RUSTFLAGS=\"-A warnings\" cargo run --bin codehud-llm -- scan-project \"/home/travers/Desktop/CodeHUD (copy)/Rust_copy\")",
+      "Bash(wc:*)",
+      "Bash(ls:*)",
+      "Bash(jq:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
