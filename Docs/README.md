@@ -1,6 +1,6 @@
 **CodeHUD** is a comprehensive code analysis and visualization platform that provides deep insights into codebase health, dependencies, security vulnerabilities, and architectural patterns. This implementation offers robust analysis with Rust-specific enhancements for performance, safety, and usability. I mostly use it as a Claude Code attachment, helps it remember structure. I dont even use the CLI TUI or GUI. I vibe coded it, it took about 5 months and I prototyped it in python, there are bugs, it mostly works its my first Rust project. 
 
-## Requirements
+## Hardware Requirements
 12GB VRAM, 8GB RAM, 20GB of free storage (im working on the size. the VRAM can be less but you will need to either use Gemini API with limited use or use a downgraded model to avoid API costs, you can absolutely use a paid API if you want.)
 
 ## Key Features
