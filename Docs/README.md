@@ -1,8 +1,4 @@
-Here’s a cleaned-up version of your README that removes any reference to Python migration and makes it read like a natural, human-written project description:
-
----
-
-# CodeHUD 
+ CodeHUD 
 
 **CodeHUD** is a comprehensive code analysis and visualization platform that provides deep insights into codebase health, dependencies, security vulnerabilities, and architectural patterns. This Rust implementation offers robust analysis with Rust-specific enhancements for performance, safety, and usability. I mostly use it as a Claude Code attachment, I dont even use the CLI TUI or GUI. I vibe coded it, it took about 5 months and I prototyped it in python, there are bugs, its my first Rust project. 
 
