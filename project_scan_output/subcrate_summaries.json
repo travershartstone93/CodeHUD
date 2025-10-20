@@ -1,0 +1,148 @@
+{
+  "codehud-cli": null,
+  "codehud-gui": {
+    "src/views": {
+      "name": "src/views",
+      "file_count": 13,
+      "files": [
+        "codehud-gui/src/views/health_view_gui.rs",
+        "codehud-gui/src/views/topology_view_gui.rs",
+        "codehud-gui/src/views/metrics_view_gui.rs",
+        "codehud-gui/src/views/tests_view_gui.rs",
+        "codehud-gui/src/views/dependencies_view_gui.rs",
+        "codehud-gui/src/views/console_view_gui.rs",
+        "codehud-gui/src/views/llm_view_gui.rs",
+        "codehud-gui/src/views/quality_view_gui.rs",
+        "codehud-gui/src/views/documentation_view_gui.rs",
+        "codehud-gui/src/views/call_graph_view_gui.rs",
+        "codehud-gui/src/views/settings_view_gui.rs",
+        "codehud-gui/src/views/performance_view_gui.rs",
+        "codehud-gui/src/views/files_view_gui.rs"
+      ],
+      "summary": "### Technical Summary\n\n**Primary Purpose:** The `codehud-gui` subcrate provides a comprehensive set of graphical user interfaces for analyzing various aspects of a codebase, including health metrics, architecture topology, performance analysis, and more. It ensures that developers can quickly assess and optimize their projects through intuitive visualizations and interactive tools.\n\n**Key Components:**\n- **Health Analysis:** Displays real-time health metrics like code coverage and status indicators.\n- **Architecture Visualization:** Renders architectural topologies and file structures using vertical layouts and detailed tables.\n- **Metrics Dashboard:** Presents comprehensive code metrics in collapsible sections and grid layouts.\n- **Test Management:** Manages test results, coverage, and provides a test execution interface.\n- **Dependencies Analysis:** Displays module dependencies with coupling scores and risk levels.\n- **Console Interface:** Provides an interactive console for viewing logs, executing commands, and managing command history.\n- **LLM Integration:** Offers LLM-powered debugging and auto-fixing capabilities in various tabs.\n- **Quality Metrics:** Analyzes code quality, maintainability, and technical debt.\n- **Documentation Management:** Manages and displays project documentation with text input fields and scroll areas.\n- **Call Graphs:** Visualizes call graphs for module-level architecture and function-level interactions.\n- **Settings Configuration:** Allows users to manage application settings through a vertical scrollable area.\n- **Performance Analysis:** Displays performance bottlenecks, optimization opportunities, and detailed metrics.\n\n**Integration:**\nThe components work together within the CodeHUD application framework, leveraging Rust's concurrency primitives like `Arc`, `Mutex`, and `RwLock` for thread-safe data management. They communicate via crossbeam channels to handle messages and updates, ensuring real-time synchronization across different views. The use of asynchronous operations with `tokio` allows for efficient handling of potentially time-consuming tasks without blocking the UI. The `egui` library is central to creating interactive GUI elements, providing a consistent look and feel across all components.",
+      "token_count": 284,
+      "total_size_kb": 104.8701171875
+    }
+  },
+  "codehud-llm": {
+    "src/narrator": {
+      "name": "src/narrator",
+      "file_count": 4,
+      "files": [
+        "codehud-llm/src/narrator/aggregate.rs",
+        "codehud-llm/src/narrator/cst.rs",
+        "codehud-llm/src/narrator/findings.rs",
+        "codehud-llm/src/narrator/render.rs"
+      ],
+      "summary": "### Technical Summary\n\n**Primary Purpose:** The `codehud-llm` subcrate within CodeHUD is designed to detect specific patterns in code entries, such as entry points for Python and Rust scripts, comments, I/O operations, module relationships, and utility classes. It leverages serde for JSON configuration handling and abstract syntax trees (ASTs) or concrete syntax trees (CSTs) for detailed code analysis.\n\n**Key Components:**\n- **Entry Point Detection:** Identifies Python entrypoints using the `__name__ == \"__main__\"` pattern and Rust's main function signature.\n- **Pattern Matching:** Detects patterns like single return statements containing function calls, import/export statements, and utility class identifiers.\n- **Comment Analysis:** Extracts comments from CSTs to categorize roles and notes in code reviews.\n- **I/O Operation Detection:** Scans code for I/O operations to identify potential security risks.\n- **Module Relationships:** Analyzes module interactions within a crate, focusing on intra-crate imports, re-exports, and function calls.\n- **Utility Class Identification:** Detects utility classes using regular expressions and generates findings for refactoring opportunities.\n\n**Nested Subcrates:**\n- `src/narrator/detectors`: Contains various detectors focused on different aspects of code analysis, such as entry points, comments, I/O operations, module relationships, and utility classes.\n\n**Integration:**\nComponents work together by processing code through various detectors that leverage ASTs/CSTs for in-depth analysis. Each detector focuses on a specific aspect of the codebase (e.g., entry points, comments, I/O operations) and integrates seamlessly with other components using shared interfaces and data structures. The use of serde enables efficient configuration management, while the modular design allows for easy extension and maintenance of the system.",
+      "token_count": 248,
+      "total_size_kb": 30.5546875,
+      "subcrates": {
+        "src/narrator/detectors": {
+          "name": "src/narrator/src/narrator/detectors",
+          "file_count": 7,
+          "files": [
+            "codehud-llm/src/narrator/detectors/entrypoint.rs",
+            "codehud-llm/src/narrator/detectors/wrapper.rs",
+            "codehud-llm/src/narrator/detectors/imports_exports.rs",
+            "codehud-llm/src/narrator/detectors/comments.rs",
+            "codehud-llm/src/narrator/detectors/io.rs",
+            "codehud-llm/src/narrator/detectors/module_relationships.rs",
+            "codehud-llm/src/narrator/detectors/utility_class.rs"
+          ],
+          "summary": "### Technical Summary\n\n**Primary Purpose:**\nThe `codehud-llm` subcrate within CodeHUD is designed to detect specific patterns in code entries, such as entry points for Python and Rust scripts, comments, I/O operations, module relationships, and utility classes. It leverages serde for JSON configuration handling and abstract syntax trees (ASTs) or concrete syntax trees (CSTs) for detailed code analysis.\n\n**Key Components:**\n- **Entry Point Detection:** Identifies Python entrypoints using the `__name__ == \"__main__\"` pattern and Rust's main function signature.\n- **Pattern Matching:** Detects patterns like single return statements containing function calls, import/export statements, and utility class identifiers.\n- **Comment Analysis:** Extracts comments from CSTs to categorize roles and notes in code reviews.\n- **I/O Operation Detection:** Scans code for I/O operations to identify potential security risks.\n- **Module Relationships:** Analyzes module interactions within a crate, focusing on intra-crate imports, re-exports, and function calls.\n- **Utility Class Identification:** Detects utility classes using regular expressions and generates findings for refactoring opportunities.\n\n**Integration:**\nComponents work together by processing code through various detectors that leverage ASTs/CSTs for in-depth analysis. Each detector focuses on a specific aspect of the codebase (e.g., entry points, comments, I/O operations) and integrates seamlessly with other components using shared interfaces and data structures. The use of serde enables efficient configuration management, while the modular design allows for easy extension and maintenance of the system.",
+          "token_count": 222,
+          "total_size_kb": 17.705078125
+        }
+      }
+    }
+  },
+  "codehud-core": {
+    "src/extractors": {
+      "name": "src/extractors",
+      "file_count": 12,
+      "files": [
+        "codehud-core/src/extractors/dependencies.rs",
+        "codehud-core/src/extractors/runtime_profiler.rs",
+        "codehud-core/src/extractors/topology.rs",
+        "codehud-core/src/extractors/performance.rs",
+        "codehud-core/src/extractors/mod.rs",
+        "codehud-core/src/extractors/flow.rs",
+        "codehud-core/src/extractors/orphaned_files.rs",
+        "codehud-core/src/extractors/quality.rs",
+        "codehud-core/src/extractors/testing.rs",
+        "codehud-core/src/extractors/evolution.rs",
+        "codehud-core/src/extractors/issues.rs",
+        "codehud-core/src/extractors/security.rs"
+      ],
+      "summary": "### Technical Summary\n\n**Primary Purpose:**\nThe `codehud-core` crate provides a comprehensive set of tools for analyzing and optimizing codebases, focusing on dependency management, performance profiling, security assessment, and quality metrics.\n\n**Key Components:**\n- **Dependency Analysis:** Extracts and visualizes dependencies across multiple languages using tree-sitter queries.\n- **Performance Profiling:** Identifies bottlenecks by evaluating function complexity and resource usage in Rust codebases.\n- **Code Quality & Health:** Assesses code maintainability through static analysis tools like ruff and pylint, detecting issues such as unsafe blocks and error handling patterns.\n- **Security Assessment:** Detects security vulnerabilities in Python and Rust codebases using AST analysis and external tools.\n- **Test Coverage Analysis:** Evaluates test quality and coverage, identifying slow or flaky tests.\n- **Code Evolution Tracking:** Analyzes changes over time to assess stability and identify high-risk areas.\n\n**Integration:**\nComponents work together by sharing data through a modular architecture. For instance, the dependency analysis tool leverages file I/O operations and tree-sitter queries, while the performance profiler uses these same tools to evaluate specific functions' execution patterns. Additionally, security and quality assessments utilize external static analysis tools in parallel, ensuring comprehensive coverage without degradation in performance. Each component is designed to be independent yet interconnected, providing a holistic view of the codebase's structure, performance, and health.",
+      "token_count": 209,
+      "total_size_kb": 276.880859375
+    },
+    "src/external_tools": {
+      "name": "src/external_tools",
+      "file_count": 14,
+      "files": [
+        "codehud-core/src/external_tools/cargo_test.rs",
+        "codehud-core/src/external_tools/ruff.rs",
+        "codehud-core/src/external_tools/coverage.rs",
+        "codehud-core/src/external_tools/radon.rs",
+        "codehud-core/src/external_tools/rustfmt.rs",
+        "codehud-core/src/external_tools/mypy.rs",
+        "codehud-core/src/external_tools/mod.rs",
+        "codehud-core/src/external_tools/cargo_audit.rs",
+        "codehud-core/src/external_tools/pylint.rs",
+        "codehud-core/src/external_tools/vulture.rs",
+        "codehud-core/src/external_tools/ripgrep.rs",
+        "codehud-core/src/external_tools/bandit.rs",
+        "codehud-core/src/external_tools/clippy.rs",
+        "codehud-core/src/external_tools/git.rs"
+      ],
+      "summary": "**Technical Summary**\n\nThe `codehud-core` crate, specifically its `src/external_tools` subcrate, serves as a centralized integration layer for various external code analysis tools. It primarily provides robust, zero-degradation integrations with both Rust and Python tools, enabling comprehensive static analysis, testing, security scanning, and formatting checks across different languages. Key components include:\n\n- **Rust Integrations**: Functions to analyze code quality using Clippy, perform test coverage analysis with Coverage.py, execute tests with Cargo, check for security vulnerabilities with Cargo Audit, format code with rustfmt, and ensure adherence to style guidelines.\n- **Python Integrations**: Tools like Ruff for static analysis, MyPy for type checking, Pylint for code quality assessment, Bandit for security scanning, Vulture for dead code detection, and Ripgrep for text search, ensuring seamless analysis of Python projects.\n\n**Integration**\n\nComponents work together by coordinating the execution of these tools based on project language (Rust or Python) and requirements. The `mod.rs` file manages the overall workflow, checking tool availability, executing specific analyses, and combining results into comprehensive reports. This ensures that CodeHUD can provide a unified view of code quality, security, and maintainability across various programming languages and projects, maintaining performance and functionality consistency throughout the analysis process.",
+      "token_count": 193,
+      "total_size_kb": 150.35546875
+    },
+    "src/graph": {
+      "name": "src/graph",
+      "file_count": 7,
+      "files": [
+        "codehud-core/src/graph/algorithms.rs",
+        "codehud-core/src/graph/metrics.rs",
+        "codehud-core/src/graph/algorithms_minimal.rs",
+        "codehud-core/src/graph/edges.rs",
+        "codehud-core/src/graph/nodes.rs",
+        "codehud-core/src/graph/mod.rs",
+        "codehud-core/src/graph/analyzer.rs"
+      ],
+      "summary": "**Technical Summary**\n\n**Primary Purpose:**\nThe `codehud-core/src/graph` subcrate provides a robust graph analysis engine for codebases, enabling comprehensive structural and dependency assessments through various centrality and coupling metrics.\n\n**Key Components:**\n- **Algorithms & Metrics:** Implementations of graph algorithms (centrality calculations, cycle detection) and metrics (coupling, network structure) to assess codebase health.\n- **Graph Types & Nodes:** Definitions for different graph types (`CallGraph`, `DependencyGraph`, `InheritanceGraph`) and node types (`CallNode`, `ModuleNode`, `ClassNode`), supporting detailed analysis of call, dependency, and inheritance relationships.\n- **Edge Management:** Implementation of edge types (`CallEdge`, `DependencyEdge`, `InheritanceEdge`) with metadata for managing relationships between nodes.\n\n**Integration:**\nThe subcrate integrates various components to provide a unified graph analysis framework. The `GraphAnalyzer` orchestrates the use of algorithms and metrics, leveraging the `petgraph` library for efficient graph traversal and analysis. This integration allows users to gain insights into code complexity, coupling patterns, and potential issues within their codebase through detailed centrality and structural metric calculations.",
+      "token_count": 152,
+      "total_size_kb": 82.8876953125
+    }
+  },
+  "codehud-transform": {
+    "src/transformers": {
+      "name": "src/transformers",
+      "file_count": 10,
+      "files": [
+        "codehud-transform/src/transformers/test_generation.rs",
+        "codehud-transform/src/transformers/multi_language.rs",
+        "codehud-transform/src/transformers/mod.rs",
+        "codehud-transform/src/transformers/magic_numbers.rs",
+        "codehud-transform/src/transformers/unused_args.rs",
+        "codehud-transform/src/transformers/multi_language_old.rs",
+        "codehud-transform/src/transformers/batch.rs",
+        "codehud-transform/src/transformers/test_generation_old.rs",
+        "codehud-transform/src/transformers/unused_args_old.rs",
+        "codehud-transform/src/transformers/architectural.rs"
+      ],
+      "summary": "### Technical Summary\n\n**Primary Purpose:**  \nThe `codehud-transform` crate provides a comprehensive set of code transformation tools for the CodeHUD ecosystem, focusing on automated test generation, multi-language code refactoring, and architectural improvements.\n\n**Key Components:**\n- **Test Generation:** Automatically creates unit and property-based tests for Python and JavaScript using tree-sitter parsers.\n- **Multi-Language Refactoring:** Applies consistent transformations across different programming languages (Rust, Java, Python) using pattern matching and Tree-sitter parsers.\n- **Dead Code Elimination:** Removes unused function arguments, variables, and imports from Rust codebases.\n- **Architectural Refactoring:** Detects and suggests large-scale improvements for class hierarchies, design patterns, module organization, and dependency injection in TypeScript, Python, and JavaScript.\n\n**Integration:**\nComponents work together seamlessly to provide a holistic transformation experience. For instance, the multi-language refactoring engine can detect unused arguments using `UnusedArgumentRemover` before applying broader architectural changes or generating tests. Each transformer leverages shared functionalities like configuration management, syntax validation, and backup operations, ensuring consistency across the ecosystem. The modular design allows for easy extension and customization of transformation rules, making it adaptable to various development needs.",
+      "token_count": 173,
+      "total_size_kb": 223.939453125
+    }
+  },
+  "codehud-analysis": null,
+  "codehud-tui": null,
+  "codehud-utils": null,
+  "codehud-viz": null,
+  "codehud-realtime": null
+}

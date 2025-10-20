@@ -1,0 +1,11 @@
+/home/travers/Desktop/CodeHUD (copy)/Rust_copy/target/debug/deps/serde-c40199728fa9e9af.d: /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.221/src/lib.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.221/src/integer128.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.221/src/private/mod.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.221/src/private/de.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.221/src/private/ser.rs
+
+/home/travers/Desktop/CodeHUD (copy)/Rust_copy/target/debug/deps/libserde-c40199728fa9e9af.rlib: /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.221/src/lib.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.221/src/integer128.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.221/src/private/mod.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.221/src/private/de.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.221/src/private/ser.rs
+
+/home/travers/Desktop/CodeHUD (copy)/Rust_copy/target/debug/deps/libserde-c40199728fa9e9af.rmeta: /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.221/src/lib.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.221/src/integer128.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.221/src/private/mod.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.221/src/private/de.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.221/src/private/ser.rs
+
+/home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.221/src/lib.rs:
+/home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.221/src/integer128.rs:
+/home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.221/src/private/mod.rs:
+/home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.221/src/private/de.rs:
+/home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.221/src/private/ser.rs:

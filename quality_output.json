@@ -1,0 +1,25 @@
+{
+  "external_tool_results": {
+    "pylint": [],
+    "ruff": []
+  },
+  "extraction_timestamp": "2025-09-21T06:15:59.080574562+00:00",
+  "file_metrics": [],
+  "files_analyzed": 0,
+  "health_score": {
+    "grade": "F",
+    "score": 0.0,
+    "status": "critical"
+  },
+  "quality_issues": [],
+  "summary": {
+    "average_maintainability_score": 0.0,
+    "code_to_total_ratio": 0.0,
+    "total_classes": 0,
+    "total_code_lines": 0,
+    "total_files": 0,
+    "total_functions": 0,
+    "total_issues": 0,
+    "total_lines": 0
+  }
+}

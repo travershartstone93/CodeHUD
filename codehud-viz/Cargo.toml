@@ -1,0 +1,32 @@
+[package]
+name = "codehud-viz"
+version = "0.1.0"
+edition = "2021"
+description = "Visualization system (10+ view types) - Zero degradation from Python"
+
+[dependencies]
+# Core infrastructure
+serde = { workspace = true }
+tokio = { workspace = true }
+anyhow = { workspace = true }
+thiserror = { workspace = true }
+chrono = { workspace = true }
+
+# Analysis integration
+codehud-core = { path = "../codehud-core" }
+codehud-utils = { path = "../codehud-utils" }
+
+# Graph visualization
+petgraph = { workspace = true }
+
+# Terminal rendering
+ratatui = { workspace = true }
+crossterm = { workspace = true }
+syntect = { workspace = true }
+
+# JSON handling
+serde_json = { workspace = true }
+
+[dev-dependencies]
+tempfile = { workspace = true }
+proptest = { workspace = true }

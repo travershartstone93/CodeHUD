@@ -1,0 +1,11 @@
+/home/travers/Desktop/CodeHUD (copy)/Rust_copy/target/release/deps/yaml_rust-d700f7ca7a28e271.d: /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yaml-rust-0.4.5/src/lib.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yaml-rust-0.4.5/src/emitter.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yaml-rust-0.4.5/src/parser.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yaml-rust-0.4.5/src/scanner.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yaml-rust-0.4.5/src/yaml.rs
+
+/home/travers/Desktop/CodeHUD (copy)/Rust_copy/target/release/deps/libyaml_rust-d700f7ca7a28e271.rlib: /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yaml-rust-0.4.5/src/lib.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yaml-rust-0.4.5/src/emitter.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yaml-rust-0.4.5/src/parser.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yaml-rust-0.4.5/src/scanner.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yaml-rust-0.4.5/src/yaml.rs
+
+/home/travers/Desktop/CodeHUD (copy)/Rust_copy/target/release/deps/libyaml_rust-d700f7ca7a28e271.rmeta: /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yaml-rust-0.4.5/src/lib.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yaml-rust-0.4.5/src/emitter.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yaml-rust-0.4.5/src/parser.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yaml-rust-0.4.5/src/scanner.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yaml-rust-0.4.5/src/yaml.rs
+
+/home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yaml-rust-0.4.5/src/lib.rs:
+/home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yaml-rust-0.4.5/src/emitter.rs:
+/home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yaml-rust-0.4.5/src/parser.rs:
+/home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yaml-rust-0.4.5/src/scanner.rs:
+/home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yaml-rust-0.4.5/src/yaml.rs:

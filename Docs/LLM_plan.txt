@@ -1,0 +1,437 @@
+# CodeHUD LLM Integration Plan: From Vision to Implementation
+
+## Executive Summary
+
+This plan bridges the gap between the current placeholder LLM implementation and the comprehensive comment extraction tool described in LLM_vision.txt. The current system has extensive scaffolding for 29+ components with FFI bridges, but lacks the core comment analysis functionality. This plan integrates the vision's comment extraction workflow into the existing architecture while leveraging CodeHUD's enhanced tree-sitter infrastructure.
+
+## Current State Analysis
+
+### Existing LLM Infrastructure (codehud-llm/)
+- ✅ **Comprehensive module structure** (11 modules: ollama, structured, critical, constitutional, etc.)
+- ✅ **Multi-backend support** (Ollama, PyTorch, OpenHands, Shell-GPT)
+- ✅ **GPU acceleration framework** (CUDA, Metal, CPU)
+- ✅ **Constitutional AI and guardrails**
+- ✅ **Phase 5a/5b architecture** with FFI bridge and native implementations
+- ✅ **Advanced error handling** (14 error types)
+- ✅ **CLI interface** with comprehensive options
+
+### Missing Core Functionality
+- ❌ **Comment extraction pipeline** (vision's primary feature)
+- ❌ **File-by-file LLM summarization**
+- ❌ **System-wide codebase analysis**
+- ❌ **Integration with CodeHUD's tree-sitter engine**
+- ❌ **JSON output pipeline for downstream analysis**
+
+## Implementation Plan
+
+### Phase 1: Core Comment Extraction Engine (4-6 days)
+
+#### 1.1 Tree-sitter Comment Extractor (`src/comment_extractor.rs`)
+**Goal**: Leverage CodeHUD's existing enhanced tree-sitter infrastructure for comment extraction
+
+```rust
+pub struct CommentExtractor {
+    query_engine: Arc<QueryEngine>, // Reuse existing tree-sitter engine
+    language_detectors: HashMap<String, SupportedLanguage>,
+    extraction_config: ExtractionConfig,
+}
+
+pub struct ExtractedComment {
+    text: String,
+    comment_type: CommentType, // line, block, doc
+    start_byte: usize,
+    end_byte: usize,
+    start_position: Position,
+    end_position: Position,
+    context: Option<CodeContext>, // Adjacent functions/classes
+}
+
+pub struct CodeContext {
+    function_name: Option<String>,
+    class_name: Option<String>,
+    module_path: String,
+    adjacent_code: String, // 3-5 lines before/after
+}
+```
+
+**Integration Points**:
+- Extend existing `QueryEngine` with comment-specific queries
+- Reuse `SupportedLanguage` enum and grammar management
+- Leverage existing error handling and file processing pipelines
+
+#### 1.2 Enhanced Comment Queries
+**Create language-specific comment extraction queries**:
+
+```scheme
+; queries/rust/comments.scm
+(line_comment) @comment
+(block_comment) @comment
+(doc_comment) @doc_comment
+
+; queries/python/comments.scm
+(comment) @comment
+
+; queries/javascript/comments.scm
+(comment) @comment
+```
+
+#### 1.3 File Processing Pipeline (`src/file_processor.rs`)
+**Goal**: Process entire codebase file-by-file, outputting structured JSON
+
+```rust
+pub struct FileProcessor {
+    extractor: CommentExtractor,
+    llm_pipeline: Arc<OllamaPipeline>,
+    output_manager: OutputManager,
+    progress_tracker: ProgressTracker,
+}
+
+pub async fn process_codebase(&self, path: &Path) -> LlmResult<ProcessingReport> {
+    // 1. Extract comments from all files -> comments.json
+    // 2. Generate per-file summaries -> summaries.json
+    // 3. Create system summary -> system_summary.json
+}
+```
+
+### Phase 2: LLM Summarization Pipeline (3-4 days)
+
+#### 2.1 Per-File Analysis (`src/file_analyzer.rs`)
+**Integrate with existing OllamaPipeline for zero-degradation compatibility**
+
+```rust
+pub struct FileAnalyzer {
+    ollama_pipeline: Arc<OllamaPipeline>,
+    constitutional_ai: Arc<ConstitutionalAI>,
+    structured_generator: Arc<StructuredCodeGenerator>,
+}
+
+pub async fn analyze_file_comments(
+    &self,
+    file_comments: &[ExtractedComment]
+) -> LlmResult<FileSummary> {
+    let constraints = GenerationConstraints {
+        output_format: OutputFormat::JsonObject,
+        json_schema: Some(FILESUMMARY_SCHEMA),
+        validation_rules: vec![
+            "coherent_analysis".to_string(),
+            "evidence_based".to_string(),
+        ],
+        max_length: Some(1000),
+        grammar_rules: None,
+    };
+
+    // Use existing structured generation with constitutional AI
+    self.structured_generator.generate_structured_code(
+        &build_analysis_prompt(file_comments),
+        &constraints
+    ).await
+}
+```
+
+#### 2.2 System-Wide Analysis (`src/system_analyzer.rs`)
+**Aggregate file summaries into comprehensive codebase understanding**
+
+```rust
+pub struct SystemAnalyzer {
+    ollama_pipeline: Arc<OllamaPipeline>,
+    conversation_tracker: Arc<ConversationTracker>,
+    monitoring: Arc<LlmMonitor>,
+}
+
+pub async fn generate_system_summary(
+    &self,
+    file_summaries: &[FileSummary]
+) -> LlmResult<SystemSummary> {
+    // Context window management for large codebases
+    let chunked_summaries = self.chunk_summaries_for_context(file_summaries);
+
+    for chunk in chunked_summaries {
+        // Use conversation tracker to maintain context
+        // Apply constitutional AI to ensure coherent analysis
+    }
+}
+```
+
+### Phase 3: CLI Integration & User Experience (2-3 days)
+
+#### 3.1 Enhanced CLI Commands (`src/llm.rs` extension)
+**Add comment analysis commands to existing CLI**
+
+```rust
+#[derive(Subcommand)]
+enum Commands {
+    /// Extract and analyze comments for codebase understanding
+    AnalyzeComments {
+        /// Output directory for analysis files
+        #[arg(short = 'o', long, default_value = "analysis_output")]
+        output_dir: PathBuf,
+
+        /// Skip system summary generation (faster for large codebases)
+        #[arg(long)]
+        skip_system_summary: bool,
+
+        /// Focus on specific file extensions
+        #[arg(short = 'e', long)]
+        extensions: Vec<String>,
+
+        /// Use cached comment extraction if available
+        #[arg(long)]
+        use_cache: bool,
+    },
+
+    /// Interactive comment exploration mode
+    ExploreComments {
+        /// Start with specific file or directory
+        #[arg(short = 'f', long)]
+        focus: Option<PathBuf>,
+    },
+
+    /// Generate documentation from comment analysis
+    GenerateDocs {
+        /// Template for documentation generation
+        #[arg(short = 't', long)]
+        template: Option<PathBuf>,
+
+        /// Output format (markdown, html, json)
+        #[arg(long, default_value = "markdown")]
+        format: DocumentFormat,
+    },
+}
+```
+
+#### 3.2 Integration with Existing Views
+**Connect comment analysis to CodeHUD's view system**
+
+```rust
+// Add to ViewType enum in codehud-core
+pub enum ViewType {
+    // ... existing views
+    CommentAnalysis,        // Comment extraction and LLM analysis
+    SystemUnderstanding,    // System-wide LLM insights
+    CodeDocumentation,      // Generated documentation from comments
+}
+```
+
+**Add rendering support in codehud-viz**:
+```rust
+ViewContent::CommentAnalysis {
+    file_summaries: Vec<FileSummary>,
+    system_summary: SystemSummary,
+    extraction_stats: ExtractionStats,
+    llm_performance: PerformanceMetrics,
+}
+```
+
+### Phase 4: Advanced Features & Optimization (3-4 days)
+
+#### 4.1 Call Graph Integration
+**Leverage CodeHUD's existing dependency analysis**
+
+```rust
+pub struct CallGraphLinker {
+    dependency_analyzer: Arc<DependenciesExtractor>,
+    graph_analyzer: Arc<GraphAnalyzer>,
+}
+
+pub async fn link_comments_via_call_graph(
+    &self,
+    file_summaries: &[FileSummary]
+) -> LlmResult<LinkedComments> {
+    // Use existing petgraph infrastructure
+    // Connect comments across file boundaries based on call relationships
+}
+```
+
+#### 4.2 Caching & Performance
+**Optimize for large codebases using existing infrastructure**
+
+```rust
+pub struct AnalysisCache {
+    file_cache: HashMap<String, (SystemTime, ExtractedComments)>,
+    summary_cache: HashMap<String, (SystemTime, FileSummary)>,
+    system_cache: Option<(SystemTime, SystemSummary)>,
+}
+
+// Integrate with existing monitoring system
+impl LlmMonitor {
+    pub fn track_comment_analysis(&mut self, metrics: CommentAnalysisMetrics) {
+        // Track token usage, response times, success rates
+        // Integrate with existing performance monitoring
+    }
+}
+```
+
+#### 4.3 Multi-Language Template System
+**Extend comment analysis for different programming paradigms**
+
+```rust
+pub enum CommentStyle {
+    CStyle,      // C, C++, Java, JavaScript, Rust
+    HashStyle,   // Python, Ruby, Shell
+    SqlStyle,    // SQL, database scripts
+    HtmlStyle,   // HTML, XML
+    Custom(CommentConfig),
+}
+
+pub struct LanguageCommentProcessor {
+    processors: HashMap<SupportedLanguage, Box<dyn CommentProcessor>>,
+}
+```
+
+## Technical Integration Strategy
+
+### 1. Leverage Existing Tree-sitter Infrastructure
+- **Reuse QueryEngine**: Extend with comment-specific queries rather than building new parser
+- **Language Support**: Piggyback on existing 5-language support (Rust, Python, JS, TS, Java)
+- **Error Handling**: Integrate with existing `LlmError` and `codehud_core::Error` types
+
+### 2. Constitutional AI Integration
+- **Guardrails**: Apply existing constitutional principles to comment analysis
+- **Self-Correction**: Use existing critical mistake detection for comment interpretation
+- **Validation**: Leverage existing validation engine for summary quality
+
+### 3. Performance & Scalability
+- **Async Processing**: Build on existing tokio infrastructure
+- **Memory Management**: Use existing context window management
+- **GPU Acceleration**: Leverage existing GPU configuration for large models
+
+### 4. CLI & GUI Integration
+- **CLI Extension**: Add commands to existing `codehud-llm` binary
+- **View Integration**: Connect to existing view system and TUI interface
+- **Configuration**: Extend existing config system with comment analysis settings
+
+## Implementation Timeline
+
+### Week 1: Core Foundation
+- **Days 1-2**: Comment extractor with tree-sitter integration
+- **Days 3-4**: File processing pipeline and JSON output
+- **Days 5-7**: Per-file LLM analysis with existing OllamaPipeline
+
+### Week 2: System Integration
+- **Days 8-10**: System-wide analysis and summary generation
+- **Days 11-12**: CLI command integration and user experience
+- **Days 13-14**: View system integration and GUI rendering
+
+### Week 3: Advanced Features
+- **Days 15-17**: Call graph linking and cross-file analysis
+- **Days 18-19**: Performance optimization and caching
+- **Days 20-21**: Testing, documentation, and polish
+
+## Output Structure (Matching Vision)
+
+### `comments.json`
+```json
+{
+  "src/main.rs": {
+    "file": "src/main.rs",
+    "language": "rust",
+    "extraction_method": "enhanced_tree_sitter",
+    "comments": [
+      {
+        "text": "/// Main application entry point",
+        "type": "doc_comment",
+        "start_byte": 0,
+        "end_byte": 33,
+        "start_position": {"line": 1, "column": 1},
+        "end_position": {"line": 1, "column": 34},
+        "context": {
+          "function_name": "main",
+          "adjacent_code": "fn main() -> Result<()> {"
+        }
+      }
+    ]
+  }
+}
+```
+
+### `summaries.json`
+```json
+{
+  "src/main.rs": {
+    "file": "src/main.rs",
+    "themes": ["application_entry", "error_handling"],
+    "dependencies": ["clap", "tokio"],
+    "purpose": "Serves as the main application entry point with CLI parsing and async runtime setup.",
+    "confidence": "High",
+    "llm_model": "deepseek-coder:7b",
+    "analysis_timestamp": "2024-01-20T10:30:00Z",
+    "token_usage": {"input": 450, "output": 120}
+  }
+}
+```
+
+### `system_summary.json`
+```json
+{
+  "system_themes": ["command_line_tool", "code_analysis", "visualization"],
+  "key_dependencies": ["clap", "tree-sitter", "ratatui", "tokio"],
+  "system_purpose": "CodeHUD is a comprehensive code analysis tool that provides visual insights into codebase structure, quality, and dependencies through multiple analysis views and an interactive terminal interface.",
+  "confidence": "High",
+  "analysis_metadata": {
+    "files_analyzed": 156,
+    "total_comments": 1247,
+    "languages_detected": ["Rust", "Python", "JavaScript"],
+    "analysis_duration_seconds": 45,
+    "model_used": "deepseek-coder:7b"
+  }
+}
+```
+
+## Quality Assurance & Testing
+
+### Unit Tests
+- Comment extraction accuracy across languages
+- LLM prompt/response validation
+- JSON schema compliance
+- Error handling and edge cases
+
+### Integration Tests
+- End-to-end pipeline with real codebases
+- Performance benchmarks for large repositories
+- Memory usage and resource management
+- GUI integration and rendering
+
+### Validation Metrics
+- **Comment Coverage**: % of files with meaningful comment extraction
+- **Summary Quality**: Human evaluation of LLM-generated insights
+- **Performance**: Processing time per file/kloc
+- **Accuracy**: Comparison with manual codebase documentation
+
+## Configuration & Deployment
+
+### Configuration Extension
+```toml
+# codehud.toml extension
+[llm.comment_analysis]
+enabled = true
+model = "deepseek-coder:7b"
+max_tokens_per_file = 1000
+system_summary_max_tokens = 4000
+cache_duration_hours = 24
+include_code_context = true
+extract_todos = true
+analyze_documentation_coverage = true
+
+[llm.performance]
+parallel_file_processing = true
+max_concurrent_llm_calls = 3
+gpu_acceleration = true
+batch_size = 10
+```
+
+### Deployment Integration
+- Extend existing Docker configuration for LLM dependencies
+- Add Ollama service configuration and model pulling
+- Update installation docs with LLM setup requirements
+- Provide migration path from existing comment analysis tools
+
+## Success Criteria
+
+1. **Functional Completeness**: All features from LLM_vision.txt implemented and integrated
+2. **Performance**: Process 1000+ file codebases within 5 minutes on standard hardware
+3. **Quality**: Generate coherent, actionable insights with >90% user satisfaction
+4. **Integration**: Seamless operation within existing CodeHUD workflow and UX
+5. **Extensibility**: Clean architecture allowing easy addition of new LLM features
+6. **Compatibility**: Zero degradation of existing CodeHUD functionality
+
+This plan transforms the vision's comment extraction tool into a fully integrated CodeHUD feature while leveraging all existing infrastructure, maintaining backward compatibility, and providing a foundation for future LLM-powered enhancements.

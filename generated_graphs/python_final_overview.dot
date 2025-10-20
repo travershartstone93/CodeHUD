@@ -1,0 +1,101 @@
+digraph ModuleArchitecture {
+  graph [rankdir=TB, splines=polyline, nodesep=0.5, ranksep=2.5, newrank=true, bgcolor="#f8f9fa", dpi=96];
+  node [shape=box, style="filled,rounded", fontname="Helvetica Bold", fontsize=22, height=1.5, width=5.0];
+  edge [fontname="Helvetica Bold", fontsize=18, penwidth=2.5, arrowsize=1.2];
+
+  // External dependency boxes (one per module)
+  ext_deps_shrimp_config_py [shape=box, label="shrimp_config.py External Deps\n\n• Path\n• os\n• pathlib\n", fillcolor="#ffcdd2", fontsize=10, width=4.0, height=2.0];
+  ext_deps_professional_shrimp_gui_py [shape=box, label="professional_shrimp_gui.py External Deps\n\n• FigureCanvasTkAgg\n• FuncAnimation\n• Image\n• ImageTk\n• PIL\n• Path\n• UnifiedShrimpCounter\n• VideoProcessor\n• collections\n• csv\n• cv2\n• deque\n• estimate_memory_usage\n• filedialog\n• get_config\n• json\n• matplotlib.animation\n• matplotlib.backends.backend_tkagg\n• matplotlib.pyplot\n• messagebox\n• numpy\n• os\n• pathlib\n• sys\n• threading\n• time\n• tkinter\n• traceback\n• ttk\n", fillcolor="#ffcdd2", fontsize=10, width=4.0, height=2.0];
+  ext_deps_chart_data_manager_py [shape=box, label="chart_data_manager.py External Deps\n\n• Any\n• Dict\n• Optional\n• Path\n• collections\n• datetime\n• deque\n• http.server\n• json\n• logging\n• os\n• pathlib\n• random\n• socketserver\n• threading\n• time\n• typing\n", fillcolor="#ffcdd2", fontsize=10, width=4.0, height=2.0];
+  ext_deps_unified_shrimp_counter_py [shape=box, label="unified_shrimp_counter.py External Deps\n\n• ChartDataManager\n• Path\n• SimpleChartServer\n• argparse\n• collections\n• create_chart_files\n• create_preprocessor\n• create_simple_detector\n• create_unified_models\n• csv\n• cv2\n• datetime\n• deque\n• estimate_memory_usage\n• get_config\n• get_inference_config\n• json\n• logging\n• numpy\n• os\n• pathlib\n• queue\n• threading\n• time\n• torch\n• torch.nn.functional\n", fillcolor="#ffcdd2", fontsize=10, width=4.0, height=2.0];
+  ext_deps_video_coco_generator_py [shape=box, label="video_coco_generator.py External Deps\n\n• Callable\n• Dict\n• FastRCNNPredictor\n• Image\n• List\n• MaskRCNNPredictor\n• Optional\n• PIL\n• Path\n• Tuple\n• Union\n• cv2\n• datetime\n• glob\n• json\n• logging\n• maskrcnn_resnet50_fpn\n• numpy\n• os\n• pathlib\n• sys\n• time\n• torch\n• torch.nn\n• torchvision.models.detection\n• torchvision.models.detection.faster_rcnn\n• torchvision.models.detection.mask_rcnn\n• torchvision.transforms\n• typing\n", fillcolor="#ffcdd2", fontsize=10, width=4.0, height=2.0];
+  ext_deps_shrimp_preprocessing_py [shape=box, label="shrimp_preprocessing.py External Deps\n\n• Image\n• PIL\n• Path\n• ToTensorV2\n• albumentations\n• albumentations.pytorch\n• cdist\n• cv2\n• logging\n• numpy\n• pathlib\n• scipy.spatial.distance\n• torch\n• torchvision.transforms\n", fillcolor="#ffcdd2", fontsize=10, width=4.0, height=2.0];
+  ext_deps_test_dual_stream_py [shape=box, label="test_dual_stream.py External Deps\n\n• DualStreamProcessor\n• Path\n• UDPVideoProcessor\n• create_simple_detector\n• cv2\n• numpy\n• pathlib\n• sys\n• time\n", fillcolor="#ffcdd2", fontsize=10, width=4.0, height=2.0];
+  ext_deps_setup_py [shape=box, label="setup.py External Deps\n\n• Path\n• find_packages\n• pathlib\n• setuptools\n", fillcolor="#ffcdd2", fontsize=10, width=4.0, height=2.0];
+  ext_deps_simple_detector_py [shape=box, label="simple_detector.py External Deps\n\n• cv2\n• numpy\n• torch\n• torch.nn.functional\n", fillcolor="#ffcdd2", fontsize=10, width=4.0, height=2.0];
+  ext_deps_unified_shrimp_training_py [shape=box, label="unified_shrimp_training.py External Deps\n\n• DataLoader\n• Dataset\n• DensityMapGenerator\n• Image\n• PIL\n• Path\n• UnifiedPatchedMCTformer\n• UnifiedShrimpCountingTR\n• argparse\n• collections\n• create_preprocessor\n• create_unified_models\n• cv2\n• datetime\n• deque\n• get_config\n• get_model_config\n• get_training_config\n• json\n• logging\n• numpy\n• os\n• pathlib\n• random\n• sys\n• threading\n• time\n• torch\n• torch.nn\n• torch.nn.functional\n• torch.optim\n• torch.utils.data\n• torchvision\n• torchvision.transforms\n• transforms\n", fillcolor="#ffcdd2", fontsize=10, width=4.0, height=2.0];
+  ext_deps___init___py [shape=box, label="__init__.py External Deps\n\n• UnifiedPatchedMCTformer\n• UnifiedShrimpCounter\n• UnifiedShrimpCountingTR\n• UnifiedTrainer\n• VideoProcessor\n• create_preprocessor\n• create_simple_detector\n• create_unified_models\n• estimate_memory_usage\n• get_config\n• get_inference_config\n", fillcolor="#ffcdd2", fontsize=10, width=4.0, height=2.0];
+  ext_deps_NVIDIA Nsight Compute [shape=box, label="NVIDIA Nsight Compute External Deps\n\n• _NvRules\n• __builtin__\n• builtins\n• math\n• sys\n• version_info\n", fillcolor="#ffcdd2", fontsize=10, width=4.0, height=2.0];
+  ext_deps_training_gui_py [shape=box, label="training_gui.py External Deps\n\n• Figure\n• FigureCanvasTkAgg\n• FuncAnimation\n• Image\n• ImageTk\n• PIL\n• Path\n• UnifiedTrainer\n• collections\n• create_preprocessor\n• create_unified_models\n• cv2\n• datetime\n• deque\n• estimate_memory_usage\n• filedialog\n• get_config\n• get_training_config\n• json\n• matplotlib.animation\n• matplotlib.backends.backend_tkagg\n• matplotlib.figure\n• matplotlib.pyplot\n• messagebox\n• numpy\n• os\n• pathlib\n• queue\n• sys\n• threading\n• time\n• tkinter\n• traceback\n• ttk\n", fillcolor="#ffcdd2", fontsize=10, width=4.0, height=2.0];
+  ext_deps_test_chart_integration_py [shape=box, label="test_chart_integration.py External Deps\n\n• ChartDataManager\n• DualStreamProcessor\n• Path\n• SimpleChartServer\n• argparse\n• create_chart_files\n• main\n• numpy\n• pathlib\n• random\n• sys\n• time\n", fillcolor="#ffcdd2", fontsize=10, width=4.0, height=2.0];
+  ext_deps_shrimp_models_py [shape=box, label="shrimp_models.py External Deps\n\n• BYTETracker\n• collections\n• cv2\n• defaultdict\n• deque\n• numpy\n• timm\n• torch\n• torch.nn\n• torch.nn.functional\n• torchvision\n• yolox.tracker.byte_tracker\n", fillcolor="#ffcdd2", fontsize=10, width=4.0, height=2.0];
+  { rank=min; ext_deps_shrimp_config_py; ext_deps_professional_shrimp_gui_py; ext_deps_chart_data_manager_py; ext_deps_unified_shrimp_counter_py; ext_deps_video_coco_generator_py; ext_deps_shrimp_preprocessing_py; ext_deps_test_dual_stream_py; ext_deps_setup_py; ext_deps_simple_detector_py; ext_deps_unified_shrimp_training_py; ext_deps___init___py; ext_deps_NVIDIA Nsight Compute; ext_deps_training_gui_py; ext_deps_test_chart_integration_py; ext_deps_shrimp_models_py; }
+
+  // Internal modules
+  unified_shrimp_counter_py [label="unified_shrimp_counter.py\n1 files, 5 functions\n\nunified_shrimp_counter.py\n", fillcolor="#3498db"];
+  NVIDIA Nsight Compute [label="NVIDIA Nsight Compute\n17 files, 85 functions", fillcolor="#c8e6c9"];
+  professional_shrimp_gui_py [label="professional_shrimp_gui.py\n1 files, 5 functions\n\nprofessional_shrimp_gui.py\n", fillcolor="#ffe0b2"];
+  video_coco_generator_py [label="video_coco_generator.py\n1 files, 5 functions\n\nvideo_coco_generator.py\n", fillcolor="#e1bee7"];
+  shrimp_models_py [label="shrimp_models.py\n1 files, 5 functions\n\nshrimp_models.py\n", fillcolor="#ffcdd2"];
+  chart_data_manager_py [label="chart_data_manager.py\n1 files, 5 functions\n\nchart_data_manager.py\n", fillcolor="#29b6f6"];
+  shrimp_preprocessing_py [label="shrimp_preprocessing.py\n1 files, 5 functions\n\nshrimp_preprocessing.py\n", fillcolor="#dcedc8"];
+  test_dual_stream_py [label="test_dual_stream.py\n1 files, 5 functions\n\ntest_dual_stream.py\n", fillcolor="#f9a825"];
+  __init___py [label="__init__.py\n1 files, 5 functions\n\n__init__.py\n", fillcolor="#f0f4c3"];
+  unified_shrimp_training_py [label="unified_shrimp_training.py\n1 files, 5 functions\n\nunified_shrimp_training.py\n", fillcolor="#4fc3f7"];
+  test_chart_integration_py [label="test_chart_integration.py\n1 files, 5 functions\n\ntest_chart_integration.py\n", fillcolor="#3498db"];
+  simple_detector_py [label="simple_detector.py\n1 files, 5 functions\n\nsimple_detector.py\n", fillcolor="#c8e6c9"];
+  setup_py [label="setup.py\n1 files, 5 functions\n\nsetup.py\n", fillcolor="#ffe0b2"];
+  shrimp_config_py [label="shrimp_config.py\n1 files, 5 functions\n\nshrimp_config.py\n", fillcolor="#e1bee7"];
+  training_gui_py [label="training_gui.py\n1 files, 5 functions\n\ntraining_gui.py\n", fillcolor="#ffcdd2"];
+
+  // Invisible edges to enforce layout (external deps above internal modules)
+  ext_deps_shrimp_config_py -> shrimp_config_py [style=invis, weight=10];
+  ext_deps_professional_shrimp_gui_py -> professional_shrimp_gui_py [style=invis, weight=10];
+  ext_deps_chart_data_manager_py -> chart_data_manager_py [style=invis, weight=10];
+  ext_deps_unified_shrimp_counter_py -> unified_shrimp_counter_py [style=invis, weight=10];
+  ext_deps_video_coco_generator_py -> video_coco_generator_py [style=invis, weight=10];
+  ext_deps_shrimp_preprocessing_py -> shrimp_preprocessing_py [style=invis, weight=10];
+  ext_deps_test_dual_stream_py -> test_dual_stream_py [style=invis, weight=10];
+  ext_deps_setup_py -> setup_py [style=invis, weight=10];
+  ext_deps_simple_detector_py -> simple_detector_py [style=invis, weight=10];
+  ext_deps_unified_shrimp_training_py -> unified_shrimp_training_py [style=invis, weight=10];
+  ext_deps___init___py -> __init___py [style=invis, weight=10];
+  ext_deps_NVIDIA Nsight Compute -> NVIDIA Nsight Compute [style=invis, weight=10];
+  ext_deps_training_gui_py -> training_gui_py [style=invis, weight=10];
+  ext_deps_test_chart_integration_py -> test_chart_integration_py [style=invis, weight=10];
+  ext_deps_shrimp_models_py -> shrimp_models_py [style=invis, weight=10];
+
+  // Inter-module dependencies
+  __init___py -> _shrimp_config [color="#1976d2", penwidth=2.5, weight=2];
+  __init___py -> _shrimp_models [color="#1976d2", penwidth=2.5, weight=2];
+  __init___py -> _shrimp_preprocessing [color="#1976d2", penwidth=2.5, weight=2];
+  __init___py -> _simple_detector [color="#1976d2", penwidth=2.5, weight=2];
+  __init___py -> _unified_shrimp_counter [color="#1976d2", penwidth=2.5, weight=2];
+  __init___py -> _unified_shrimp_training [color="#1976d2", penwidth=2.5, weight=2];
+  NVIDIA Nsight Compute -> shrimp_models_py [color="#388e3c", penwidth=2.5, weight=2];
+  unified_shrimp_counter_py -> chart_data_manager_py [color="#f57c00", penwidth=2.5, weight=2];
+  unified_shrimp_counter_py -> shrimp_config_py [color="#f57c00", penwidth=2.5, weight=2];
+  unified_shrimp_counter_py -> shrimp_models_py [color="#f57c00", penwidth=2.5, weight=2];
+  unified_shrimp_counter_py -> shrimp_preprocessing_py [color="#f57c00", penwidth=2.5, weight=2];
+  unified_shrimp_counter_py -> simple_detector_py [color="#f57c00", penwidth=2.5, weight=2];
+  professional_shrimp_gui_py -> shrimp_config_py [color="#7b1fa2", penwidth=2.5, weight=2];
+  professional_shrimp_gui_py -> unified_shrimp_counter_py [color="#7b1fa2", penwidth=2.5, weight=2];
+  unified_shrimp_training_py -> shrimp_config_py [color="#c62828", penwidth=2.5, weight=2];
+  unified_shrimp_training_py -> shrimp_models_py [color="#c62828", penwidth=2.5, weight=2];
+  unified_shrimp_training_py -> shrimp_preprocessing_py [color="#c62828", penwidth=2.5, weight=2];
+  training_gui_py -> shrimp_config_py [color="#0097a7", penwidth=2.5, weight=2];
+  training_gui_py -> shrimp_models_py [color="#0097a7", penwidth=2.5, weight=2];
+  training_gui_py -> shrimp_preprocessing_py [color="#0097a7", penwidth=2.5, weight=2];
+  training_gui_py -> unified_shrimp_training_py [color="#0097a7", penwidth=2.5, weight=2];
+  test_chart_integration_py -> chart_data_manager_py [color="#689f38", penwidth=2.5, weight=2];
+  test_chart_integration_py -> unified_shrimp_counter_py [color="#689f38", penwidth=2.5, weight=2];
+  test_dual_stream_py -> simple_detector_py [color="#fbc02d", penwidth=2.5, weight=2];
+  test_dual_stream_py -> unified_shrimp_counter_py [color="#fbc02d", penwidth=2.5, weight=2];
+
+  // Edges to external dependency boxes
+  shrimp_config_py -> ext_deps_shrimp_config_py [style=dashed, color="black", penwidth=0.8, constraint=false];
+  professional_shrimp_gui_py -> ext_deps_professional_shrimp_gui_py [style=dashed, color="black", penwidth=0.8, constraint=false];
+  chart_data_manager_py -> ext_deps_chart_data_manager_py [style=dashed, color="black", penwidth=0.8, constraint=false];
+  unified_shrimp_counter_py -> ext_deps_unified_shrimp_counter_py [style=dashed, color="black", penwidth=0.8, constraint=false];
+  video_coco_generator_py -> ext_deps_video_coco_generator_py [style=dashed, color="black", penwidth=0.8, constraint=false];
+  shrimp_preprocessing_py -> ext_deps_shrimp_preprocessing_py [style=dashed, color="black", penwidth=0.8, constraint=false];
+  test_dual_stream_py -> ext_deps_test_dual_stream_py [style=dashed, color="black", penwidth=0.8, constraint=false];
+  setup_py -> ext_deps_setup_py [style=dashed, color="black", penwidth=0.8, constraint=false];
+  simple_detector_py -> ext_deps_simple_detector_py [style=dashed, color="black", penwidth=0.8, constraint=false];
+  unified_shrimp_training_py -> ext_deps_unified_shrimp_training_py [style=dashed, color="black", penwidth=0.8, constraint=false];
+  __init___py -> ext_deps___init___py [style=dashed, color="black", penwidth=0.8, constraint=false];
+  NVIDIA Nsight Compute -> ext_deps_NVIDIA Nsight Compute [style=dashed, color="black", penwidth=0.8, constraint=false];
+  training_gui_py -> ext_deps_training_gui_py [style=dashed, color="black", penwidth=0.8, constraint=false];
+  test_chart_integration_py -> ext_deps_test_chart_integration_py [style=dashed, color="black", penwidth=0.8, constraint=false];
+  shrimp_models_py -> ext_deps_shrimp_models_py [style=dashed, color="black", penwidth=0.8, constraint=false];
+}

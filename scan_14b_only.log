@@ -1,0 +1,1359 @@
+🚀 CodeHUD LLM - Project Scanner
+🤖 Backend: ollama
+🔍 FSM DEBUG: ProjectSelected event received for: /home/travers/Desktop/CodeHUD (copy)/Rust_copy
+🔍 FSM DEBUG: Current state: Discriminant(0)
+🔍 🔍 🔍 CRATE DISCOVERY STARTING: /home/travers/Desktop/CodeHUD (copy)/Rust_copy
+🔍 🔍 🔍 CRATE DISCOVERY STARTING: /home/travers/Desktop/CodeHUD (copy)/Rust_copy
+🔍 DEBUG: Searching for Cargo.toml files in: /home/travers/Desktop/CodeHUD (copy)/Rust_copy
+🔍 DEBUG: Found Cargo.toml at: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-tui/Cargo.toml
+📦 Discovered crate: codehud-tui at /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-tui
+🔍 DEBUG: Found Cargo.toml at: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-viz/Cargo.toml
+📦 Discovered crate: codehud-viz at /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-viz
+🔍 DEBUG: Found Cargo.toml at: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-cli/Cargo.toml
+📦 Discovered crate: codehud-cli at /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-cli
+🔍 DEBUG: Found Cargo.toml at: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/test_project_hierarchical/codehud-tui/Cargo.toml
+🔍 DEBUG: Found Cargo.toml at: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/test_project_hierarchical/codehud-viz/Cargo.toml
+🔍 DEBUG: Found Cargo.toml at: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/test_project_hierarchical/Cargo.toml
+🔍 DEBUG: Found Cargo.toml at: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-realtime/Cargo.toml
+📦 Discovered crate: codehud-realtime at /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-realtime
+🔍 DEBUG: Found Cargo.toml at: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/Cargo.toml
+📦 Discovered crate: codehud-core at /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core
+🔍 DEBUG: Found Cargo.toml at: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/tree-sitter-grammars/ruby/Cargo.toml
+🔍 DEBUG: Found Cargo.toml at: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/tree-sitter-grammars/c/Cargo.toml
+🔍 DEBUG: Found Cargo.toml at: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/tree-sitter-grammars/rust/Cargo.toml
+🔍 DEBUG: Found Cargo.toml at: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/tree-sitter-grammars/php/Cargo.toml
+🔍 DEBUG: Found Cargo.toml at: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/tree-sitter-grammars/typescript/Cargo.toml
+🔍 DEBUG: Found Cargo.toml at: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/tree-sitter-grammars/python/Cargo.toml
+🔍 DEBUG: Found Cargo.toml at: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/tree-sitter-grammars/c-sharp/Cargo.toml
+🔍 DEBUG: Found Cargo.toml at: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/tree-sitter-grammars/swift/Cargo.toml
+🔍 DEBUG: Found Cargo.toml at: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/tree-sitter-grammars/cpp/Cargo.toml
+🔍 DEBUG: Found Cargo.toml at: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/tree-sitter-grammars/kotlin/Cargo.toml
+🔍 DEBUG: Found Cargo.toml at: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/tree-sitter-grammars/javascript/Cargo.toml
+🔍 DEBUG: Found Cargo.toml at: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/tree-sitter-grammars/java/Cargo.toml
+🔍 DEBUG: Found Cargo.toml at: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/tree-sitter-grammars/go/Cargo.toml
+🔍 DEBUG: Found Cargo.toml at: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-gui/Cargo.toml
+📦 Discovered crate: codehud-gui at /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-gui
+🔍 DEBUG: Found Cargo.toml at: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-utils/Cargo.toml
+📦 Discovered crate: codehud-utils at /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-utils
+🔍 DEBUG: Found Cargo.toml at: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-transform/Cargo.toml
+📦 Discovered crate: codehud-transform at /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-transform
+🔍 DEBUG: Found Cargo.toml at: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/Cargo.toml
+⚠️  Failed to parse /home/travers/Desktop/CodeHUD (copy)/Rust_copy/Cargo.toml: Configuration error: No [package] section in Cargo.toml
+🔍 DEBUG: Found Cargo.toml at: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-analysis/Cargo.toml
+📦 Discovered crate: codehud-analysis at /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-analysis
+🔍 DEBUG: Found Cargo.toml at: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-llm/Cargo.toml
+📦 Discovered crate: codehud-llm at /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-llm
+🔍 DEBUG: Found Cargo.toml at: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/test_hierarchical/Cargo.toml
+📦 Found 10 crates for hierarchical analysis
+  - codehud-analysis (Analysis pipeline and rendering system - Zero degradation from Python)
+  - codehud-cli (Command-line interfaces (4 CLI systems) - Zero degradation from Python)
+  - codehud-core (Core analysis engine with 11+ extractors - Zero degradation from Python)
+  - codehud-gui (No description)
+  - codehud-llm (LLM integration (29+ components) - Zero degradation from Python)
+  - codehud-realtime (Real-time monitoring and file watching - Zero degradation from Python)
+  - codehud-transform (Code transformation and refactoring engine - Zero degradation from Python)
+  - codehud-tui (Terminal user interface with Textual compatibility - Zero degradation from Python)
+  - codehud-utils (Utility functions with Python compatibility - Zero degradation from Python)
+  - codehud-viz (Visualization system (10+ view types) - Zero degradation from Python)
+🧠 Starting hierarchical crate processing...
+🗑️ Cleared previous extracted_comments.json from project_scan_output
+🗑️ Cleared previous file_summaries.json from project_scan_output
+🗑️ Cleared previous crate_summaries.json from project_scan_output
+🗑️ Cleared previous analysis_metadata.json from project_scan_output
+🗑️ Cleared previous hierarchical_summary.md from project_scan_output
+🖥️  Spawned progress window with gnome-terminal
+📊 Progress initialized with 34 baseline steps (will grow as files are discovered)
+
+📝 PHASE 1: Extracting comments and generating file summaries for all crates...
+
+🔍 DEBUG: Crate path for codehud-analysis: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-analysis
+🔍 Processing 3 files from crate codehud-analysis
+🔍 DEBUG: First 5 files discovered for crate codehud-analysis:
+  1. /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-analysis/src/lib.rs
+  2. /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-analysis/src/health_score.rs
+  3. /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-analysis/src/pipeline.rs
+🔍 Loading Rust Imports query: 1261 chars
+✅ Successfully compiled Rust Imports query
+🔍 Loading Rust Functions query: 289 chars
+✅ Successfully compiled Rust Functions query
+🔍 Loading Rust Calls query: 571 chars
+✅ Successfully compiled Rust Calls query
+🔍 Loading Rust Complexity query: 1116 chars
+✅ Successfully compiled Rust Complexity query
+🔍 Loading Rust Highlights query: 3489 chars
+❌ Failed to compile Highlights query for Rust: Query error at 112:2. Invalid node type gen
+[2m2025-10-11T16:40:16.664374Z[0m [33m WARN[0m Failed to compile Highlights query for Rust: Query error at 112:2. Invalid node type gen
+🔍 Loading Rust Tags query: 1194 chars
+✅ Successfully compiled Rust Tags query
+⚠️ No query file found for Rust References
+🔍 Loading Rust Comments query: 194 chars
+✅ Successfully compiled Rust Comments query
+🔍 Loading Python Imports query: 1434 chars
+❌ Failed to compile Imports query for Python: Query error at 34:3. Impossible pattern:
+  name: (wildcard_import)) @wildcard_import
+  ^
+[2m2025-10-11T16:40:16.669417Z[0m [33m WARN[0m Failed to compile Imports query for Python: Query error at 34:3. Impossible pattern:
+  name: (wildcard_import)) @wildcard_import
+  ^
+🔍 Loading Python Functions query: 673 chars
+✅ Successfully compiled Python Functions query
+🔍 Loading Python Calls query: 355 chars
+✅ Successfully compiled Python Calls query
+🔍 Loading Python Complexity query: 639 chars
+✅ Successfully compiled Python Complexity query
+🔍 Loading Python Highlights query: 1957 chars
+✅ Successfully compiled Python Highlights query
+🔍 Loading Python Tags query: 350 chars
+✅ Successfully compiled Python Tags query
+⚠️ No query file found for Python References
+🔍 Loading Python Comments query: 399 chars
+✅ Successfully compiled Python Comments query
+⚠️ No query file found for JavaScript Imports
+⚠️ No query file found for JavaScript Functions
+⚠️ No query file found for JavaScript Calls
+⚠️ No query file found for JavaScript Complexity
+🔍 Loading JavaScript Highlights query: 2739 chars
+✅ Successfully compiled JavaScript Highlights query
+🔍 Loading JavaScript Tags query: 2218 chars
+✅ Successfully compiled JavaScript Tags query
+⚠️ No query file found for JavaScript References
+🔍 Loading JavaScript Comments query: 54 chars
+✅ Successfully compiled JavaScript Comments query
+⚠️ No query file found for TypeScript Imports
+⚠️ No query file found for TypeScript Functions
+⚠️ No query file found for TypeScript Calls
+⚠️ No query file found for TypeScript Complexity
+🔍 Loading TypeScript Highlights query: 515 chars
+✅ Successfully compiled TypeScript Highlights query
+🔍 Loading TypeScript Tags query: 573 chars
+✅ Successfully compiled TypeScript Tags query
+⚠️ No query file found for TypeScript References
+🔍 Loading TypeScript Comments query: 54 chars
+✅ Successfully compiled TypeScript Comments query
+⚠️ No query file found for Java Imports
+⚠️ No query file found for Java Functions
+⚠️ No query file found for Java Calls
+⚠️ No query file found for Java Complexity
+🔍 Loading Java Highlights query: 2064 chars
+✅ Successfully compiled Java Highlights query
+🔍 Loading Java Tags query: 499 chars
+✅ Successfully compiled Java Tags query
+⚠️ No query file found for Java References
+🔍 Loading Java Comments query: 78 chars
+✅ Successfully compiled Java Comments query
+📋 Query Engine Initialized:
+   Loaded 5 parsers
+   Loaded 21 queries
+   - Python Tags query loaded
+   - TypeScript Comments query loaded
+   - Python Calls query loaded
+   - JavaScript Highlights query loaded
+   - Python Functions query loaded
+   - Java Comments query loaded
+   - JavaScript Tags query loaded
+   - Java Highlights query loaded
+   - Rust Functions query loaded
+   - JavaScript Comments query loaded
+   - Rust Calls query loaded
+   - Rust Tags query loaded
+   - Rust Comments query loaded
+   - Python Complexity query loaded
+   - Python Comments query loaded
+   - TypeScript Tags query loaded
+   - Java Tags query loaded
+   - Rust Imports query loaded
+   - Rust Complexity query loaded
+   - Python Highlights query loaded
+   - TypeScript Highlights query loaded
+🧠 Running narrator on 3 files in batch...
+🔍 DEBUG: Found 4 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-analysis/src/lib.rs
+🔍 DEBUG: Bullet text length: 445 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-analysis/src/lib.rs
+🔍 DEBUG: Found 13 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-analysis/src/health_score.rs
+🔍 DEBUG: Bullet text length: 542 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-analysis/src/health_score.rs
+🔍 DEBUG: Found 38 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-analysis/src/pipeline.rs
+🔍 DEBUG: Bullet text length: 1758 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-analysis/src/pipeline.rs
+✅ Added structural insights to all files
+💾 Comments JSON updated: 3 total files (3 from codehud-analysis)
+🤖 Phase 2: LLM analysis with batch processing for crate codehud-analysis...
+🤖 Analyzing 3 files with enhanced context and improved token limits...
+📦 Processing batch 1/1 (3 files)...
+🤖 Analyzing: [████████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]  33% (1/3) - lib.rs...🔍 DEBUG PROMPT for lib.rs:
+=====================================
+CONCISE FILE SUMMARY
+
+File: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-analysis/src/lib.rs
+Language: rust
+Comments found: 6
+
+STRUCTURAL CONTEXT:
+Imports: Imports: pub use health_score::{HealthScoreCalculator, HealthScore};., Imports: pub use pipeline::{
+Exports: pub use pipeline::{, pub use health_score::{HealthScoreCalculator, HealthScore};.
+
+COMMENTS TO ANALYZE:
+Line 1: ! CodeHUD Analysis - Pipeline and Rendering System
+Line 3: ! This crate provides the analysis pipeline and rendering system for CodeHUD,
+Line 4: ! implementing both direct and legacy analysis modes with comprehensive
+Line 5: ! markdown export capabilities.
+Line 12: Re-export main types for convenience
+Line 19: Result type for analysis operations
+
+Technical Summary: In 2-3 direct sentences, explain what this file DOES for users/callers. List specific functions, features, or behaviors it implements. Use concrete examples (e.g., "detects SQL injection", "parses JSON configs", "calculates hash values"). Avoid generic phrases like "serves as", "provides functionality", "manages", or "designed to". Maximum 100 words.
+=====================================
+📏 Prompt length: 1107 characters
+🤖 Analyzing: [█████████████████████████████████░░░░░░░░░░░░░░░░░]  66% (2/3) - health_score.rs...🔍 DEBUG PROMPT for health_score.rs:
+=====================================
+CONCISE FILE SUMMARY
+
+File: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-analysis/src/health_score.rs
+Language: rust
+Comments found: 40
+
+STRUCTURAL CONTEXT:
+Structure: calls serde_json::Value::Object., calls HealthScoreCalculator::default., calculate_security_score is a wrapper for Ok (lines 233)., calculate_functionality_score is a wrapper for Ok (lines 171)., calculate_performance_score is a wrapper for Ok (lines 259)., calls HashMap::new., calls Error::Analysis., calls serde_json::Map::new.
+Imports: Imports: use codehud_core::{Result, Error};., Imports: use serde::{Serialize, Deserialize};., use super::*;., Imports: use std::collections::HashMap;., Imports: use super::*;.
+
+COMMENTS TO ANALYZE:
+Line 1: ! Health Score Calculation - Exact Python Algorithm Implementation
+Line 3: ! This module implements the health score calculation system to match
+Line 4: ! Python algorithms exactly as required by zero-degradation plan.
+Line 10: Health score calculator matching Python HealthScoreCalculator
+Line 19: Complete health score result matching Python structure
+Line 32: Complexity metrics for health calculation
+Line 44: Issue severity levels matching Python classification
+Line 54: Security vulnerability types
+Line 64: Performance hotspot data
+Line 76: Default weights matching Python implementation
+Line 87: Create new health score calculator with custom weights
+Line 102: Calculate complete health score from analysis data
+Line 107: Extract metrics from analysis data
+Line 113: Calculate individual scores using exact Python algorithms
+Line 119: Calculate weighted overall score (exact Python formula)
+Line 127: Create score breakdown
+Line 134: Count critical issues
+Line 144: Generate recommendations based on scores
+Line 165: Calculate functionality score (exact Python algorithm)
+Line 195: Calculate maintainability score (exact Python algorithm)
+Line 202: Cyclomatic complexity penalty (Python thresholds)
+Line 209: Cognitive complexity penalty
+Line 214: Function length penalty
+Line 219: Maximum function complexity penalty
+Line 227: Calculate security score (exact Python algorithm)
+Line 253: Calculate performance score (exact Python algorithm)
+Line 265: Penalty based on complexity and execution frequency
+Line 269: Additional penalty for high memory usage
+Line 278: Extract complexity metrics from analysis data
+Line 314: Extract issues from analysis data
+Line 324: Combine all issue types
+Line 346: Extract vulnerabilities from analysis data
+Line 382: Extract performance hotspots from analysis data
+Line 416: Generate health recommendations based on scores
+Line 466: No issues should give perfect score
+Line 470: Critical issues should heavily penalize
+Line 483: Low complexity should give high score
+Line 497: High complexity should penalize
+Line 509: Should be heavily penalized
+
+Technical Summary: In 2-3 direct sentences, explain what this file DOES for users/callers. List specific functions, features, or behaviors it implements. Use concrete examples (e.g., "detects SQL injection", "parses JSON configs", "calculates hash values"). Avoid generic phrases like "serves as", "provides functionality", "manages", or "designed to". Maximum 100 words.
+=====================================
+📏 Prompt length: 3185 characters
+🤖 Analyzing: [██████████████████████████████████████████████████] 100% (3/3) - pipeline.rs...🔍 DEBUG PROMPT for pipeline.rs:
+=====================================
+CONCISE FILE SUMMARY
+
+File: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-analysis/src/pipeline.rs
+Language: rust
+Comments found: 55
+
+STRUCTURAL CONTEXT:
+Imports: Imports: use serde::{Serialize, Deserialize};., Imports: use std::collections::HashMap;., Imports: use codehud_core::{, Imports: use tokio::time::{timeout, Duration};., use crate::health_score::{HealthScoreCalculator, HealthScore};., Imports: use crate::health_score::{HealthScoreCalculator, HealthScore};., Imports: use codehud_utils::logging::get_logger;., Imports: use std::path::{Path, PathBuf};., Imports: use chrono::{DateTime, Utc};.
+File I/O: this scope performs file I/O via std::thread::available_parallelism() (lines 419).
+Structure: calls Duration::from_secs., calls Self::get_total_memory_gb., calls serde_yaml::to_string., calls DependenciesExtractor::new., calls codehud_core::query_engine::QueryEngine::new., calls Self::get_disk_space_gb., calls serde_json::to_string_pretty., calls Error::Config., calls Error::Analysis., calls Self::get_memory_usage., calls QualityExtractor::new., calls TestingExtractor::new., calls Utc::now., calls Self::get_available_memory_gb., calls PerformanceExtractor::new., calls HealthScoreCalculator::default., calls Error::Json., calls FlowExtractor::new., new is a wrapper for Err.Error.Config.format.codebase_path.display (lines 95)., calls serde_json::to_value., calls Self::run_single_extractor., calls SecurityExtractor::new., calls TopologyExtractor::new., calls EvolutionExtractor::new., calls HashMap::new., calls IssuesExtractor::new.
+
+COMMENTS TO ANALYZE:
+Line 1: ! Direct Analysis Pipeline - Core orchestration matching Python direct_pipeline.py
+Line 3: ! This module implements the direct analysis pipeline that coordinates
+Line 4: ! all extractors and produces comprehensive analysis results with zero degradation
+Line 5: ! from the Python implementation.
+Line 32: Direct analysis pipeline orchestrating all extractors
+Line 42: Analysis result from the direct pipeline
+Line 57: Metadata about the analysis execution
+Line 68: Performance metrics for individual extractors
+Line 78: System information during analysis
+Line 90: Create a new direct analysis pipeline
+Line 101: Initialize all extractors as enabled by default
+Line 118: 5 minutes default
+Line 119: Match Python default
+Line 123: Configure which extractors to run
+Line 125: Disable all extractors first
+Line 130: Enable specified extractors
+Line 138: Set execution timeout
+Line 144: Enable or disable parallel execution
+Line 150: Run the direct analysis pipeline
+Line 182: Run extractors based on configuration
+Line 189: Calculate health score using extracted data (Python-compatible)
+Line 193: Default fallback score
+Line 203: Calculate final metrics
+Line 217: Run extractors in parallel for maximum performance
+Line 225: Spawn tasks for each enabled extractor
+Line 275: Run extractors sequentially for debugging and reliability
+Line 315: Run a single extractor and measure performance
+Line 361: This is handled by a different system, return empty for now
+Line 365: Use the enhanced query engine for tree-sitter analysis
+Line 370: Convert serde_json::Value to HashMap
+Line 383: Return empty result on failure
+Line 389: Return empty result on failure
+Line 401: TODO: Track this in extractors
+Line 416: Create initial analysis metadata
+Line 441: Calculate analysis coverage percentage
+Line 453: Get current memory usage in bytes (placeholder implementation)
+Line 455: TODO: Implement actual memory usage tracking
+Line 459: Get total system memory in GB (placeholder implementation)
+Line 461: TODO: Implement actual system memory detection
+Line 465: Get available system memory in GB (placeholder implementation)
+Line 467: TODO: Implement actual available memory detection
+Line 471: Get disk space in GB for the given path (placeholder implementation)
+Line 473: TODO: Implement actual disk space detection
+Line 478: Export analysis results to various formats
+Line 482: Export analysis results to JSON
+Line 488: Export analysis results to YAML
+Line 494: Export analysis results to comprehensive markdown report
+Line 548: Errors and Warnings
+Line 565: Detailed Results (summary of each view)
+Line 570: Extract summary information from each view
+
+Technical Summary: In 2-3 direct sentences, explain what this file DOES for users/callers. List specific functions, features, or behaviors it implements. Use concrete examples (e.g., "detects SQL injection", "parses JSON configs", "calculates hash values"). Avoid generic phrases like "serves as", "provides functionality", "manages", or "designed to". Maximum 100 words.
+=====================================
+📏 Prompt length: 4606 characters
+🤖 Analyzing: [██████████████████████████████████████████████████] 100% (3/3) - Complete!
+✅ Phase 2 complete: 3 files analyzed with enhanced context
+📄 File summaries updated: 3 total files (3 from codehud-analysis)
+📄 Analysis metadata updated: 1 crates processed
+🔍 DEBUG: Crate path for codehud-cli: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-cli
+🔍 Processing 4 files from crate codehud-cli
+🔍 DEBUG: First 5 files discovered for crate codehud-cli:
+  1. /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-cli/src/main.rs
+  2. /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-cli/src/llm.rs
+  3. /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-cli/src/direct.rs
+  4. /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-cli/src/data.rs
+🧠 Running narrator on 4 files in batch...
+🔍 DEBUG: Found 70 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-cli/src/main.rs
+🔍 DEBUG: Bullet text length: 2413 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-cli/src/main.rs
+🔍 DEBUG: Found 22 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-cli/src/llm.rs
+🔍 DEBUG: Bullet text length: 984 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-cli/src/llm.rs
+🔍 DEBUG: Found 18 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-cli/src/direct.rs
+🔍 DEBUG: Bullet text length: 814 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-cli/src/direct.rs
+🔍 DEBUG: Found 19 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-cli/src/data.rs
+🔍 DEBUG: Bullet text length: 777 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-cli/src/data.rs
+✅ Added structural insights to all files
+💾 Comments JSON updated: 7 total files (4 from codehud-cli)
+🤖 Phase 2: LLM analysis with batch processing for crate codehud-cli...
+🤖 Analyzing 4 files with enhanced context and improved token limits...
+📦 Processing batch 1/1 (4 files)...
+🤖 Analyzing: [████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]  25% (1/4) - main.rs...🔍 DEBUG PROMPT for main.rs:
+=====================================
+CONCISE FILE SUMMARY
+
+File: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-cli/src/main.rs
+Language: rust
+Comments found: 161
+
+STRUCTURAL CONTEXT:
+File I/O: this scope performs file I/O via std::fs::read_to_string(&notes_file) (lines 1066)., this scope performs file I/O via std::fs::write(&text_file, (lines 1412)., this scope performs file I/O via std::fs::write(&main_output, (lines 1224)., this scope performs file I/O via std::fs::write(&notes_file, (lines 1085)., this scope performs file I/O via writeln!(output, (lines 1427–1430, 1434–1436, 1438, 1440–1441, 1443, 1447–1450, 1452, 1456–1457, 1459–1460, 1462, 1467–1469, 1472–1473)., this scope performs file I/O via std::fs::write(&summary_output, (lines 1258)., this scope performs file I/O via std::fs::write(&readme_output, (lines 1296)., this scope performs file I/O via std::fs::write(&report_path, (lines 1036)., this scope performs file I/O via std::fs::write(&view_output, (lines 1238)., this scope performs file I/O via std::fs::write(&json_file, (lines 1407)., this scope performs file I/O via std::fs::write(&output_path, (lines 475, 517).
+Structure: calls DotExporter::auto_detect_options., calls codehud_viz::CallGraph::new., calls query_engine::get_query_engine., calls codehud_utils::logging::basic_config., calls DotExporter::new., calls codehud_analysis::pipeline::DirectAnalysisPipeline::new., calls codehud_core::Error::Analysis., calls Cli::parse., calls codehud_core::analysis::AnalysisPipeline::run_view., calls codehud_viz::VisualizationEngine::new., calls codehud_core::analysis::ViewGenerator::new., calls serde_json::to_value., calls codehud_core::CoreConfig::default., calls serde_json::to_string_pretty., calls codehud_core::models::AnalysisResult::new., calls Ok::<., calls Graph::new., calls codehud_core::analysis::AnalysisPipeline::run., calls serde_json::from_str., calls HashMap::new., calls WalkDir::new.
+Imports: Imports: use std::collections::{HashMap, HashSet};., Imports: use codehud_core::query_engine;., Imports: use std::path::PathBuf;., Imports: use codehud_viz::{DotExporter, check_graphviz_installed, render_dot_to_file, analyze_graph};., Imports: use petgraph::Graph;., Imports: use walkdir::WalkDir;., Imports: use codehud_core::{Result, ViewType, Pipeline};., Imports: use codehud_core::graph::{CallNode, CallEdge};., Imports: use std::fmt::Write;., Imports: use std::collections::HashMap;., Imports: use clap::{Parser, Subcommand, ValueEnum};.
+Entrypoint: Entrypoint script (lines 439).
+
+COMMENTS TO ANALYZE:
+Line 1: ! CodeHUD Main CLI Entry Point
+Line 3: ! Main entry point providing unified interface with 7+ commands matching Python exactly
+Line 21: Run comprehensive codebase analysis with visualization
+Line 23: Path to codebase to analyze
+Line 26: View type for analysis output
+Line 30: Analysis pipeline to use
+Line 34: Output file path for results
+Line 38: Focus on specific entity (file, class, function)
+Line 42: Configuration file path
+Line 46: Enable debug mode
+Line 50: Files to analyze (glob patterns)
+Line 55: Export visualizations to text files (no TUI required)
+Line 57: Path to codebase to analyze
+Line 60: Output directory for visualization files
+Line 64: View types to export (comma-separated: quality,security,topology,dependencies)
+Line 69: Launch interactive LLM interface for AI-powered analysis
+Line 71: Path to codebase
+Line 74: LLM backend to use
+Line 78: Model to use for analysis
+Line 82: Enable GPU acceleration
+Line 86: Session file for conversation persistence
+Line 91: Launch graphical user interface
+Line 93: Path to codebase
+Line 96: Initial view to display
+Line 100: Window geometry (WIDTHxHEIGHT+X+Y)
+Line 104: Enable fullscreen mode
+Line 109: Generate call graph visualization (multi-view: overview, per-module, cycles)
+Line 111: Path to codebase to analyze
+Line 114: Output file path (without extension)
+Line 118: Output format (svg, png, pdf)
+Line 122: Layout engine (auto, dot, neato, fdp, sfdp, circo, twopi)
+Line 126: Disable cycle highlighting
+Line 130: Disable complexity coloring
+Line 135: Interactive file editing with AI assistance
+Line 137: Path to codebase
+Line 140: File to edit
+Line 143: Description of changes to make
+Line 146: Backup before editing
+Line 150: Editor to use
+Line 155: Issues inspection and management
+Line 157: Path to codebase
+Line 160: Issue category to focus on
+Line 168: Auto-fix issues where possible
+Line 172: Generate issue report
+Line 177: Developer notes and fix tracking
+Line 179: Path to codebase
+Line 182: Add new note
+Line 186: List all notes
+Line 199: Full comprehensive analysis with all views
+Line 201: Path to codebase
+Line 204: Output directory for all reports
+Line 208: Include performance profiling
+Line 212: Generate only specified views (comma-separated)
+Line 216: Skip cache and force fresh analysis
+Line 222: Use the Pipeline type from codehud-core instead of defining our own
+Line 224: Extract real call graph data from codebase using Tree-sitter query engine
+Line 246: Get query engine instance
+Line 249: Track all function definitions with line ranges
+Line 252: Track all function calls with their locations
+Line 253: file -> calls
+Line 255: Known stdlib/external patterns to filter out
+Line 274: Walk through all source files
+Line 282: Only process Rust and Python files for now
+Line 289: Extract function definitions with line ranges
+Line 310: Extract function calls with line numbers
+Line 319: Filter out obvious stdlib/external calls
+Line 341: Build qualified name index for fast lookup
+Line 347: Match calls to their containing functions using line numbers
+Line 351: Get functions defined in this file
+Line 358: Find which function contains this call by line number
+Line 364: Try to resolve callee to a known internal function
+Line 366: Both caller and callee are known internal functions
+Line 380: Extract a clean module name from a file path
+Line 386: Handle special cases
+Line 388: Try to get the parent directory name for context
+Line 392: Remove "codehud-" prefix
+Line 404: Convert codehud_viz::CallGraph to petgraph format for DOT export
+Line 413: Add all nodes
+Line 417: Extracted from qualified name later if needed
+Line 424: Add all edges
+Line 465: Generate specific view
+Line 473: Save to output file if specified
+Line 482: Run comprehensive analysis for other views or fallback
+Line 503: Generate view-specific output
+Line 507: Save to output file if specified
+Line 510: Focus mode - output specific view
+Line 513: Full mode - output complete analysis
+Line 547: Check Graphviz is installed
+Line 558: Extract call graph
+Line 571: Convert to petgraph format
+Line 580: Parse output format
+Line 589: Auto-detect rendering options based on graph size
+Line 592: Use user-specified layout or auto-detected
+Line 605: Configure DOT exporter
+Line 610: Disable for individual graphs
+Line 612: Analyze graph for multi-view generation
+Line 619: 1. Generate Overview Graph
+Line 636: 2. Generate Per-Module Detail Graphs
+Line 662: 3. Generate Cycle Detection Graph
+Line 791: Resolve file path relative to codebase if needed
+Line 803: Create backup if requested
+Line 812: Show description if provided
+Line 817: Run analysis on the file first
+Line 820: Run quality analysis on the specific file
+Line 825: Extract metrics for this specific file
+Line 860: Run analysis again to show changes
+Line 913: Run security and quality analysis to find issues
+Line 922: Extract issues from analysis results
+Line 925: Extract security issues
+Line 932: Filter by category if specified
+Line 939: Filter by severity if specified
+Line 951: Extract quality issues
+Line 958: Filter by category if specified
+Line 965: Filter by severity if specified
+Line 979: Group issues by category and severity
+Line 998: Display detailed issues
+Line 1061: Notes file path
+Line 1064: Load existing notes
+Line 1073: Add new note
+Line 1090: List all notes
+Line 1144: Show summary by default
+Line 1151: Group by category
+Line 1187: Create output directory
+Line 1193: Determine which views to generate
+Line 1208: Default: all available views
+Line 1216: Run comprehensive analysis first
+Line 1222: Save main analysis results
+Line 1227: Generate each view
+Line 1235: Save view data
+Line 1244: Generate summary report
+Line 1260: Generate human-readable summary
+Line 1327: Export visualizations to text and JSON files
+Line 1334: Create output directory
+Line 1337: Parse view types
+Line 1359: Run analysis for each view type
+Line 1381: Run analysis for a specific view type and export results
+Line 1383: Use the existing direct pipeline with default config
+Line 1389: Convert to core AnalysisResult for viz engine
+Line 1392: Set view data from pipeline result
+Line 1396: Create viz engine
+Line 1403: Export as JSON
+Line 1409: Export as readable text
+Line 1416: Show summary in terminal
+Line 1422: Format visualization as readable text
+Line 1480: Show visualization summary in terminal
+
+Technical Summary: In 2-3 direct sentences, explain what this file DOES for users/callers. List specific functions, features, or behaviors it implements. Use concrete examples (e.g., "detects SQL injection", "parses JSON configs", "calculates hash values"). Avoid generic phrases like "serves as", "provides functionality", "manages", or "designed to". Maximum 100 words.
+=====================================
+📏 Prompt length: 9240 characters
+🤖 Analyzing: [█████████████████████████░░░░░░░░░░░░░░░░░░░░░░░░░]  50% (2/4) - llm.rs...🔍 DEBUG PROMPT for llm.rs:
+=====================================
+CONCISE FILE SUMMARY
+
+File: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-cli/src/llm.rs
+Language: rust
+Comments found: 85
+
+STRUCTURAL CONTEXT:
+Entrypoint: Entrypoint script (lines 195).
+File I/O: this scope performs file I/O via std::io::stdin().read_line(&mut (lines 595).
+Structure: calls codehud_core::Error::Io., calls tokio::time::sleep., handle_scan_file is a wrapper for Ok (lines 499)., calls Cli::parse., calls OllamaConfig::default., calls ExtractionConfig::default., calls PathBuf::from., calls tokio::time::Duration::from_millis., calls FileProcessor::new., calls codehud_utils::logging::basic_config., calls CommentExtractionFSM::new., calls CommentExtractionCLI::new.
+Imports: Imports: use std::io::Write;., Imports: use clap::{Parser, Subcommand, ValueEnum};., Imports: use codehud_llm::{, use super::*;., Imports: use codehud_core::{Result, ViewType};., Imports: use std::path::PathBuf;., Imports: use super::*;.
+
+COMMENTS TO ANALYZE:
+Line 1: ! CodeHUD LLM CLI - LLM-Powered Features
+Line 3: ! Interactive LLM interface for AI-powered code analysis, bug fixing,
+Line 4: ! and development assistance. Matches Python cli_llm.py exactly.
+Line 23: Subcommand to execute
+Line 27: LLM backend to use
+Line 31: Model name to use for analysis
+Line 35: Enable GPU acceleration
+Line 39: Temperature for LLM responses (0.0-2.0)
+Line 43: Configuration file path
+Line 47: Enable debug mode
+Line 54: Extract and analyze comments for codebase understanding
+Line 56: Path to the codebase directory to analyze
+Line 59: Output directory for analysis files
+Line 63: Skip system summary generation (faster for large codebases)
+Line 67: Focus on specific file extensions
+Line 71: Use cached comment extraction if available
+Line 75: Maximum tokens per file analysis
+Line 79: Maximum tokens for system summary
+Line 84: Interactive comment exploration mode
+Line 86: Path to the codebase directory to explore
+Line 89: Start with specific file or directory
+Line 94: Generate documentation from comment analysis
+Line 96: Path to the codebase directory
+Line 99: Template for documentation generation
+Line 103: Output format (markdown, html, json)
+Line 107: Output file for generated documentation
+Line 112: Interactive LLM session (legacy mode)
+Line 114: Path to the codebase directory to analyze
+Line 117: Session file for conversation persistence
+Line 121: Initial view context for the LLM
+Line 125: Maximum tokens for responses
+Line 129: Enable constitutional AI guardrails
+Line 133: Enable bug fixing mode with high success rate
+Line 137: Enable code generation mode
+Line 142: Scan a single file with FSM interface
+Line 144: File path to scan (will show picker if not provided)
+Line 148: Scan an entire project with FSM interface
+Line 150: Project directory to scan (will show picker if not provided)
+Line 153: Use structural insights only mode (ultra token-efficient)
+Line 157: Google AI Studio API key for final summary (uses Gemini Flash instead of local 14B)
+Line 173: Local Ollama backend (recommended)
+Line 177: OpenHands external integration
+Line 201: Validate temperature range
+Line 264: Handle comment analysis command (implements the three-phase workflow)
+Line 283: Create processor configuration
+Line 307: Create Ollama configuration
+Line 310: Create file processor
+Line 316: Process the codebase
+Line 355: Handle interactive comment exploration
+Line 373: TODO: Implement interactive exploration
+Line 377: Handle documentation generation
+Line 401: TODO: Implement documentation generation
+Line 405: Handle interactive LLM session (legacy mode)
+Line 429: TODO: Implement interactive session
+Line 433: Validate codebase path
+Line 446: Handle single file scan command using FSM
+Line 454: Create processor configuration
+Line 471: Single file mode
+Line 478: Create Ollama configuration
+Line 481: Create FSM (scan file doesn't use insights_only mode or gemini API)
+Line 488: Create CLI interface
+Line 491: Execute scan file command
+Line 494: Check if we need file picker
+Line 506: If we have a file path, process it directly
+Line 508: Process the file directly
+Line 547: Handle project scan command using FSM
+Line 560: Create processor configuration for project scanning
+Line 564: Slightly smaller per file for project mode
+Line 565: Larger system summary for projects
+Line 577: Sequential for project context accumulation
+Line 584: Create Ollama configuration
+Line 587: Handle Gemini API key - prompt if flag used but no key provided
+Line 620: Create CLI interface
+Line 623: Execute scan project command - the FSM handles everything through events
+Line 626: Wait for the FSM to complete hierarchical processing
+Line 641: Exit cleanly after completion
+Line 649: Still processing, wait a bit and check again
+Line 676: Valid temperatures should work
+
+Technical Summary: In 2-3 direct sentences, explain what this file DOES for users/callers. List specific functions, features, or behaviors it implements. Use concrete examples (e.g., "detects SQL injection", "parses JSON configs", "calculates hash values"). Avoid generic phrases like "serves as", "provides functionality", "manages", or "designed to". Maximum 100 words.
+=====================================
+📏 Prompt length: 5126 characters
+🤖 Analyzing: [█████████████████████████████████████░░░░░░░░░░░░░]  75% (3/4) - direct.rs...🔍 DEBUG PROMPT for direct.rs:
+=====================================
+CONCISE FILE SUMMARY
+
+File: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-cli/src/direct.rs
+Language: rust
+Comments found: 34
+
+STRUCTURAL CONTEXT:
+Structure: calls Cli::parse., calls CoreConfig::default., calls AnalysisExporter::to_markdown., calls DirectAnalysisPipeline::new., calls Duration::from_secs., calls codehud_utils::logging::basic_config., calls AnalysisExporter::to_json., calls codehud_utils::logging::get_logger.
+File I/O: this scope performs file I/O via std::fs::write(&json_path, (lines 211)., this scope performs file I/O via std::fs::write(&md_path, (lines 217).
+Imports: Imports: use std::path::PathBuf;., Imports: use codehud_analysis::{DirectAnalysisPipeline, AnalysisExporter};., Imports: use clap::{Parser, ValueEnum};., Imports: use codehud_core::{Result, ViewType, Pipeline, CoreConfig};., Imports: use tokio::time::Duration;., use super::*;., Imports: use super::*;.
+Entrypoint: Entrypoint script (lines 75).
+
+COMMENTS TO ANALYZE:
+Line 1: ! CodeHUD Direct CLI - Direct Analysis Pipeline
+Line 3: ! Enhanced CLI supporting both direct extraction and legacy CLI analysis,
+Line 4: ! matching Python cli_direct.py exactly.
+Line 19: Path to the codebase directory to analyze (optional - interactive picker if not provided)
+Line 22: Path to CodeHUD configuration file
+Line 26: Focus on specific entity (file, function, or class)
+Line 30: Initial view to display
+Line 34: Analysis pipeline to use
+Line 38: Enable debug mode
+Line 46: Fast AST-based analysis (recommended)
+Line 48: CLI tool-based analysis (comprehensive but slower)
+Line 50: Automatically choose best pipeline
+Line 59: Auto maps to Hybrid
+Line 82: Handle missing codebase path - launch interactive picker
+Line 97: TODO: Implement interactive directory picker
+Line 142: TODO: Implement focus functionality
+Line 145: TODO: Launch the polymorphic HUD interface
+Line 152: Run the direct analysis pipeline
+Line 156: Create core configuration
+Line 159: Configure based on CLI arguments
+Line 161: Limit for debug mode
+Line 164: Configure specific view if requested
+Line 172: Create and configure pipeline
+Line 208: Export to JSON
+Line 214: Export to Markdown
+Line 221: Display view-specific information
+Line 225: Extract key metrics from each view
+Line 246: Show focus information if applicable
+Line 249: TODO: Implement focus-specific analysis
+
+Technical Summary: In 2-3 direct sentences, explain what this file DOES for users/callers. List specific functions, features, or behaviors it implements. Use concrete examples (e.g., "detects SQL injection", "parses JSON configs", "calculates hash values"). Avoid generic phrases like "serves as", "provides functionality", "manages", or "designed to". Maximum 100 words.
+=====================================
+📏 Prompt length: 2704 characters
+🤖 Analyzing: [██████████████████████████████████████████████████] 100% (4/4) - data.rs...🔍 DEBUG PROMPT for data.rs:
+=====================================
+CONCISE FILE SUMMARY
+
+File: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-cli/src/data.rs
+Language: rust
+Comments found: 47
+
+STRUCTURAL CONTEXT:
+Structure: handle_export is a wrapper for Ok (lines 251)., calls matches.get_one::<PathBuf>., calls matches.get_many::<String>., calls Arg::new., calls codehud_utils::logging::basic_config., calls Command::new., calls serde_yaml::to_string., calls matches.get_one::<String>., calls matches.get_many::<PathBuf>., calls serde_json::to_string_pretty.
+Imports: Imports: use codehud_core::{Pipeline, CoreConfig};., Imports: use serde_json::Value;., Imports: use clap::{Arg, ArgMatches, Command};., Imports: use anyhow::Result;., Imports: use codehud_utils::logging::{get_logger, LogLevel};., Imports: use std::path::PathBuf;.
+File I/O: this scope performs file I/O via std::fs::write(&output_path, (lines 237, 241).
+Entrypoint: Entrypoint script (lines 15).
+
+COMMENTS TO ANALYZE:
+Line 1: ! Data Analysis CLI - Data export and manipulation interface
+Line 3: ! This module provides command-line interfaces for data analysis operations
+Line 4: ! matching Python cli_data.py functionality exactly.
+Line 13: Main entry point for data CLI
+Line 38: Build the CLI command structure
+Line 185: Handle export command
+Line 197: Create output path if not specified
+Line 207: TODO: Implement actual export logic matching Python behavior
+Line 208: This would involve:
+Line 209: 1. Loading analysis data from input
+Line 210: 2. Filtering by specified views if provided
+Line 211: 3. Converting to target format
+Line 212: 4. Optionally compressing
+Line 213: 5. Writing to output
+Line 228: Write export data
+Line 232: TODO: Implement compression
+Line 244: TODO: Implement CSV export
+Line 249: TODO: Implement Parquet export
+Line 262: Handle import command
+Line 272: TODO: Implement actual import logic matching Python behavior
+Line 273: This would involve:
+Line 274: 1. Reading data from source in specified format
+Line 275: 2. Validating data structure
+Line 276: 3. Converting to internal format
+Line 277: 4. Optionally merging with existing analysis
+Line 283: Handle convert command
+Line 294: TODO: Implement actual conversion logic
+Line 295: This would involve:
+Line 296: 1. Reading data in source format
+Line 297: 2. Converting to internal representation
+Line 298: 3. Writing in target format
+Line 304: Handle validate command
+Line 314: TODO: Implement actual validation logic
+Line 315: This would involve:
+Line 316: 1. Reading the file
+Line 317: 2. Checking basic structure
+Line 318: 3. Validating against schema if provided
+Line 319: 4. Reporting validation results
+Line 329: Handle merge command
+Line 339: TODO: Implement actual merge logic
+Line 340: This would involve:
+Line 341: 1. Reading all input files
+Line 342: 2. Applying merge strategy
+Line 343: 3. Resolving conflicts
+Line 344: 4. Writing merged result
+
+Technical Summary: In 2-3 direct sentences, explain what this file DOES for users/callers. List specific functions, features, or behaviors it implements. Use concrete examples (e.g., "detects SQL injection", "parses JSON configs", "calculates hash values"). Avoid generic phrases like "serves as", "provides functionality", "manages", or "designed to". Maximum 100 words.
+=====================================
+📏 Prompt length: 3222 characters
+🤖 Analyzing: [██████████████████████████████████████████████████] 100% (4/4) - Complete!
+✅ Phase 2 complete: 4 files analyzed with enhanced context
+📄 File summaries updated: 7 total files (4 from codehud-cli)
+📄 Analysis metadata updated: 2 crates processed
+🔍 DEBUG: Crate path for codehud-core: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core
+🔍 Processing 52 files from crate codehud-core
+🔍 DEBUG: First 5 files discovered for crate codehud-core:
+  1. /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/models/semantic_nodes.rs
+  2. /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/models/mod.rs
+  3. /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/models/analysis_result.rs
+  4. /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/models/view_types.rs
+  5. /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/extractors/dependencies.rs
+🧠 Running narrator on 52 files in batch...
+🔍 DEBUG: Found 13 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/models/semantic_nodes.rs
+🔍 DEBUG: Bullet text length: 404 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/models/semantic_nodes.rs
+🔍 DEBUG: Found 6 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/models/mod.rs
+🔍 DEBUG: Bullet text length: 413 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/models/mod.rs
+🔍 DEBUG: Found 10 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/models/analysis_result.rs
+🔍 DEBUG: Bullet text length: 330 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/models/analysis_result.rs
+🔍 DEBUG: Found 10 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/models/view_types.rs
+🔍 DEBUG: Bullet text length: 317 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/models/view_types.rs
+🔍 DEBUG: Found 28 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/extractors/dependencies.rs
+🔍 DEBUG: Bullet text length: 1211 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/extractors/dependencies.rs
+🔍 DEBUG: Found 52 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/extractors/runtime_profiler.rs
+🔍 DEBUG: Bullet text length: 2206 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/extractors/runtime_profiler.rs
+🔍 DEBUG: Found 37 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/extractors/topology.rs
+🔍 DEBUG: Bullet text length: 1681 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/extractors/topology.rs
+🔍 DEBUG: Found 28 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/extractors/performance.rs
+🔍 DEBUG: Bullet text length: 1204 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/extractors/performance.rs
+🔍 DEBUG: Found 42 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/extractors/mod.rs
+🔍 DEBUG: Bullet text length: 1876 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/extractors/mod.rs
+🔍 DEBUG: Found 29 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/extractors/flow.rs
+🔍 DEBUG: Bullet text length: 1148 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/extractors/flow.rs
+🔍 DEBUG: Found 29 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/extractors/orphaned_files.rs
+🔍 DEBUG: Bullet text length: 1106 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/extractors/orphaned_files.rs
+🔍 DEBUG: Found 33 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/extractors/quality.rs
+🔍 DEBUG: Bullet text length: 1442 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/extractors/quality.rs
+🔍 DEBUG: Found 30 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/extractors/testing.rs
+🔍 DEBUG: Bullet text length: 1194 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/extractors/testing.rs
+🔍 DEBUG: Found 28 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/extractors/evolution.rs
+🔍 DEBUG: Bullet text length: 1220 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/extractors/evolution.rs
+🔍 DEBUG: Found 21 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/extractors/issues.rs
+🔍 DEBUG: Bullet text length: 964 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/extractors/issues.rs
+🔍 DEBUG: Found 36 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/extractors/security.rs
+🔍 DEBUG: Bullet text length: 1403 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/extractors/security.rs
+🔍 DEBUG: Found 7 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/lib.rs
+🔍 DEBUG: Bullet text length: 853 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/lib.rs
+🔍 DEBUG: Found 4 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/bin/test_security.rs
+🔍 DEBUG: Bullet text length: 228 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/bin/test_security.rs
+🔍 DEBUG: Found 4 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/bin/test_quality.rs
+🔍 DEBUG: Bullet text length: 225 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/bin/test_quality.rs
+🔍 DEBUG: Found 4 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/bin/test_dependencies.rs
+🔍 DEBUG: Bullet text length: 240 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/bin/test_dependencies.rs
+🔍 DEBUG: Found 4 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/constants/mod.rs
+🔍 DEBUG: Bullet text length: 376 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/constants/mod.rs
+🔍 DEBUG: Found 6 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/constants/complexity_thresholds.rs
+🔍 DEBUG: Bullet text length: 138 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/constants/complexity_thresholds.rs
+🔍 DEBUG: Found 6 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/constants/health_score_thresholds.rs
+🔍 DEBUG: Bullet text length: 138 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/constants/health_score_thresholds.rs
+🔍 DEBUG: Found 23 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/graph/algorithms.rs
+🔍 DEBUG: Bullet text length: 1067 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/graph/algorithms.rs
+🔍 DEBUG: Found 13 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/graph/metrics.rs
+🔍 DEBUG: Bullet text length: 418 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/graph/metrics.rs
+🔍 DEBUG: Found 14 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/graph/algorithms_minimal.rs
+🔍 DEBUG: Bullet text length: 632 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/graph/algorithms_minimal.rs
+🔍 DEBUG: Found 8 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/graph/edges.rs
+🔍 DEBUG: Bullet text length: 252 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/graph/edges.rs
+🔍 DEBUG: Found 6 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/graph/nodes.rs
+🔍 DEBUG: Bullet text length: 184 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/graph/nodes.rs
+🔍 DEBUG: Found 26 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/graph/mod.rs
+🔍 DEBUG: Bullet text length: 1239 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/graph/mod.rs
+🔍 DEBUG: Found 28 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/graph/analyzer.rs
+🔍 DEBUG: Bullet text length: 1625 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/graph/analyzer.rs
+🔍 DEBUG: Found 26 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/query_engine.rs
+🔍 DEBUG: Bullet text length: 1101 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/query_engine.rs
+🔍 DEBUG: Found 17 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/pattern/mod.rs
+🔍 DEBUG: Bullet text length: 587 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/pattern/mod.rs
+🔍 DEBUG: Found 24 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/external_tools/cargo_test.rs
+🔍 DEBUG: Bullet text length: 806 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/external_tools/cargo_test.rs
+🔍 DEBUG: Found 21 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/external_tools/ruff.rs
+🔍 DEBUG: Bullet text length: 914 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/external_tools/ruff.rs
+🔍 DEBUG: Found 19 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/external_tools/coverage.rs
+🔍 DEBUG: Bullet text length: 747 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/external_tools/coverage.rs
+🔍 DEBUG: Found 24 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/external_tools/radon.rs
+🔍 DEBUG: Bullet text length: 1036 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/external_tools/radon.rs
+🔍 DEBUG: Found 29 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/external_tools/rustfmt.rs
+🔍 DEBUG: Bullet text length: 1137 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/external_tools/rustfmt.rs
+🔍 DEBUG: Found 18 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/external_tools/mypy.rs
+🔍 DEBUG: Bullet text length: 703 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/external_tools/mypy.rs
+🔍 DEBUG: Found 31 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/external_tools/mod.rs
+🔍 DEBUG: Bullet text length: 1225 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/external_tools/mod.rs
+🔍 DEBUG: Found 26 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/external_tools/cargo_audit.rs
+🔍 DEBUG: Bullet text length: 987 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/external_tools/cargo_audit.rs
+🔍 DEBUG: Found 21 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/external_tools/pylint.rs
+🔍 DEBUG: Bullet text length: 885 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/external_tools/pylint.rs
+🔍 DEBUG: Found 19 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/external_tools/vulture.rs
+🔍 DEBUG: Bullet text length: 720 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/external_tools/vulture.rs
+🔍 DEBUG: Found 25 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/external_tools/ripgrep.rs
+🔍 DEBUG: Bullet text length: 1180 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/external_tools/ripgrep.rs
+🔍 DEBUG: Found 23 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/external_tools/bandit.rs
+🔍 DEBUG: Bullet text length: 920 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/external_tools/bandit.rs
+🔍 DEBUG: Found 21 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/external_tools/clippy.rs
+🔍 DEBUG: Bullet text length: 708 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/external_tools/clippy.rs
+🔍 DEBUG: Found 20 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/external_tools/git.rs
+🔍 DEBUG: Bullet text length: 886 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/external_tools/git.rs
+🔍 DEBUG: Found 30 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/cache/mod.rs
+🔍 DEBUG: Bullet text length: 1196 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/cache/mod.rs
+🔍 DEBUG: Found 7 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/analysis/view_generator.rs
+🔍 DEBUG: Bullet text length: 321 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/analysis/view_generator.rs
+🔍 DEBUG: Found 37 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/analysis/mod.rs
+🔍 DEBUG: Bullet text length: 2167 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/analysis/mod.rs
+🔍 DEBUG: Found 6 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/analysis/health_calculator.rs
+🔍 DEBUG: Bullet text length: 240 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/analysis/health_calculator.rs
+🔍 DEBUG: Found 8 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/analysis/pipeline.rs
+🔍 DEBUG: Bullet text length: 365 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/analysis/pipeline.rs
+🔍 DEBUG: Found 1 findings for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/benches/extraction_benchmarks.rs
+🔍 DEBUG: Bullet text length: 92 for /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/benches/extraction_benchmarks.rs
+✅ Added structural insights to all files
+💾 Comments JSON updated: 59 total files (52 from codehud-core)
+🤖 Phase 2: LLM analysis with batch processing for crate codehud-core...
+🤖 Analyzing 52 files with enhanced context and improved token limits...
+📦 Processing batch 1/11 (5 files)...
+🤖 Analyzing: [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]   1% (1/52) - semantic_nodes.rs...🔍 DEBUG PROMPT for semantic_nodes.rs:
+=====================================
+CONCISE FILE SUMMARY
+
+File: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/models/semantic_nodes.rs
+Language: rust
+Comments found: 43
+
+STRUCTURAL CONTEXT:
+Structure: calls ClassDefinition::new., calls GraphBundle::new., calls serde_json::to_string., calls serde_json::from_str., calls Self::new., calls HashMap::new., calls FunctionSignature::new., calls Utc::now.
+Imports: Imports: use chrono::{DateTime, Utc};., Imports: use serde::{Deserialize, Serialize};., use super::*;., Imports: use super::*;., Imports: use std::collections::HashMap;.
+
+COMMENTS TO ANALYZE:
+Line 1: ! Semantic node models for code analysis and graph construction.
+Line 3: ! This module provides data structures for representing code elements
+Line 4: ! and their relationships in a semantic graph structure.
+Line 10: Function signature with comprehensive semantic information.
+Line 12: This struct exactly matches the Python FunctionSignature dataclass
+Line 13: to ensure complete compatibility in function analysis.
+Line 29: Extensions for CodeHUD integration
+Line 37: Create a new function signature with required fields
+Line 65: Check if function has side effects
+Line 70: Check if function is a property/getter based on decorators
+Line 75: Get function signature as string (Python-like format)
+Line 79: Add regular arguments
+Line 101: Class definition with inheritance and semantic analysis.
+Line 103: This struct exactly matches the Python ClassDefinition dataclass
+Line 104: to ensure complete compatibility in class analysis.
+Line 117: Extensions for CodeHUD
+Line 124: Create a new class definition with required fields
+Line 146: Check if class inherits from a specific base class
+Line 151: Check if class is abstract based on methods or decorators
+Line 157: Get total lines of code for the class
+Line 163: Universal semantic code node for graph construction.
+Line 165: This struct exactly matches the Python SemanticNode dataclass
+Line 166: to ensure complete compatibility in semantic analysis.
+Line 170: function, class, import, variable, call
+Line 175: full qualified path
+Line 181: Create a new semantic node
+Line 204: Add a relationship to another node
+Line 212: Get relationships of a specific type
+Line 217: Add metadata entry
+Line 222: Check if node is a function
+Line 227: Check if node is a class
+Line 232: Get the module name from file path
+Line 234: Convert file path to module-like name
+Line 242: Collection of analysis graphs.
+Line 244: This struct represents the graph bundle used throughout CodeHUD
+Line 245: for storing various types of analysis graphs.
+Line 248: Note: In Rust we'll use petgraph::Graph instead of NetworkX
+Line 249: but maintain the same logical structure
+Line 261: Create a new empty graph bundle
+Line 274: Check if bundle is empty
+Line 284: Get total number of nodes across all graphs
+
+Technical Summary: In 2-3 direct sentences, explain what this file DOES for users/callers. List specific functions, features, or behaviors it implements. Use concrete examples (e.g., "detects SQL injection", "parses JSON configs", "calculates hash values"). Avoid generic phrases like "serves as", "provides functionality", "manages", or "designed to". Maximum 100 words.
+=====================================
+📏 Prompt length: 3193 characters
+🤖 Analyzing: [█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]   3% (2/52) - mod.rs...🔍 DEBUG PROMPT for mod.rs:
+=====================================
+CONCISE FILE SUMMARY
+
+File: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/models/mod.rs
+Language: rust
+Comments found: 3
+
+STRUCTURAL CONTEXT:
+Imports: Imports: pub use semantic_nodes::{FunctionSignature, ClassDefinition, SemanticNode, GraphBundle};., Imports: pub use analysis_result::{AnalysisResult, CodeMetrics};., Imports: pub use view_types::ViewType;.
+Exports: pub use analysis_result::{AnalysisResult, CodeMetrics};., pub use semantic_nodes::{FunctionSignature, ClassDefinition, SemanticNode, GraphBundle};., pub use view_types::ViewType;.
+
+COMMENTS TO ANALYZE:
+Line 1: ! Data models module for CodeHUD core
+Line 3: ! This module contains all data structures used for representing
+Line 4: ! code analysis results, semantic information, and visualization data.
+
+Technical Summary: In 2-3 direct sentences, explain what this file DOES for users/callers. List specific functions, features, or behaviors it implements. Use concrete examples (e.g., "detects SQL injection", "parses JSON configs", "calculates hash values"). Avoid generic phrases like "serves as", "provides functionality", "manages", or "designed to". Maximum 100 words.
+=====================================
+📏 Prompt length: 1157 characters
+🤖 Analyzing: [██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]   5% (3/52) - analysis_result.rs...🔍 DEBUG PROMPT for analysis_result.rs:
+=====================================
+CONCISE FILE SUMMARY
+
+File: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/models/analysis_result.rs
+Language: rust
+Comments found: 36
+
+STRUCTURAL CONTEXT:
+Structure: calls Utc::now., calls AnalysisResult::new., calls serde_json::Value::String., calls HashMap::new., calls CodeMetrics::default.
+Imports: Imports: use serde::{Serialize, Deserialize};., Imports: use super::*;., Imports: use chrono::{DateTime, Utc};., use super::*;., Imports: use std::collections::HashMap;.
+
+COMMENTS TO ANALYZE:
+Line 1: ! Analysis Result Model
+Line 3: ! Complete analysis result structure matching Python implementation exactly
+Line 9: Complete analysis result for a codebase - matches Python AnalysisResult exactly
+Line 12: Path to the analyzed codebase
+Line 14: Number of files that were analyzed
+Line 16: Timestamp when analysis was performed
+Line 18: Duration of analysis in seconds
+Line 21: Core analysis data
+Line 22: Overall code metrics
+Line 24: Overall health score (0.0 to 100.0)
+Line 26: Critical issues that need immediate attention
+Line 28: Recommendations for focus areas
+Line 31: Direct extraction data (new pipeline)
+Line 32: Extracted view data organized by view type
+Line 35: Optional detailed data (for legacy pipeline Phase 2+)
+Line 36: Parsed file data (optional for legacy pipeline)
+Line 38: Graph data (optional for legacy pipeline)
+Line 40: Static analysis results (optional for legacy pipeline)
+Line 44: Code metrics structure matching Python implementation
+Line 47: Total lines of code
+Line 49: Lines of executable code (excluding comments/whitespace)
+Line 51: Number of functions
+Line 53: Number of classes
+Line 55: Number of files
+Line 57: Average cyclomatic complexity
+Line 59: Maximum cyclomatic complexity found
+Line 61: Technical debt ratio
+Line 63: Code coverage percentage (if available)
+Line 87: Create a new analysis result
+Line 105: Add a critical issue to the analysis result
+Line 110: Add a focus recommendation
+Line 115: Set extracted view data for a specific view type
+Line 120: Get view data for a specific view type
+Line 125: Check if analysis has critical issues
+Line 130: Get severity distribution of issues
+
+Technical Summary: In 2-3 direct sentences, explain what this file DOES for users/callers. List specific functions, features, or behaviors it implements. Use concrete examples (e.g., "detects SQL injection", "parses JSON configs", "calculates hash values"). Avoid generic phrases like "serves as", "provides functionality", "manages", or "designed to". Maximum 100 words.
+=====================================
+📏 Prompt length: 2526 characters
+🤖 Analyzing: [███░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]   7% (4/52) - view_types.rs...🔍 DEBUG PROMPT for view_types.rs:
+=====================================
+CONCISE FILE SUMMARY
+
+File: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/models/view_types.rs
+Language: rust
+Comments found: 19
+
+STRUCTURAL CONTEXT:
+Structure: calls Self::from_str., calls ViewType::from_str., calls serde_json::to_string., calls ViewType::all., calls serde_json::from_str.
+Imports: Imports: use super::*;., Imports: use std::collections::HashMap;., Imports: use std::fmt;., use super::*;., Imports: use serde::{Deserialize, Serialize};.
+
+COMMENTS TO ANALYZE:
+Line 1: ! Core data models for CodeHUD analysis and visualization.
+Line 3: ! This module provides the fundamental data structures used throughout CodeHUD
+Line 4: ! for representing code analysis results, visualization types, and semantic information.
+Line 6: ! This is a 1:1 translation from Python src/codehud/core/models.py
+Line 7: ! to ensure zero degradation in data model behavior.
+Line 13: Available visualization view types.
+Line 15: This enum exactly matches the Python ViewType enum to ensure
+Line 16: complete compatibility across all visualization systems.
+Line 28: New view type
+Line 29: LLM fix tracking
+Line 30: Enhanced tree-sitter semantic analysis
+Line 34: Get all available view types
+Line 51: Get the string representation matching Python behavior
+Line 68: Parse from string, matching Python behavior exactly
+Line 86: Get display name for UI
+Line 103: Check if this view supports focus functionality
+Line 132: Test all view types round-trip correctly
+Line 142: Ensure exact string matching with Python enum values
+Line 186: Ensure we have all 10 view types from Python
+
+Technical Summary: In 2-3 direct sentences, explain what this file DOES for users/callers. List specific functions, features, or behaviors it implements. Use concrete examples (e.g., "detects SQL injection", "parses JSON configs", "calculates hash values"). Avoid generic phrases like "serves as", "provides functionality", "manages", or "designed to". Maximum 100 words.
+=====================================
+📏 Prompt length: 1955 characters
+🤖 Analyzing: [████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]   9% (5/52) - dependencies.rs...🔍 DEBUG PROMPT for dependencies.rs:
+=====================================
+CONCISE FILE SUMMARY
+
+File: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/extractors/dependencies.rs
+Language: rust
+Comments found: 40
+
+STRUCTURAL CONTEXT:
+Imports: Imports: use chrono::{DateTime, Utc};., use super::BaseDataExtractor;., use crate::Result;., use crate::query_engine::{get_query_engine, SupportedLanguage};., Imports: use std::collections::{HashMap, HashSet};., Imports: use crate::Result;., Imports: use std::path::{Path, PathBuf};., Imports: use serde_json::{json, Value};., Imports: use super::BaseDataExtractor;., Imports: use std::fs;., Imports: use anyhow::Context;., Imports: use crate::query_engine::{get_query_engine, SupportedLanguage};.
+File I/O: this scope performs file I/O via fs::read_dir(dir) (lines 97)., this scope performs file I/O via fs::read_dir(&self.codebase_path) (lines 82)., this scope performs file I/O via vec![ (lines 529).
+Structure: calls serde_json::Map::new., calls Utc::now., calls Value::Object., calls HashMap::new., new is a wrapper for Err.Error.Config.format.codebase_path.display (lines 68)., calls crate::Error::Config., calls SupportedLanguage::from_path., calls fs::read_dir., import_to_file_path is a wrapper for Some.format.path_parts.join (lines 298)., analyze_file_dependencies is a wrapper for Ok.None (lines 127)., calls HashSet::new., calls DependencyAnalysis::default.
+
+COMMENTS TO ANALYZE:
+Line 1: ! Dependencies Data Extractor - Automatic dependency analysis using tree-sitter queries
+Line 3: ! This module extracts comprehensive dependency analysis including:
+Line 4: ! - Automatic language detection and parsing
+Line 5: ! - Query-based import extraction
+Line 6: ! - Dependency graph construction with petgraph
+Line 7: ! - Circular dependency detection
+Line 8: ! - Coupling metrics calculation
+Line 9: ! - Cross-language analysis support
+Line 43: "import" or "from_import"
+Line 101: Check if this file is supported by our query engine
+Line 125: Check if file is supported by query engine
+Line 130: Use query engine for automatic analysis
+Line 137: Extract import information from query results
+Line 144: Convert query results to our format
+Line 153: Create import detail
+Line 164: Categorize as from_import if it has an item
+Line 171: Calculate metrics using the extracted data
+Line 305: Old manual AST analyzer removed - now using query engine automatically
+Line 311: Get all source files
+Line 317: Create a mutable copy for analysis - query engine handles languages automatically
+Line 323: Analyze each file
+Line 331: Build dependency graph
+Line 337: Note: Graph analysis now handled by query engine
+Line 339: Categorize as internal vs external
+Line 351: Note: from_imports graph analysis now handled by query engine
+Line 363: Detect circular dependencies
+Line 366: Calculate dependency metrics
+Line 369: Analyze coupling strength
+Line 372: Graph analysis now integrated with query engine
+Line 381: External dependencies analysis
+Line 387: Most influential files
+Line 498: Sort strong couplings by strength
+Line 524: Sort by count
+Line 528: Standard library modules
+Line 594: Sort by cluster size
+
+Technical Summary: In 2-3 direct sentences, explain what this file DOES for users/callers. List specific functions, features, or behaviors it implements. Use concrete examples (e.g., "detects SQL injection", "parses JSON configs", "calculates hash values"). Avoid generic phrases like "serves as", "provides functionality", "manages", or "designed to". Maximum 100 words.
+=====================================
+📏 Prompt length: 3459 characters
+📦 Processing batch 2/11 (5 files)...
+🤖 Analyzing: [█████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]  11% (6/52) - runtime_profiler.rs...🔍 DEBUG PROMPT for runtime_profiler.rs:
+=====================================
+PREVIOUS PROJECT ANALYSIS:
+
+- semantic_nodes.rs: This file defines Rust models for code analysis and graph construction, focusing on semantic nodes representing function signatures, class definitions, and universal semantic nodes. It includes compre
+- mod.rs: This Rust file defines and exports essential data models for the CodeHUD core, including code analysis results (`AnalysisResult`, `CodeMetrics`), semantic information (`FunctionSignature`, `ClassDefin
+- analysis_result.rs: This Rust file defines the `AnalysisResult` model, which is a comprehensive structure for storing and managing analysis data of a codebase. It includes details such as the path to the analyzed code, n
+- view_types.rs: This file defines core data models for the CodeHUD analysis and visualization system, focusing on view types used for representing code analysis results and visualization systems. It includes an enum 
+- dependencies.rs: This Rust file implements a comprehensive dependency analysis tool for codebases, using tree-sitter queries for automatic language detection and parsing. It extracts import information from supported 
+
+Use this context to understand the project structure and maintain consistency.
+
+CONCISE FILE SUMMARY
+
+File: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/extractors/runtime_profiler.rs
+Language: rust
+Comments found: 33
+
+STRUCTURAL CONTEXT:
+File I/O: this scope performs file I/O via metrics.iter().filter(|m| (lines 332, 344)., this scope performs file I/O via metrics (lines 401)., this scope performs file I/O via fs::read_dir(dir) (lines 98)., this scope performs file I/O via func_source.matches("read_csv").count() (lines 246)., this scope performs file I/O via func_source.matches("read_json").count() (lines 247)., this scope performs file I/O via fs::read_to_string(file_path) (lines 131)., this scope performs file I/O via func_source.matches("open(").count() (lines 218)., this scope performs file I/O via m.function_name.contains("open") (lines 345)., this scope performs file I/O via m.function_name.contains("read") (lines 333, 403)., this scope performs file I/O via func_source.matches("open(") (lines 218)., this scope performs file I/O via func_source.matches("read_json") (lines 247)., this scope performs file I/O via func_source.matches("read_csv") (lines 246)., this scope performs file I/O via m.function_name.contains("write") (lines 333, 403).
+Imports: Imports: use tree_sitter::{Language, Parser};., Imports: use std::time::{Duration, Instant};., Imports: use serde_json::{json, Value};., Imports: use super::BaseDataExtractor;., Imports: use std::process::Command;., Imports: use serde::{Serialize, Deserialize};., Imports: use chrono::{DateTime, Utc};., Imports: use crate::external_tools::ExternalToolManager;., Imports: use std::collections::{HashMap, HashSet};., Imports: use std::path::{Path, PathBuf};., use crate::external_tools::ExternalToolManager;., Imports: use std::fs;., use super::BaseDataExtractor;.
+Structure: calls ExternalToolManager::new., calls crate::Error::Config., calls Utc::now., calls fs::read_dir., calls crate::Error::Analysis., calls crate::Error::Io., calls HashMap::new., extract_data is a wrapper for Ok.result (lines 459)., new is a wrapper for Err.Error.Config.format.codebase_path.display (lines 73)., calls Command::new., calls tree_sitter_rust::language., calls fs::read_to_string., calls Parser::new.
+Network I/O: this scope calls m.function_name.contains("fetch") (lines 337)., this scope calls metrics.iter().filter(|m| (lines 336).
+
+COMMENTS TO ANALYZE:
+Line 1: ! Runtime Profiler Data Extractor - Analyzes runtime performance and execution patterns
+Line 35: "critical", "major", "minor"
+Line 59: "high", "medium", "low"
+Line 161: Analyze function complexity as a proxy for runtime cost
+Line 172: Default, would be updated with actual profiling
+Line 181: Recursively process child nodes
+Line 193: Count control flow statements
+Line 201: Count function calls (potential performance impact)
+Line 204: Count list comprehensions and generators
+Line 213: Base time in milliseconds
+Line 215: Heuristics for execution time based on code patterns
+Line 234: Base memory in MB
+Line 236: Heuristics for memory usage
+Line 245: Large data operations
+Line 260: High execution time bottlenecks
+Line 287: High memory usage bottlenecks
+Line 316: Sort by impact score (highest first)
+Line 331: Estimate resource operations based on function analysis
+Line 362: Pattern 1: High-memory functions
+Line 381: Pattern 2: CPU-intensive functions
+Line 400: Pattern 3: IO-bound operations
+Line 423: Try to run Python profiling tools if available
+Line 462: Analyze runtime metrics
+Line 468: Analyze resource usage
+Line 471: Identify execution patterns
+Line 474: Try actual profiling
+
+Technical Summary: In 2-3 direct sentences, explain what this file DOES for users/callers. List specific functions, features, or behaviors it implements. Use concrete examples (e.g., "detects SQL injection", "parses JSON configs", "calculates hash values"). Avoid generic phrases like "serves as", "provides functionality", "manages", or "designed to". Maximum 100 words.
+=====================================
+📏 Prompt length: 5134 characters
+🤖 Analyzing: [██████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]  13% (7/52) - topology.rs...🔍 DEBUG PROMPT for topology.rs:
+=====================================
+PREVIOUS PROJECT ANALYSIS:
+
+- semantic_nodes.rs: This file defines Rust models for code analysis and graph construction, focusing on semantic nodes representing function signatures, class definitions, and universal semantic nodes. It includes compre
+- mod.rs: This Rust file defines and exports essential data models for the CodeHUD core, including code analysis results (`AnalysisResult`, `CodeMetrics`), semantic information (`FunctionSignature`, `ClassDefin
+- analysis_result.rs: This Rust file defines the `AnalysisResult` model, which is a comprehensive structure for storing and managing analysis data of a codebase. It includes details such as the path to the analyzed code, n
+- view_types.rs: This file defines core data models for the CodeHUD analysis and visualization system, focusing on view types used for representing code analysis results and visualization systems. It includes an enum 
+- dependencies.rs: This Rust file implements a comprehensive dependency analysis tool for codebases, using tree-sitter queries for automatic language detection and parsing. It extracts import information from supported 
+
+Use this context to understand the project structure and maintain consistency.
+
+CONCISE FILE SUMMARY
+
+File: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/extractors/topology.rs
+Language: rust
+Comments found: 82
+
+STRUCTURAL CONTEXT:
+File I/O: this scope performs file I/O via std::fs::read_to_string(file_path) (lines 103, 130, 262, 415).
+Structure: calls regex::Regex::new., extract_rust_return_type is a wrapper for Some.return_type.to_string (lines 391)., calls crate::Error::Config., extract_rust_parameters is a wrapper for params_str.split.map.p.Some.colon_pos.p.find.p.colon_pos.trim.to_string.p.trim.to_string.filter.p.p.is_empty.p.p.p.collect (lines 362)., calls HashMap::new., extract_js_parameters is a wrapper for params_str.split.map.p.p.trim.split.next.unwrap_or.trim.to_string.filter.p.p.is_empty.collect (lines 225)., calls tree_sitter_python::language., new is a wrapper for Err.Error.Config.format.codebase_path.display (lines 36)., calls Utc::now., calls crate::Error::Analysis., calls TopologyExtractor::new., extract_rust_derives is a wrapper for derives_str.split.map.d.d.trim.to_string.filter.d.d.is_empty.collect (lines 403)., extract_js_return_type is a wrapper for Some.return_type.to_string (lines 241)., calls serde_json::to_value., calls Parser::new., calls crate::Error::Io., calls PythonAstAnalyzer::new.
+Imports: Imports: use tree_sitter::Parser;., Imports: use super::{BaseDataExtractor, FileMetrics};., Imports: use super::*;., Imports: use tracing::{info, warn};., Imports: use chrono::{DateTime, Utc};., Imports: use serde::{Serialize, Deserialize};., Imports: use std::path::{Path, PathBuf};., Imports: use std::collections::{HashMap, HashSet};., use super::{BaseDataExtractor, FileMetrics};., Imports: use crate::Result;., use crate::Result;., Imports: use regex;., use super::*;., Imports: use tempfile::tempdir;., Imports: use std::fs;.
+
+COMMENTS TO ANALYZE:
+Line 1: ! Topology Data Extractor
+Line 3: ! Extracts codebase topology information including file structure,
+Line 4: ! classes, functions, and architectural overview.
+Line 6: ! This is a zero-degradation Rust translation of topology_extractor.py
+Line 17: Extract codebase topology and architecture data
+Line 24: Create a new topology extractor
+Line 48: Analyze a single file (Python _analyze_file equivalent)
+Line 59: Check if this is a test file
+Line 65: Python-specific analysis using tree-sitter
+Line 90: Basic analysis for other file types
+Line 99: Analyze Python file using tree-sitter AST (Python _analyze_python_file equivalent)
+Line 106: Initialize tree-sitter parser for Python
+Line 112: Parse the file
+Line 128: Analyze JavaScript/TypeScript file using regex-based parsing
+Line 136: Function detection patterns
+Line 146: Class detection pattern
+Line 220: Extract JavaScript function parameters
+Line 235: Extract JavaScript return type from TypeScript annotations
+Line 248: Extract JavaScript extends clause
+Line 260: Analyze Rust file using regex-based parsing
+Line 264: Structs/enums in Rust
+Line 268: Function detection patterns
+Line 276: Struct/enum detection patterns (treating as classes)
+Line 314: Detect structs/enums as classes
+Line 329: Detect use statements/dependencies
+Line 357: Extract Rust function parameters
+Line 365: Extract parameter name before colon
+Line 379: Extract Rust return type
+Line 388: Handle single line functions
+Line 398: Extract Rust derive traits as base classes
+Line 413: Calculate basic complexity based on control flow keywords
+Line 425: Minimum complexity of 1
+Line 430: Check if a file is a test file based on naming conventions
+Line 442: Extract function name from a function definition line
+Line 444: Simple pattern: "def function_name(" or "async def function_name("
+Line 455: Extract class name from a class definition line
+Line 457: Simple pattern: "class ClassName:" or "class ClassName("
+Line 465: Extract dependency from import statement
+Line 474: from module import ...
+Line 483: Calculate summary statistics (Python _calculate_summary equivalent)
+Line 492: Calculate language distribution
+Line 500: Calculate complexity distribution
+Line 520: Analyze project structure (Python _analyze_project_structure equivalent)
+Line 530: Count files per directory
+Line 546: Calculate coupling metrics (Python _calculate_coupling equivalent)
+Line 557: Find most coupled files
+Line 581: Get all source files
+Line 584: Analyze each file
+Line 593: Collect classes and functions
+Line 614: Calculate summary statistics
+Line 617: Analyze project structure
+Line 620: Calculate coupling metrics
+Line 623: Convert to the expected format
+Line 649: Data structures matching Python implementation
+Line 716: Tree-sitter AST analyzer for Python files (equivalent to PythonASTAnalyzer in Python)
+Line 756: Recursively visit children
+Line 777: Basic complexity, will be updated by complexity analysis
+Line 780: TODO: Extract return type annotation
+Line 815: Extract base classes
+Line 821: Extract methods (will be updated when we visit function definitions)
+Line 826: Will be populated by function visitor
+Line 837: Extract the root module name
+Line 846: Extract the root module name
+
+Technical Summary: In 2-3 direct sentences, explain what this file DOES for users/callers. List specific functions, features, or behaviors it implements. Use concrete examples (e.g., "detects SQL injection", "parses JSON configs", "calculates hash values"). Avoid generic phrases like "serves as", "provides functionality", "manages", or "designed to". Maximum 100 words.
+=====================================
+📏 Prompt length: 6625 characters
+🤖 Analyzing: [███████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]  15% (8/52) - performance.rs...🔍 DEBUG PROMPT for performance.rs:
+=====================================
+PREVIOUS PROJECT ANALYSIS:
+
+- semantic_nodes.rs: This file defines Rust models for code analysis and graph construction, focusing on semantic nodes representing function signatures, class definitions, and universal semantic nodes. It includes compre
+- mod.rs: This Rust file defines and exports essential data models for the CodeHUD core, including code analysis results (`AnalysisResult`, `CodeMetrics`), semantic information (`FunctionSignature`, `ClassDefin
+- analysis_result.rs: This Rust file defines the `AnalysisResult` model, which is a comprehensive structure for storing and managing analysis data of a codebase. It includes details such as the path to the analyzed code, n
+- view_types.rs: This file defines core data models for the CodeHUD analysis and visualization system, focusing on view types used for representing code analysis results and visualization systems. It includes an enum 
+- dependencies.rs: This Rust file implements a comprehensive dependency analysis tool for codebases, using tree-sitter queries for automatic language detection and parsing. It extracts import information from supported 
+
+Use this context to understand the project structure and maintain consistency.
+
+CONCISE FILE SUMMARY
+
+File: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/extractors/performance.rs
+Language: rust
+Comments found: 24
+
+STRUCTURAL CONTEXT:
+File I/O: this scope performs file I/O via function_call.contains("urlopen") (lines 555)., this scope performs file I/O via fs::read_to_string(file_path) (lines 105)., this scope performs file I/O via fs::read_dir(&self.codebase_path) (lines 68)., this scope performs file I/O via fs::read_dir(dir) (lines 83).
+Imports: Imports: use chrono::{DateTime, Utc};., Imports: use crate::external_tools::ExternalToolManager;., Imports: use std::path::{Path, PathBuf};., Imports: use std::collections::HashMap;., Imports: use super::BaseDataExtractor;., Imports: use serde_json::{json, Value};., Imports: use serde::{Serialize, Deserialize};., Imports: use std::fs;., Imports: use tree_sitter::{Language, Parser};., use crate::external_tools::ExternalToolManager;., use super::BaseDataExtractor;.
+Structure: calls PerformanceAstAnalyzer::new., calls fs::read_dir., calls Parser::new., calls Utc::now., calls crate::Error::Analysis., calls HashMap::new., calls tree_sitter_rust::language., calls crate::Error::Config., new is a wrapper for Err.Error.Config.format.codebase_path.display (lines 48)., calls crate::Error::Io., calls ExternalToolManager::new., calls fs::read_to_string.
+
+COMMENTS TO ANALYZE:
+Line 144: Complex functions with high performance impact
+Line 182: File I/O operations without proper handling
+Line 230: Large string concatenations
+Line 243: List comprehensions vs loops
+Line 275: Penalize complex functions
+Line 282: Penalize nested loops
+Line 289: Penalize expensive operations
+Line 292: Penalize recursive calls without termination checks
+Line 381: Visit child nodes
+Line 394: Calculate complexity and lines
+Line 442: Detect expensive operations
+Line 466: Check for recursive calls
+Line 482: Add complexity for control structures
+Line 519: Simple check for .append() calls within the loop
+Line 525: Simple heuristic: look for repeated expensive function calls
+Line 528: Count occurrences of potentially expensive operations
+Line 562: Simplified check - in a real implementation, would analyze surrounding context
+
+Technical Summary: In 2-3 direct sentences, explain what this file DOES for users/callers. List specific functions, features, or behaviors it implements. Use concrete examples (e.g., "detects SQL injection", "parses JSON configs", "calculates hash values"). Avoid generic phrases like "serves as", "provides functionality", "manages", or "designed to". Maximum 100 words.
+=====================================
+📏 Prompt length: 3776 characters
+🤖 Analyzing: [████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]  17% (9/52) - mod.rs...🔍 DEBUG PROMPT for mod.rs:
+=====================================
+PREVIOUS PROJECT ANALYSIS:
+
+- semantic_nodes.rs: This file defines Rust models for code analysis and graph construction, focusing on semantic nodes representing function signatures, class definitions, and universal semantic nodes. It includes compre
+- mod.rs: This Rust file defines and exports essential data models for the CodeHUD core, including code analysis results (`AnalysisResult`, `CodeMetrics`), semantic information (`FunctionSignature`, `ClassDefin
+- analysis_result.rs: This Rust file defines the `AnalysisResult` model, which is a comprehensive structure for storing and managing analysis data of a codebase. It includes details such as the path to the analyzed code, n
+- view_types.rs: This file defines core data models for the CodeHUD analysis and visualization system, focusing on view types used for representing code analysis results and visualization systems. It includes an enum 
+- dependencies.rs: This Rust file implements a comprehensive dependency analysis tool for codebases, using tree-sitter queries for automatic language detection and parsing. It extracts import information from supported 
+
+Use this context to understand the project structure and maintain consistency.
+
+CONCISE FILE SUMMARY
+
+File: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/extractors/mod.rs
+Language: rust
+Comments found: 28
+
+STRUCTURAL CONTEXT:
+File I/O: this scope performs file I/O via std::fs::write(temp_path.join("test.py"), (lines 272)., this scope performs file I/O via std::fs::write(temp_path.join("main.rs"), (lines 273)., this scope performs file I/O via std::fs::read_to_string(file_path) (lines 108)., this scope performs file I/O via std::fs::write(temp_path.join("regular.py"), (lines 291)., this scope performs file I/O via std::fs::write(pycache_dir.join("cached.py"), (lines 288).
+Structure: calls HashMap::new., calls walkdir::WalkDir::new.
+Exports: pub use orphaned_files::OrphanedFilesExtractor;., pub use security::SecurityExtractor;., pub use issues::IssuesExtractor;., pub use runtime_profiler::RuntimeProfiler;., pub use quality::QualityExtractor;., pub use dependencies::DependenciesExtractor;., pub use testing::TestingExtractor;., pub use evolution::EvolutionExtractor;., pub use performance::PerformanceExtractor;., pub use flow::FlowExtractor;., pub use topology::TopologyExtractor;.
+Imports: use super::*;., Imports: use chrono::{DateTime, Utc};., Imports: pub use testing::TestingExtractor;., Imports: pub use evolution::EvolutionExtractor;., Imports: pub use flow::FlowExtractor;., Imports: pub use runtime_profiler::RuntimeProfiler;., Imports: pub use topology::TopologyExtractor;., Imports: pub use performance::PerformanceExtractor;., Imports: use std::path::{Path, PathBuf};., Imports: pub use issues::IssuesExtractor;., use crate::Result;., Imports: pub use security::SecurityExtractor;., Imports: use super::*;., Imports: use serde::{Serialize, Deserialize};., Imports: pub use dependencies::DependenciesExtractor;., Imports: pub use quality::QualityExtractor;., Imports: use std::collections::{HashMap, HashSet};., Imports: use tempfile::tempdir;., Imports: use crate::Result;., Imports: pub use orphaned_files::OrphanedFilesExtractor;.
+
+COMMENTS TO ANALYZE:
+Line 1: ! Data extractors for CodeHUD analysis
+Line 3: ! This module provides the 11+ data extractors that match the Python
+Line 4: ! implementation exactly for zero degradation compatibility.
+Line 12: Base trait for all CodeHUD data extractors
+Line 14: Matches the Python BaseDataExtractor abstract class exactly
+Line 16: Extract raw data for this analysis type
+Line 19: Get extractor type name
+Line 22: Get codebase path
+Line 25: Get extraction timestamp
+Line 28: Get common metadata for all extractors
+Line 42: Extract data and include metadata (Python extract_with_metadata equivalent)
+Line 63: Get source files matching given extensions (Python _get_source_files equivalent)
+Line 83: Skip if any parent directory is excluded
+Line 94: Check file extension
+Line 106: Calculate basic metrics for a file (Python _calculate_file_metrics equivalent)
+Line 161: Result of data extraction with metadata
+Line 170: Metadata for data extraction
+Line 186: File metrics structure matching Python implementation
+Line 198: Get Python files excluding backup and cache directories
+Line 199: Static method equivalent from Python BaseDataExtractor
+Line 215: Skip if any parent directory is excluded
+Line 226: Check for .py extension
+Line 235: Module declarations for individual extractors
+Line 248: Re-export the main extractors for convenience
+Line 271: Create some test files
+Line 285: Create excluded directory with Python file
+Line 290: Create regular Python file
+
+Technical Summary: In 2-3 direct sentences, explain what this file DOES for users/callers. List specific functions, features, or behaviors it implements. Use concrete examples (e.g., "detects SQL injection", "parses JSON configs", "calculates hash values"). Avoid generic phrases like "serves as", "provides functionality", "manages", or "designed to". Maximum 100 words.
+=====================================
+📏 Prompt length: 5047 characters
+🤖 Analyzing: [█████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]  19% (10/52) - flow.rs...🔍 DEBUG PROMPT for flow.rs:
+=====================================
+PREVIOUS PROJECT ANALYSIS:
+
+- semantic_nodes.rs: This file defines Rust models for code analysis and graph construction, focusing on semantic nodes representing function signatures, class definitions, and universal semantic nodes. It includes compre
+- mod.rs: This Rust file defines and exports essential data models for the CodeHUD core, including code analysis results (`AnalysisResult`, `CodeMetrics`), semantic information (`FunctionSignature`, `ClassDefin
+- analysis_result.rs: This Rust file defines the `AnalysisResult` model, which is a comprehensive structure for storing and managing analysis data of a codebase. It includes details such as the path to the analyzed code, n
+- view_types.rs: This file defines core data models for the CodeHUD analysis and visualization system, focusing on view types used for representing code analysis results and visualization systems. It includes an enum 
+- dependencies.rs: This Rust file implements a comprehensive dependency analysis tool for codebases, using tree-sitter queries for automatic language detection and parsing. It extracts import information from supported 
+
+Use this context to understand the project structure and maintain consistency.
+
+CONCISE FILE SUMMARY
+
+File: /home/travers/Desktop/CodeHUD (copy)/Rust_copy/codehud-core/src/extractors/flow.rs
+Language: rust
+Comments found: 22
+
+STRUCTURAL CONTEXT:
+Imports: use crate::external_tools::ExternalToolManager;., Imports: use super::BaseDataExtractor;., Imports: use crate::external_tools::ExternalToolManager;., Imports: use tree_sitter::{Language, Parser};., use super::BaseDataExtractor;., Imports: use serde_json::{json, Value};., Imports: use serde::{Serialize, Deserialize};., Imports: use std::path::{Path, PathBuf};., Imports: use std::collections::{HashMap, HashSet};., Imports: use std::fs;., Imports: use chrono::{DateTime, Utc};.
+Structure: calls crate::Error::Config., calls ExternalToolManager::new., calls tree_sitter_rust::language., calls fs::read_to_string., calls value.parse::<f64>., new is a wrapper for Err.Error.Config.format.codebase_path.display (lines 68)., calls Parser::new., calls HashSet::new., calls value.parse::<i64>., calls crate::Error::Analysis., calls Utc::now., calls fs::read_dir., extract_data is a wrapper for Ok.result (lines 534)., calls crate::Error::Io., calls HashMap::new.
+File I/O: this scope performs file I/O via fs::read_dir(dir) (lines 93)., this scope performs file I/O via fs::read_to_string(file_path) (lines 129).
+
+COMMENTS TO ANALYZE:
+Line 1: ! Flow Data Extractor - Analyzes data flow patterns in Python codebases
+Line 20: function, variable, class, module
+Line 32: assignment, function_call, parameter, return_value
+Line 188: Recursively process child nodes
+Line 349: Pattern 1: Deep nested function calls
+Line 361: Pattern 2: Circular data dependencies
+Line 373: Pattern 3: Unused variables
+Line 397: Threshold for deep nesting
+Line 407: Simplified circular dependency detection
+Line 418: Simple cycle detection using DFS
+Line 421: Get file path from edges involving this node
+Line 456: Count variable usage
+Line 463: Find variables used only once (likely unused)
+Line 478: Group nodes by variable name and file
+Line 486: Analyze lifecycle for each variable
+Line 503: Determine scope depth (simplified)
+Line 537: Analyze data flow
+Line 543: Analyze variable lifecycles
+
+Technical Summary: In 2-3 direct sentences, explain what this file DOES for users/callers. List specific functions, features, or behaviors it implements. Use concrete examples (e.g., "detects SQL injection", "parses JSON configs", "calculates hash values"). Avoid generic phrases like "serves as", "provides functionality", "manages", or "designed to". Maximum 100 words.
+=====================================
+📏 Prompt length: 3716 characters

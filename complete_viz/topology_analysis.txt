@@ -1,0 +1,7 @@
+=== CODEHUD TOPOLOGY ANALYSIS ===
+Title: CodeHUD - topology Analysis
+Generated: 2025-09-22 06:10:53.600219916 UTC
+
+🏗️  ARCHITECTURE TOPOLOGY
+📁 Total Files: 0
+📂 Total Directories: 1

@@ -1,0 +1,28 @@
+[package]
+name = "codehud-realtime"
+version = "0.1.0"
+edition = "2021"
+description = "Real-time monitoring and file watching - Zero degradation from Python"
+
+[dependencies]
+# Core infrastructure
+serde = { workspace = true }
+tokio = { workspace = true }
+tokio-stream = { workspace = true }
+anyhow = { workspace = true }
+thiserror = { workspace = true }
+chrono = { workspace = true }
+
+# File monitoring
+notify = { workspace = true }
+
+# Analysis integration
+codehud-core = { path = "../codehud-core" }
+codehud-utils = { path = "../codehud-utils" }
+
+# JSON handling
+serde_json = { workspace = true }
+
+[dev-dependencies]
+tempfile = { workspace = true }
+proptest = { workspace = true }

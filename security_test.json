@@ -1,0 +1,2807 @@
+{
+  "dangerous_functions": [],
+  "extraction_timestamp": "2025-09-21T06:29:45.103073459+00:00",
+  "file_permission_issues": [],
+  "files_analyzed": 169,
+  "findings_by_severity": {
+    "medium": 4
+  },
+  "findings_by_type": {
+    "insecure_http": 4
+  },
+  "recommendations": [
+    "Continue following security best practices"
+  ],
+  "risk_assessment": {
+    "high_severity": 0,
+    "level": "medium",
+    "low_severity": 0,
+    "medium_severity": 4,
+    "score": 40.0,
+    "status": "moderate_risk",
+    "total_findings": 4
+  },
+  "rust_security_results": {
+    "issues": [
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-viz/tests/topology_test.rs",
+        "line": 13,
+        "pattern": "let codebase_path = PathBuf::from(env!(\"CARGO_MANIFEST_DIR\")).parent().unwrap().to_path_buf();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-viz/tests/summary_test.rs",
+        "line": 13,
+        "pattern": "let codebase_path = PathBuf::from(env!(\"CARGO_MANIFEST_DIR\")).parent().unwrap().to_path_buf();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-viz/tests/quality_test.rs",
+        "line": 13,
+        "pattern": "let codebase_path = PathBuf::from(env!(\"CARGO_MANIFEST_DIR\")).parent().unwrap().to_path_buf();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-viz/tests/flow_test.rs",
+        "line": 13,
+        "pattern": "let codebase_path = PathBuf::from(env!(\"CARGO_MANIFEST_DIR\")).parent().unwrap().to_path_buf();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-viz/tests/dependencies_test.rs",
+        "line": 13,
+        "pattern": "let codebase_path = PathBuf::from(env!(\"CARGO_MANIFEST_DIR\")).parent().unwrap().to_path_buf();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-viz/tests/security_test.rs",
+        "line": 13,
+        "pattern": "let codebase_path = PathBuf::from(env!(\"CARGO_MANIFEST_DIR\")).parent().unwrap().to_path_buf();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-cli/src/data.rs",
+        "line": 189,
+        "pattern": "let input = matches.get_one::<PathBuf>(\"input\").unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-cli/src/data.rs",
+        "line": 190,
+        "pattern": "let format = matches.get_one::<String>(\"format\").unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-cli/src/data.rs",
+        "line": 266,
+        "pattern": "let source = matches.get_one::<PathBuf>(\"source\").unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-cli/src/data.rs",
+        "line": 267,
+        "pattern": "let format = matches.get_one::<String>(\"format\").unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-cli/src/data.rs",
+        "line": 287,
+        "pattern": "let input = matches.get_one::<PathBuf>(\"input\").unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-cli/src/data.rs",
+        "line": 288,
+        "pattern": "let output = matches.get_one::<PathBuf>(\"output\").unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-cli/src/data.rs",
+        "line": 289,
+        "pattern": "let from_format = matches.get_one::<String>(\"from\").unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-cli/src/data.rs",
+        "line": 290,
+        "pattern": "let to_format = matches.get_one::<String>(\"to\").unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-cli/src/data.rs",
+        "line": 308,
+        "pattern": "let file = matches.get_one::<PathBuf>(\"file\").unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-cli/src/data.rs",
+        "line": 333,
+        "pattern": "let inputs: Vec<&PathBuf> = matches.get_many::<PathBuf>(\"inputs\").unwrap().collect();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-cli/src/data.rs",
+        "line": 334,
+        "pattern": "let output = matches.get_one::<PathBuf>(\"output\").unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-cli/src/data.rs",
+        "line": 335,
+        "pattern": "let strategy = matches.get_one::<String>(\"strategy\").unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "expect() call may panic - ensure proper error handling",
+        "file": "verify_analysis.rs",
+        "line": 6,
+        "pattern": ".expect(\"Failed to read analysis file\");",
+        "severity": "low",
+        "type": "expect_call"
+      },
+      {
+        "description": "expect() call may panic - ensure proper error handling",
+        "file": "verify_analysis.rs",
+        "line": 12,
+        "pattern": ".expect(\"Failed to read directory\")",
+        "severity": "low",
+        "type": "expect_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "verify_analysis.rs",
+        "line": 48,
+        "pattern": ".unwrap_or_else(|_| std::fs::read_dir(\".\").unwrap())",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "verify_analysis.rs",
+        "line": 54,
+        "pattern": "} else if path.is_dir() && !path.file_name().unwrap().to_string_lossy().starts_with('.') {",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/models/semantic_nodes.rs",
+        "line": 359,
+        "pattern": "assert_eq!(node.get_relationships(\"calls\").unwrap().len(), 1);",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/models/semantic_nodes.rs",
+        "line": 379,
+        "pattern": "let json = serde_json::to_string(&func).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/models/semantic_nodes.rs",
+        "line": 380,
+        "pattern": "let deserialized: FunctionSignature = serde_json::from_str(&json).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/models/view_types.rs",
+        "line": 130,
+        "pattern": "let parsed = ViewType::from_str(as_string).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/models/view_types.rs",
+        "line": 174,
+        "pattern": "let json = serde_json::to_string(&view_type).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/models/view_types.rs",
+        "line": 175,
+        "pattern": "let deserialized: ViewType = serde_json::from_str(&json).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/dependencies.rs",
+        "line": 717,
+        "pattern": "patterns[\"star_imports\"].as_array_mut().unwrap().push(json!({",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/dependencies.rs",
+        "line": 724,
+        "pattern": "patterns[\"long_import_chains\"].as_array_mut().unwrap().push(json!({",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/dependencies.rs",
+        "line": 732,
+        "pattern": "patterns[\"relative_imports\"].as_array_mut().unwrap().push(json!({",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/dependencies.rs",
+        "line": 739,
+        "pattern": "patterns[\"aliased_imports\"].as_array_mut().unwrap().push(json!({",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/dependencies.rs",
+        "line": 749,
+        "pattern": "\"star_imports\": patterns[\"star_imports\"].as_array().unwrap().len(),",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/dependencies.rs",
+        "line": 750,
+        "pattern": "\"long_import_chains\": patterns[\"long_import_chains\"].as_array().unwrap().len(),",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/dependencies.rs",
+        "line": 751,
+        "pattern": "\"relative_imports\": patterns[\"relative_imports\"].as_array().unwrap().len(),",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/dependencies.rs",
+        "line": 752,
+        "pattern": "\"aliased_imports\": patterns[\"aliased_imports\"].as_array().unwrap().len()",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/runtime_profiler.rs",
+        "line": 317,
+        "pattern": "bottlenecks.sort_by(|a, b| b.impact_score.partial_cmp(&a.impact_score).unwrap());",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/topology.rs",
+        "line": 138,
+        "pattern": "regex::Regex::new(r\"function\\s+(\\w+)\\s*\\(\").unwrap(),",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/topology.rs",
+        "line": 139,
+        "pattern": "regex::Regex::new(r\"(\\w+)\\s*=\\s*function\\s*\\(\").unwrap(),",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/topology.rs",
+        "line": 140,
+        "pattern": "regex::Regex::new(r\"(\\w+)\\s*:\\s*function\\s*\\(\").unwrap(),",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/topology.rs",
+        "line": 141,
+        "pattern": "regex::Regex::new(r\"(\\w+)\\s*=\\s*\\([^)]*\\)\\s*=>\").unwrap(),",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/topology.rs",
+        "line": 142,
+        "pattern": "regex::Regex::new(r\"const\\s+(\\w+)\\s*=\\s*\\([^)]*\\)\\s*=>\").unwrap(),",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/topology.rs",
+        "line": 143,
+        "pattern": "regex::Regex::new(r\"async\\s+function\\s+(\\w+)\\s*\\(\").unwrap(),",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/topology.rs",
+        "line": 147,
+        "pattern": "let class_pattern = regex::Regex::new(r\"class\\s+(\\w+)\").unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/topology.rs",
+        "line": 151,
+        "pattern": "regex::Regex::new(r#\"import\\s+.*?\\s+from\\s+['\"]([^'\"]+)['\"]\"#).unwrap(),",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/topology.rs",
+        "line": 152,
+        "pattern": "regex::Regex::new(r#\"import\\s+['\"]([^'\"]+)['\"]\"#).unwrap(),",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/topology.rs",
+        "line": 153,
+        "pattern": "regex::Regex::new(r#\"require\\s*\\(\\s*['\"]([^'\"]+)['\"]\"#).unwrap(),",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/topology.rs",
+        "line": 270,
+        "pattern": "regex::Regex::new(r\"fn\\s+(\\w+)\\s*\\(\").unwrap(),",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/topology.rs",
+        "line": 271,
+        "pattern": "regex::Regex::new(r\"async\\s+fn\\s+(\\w+)\\s*\\(\").unwrap(),",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/topology.rs",
+        "line": 272,
+        "pattern": "regex::Regex::new(r\"pub\\s+fn\\s+(\\w+)\\s*\\(\").unwrap(),",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/topology.rs",
+        "line": 273,
+        "pattern": "regex::Regex::new(r\"pub\\s+async\\s+fn\\s+(\\w+)\\s*\\(\").unwrap(),",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/topology.rs",
+        "line": 278,
+        "pattern": "regex::Regex::new(r\"struct\\s+(\\w+)\").unwrap(),",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/topology.rs",
+        "line": 279,
+        "pattern": "regex::Regex::new(r\"pub\\s+struct\\s+(\\w+)\").unwrap(),",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/topology.rs",
+        "line": 280,
+        "pattern": "regex::Regex::new(r\"enum\\s+(\\w+)\").unwrap(),",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/topology.rs",
+        "line": 281,
+        "pattern": "regex::Regex::new(r\"pub\\s+enum\\s+(\\w+)\").unwrap(),",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/topology.rs",
+        "line": 286,
+        "pattern": "regex::Regex::new(r\"use\\s+(\\w+)::\").unwrap(),",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/topology.rs",
+        "line": 287,
+        "pattern": "regex::Regex::new(r\"use\\s+(\\w+);\").unwrap(),",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/topology.rs",
+        "line": 288,
+        "pattern": "regex::Regex::new(r\"extern\\s+crate\\s+(\\w+)\").unwrap(),",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/topology.rs",
+        "line": 891,
+        "pattern": "let temp_dir = tempdir().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/topology.rs",
+        "line": 892,
+        "pattern": "let extractor = TopologyExtractor::new(temp_dir.path()).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/topology.rs",
+        "line": 899,
+        "pattern": "let temp_dir = tempdir().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/topology.rs",
+        "line": 900,
+        "pattern": "let extractor = TopologyExtractor::new(temp_dir.path()).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/topology.rs",
+        "line": 909,
+        "pattern": "let temp_dir = tempdir().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/topology.rs",
+        "line": 910,
+        "pattern": "let extractor = TopologyExtractor::new(temp_dir.path()).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/topology.rs",
+        "line": 920,
+        "pattern": "let temp_dir = tempdir().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/topology.rs",
+        "line": 921,
+        "pattern": "let extractor = TopologyExtractor::new(temp_dir.path()).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/mod.rs",
+        "line": 268,
+        "pattern": "let temp_dir = tempdir().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/mod.rs",
+        "line": 272,
+        "pattern": "std::fs::write(temp_path.join(\"test.py\"), \"print('hello')\").unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/mod.rs",
+        "line": 273,
+        "pattern": "std::fs::write(temp_path.join(\"main.rs\"), \"fn main() {}\").unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/mod.rs",
+        "line": 275,
+        "pattern": "let python_files = get_python_files(temp_path).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/mod.rs",
+        "line": 277,
+        "pattern": "assert!(python_files[0].file_name().unwrap() == \"test.py\");",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/mod.rs",
+        "line": 282,
+        "pattern": "let temp_dir = tempdir().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/mod.rs",
+        "line": 287,
+        "pattern": "std::fs::create_dir(&pycache_dir).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/mod.rs",
+        "line": 288,
+        "pattern": "std::fs::write(pycache_dir.join(\"cached.py\"), \"# cached\").unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/mod.rs",
+        "line": 291,
+        "pattern": "std::fs::write(temp_path.join(\"regular.py\"), \"# regular\").unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/mod.rs",
+        "line": 293,
+        "pattern": "let python_files = get_python_files(temp_path).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/mod.rs",
+        "line": 295,
+        "pattern": "assert!(python_files[0].file_name().unwrap() == \"regular.py\");",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/orphaned_files.rs",
+        "line": 266,
+        "pattern": "orphaned_files.sort_by(|a, b| b.confidence_score.partial_cmp(&a.confidence_score).unwrap());",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "Unsafe block detected - review for memory safety",
+        "file": "codehud-core/src/extractors/quality.rs",
+        "line": 38,
+        "pattern": "unsafe_blocks: usize,",
+        "severity": "medium",
+        "type": "unsafe_block"
+      },
+      {
+        "description": "Unsafe block detected - review for memory safety",
+        "file": "codehud-core/src/extractors/quality.rs",
+        "line": 307,
+        "pattern": "// Count unsafe blocks (negative impact on quality)",
+        "severity": "medium",
+        "type": "unsafe_block"
+      },
+      {
+        "description": "Unsafe block detected - review for memory safety",
+        "file": "codehud-core/src/extractors/quality.rs",
+        "line": 308,
+        "pattern": "let unsafe_count = source.matches(\"unsafe\").count();",
+        "severity": "medium",
+        "type": "unsafe_block"
+      },
+      {
+        "description": "Unsafe block detected - review for memory safety",
+        "file": "codehud-core/src/extractors/quality.rs",
+        "line": 309,
+        "pattern": "analyzer.total_complexity += unsafe_count; // Unsafe code increases complexity",
+        "severity": "medium",
+        "type": "unsafe_block"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/quality.rs",
+        "line": 318,
+        "pattern": "let unwrap_count = source.matches(\".unwrap()\").count();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "expect() call may panic - ensure proper error handling",
+        "file": "codehud-core/src/extractors/quality.rs",
+        "line": 321,
+        "pattern": "let expect_count = source.matches(\".expect(\").count();",
+        "severity": "low",
+        "type": "expect_call"
+      },
+      {
+        "description": "Unsafe block detected - review for memory safety",
+        "file": "codehud-core/src/extractors/quality.rs",
+        "line": 334,
+        "pattern": "unsafe_blocks: unsafe_count,",
+        "severity": "medium",
+        "type": "unsafe_block"
+      },
+      {
+        "description": "Unsafe block detected - review for memory safety",
+        "file": "codehud-core/src/extractors/quality.rs",
+        "line": 373,
+        "pattern": "adjustment += rust_metrics.unsafe_blocks as f64 * 2.0;",
+        "severity": "medium",
+        "type": "unsafe_block"
+      },
+      {
+        "description": "Unsafe block detected - review for memory safety",
+        "file": "codehud-core/src/extractors/quality.rs",
+        "line": 788,
+        "pattern": "\"unsafe_blocks\": rust_metrics.unsafe_blocks,",
+        "severity": "medium",
+        "type": "unsafe_block"
+      },
+      {
+        "description": "Unsafe block detected - review for memory safety",
+        "file": "codehud-core/src/extractors/quality.rs",
+        "line": 802,
+        "pattern": "// Penalize unsafe code heavily",
+        "severity": "medium",
+        "type": "unsafe_block"
+      },
+      {
+        "description": "Unsafe block detected - review for memory safety",
+        "file": "codehud-core/src/extractors/quality.rs",
+        "line": 803,
+        "pattern": "score -= rust_metrics.unsafe_blocks as f64 * 10.0;",
+        "severity": "medium",
+        "type": "unsafe_block"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/evolution.rs",
+        "line": 214,
+        "pattern": "let first_date = &commits.last().unwrap().2;",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/evolution.rs",
+        "line": 215,
+        "pattern": "let last_date = &commits.first().unwrap().2;",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/evolution.rs",
+        "line": 395,
+        "pattern": "hotspots.sort_by(|a, b| b.risk_score.partial_cmp(&a.risk_score).unwrap());",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/security.rs",
+        "line": 111,
+        "pattern": "(Regex::new(r#\"password\\s*=\\s*[\"'][^\"']+\"[\"']\"#).unwrap(), \"hardcoded_password\", \"high\"),",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/security.rs",
+        "line": 112,
+        "pattern": "(Regex::new(r#\"api[_-]?key\\s*=\\s*[\"'][^\"']+\"[\"']\"#).unwrap(), \"hardcoded_api_key\", \"high\"),",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/security.rs",
+        "line": 113,
+        "pattern": "(Regex::new(r#\"secret\\s*=\\s*[\"'][^\"']+\"[\"']\"#).unwrap(), \"hardcoded_secret\", \"high\"),",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/security.rs",
+        "line": 114,
+        "pattern": "(Regex::new(r#\"token\\s*=\\s*[\"'][^\"']+\"[\"']\"#).unwrap(), \"hardcoded_token\", \"medium\"),",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/security.rs",
+        "line": 115,
+        "pattern": "(Regex::new(r#\"(?i)(access[_-]?key|secret[_-]?key)\\s*=\\s*[\"'][^\"']+\"[\"']\"#).unwrap(), \"hardcoded_credentials\", \"high\"),",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/security.rs",
+        "line": 116,
+        "pattern": "(Regex::new(r\"SELECT\\s+.*\\s+FROM\\s+.*\\s+WHERE\\s+.*\\+.*\").unwrap(), \"sql_injection_risk\", \"high\"),",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/security.rs",
+        "line": 117,
+        "pattern": "(Regex::new(r\"\\.format\\s*\\([^)]*\\{[^}]*\\}[^)]*\\)\").unwrap(), \"string_format_risk\", \"medium\"),",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/security.rs",
+        "line": 118,
+        "pattern": "(Regex::new(r\"random\\.random\\(\\)\").unwrap(), \"weak_randomness\", \"low\"),",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/security.rs",
+        "line": 119,
+        "pattern": "(Regex::new(r\"md5|MD5\").unwrap(), \"weak_crypto_md5\", \"medium\"),",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/security.rs",
+        "line": 120,
+        "pattern": "(Regex::new(r\"sha1|SHA1\").unwrap(), \"weak_crypto_sha1\", \"medium\"),",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/security.rs",
+        "line": 121,
+        "pattern": "(Regex::new(r#\"assert\\s+[^,\\n]*,\\s*[\"'][^\"']*[\"']\"#).unwrap(), \"debug_assert\", \"low\"),",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/security.rs",
+        "line": 125,
+        "pattern": "(Regex::new(r\"chmod\\s*\\(\\s*[^,]+,\\s*0o?77[0-7]\").unwrap(), \"overly_permissive_chmod\", \"medium\"),",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/security.rs",
+        "line": 126,
+        "pattern": "(Regex::new(r\"umask\\s*\\(\\s*0o?00[0-7]\").unwrap(), \"weak_umask\", \"medium\"),",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/security.rs",
+        "line": 127,
+        "pattern": "(Regex::new(r#\"open\\s*\\([^)]*mode\\s*=\\s*[\"'][wa][\"']\"#).unwrap(), \"world_writable_file\", \"low\"),",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "Unsafe block detected - review for memory safety",
+        "file": "codehud-core/src/extractors/security.rs",
+        "line": 368,
+        "pattern": "(\"yaml\", \"low\", \"YAML loading can be unsafe, use yaml.safe_load()\"),",
+        "severity": "medium",
+        "type": "unsafe_block"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/security.rs",
+        "line": 436,
+        "pattern": "let http_pattern = Regex::new(r#\"http://[^\\s\"'<>]+\"#).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/security.rs",
+        "line": 455,
+        "pattern": "let pattern = Regex::new(pattern_str).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/security.rs",
+        "line": 476,
+        "pattern": "let pattern = Regex::new(pattern_str).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "Unsafe block detected - review for memory safety",
+        "file": "codehud-core/src/extractors/security.rs",
+        "line": 652,
+        "pattern": "// Check for unsafe blocks",
+        "severity": "medium",
+        "type": "unsafe_block"
+      },
+      {
+        "description": "Unsafe block detected - review for memory safety",
+        "file": "codehud-core/src/extractors/security.rs",
+        "line": 653,
+        "pattern": "if line.contains(\"unsafe\") {",
+        "severity": "medium",
+        "type": "unsafe_block"
+      },
+      {
+        "description": "Unsafe block detected - review for memory safety",
+        "file": "codehud-core/src/extractors/security.rs",
+        "line": 659,
+        "pattern": "\"type\": \"unsafe_block\",",
+        "severity": "medium",
+        "type": "unsafe_block"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/extractors/security.rs",
+        "line": 667,
+        "pattern": "if line.contains(\".unwrap()\") {",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "expect() call may panic - ensure proper error handling",
+        "file": "codehud-core/src/extractors/security.rs",
+        "line": 681,
+        "pattern": "if line.contains(\".expect(\") {",
+        "severity": "low",
+        "type": "expect_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/graph/algorithms.rs",
+        "line": 92,
+        "pattern": "*sigma.get_mut(&neighbor).unwrap() += sigma[&current];",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/graph/algorithms.rs",
+        "line": 93,
+        "pattern": "paths.get_mut(&neighbor).unwrap().push(current);",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/graph/algorithms.rs",
+        "line": 102,
+        "pattern": "*delta.get_mut(&predecessor).unwrap() += contribution;",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/graph/algorithms.rs",
+        "line": 106,
+        "pattern": "*centrality.get_mut(&node).unwrap() += delta[&node];",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/graph/metrics.rs",
+        "line": 312,
+        "pattern": "let (most_central, centrality) = metrics.most_central_betweenness().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/graph/metrics.rs",
+        "line": 327,
+        "pattern": "let instability = metrics.instability.get(&node).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/graph/metrics.rs",
+        "line": 341,
+        "pattern": "let instability = metrics.instability.get(&node).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/graph/algorithms_minimal.rs",
+        "line": 94,
+        "pattern": "*sigma.get_mut(&w).unwrap() += sigma[&v];",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/graph/algorithms_minimal.rs",
+        "line": 95,
+        "pattern": "predecessors.get_mut(&w).unwrap().push(v);",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/graph/algorithms_minimal.rs",
+        "line": 108,
+        "pattern": "*delta.get_mut(&v).unwrap() += (sigma_v / sigma_w) * (1.0 + delta_w);",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/graph/algorithms_minimal.rs",
+        "line": 114,
+        "pattern": "*centrality.get_mut(&node_key).unwrap() += delta[&w];",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/graph/algorithms_minimal.rs",
+        "line": 211,
+        "pattern": "incoming_edges.get_mut(&edge.target()).unwrap().push(node);",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/graph/mod.rs",
+        "line": 268,
+        "pattern": "builder.add_call(\"main\", \"helper\", 5).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/graph/mod.rs",
+        "line": 278,
+        "pattern": "builder.add_dependency(\"module_a\", \"module_b\", \"import\").unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/graph/mod.rs",
+        "line": 288,
+        "pattern": "builder.add_inheritance(\"ChildClass\", \"ParentClass\").unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/graph/mod.rs",
+        "line": 299,
+        "pattern": "builder.add_call(\"main\", \"helper\", 3).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/graph/mod.rs",
+        "line": 300,
+        "pattern": "builder.add_call(\"main\", \"helper\", 2).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/graph/analyzer.rs",
+        "line": 389,
+        "pattern": "builder.add_call(\"main\", \"helper\", 5).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/graph/analyzer.rs",
+        "line": 390,
+        "pattern": "builder.add_call(\"helper\", \"util\", 3).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/graph/analyzer.rs",
+        "line": 391,
+        "pattern": "builder.add_dependency(\"main_module\", \"helper_module\", \"import\").unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/graph/analyzer.rs",
+        "line": 392,
+        "pattern": "builder.add_inheritance(\"ChildClass\", \"ParentClass\").unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/graph/analyzer.rs",
+        "line": 395,
+        "pattern": "let results = analyzer.analyze().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/graph/analyzer.rs",
+        "line": 415,
+        "pattern": "builder.add_dependency(\"A\", \"B\", \"import\").unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/graph/analyzer.rs",
+        "line": 416,
+        "pattern": "builder.add_dependency(\"A\", \"C\", \"import\").unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/graph/analyzer.rs",
+        "line": 417,
+        "pattern": "builder.add_dependency(\"B\", \"C\", \"import\").unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/graph/analyzer.rs",
+        "line": 420,
+        "pattern": "let coupling = analyzer.calculate_coupling_metrics().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/graph/analyzer.rs",
+        "line": 433,
+        "pattern": "builder.add_dependency(\"A\", \"B\", \"import\").unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/graph/analyzer.rs",
+        "line": 434,
+        "pattern": "builder.add_dependency(\"B\", \"C\", \"import\").unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/graph/analyzer.rs",
+        "line": 435,
+        "pattern": "builder.add_dependency(\"C\", \"A\", \"import\").unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/graph/analyzer.rs",
+        "line": 438,
+        "pattern": "let issues = analyzer.check_problematic_patterns().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/graph/analyzer.rs",
+        "line": 450,
+        "pattern": "builder.add_call(\"main\", \"helper\", 1).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/graph/analyzer.rs",
+        "line": 451,
+        "pattern": "builder.add_call(\"helper\", \"util\", 1).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/graph/analyzer.rs",
+        "line": 454,
+        "pattern": "let metrics = analyzer.calculate_network_metrics().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "expect() call may panic - ensure proper error handling",
+        "file": "codehud-core/src/pattern/mod.rs",
+        "line": 489,
+        "pattern": "Self::new().expect(\"Failed to create default PatternDetector\")",
+        "severity": "low",
+        "type": "expect_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/cargo_test.rs",
+        "line": 195,
+        "pattern": "let temp_dir = tempdir().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/cargo_test.rs",
+        "line": 199,
+        "pattern": "\"[package]\\nname = \\\"test\\\"\\nversion = \\\"0.1.0\\\"\").unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/cargo_test.rs",
+        "line": 207,
+        "pattern": "let temp_dir = tempdir().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/cargo_test.rs",
+        "line": 211,
+        "pattern": "\"[package]\\nname = \\\"test\\\"\\nversion = \\\"0.1.0\\\"\").unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/cargo_test.rs",
+        "line": 214,
+        "pattern": "fs::create_dir_all(&src_dir).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/cargo_test.rs",
+        "line": 222,
+        "pattern": "}\").unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/cargo_test.rs",
+        "line": 230,
+        "pattern": "let result = test_integration.analyze().await.unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/ruff.rs",
+        "line": 251,
+        "pattern": "let version = ruff_integration.get_version().await.unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/ruff.rs",
+        "line": 259,
+        "pattern": "let temp_dir = tempdir().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/ruff.rs",
+        "line": 264,
+        "pattern": "let result = ruff_integration.analyze().await.unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/ruff.rs",
+        "line": 271,
+        "pattern": "let temp_dir = tempdir().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/ruff.rs",
+        "line": 287,
+        "pattern": "\"#).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/ruff.rs",
+        "line": 292,
+        "pattern": "let result = ruff_integration.analyze().await.unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/coverage.rs",
+        "line": 302,
+        "pattern": "let version = coverage_integration.get_version().await.unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/radon.rs",
+        "line": 403,
+        "pattern": "let version = radon_integration.get_version().await.unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/radon.rs",
+        "line": 411,
+        "pattern": "let temp_dir = tempdir().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/radon.rs",
+        "line": 480,
+        "pattern": "\"#).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/radon.rs",
+        "line": 485,
+        "pattern": "let result = radon_integration.analyze().await.unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/rustfmt.rs",
+        "line": 100,
+        "pattern": "file_path.to_str().unwrap()",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/rustfmt.rs",
+        "line": 112,
+        "pattern": "file_path.to_str().unwrap()",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/rustfmt.rs",
+        "line": 205,
+        "pattern": "let temp_dir = tempdir().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/rustfmt.rs",
+        "line": 209,
+        "pattern": "\"[package]\\nname = \\\"test\\\"\\nversion = \\\"0.1.0\\\"\").unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/rustfmt.rs",
+        "line": 217,
+        "pattern": "let temp_dir = tempdir().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/rustfmt.rs",
+        "line": 221,
+        "pattern": "\"[package]\\nname = \\\"test\\\"\\nversion = \\\"0.1.0\\\"\").unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/rustfmt.rs",
+        "line": 224,
+        "pattern": "fs::create_dir_all(&src_dir).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/rustfmt.rs",
+        "line": 228,
+        "pattern": "}\").unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/rustfmt.rs",
+        "line": 236,
+        "pattern": "let result = rustfmt_integration.analyze().await.unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/rustfmt.rs",
+        "line": 243,
+        "pattern": "let temp_dir = tempdir().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/rustfmt.rs",
+        "line": 247,
+        "pattern": "fs::create_dir_all(&src_dir).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/rustfmt.rs",
+        "line": 248,
+        "pattern": "fs::write(src_dir.join(\"main.rs\"), \"fn main() {}\").unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/rustfmt.rs",
+        "line": 249,
+        "pattern": "fs::write(src_dir.join(\"lib.rs\"), \"pub fn test() {}\").unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/mypy.rs",
+        "line": 222,
+        "pattern": "let version = mypy_integration.get_version().await.unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/mypy.rs",
+        "line": 230,
+        "pattern": "let temp_dir = tempdir().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/mypy.rs",
+        "line": 252,
+        "pattern": "\"#).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/mypy.rs",
+        "line": 257,
+        "pattern": "let result = mypy_integration.analyze().await.unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/mod.rs",
+        "line": 505,
+        "pattern": "let temp_dir = tempdir().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/mod.rs",
+        "line": 509,
+        "pattern": "manager.check_tool_availability().await.unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/cargo_audit.rs",
+        "line": 237,
+        "pattern": "let temp_dir = tempdir().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/cargo_audit.rs",
+        "line": 241,
+        "pattern": "\"[package]\\nname = \\\"test\\\"\\nversion = \\\"0.1.0\\\"\").unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/cargo_audit.rs",
+        "line": 249,
+        "pattern": "let temp_dir = tempdir().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/cargo_audit.rs",
+        "line": 253,
+        "pattern": "\"[package]\\nname = \\\"test\\\"\\nversion = \\\"0.1.0\\\"\").unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/pylint.rs",
+        "line": 244,
+        "pattern": "let version = pylint_integration.get_version().await.unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/pylint.rs",
+        "line": 252,
+        "pattern": "let temp_dir = tempdir().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/pylint.rs",
+        "line": 274,
+        "pattern": "\"#).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/pylint.rs",
+        "line": 279,
+        "pattern": "let result = pylint_integration.analyze().await.unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/vulture.rs",
+        "line": 261,
+        "pattern": "let version = vulture_integration.get_version().await.unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/vulture.rs",
+        "line": 269,
+        "pattern": "let temp_dir = tempdir().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/vulture.rs",
+        "line": 319,
+        "pattern": "\"#).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/vulture.rs",
+        "line": 324,
+        "pattern": "let result = vulture_integration.analyze().await.unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/ripgrep.rs",
+        "line": 312,
+        "pattern": "let temp_dir = TempDir::new().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/ripgrep.rs",
+        "line": 315,
+        "pattern": "\"# TODO: implement this function\\ndef hello():\\n    pass\\n# FIXME: handle edge case\").await.unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/ripgrep.rs",
+        "line": 318,
+        "pattern": "let result = tool.search(\"TODO\").await.unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/ripgrep.rs",
+        "line": 327,
+        "pattern": "let temp_dir = TempDir::new().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/ripgrep.rs",
+        "line": 330,
+        "pattern": "\"def function_name():\\n    return 'todo'\\n# TODO: implement\").await.unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/ripgrep.rs",
+        "line": 339,
+        "pattern": "let result = tool.search_with_options(\"TODO\", &options).await.unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/ripgrep.rs",
+        "line": 347,
+        "pattern": "let result = tool.search_with_options(\"todo\", &options).await.unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/ripgrep.rs",
+        "line": 353,
+        "pattern": "let temp_dir = TempDir::new().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/ripgrep.rs",
+        "line": 356,
+        "pattern": "\"# TODO: implement\\n# FIXME: bug here\\n# XXX: this is wrong\").await.unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/ripgrep.rs",
+        "line": 359,
+        "pattern": "let result = tool.analyze().await.unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/ripgrep.rs",
+        "line": 368,
+        "pattern": "let temp_dir = TempDir::new().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/ripgrep.rs",
+        "line": 370,
+        "pattern": "create_test_file(&temp_dir, \"test.py\", \"# TODO: python\").await.unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/ripgrep.rs",
+        "line": 371,
+        "pattern": "create_test_file(&temp_dir, \"test.js\", \"// TODO: javascript\").await.unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/ripgrep.rs",
+        "line": 380,
+        "pattern": "let result = tool.search_with_options(\"TODO\", &options).await.unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/ripgrep.rs",
+        "line": 396,
+        "pattern": "assert!(!version.unwrap().is_empty());",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/bandit.rs",
+        "line": 329,
+        "pattern": "let version = bandit_integration.get_version().await.unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/bandit.rs",
+        "line": 337,
+        "pattern": "let temp_dir = tempdir().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "Unsafe block detected - review for memory safety",
+        "file": "codehud-core/src/external_tools/bandit.rs",
+        "line": 350,
+        "pattern": "def unsafe_exec(user_input):",
+        "severity": "medium",
+        "type": "unsafe_block"
+      },
+      {
+        "description": "Unsafe block detected - review for memory safety",
+        "file": "codehud-core/src/external_tools/bandit.rs",
+        "line": 354,
+        "pattern": "def unsafe_shell(command):",
+        "severity": "medium",
+        "type": "unsafe_block"
+      },
+      {
+        "description": "Unsafe block detected - review for memory safety",
+        "file": "codehud-core/src/external_tools/bandit.rs",
+        "line": 359,
+        "pattern": "def unsafe_pickle(data):",
+        "severity": "medium",
+        "type": "unsafe_block"
+      },
+      {
+        "description": "Unsafe block detected - review for memory safety",
+        "file": "codehud-core/src/external_tools/bandit.rs",
+        "line": 360,
+        "pattern": "# Security issue: unsafe deserialization",
+        "severity": "medium",
+        "type": "unsafe_block"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/bandit.rs",
+        "line": 380,
+        "pattern": "\"#).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/bandit.rs",
+        "line": 385,
+        "pattern": "let result = bandit_integration.analyze().await.unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/bandit.rs",
+        "line": 402,
+        "pattern": "let temp_dir = tempdir().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/bandit.rs",
+        "line": 426,
+        "pattern": "\"#).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/bandit.rs",
+        "line": 431,
+        "pattern": "let result = bandit_integration.analyze().await.unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/clippy.rs",
+        "line": 194,
+        "pattern": "let temp_dir = tempdir().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/clippy.rs",
+        "line": 197,
+        "pattern": "fs::write(temp_dir.path().join(\"Cargo.toml\"), \"[package]\\nname = \\\"test\\\"\\nversion = \\\"0.1.0\\\"\").unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/clippy.rs",
+        "line": 205,
+        "pattern": "let temp_dir = tempdir().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/clippy.rs",
+        "line": 208,
+        "pattern": "fs::write(temp_dir.path().join(\"Cargo.toml\"), \"[package]\\nname = \\\"test\\\"\\nversion = \\\"0.1.0\\\"\").unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/git.rs",
+        "line": 437,
+        "pattern": "let version = git_integration.get_version().await.unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/git.rs",
+        "line": 449,
+        "pattern": "let commit = git_integration.parse_commit_line(test_line).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/external_tools/git.rs",
+        "line": 462,
+        "pattern": "let author = git_integration.parse_author_line(test_line).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-core/src/cache/mod.rs",
+        "line": 373,
+        "pattern": "let temp_dir = tempdir().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-gui/src/views/dependencies_view_gui.rs",
+        "line": 221,
+        "pattern": "deps.sort_by(|a, b| b.1.coupling_score.partial_cmp(&a.1.coupling_score).unwrap());",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-gui/src/signals_pyqt5.rs",
+        "line": 271,
+        "pattern": "received_clone.lock().unwrap().push(value);",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-gui/src/signals_pyqt5.rs",
+        "line": 272,
+        "pattern": "}).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-gui/src/signals_pyqt5.rs",
+        "line": 274,
+        "pattern": "signal.emit(42).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-gui/src/signals_pyqt5.rs",
+        "line": 275,
+        "pattern": "signal.emit(84).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-gui/src/signals_pyqt5.rs",
+        "line": 277,
+        "pattern": "let values = received.lock().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-gui/src/signals_pyqt5.rs",
+        "line": 291,
+        "pattern": "*started_clone.lock().unwrap() = true;",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-gui/src/signals_pyqt5.rs",
+        "line": 292,
+        "pattern": "}).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-gui/src/signals_pyqt5.rs",
+        "line": 295,
+        "pattern": "*finished_clone.lock().unwrap() = true;",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-gui/src/signals_pyqt5.rs",
+        "line": 296,
+        "pattern": "}).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-gui/src/signals_pyqt5.rs",
+        "line": 301,
+        "pattern": "}).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-gui/src/signals_pyqt5.rs",
+        "line": 303,
+        "pattern": "thread.wait().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-gui/src/signals_pyqt5.rs",
+        "line": 305,
+        "pattern": "assert!(*started.lock().unwrap());",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-gui/src/signals_pyqt5.rs",
+        "line": 306,
+        "pattern": "assert!(*finished.lock().unwrap());",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-utils/src/config/mod.rs",
+        "line": 135,
+        "pattern": "merge_json_values(base_obj.get_mut(&key).unwrap(), value);",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "Unsafe block detected - review for memory safety",
+        "file": "codehud-utils/src/logging/mod.rs",
+        "line": 297,
+        "pattern": "drop(std::mem::replace(&mut self.current_file, unsafe { std::mem::zeroed() }));",
+        "severity": "medium",
+        "type": "unsafe_block"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-utils/src/file/mod.rs",
+        "line": 278,
+        "pattern": "let result = safe_path_join(base, Path::new(\"subdir/file.txt\")).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-utils/src/file/mod.rs",
+        "line": 348,
+        "pattern": "assert!(python_files.iter().any(|p| p.file_name().unwrap() == \"test.py\"));",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-utils/src/file/mod.rs",
+        "line": 349,
+        "pattern": "assert!(python_files.iter().any(|p| p.file_name().unwrap() == \"main.py\"));",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-utils/src/string/mod.rs",
+        "line": 47,
+        "pattern": "let whitespace_regex = Regex::new(r\"\\s+\").unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-utils/src/string/mod.rs",
+        "line": 122,
+        "pattern": "let regex = Regex::new(r\"([a-z0-9])([A-Z])\").unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-utils/src/string/mod.rs",
+        "line": 191,
+        "pattern": "let first = chars.next().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-transform/src/types.rs",
+        "line": 390,
+        "pattern": "let parsed: TransformationType = as_string.parse().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-transform/src/engine.rs",
+        "line": 449,
+        "pattern": "result.error_message.as_ref().unwrap().clone(),",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-transform/src/engine.rs",
+        "line": 534,
+        "pattern": "let mut engine = TransformationEngine::new(config).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-transform/src/engine.rs",
+        "line": 536,
+        "pattern": "let session_id = engine.start_session(\"Test session\".to_string()).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-transform/src/engine.rs",
+        "line": 538,
+        "pattern": "assert_eq!(engine.get_current_session().unwrap().session_id, session_id);",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-transform/src/engine.rs",
+        "line": 540,
+        "pattern": "engine.end_session().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-transform/src/rollback.rs",
+        "line": 414,
+        "pattern": "if git_version.is_err() || !git_version.unwrap().success() {",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-transform/src/rollback.rs",
+        "line": 426,
+        "pattern": "Ok(git_status.is_ok() && git_status.unwrap().success())",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-transform/src/rollback.rs",
+        "line": 523,
+        "pattern": "let temp_dir = TempDir::new().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-transform/src/rollback.rs",
+        "line": 525,
+        "pattern": "fs::write(&test_file, \"test content\").unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-transform/src/rollback.rs",
+        "line": 532,
+        "pattern": "let mut rollback_system = RollbackSystem::new(&config).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-transform/src/rollback.rs",
+        "line": 533,
+        "pattern": "let backup_info = rollback_system.create_backup(test_file.to_str().unwrap());",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-transform/src/rollback.rs",
+        "line": 539,
+        "pattern": "let temp_dir = TempDir::new().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-transform/src/libcst.rs",
+        "line": 523,
+        "pattern": "let transformer = LibCstTransformer::new(\"python\").unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-transform/src/transformers/magic_numbers.rs",
+        "line": 728,
+        "pattern": "let transformer = MagicNumberTransformer::new().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-transform/src/transformers/magic_numbers.rs",
+        "line": 741,
+        "pattern": "let magic_numbers = transformer.find_magic_numbers(source).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-transform/src/transformers/magic_numbers.rs",
+        "line": 755,
+        "pattern": "let transformer = MagicNumberTransformer::new().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-transform/src/transformers/magic_numbers.rs",
+        "line": 769,
+        "pattern": "let transformer = MagicNumberTransformer::new().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-transform/src/transformers/magic_numbers.rs",
+        "line": 778,
+        "pattern": "let rt = tokio::runtime::Runtime::new().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-transform/src/transformers/magic_numbers.rs",
+        "line": 779,
+        "pattern": "let result = rt.block_on(transformer.transform(&input)).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-transform/src/transformers/multi_language_old.rs",
+        "line": 540,
+        "pattern": "content_patterns.insert(\"python\".to_string(), Regex::new(r\"def\\s+\\w+\\s*\\(\").unwrap());",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-transform/src/transformers/multi_language_old.rs",
+        "line": 541,
+        "pattern": "content_patterns.insert(\"javascript\".to_string(), Regex::new(r\"function\\s+\\w+\\s*\\(\").unwrap());",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-transform/src/transformers/multi_language_old.rs",
+        "line": 542,
+        "pattern": "content_patterns.insert(\"java\".to_string(), Regex::new(r\"public\\s+class\\s+\\w+\").unwrap());",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-transform/src/transformers/multi_language_old.rs",
+        "line": 709,
+        "pattern": "let transformer = MultiLanguageTransformer::new().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-transform/src/transformers/multi_language_old.rs",
+        "line": 717,
+        "pattern": "let transformer = MultiLanguageTransformer::new().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-transform/src/transformers/batch.rs",
+        "line": 577,
+        "pattern": "let improved = source_code.replace(\".unwrap()\", \".expect(\\\"TODO: handle error properly\\\")\");",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "expect() call may panic - ensure proper error handling",
+        "file": "codehud-transform/src/transformers/batch.rs",
+        "line": 577,
+        "pattern": "let improved = source_code.replace(\".unwrap()\", \".expect(\\\"TODO: handle error properly\\\")\");",
+        "severity": "low",
+        "type": "expect_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-transform/src/transformers/batch.rs",
+        "line": 783,
+        "pattern": "let transformer = BatchTransformer::new().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-transform/src/transformers/batch.rs",
+        "line": 791,
+        "pattern": "let transformer = BatchTransformer::new().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-transform/src/transformers/unused_args_old.rs",
+        "line": 933,
+        "pattern": "let remover = UnusedArgumentRemover::new().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-transform/src/transformers/architectural.rs",
+        "line": 907,
+        "pattern": "let refactorer = ArchitecturalRefactorer::new().unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-analysis/src/health_score.rs",
+        "line": 467,
+        "pattern": "let score = calculator.calculate_functionality_score(&[]).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-analysis/src/health_score.rs",
+        "line": 475,
+        "pattern": "let score = calculator.calculate_functionality_score(&[critical_issue]).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-analysis/src/health_score.rs",
+        "line": 494,
+        "pattern": "let score = calculator.calculate_maintainability_score(&low_complexity).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-analysis/src/health_score.rs",
+        "line": 508,
+        "pattern": "let score = calculator.calculate_maintainability_score(&high_complexity).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-llm/src/ollama.rs",
+        "line": 646,
+        "pattern": "let pipeline = OllamaPipeline::new(config).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "Unsafe block detected - review for memory safety",
+        "file": "codehud-llm/src/constitutional.rs",
+        "line": 160,
+        "pattern": "r\"(?i)\\b(dangerous|harmful|unsafe|risky|hazardous)\\b\",",
+        "severity": "medium",
+        "type": "unsafe_block"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-llm/src/ffi.rs",
+        "line": 185,
+        "pattern": "path.call_method1(\"insert\", (0, codebase_path.to_str().unwrap()))?;",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-llm/src/ffi.rs",
+        "line": 489,
+        "pattern": "let turn_id: String = turn_dict.get_item(\"turn_id\")?.unwrap().extract()?;",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-llm/src/ffi.rs",
+        "line": 490,
+        "pattern": "let user_msg_dict: &PyDict = turn_dict.get_item(\"user_message\")?.unwrap().extract()?;",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-llm/src/ffi.rs",
+        "line": 535,
+        "pattern": "conversation_id: summary_dict.get_item(\"conversation_id\")?.unwrap().extract()?,",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-llm/src/ffi.rs",
+        "line": 536,
+        "pattern": "summary: summary_dict.get_item(\"summary\")?.unwrap().extract()?,",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-llm/src/ffi.rs",
+        "line": 537,
+        "pattern": "key_points: summary_dict.get_item(\"key_points\")?.unwrap().extract()?,",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-llm/src/ffi.rs",
+        "line": 538,
+        "pattern": "participant_count: summary_dict.get_item(\"participant_count\")?.unwrap().extract()?,",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-llm/src/ffi.rs",
+        "line": 539,
+        "pattern": "turn_count: summary_dict.get_item(\"turn_count\")?.unwrap().extract()?,",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-llm/src/ffi.rs",
+        "line": 571,
+        "pattern": "response_time_ms: metrics_dict.get_item(\"response_time_ms\")?.unwrap().extract()?,",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-llm/src/ffi.rs",
+        "line": 572,
+        "pattern": "token_throughput: metrics_dict.get_item(\"token_throughput\")?.unwrap().extract()?,",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-llm/src/ffi.rs",
+        "line": 573,
+        "pattern": "memory_usage_mb: metrics_dict.get_item(\"memory_usage_mb\")?.unwrap().extract()?,",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-llm/src/ffi.rs",
+        "line": 574,
+        "pattern": "cpu_usage_percent: metrics_dict.get_item(\"cpu_usage_percent\")?.unwrap().extract()?,",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-llm/src/ffi.rs",
+        "line": 588,
+        "pattern": "total_requests: metrics_dict.get_item(\"total_requests\")?.unwrap().extract()?,",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-llm/src/ffi.rs",
+        "line": 589,
+        "pattern": "successful_requests: metrics_dict.get_item(\"successful_requests\")?.unwrap().extract()?,",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-llm/src/ffi.rs",
+        "line": 590,
+        "pattern": "failed_requests: metrics_dict.get_item(\"failed_requests\")?.unwrap().extract()?,",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-llm/src/ffi.rs",
+        "line": 633,
+        "pattern": "total_rules: report_dict.get_item(\"total_rules\")?.unwrap().extract()?,",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-llm/src/ffi.rs",
+        "line": 634,
+        "pattern": "passed_rules: report_dict.get_item(\"passed_rules\")?.unwrap().extract()?,",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-llm/src/ffi.rs",
+        "line": 635,
+        "pattern": "failed_rules: report_dict.get_item(\"failed_rules\")?.unwrap().extract()?,",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-llm/src/ffi.rs",
+        "line": 639,
+        "pattern": "overall_score: report_dict.get_item(\"overall_score\")?.unwrap().extract()?,",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-llm/src/ffi.rs",
+        "line": 667,
+        "pattern": "passed: assessment_dict.get_item(\"passed\")?.unwrap().extract()?,",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-llm/src/ffi.rs",
+        "line": 669,
+        "pattern": "overall_score: assessment_dict.get_item(\"overall_score\")?.unwrap().extract()?,",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-llm/src/ffi.rs",
+        "line": 684,
+        "pattern": "let role_str: String = msg_dict.get_item(\"role\")?.unwrap().extract()?;",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-llm/src/ffi.rs",
+        "line": 694,
+        "pattern": "id: msg_dict.get_item(\"id\")?.unwrap().extract()?,",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-llm/src/ffi.rs",
+        "line": 696,
+        "pattern": "content: msg_dict.get_item(\"content\")?.unwrap().extract()?,",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "Unsafe block detected - review for memory safety",
+        "file": "codehud-llm/src/ffi.rs",
+        "line": 860,
+        "pattern": "unsafe impl Send for PythonLlmBridge {}",
+        "severity": "medium",
+        "type": "unsafe_block"
+      },
+      {
+        "description": "Unsafe block detected - review for memory safety",
+        "file": "codehud-llm/src/ffi.rs",
+        "line": 861,
+        "pattern": "unsafe impl Sync for PythonLlmBridge {}",
+        "severity": "medium",
+        "type": "unsafe_block"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-llm/src/ffi.rs",
+        "line": 910,
+        "pattern": "let serialized = serde_json::to_string(&constraints).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-llm/src/ffi.rs",
+        "line": 911,
+        "pattern": "let deserialized: GenerationConstraints = serde_json::from_str(&serialized).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-llm/src/structured.rs",
+        "line": 335,
+        "pattern": ".unwrap()",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-llm/src/structured.rs",
+        "line": 845,
+        "pattern": "let generator = StructuredCodeGenerator::new(config).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-llm/src/structured.rs",
+        "line": 859,
+        "pattern": "let generator = StructuredCodeGenerator::new(config).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-llm/src/structured.rs",
+        "line": 873,
+        "pattern": "let generator = StructuredCodeGenerator::new(config).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-llm/src/structured.rs",
+        "line": 887,
+        "pattern": "let generator = StructuredCodeGenerator::new(config).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-llm/src/critical.rs",
+        "line": 333,
+        "pattern": ".unwrap()",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-llm/src/critical.rs",
+        "line": 943,
+        "pattern": "let mut detector = CriticalMistakeDetector::new(config).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-llm/src/critical.rs",
+        "line": 946,
+        "pattern": "let result = detector.detect_critical_mistakes(code_with_error).await.unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-llm/src/critical.rs",
+        "line": 955,
+        "pattern": "let mut detector = CriticalMistakeDetector::new(config).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-llm/src/critical.rs",
+        "line": 958,
+        "pattern": "let result = detector.detect_critical_mistakes(code_with_vulnerability).await.unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-llm/src/critical.rs",
+        "line": 968,
+        "pattern": "let detector = CriticalMistakeDetector::new(config).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-llm/src/critical.rs",
+        "line": 978,
+        "pattern": "let detector = CriticalMistakeDetector::new(config).unwrap();",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "codehud-llm/src/validation.rs",
+        "line": 271,
+        "pattern": "self.schema_cache.get(&rule.id).unwrap()",
+        "severity": "low",
+        "type": "unwrap_call"
+      },
+      {
+        "description": "Unsafe block detected - review for memory safety",
+        "file": "codehud-llm/tests/phase_5b_validation.rs",
+        "line": 149,
+        "pattern": "\"def unsafe_exec(user_input):\\n    exec(user_input)\",",
+        "severity": "medium",
+        "type": "unsafe_block"
+      },
+      {
+        "description": "expect() call may panic - ensure proper error handling",
+        "file": "codehud-llm/tests/equivalence_tests.rs",
+        "line": 184,
+        "pattern": ".expect(\"Failed to write equivalence report\");",
+        "severity": "low",
+        "type": "expect_call"
+      },
+      {
+        "description": "expect() call may panic - ensure proper error handling",
+        "file": "comprehensive_verification.rs",
+        "line": 15,
+        "pattern": ".expect(\"Failed to execute analysis\");",
+        "severity": "low",
+        "type": "expect_call"
+      },
+      {
+        "description": "unwrap() call may panic - consider using expect() or proper error handling",
+        "file": "comprehensive_verification.rs",
+        "line": 256,
+        "pattern": "let dir_name = path.file_name().unwrap().to_string_lossy();",
+        "severity": "low",
+        "type": "unwrap_call"
+      }
+    ],
+    "status": "success",
+    "tool": "rust_security_analyzer",
+    "total_files": 169,
+    "total_issues": 336
+  },
+  "security_issues": [
+    {
+      "description": "HTTP URL found - consider using HTTPS",
+      "line": 436,
+      "recommendation": "Replace HTTP URLs with HTTPS",
+      "severity": "medium",
+      "type": "insecure_http"
+    },
+    {
+      "description": "HTTP URL found - consider using HTTPS",
+      "line": 35,
+      "recommendation": "Replace HTTP URLs with HTTPS",
+      "severity": "medium",
+      "type": "insecure_http"
+    },
+    {
+      "description": "HTTP URL found - consider using HTTPS",
+      "line": 631,
+      "recommendation": "Replace HTTP URLs with HTTPS",
+      "severity": "medium",
+      "type": "insecure_http"
+    },
+    {
+      "description": "HTTP URL found - consider using HTTPS",
+      "line": 54,
+      "recommendation": "Replace HTTP URLs with HTTPS",
+      "severity": "medium",
+      "type": "insecure_http"
+    }
+  ],
+  "sensitive_data_exposure": [
+    {
+      "line": 119,
+      "pattern": "md5",
+      "severity": "medium",
+      "type": "weak_crypto_md5"
+    },
+    {
+      "line": 119,
+      "pattern": "MD5",
+      "severity": "medium",
+      "type": "weak_crypto_md5"
+    },
+    {
+      "line": 119,
+      "pattern": "md5",
+      "severity": "medium",
+      "type": "weak_crypto_md5"
+    },
+    {
+      "line": 120,
+      "pattern": "sha1",
+      "severity": "medium",
+      "type": "weak_crypto_sha1"
+    },
+    {
+      "line": 120,
+      "pattern": "SHA1",
+      "severity": "medium",
+      "type": "weak_crypto_sha1"
+    },
+    {
+      "line": 120,
+      "pattern": "sha1",
+      "severity": "medium",
+      "type": "weak_crypto_sha1"
+    },
+    {
+      "line": 365,
+      "pattern": "md5",
+      "severity": "medium",
+      "type": "weak_crypto_md5"
+    }
+  ],
+  "summary": {
+    "dangerous_function_usage": 0,
+    "files_with_security_issues": 0,
+    "high_severity_findings": 0,
+    "low_severity_findings": 0,
+    "medium_severity_findings": 4,
+    "security_coverage": 100.0,
+    "sensitive_data_exposures": 7,
+    "total_files_scanned": 169,
+    "total_security_findings": 4
+  },
+  "vulnerabilities": [],
+  "vulnerable_files": []
+}

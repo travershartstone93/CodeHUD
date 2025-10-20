@@ -1,0 +1,40 @@
+[package]
+name = "codehud-tui"
+version = "0.1.0"
+edition = "2021"
+description = "Terminal user interface with Textual compatibility - Zero degradation from Python"
+
+[dependencies]
+# Core infrastructure
+serde = { workspace = true }
+tokio = { workspace = true }
+anyhow = { workspace = true }
+thiserror = { workspace = true }
+
+# Terminal UI
+ratatui = { workspace = true }
+crossterm = { workspace = true }
+syntect = { workspace = true }
+unicode-width = { workspace = true }
+
+# Analysis integration
+codehud-core = { path = "../codehud-core" }
+codehud-analysis = { path = "../codehud-analysis" }
+codehud-utils = { path = "../codehud-utils" }
+codehud-viz = { path = "../codehud-viz" }
+
+# JSON handling
+serde_json = { workspace = true }
+
+# CLI interface
+clap = { workspace = true }
+chrono = { workspace = true }
+atty = "0.2"
+# futures = "0.3"
+
+[dev-dependencies]
+tempfile = { workspace = true }
+
+[[bin]]
+name = "codehud-tui"
+path = "src/main.rs"

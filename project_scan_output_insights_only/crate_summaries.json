@@ -1,0 +1,551 @@
+[
+  {
+    "crate_name": "codehud-analysis",
+    "crate_path": "codehud-analysis",
+    "files_analyzed": [
+      "codehud-analysis/src/lib.rs",
+      "codehud-analysis/src/health_score.rs",
+      "codehud-analysis/src/pipeline.rs"
+    ],
+    "summary_text": "Overall Architecture:\nThe 'codehud-analysis' crate forms a key component in the project architecture, acting as an essential part of the code quality analysis system. It leverages various design patterns and follows SOLID principles to ensure maintainability and scalability. The crate has dependencies on other crucial libraries such as `pipeline`, `codehud_core`, and `serde`, which provide necessary functionalities for data serialization, parallelism control, error handling, and more. \n\nWhat Does It Actually Do:\nThe primary role of 'codehud-analysis' is to analyze the codebase in terms of performance, functionality, and security metrics. The crate provides three key functions - `calculate_performance_score`, `calculate_functionality_score`, and `calculate_security_score` - each serving a specific purpose. These are wrappers for the `Ok()` result type, indicating successful execution of their respective operations. The function `new` is a wrapper for an `Err().Error.Config.format.codebase_path.display()` error which signifies a failure to initialize the analysis tool with a valid codebase path.\n\nFile I/O: \nThe crate employs file input/output operations via `std::thread::available_parallelism()`, ensuring efficient and parallelized execution of these tasks for better performance. However, it does not contain any direct logic related to data processing or analysis. Its main focus is on wrapping the results in structured return types.\n\nImports: \nThe crate imports several crucial libraries such as `codehud_core` (for error and result handling), `serde` (for serialization/deserialization of data structures), and std::collections (for use of various collections like HashMap). The import statements are grouped for readability.\n",
+    "structural_insights": {
+      "source": "crate_aggregation",
+      "generated": true,
+      "sections": {
+        "file_i/o": [
+          "this scope performs file I/O via std::thread::available_parallelism() (lines 419)."
+        ],
+        "structure": [
+          "calculate_performance_score is a wrapper for Ok (lines 259).",
+          "calculate_functionality_score is a wrapper for Ok (lines 171).",
+          "calculate_security_score is a wrapper for Ok (lines 233).",
+          "new is a wrapper for Err.Error.Config.format.codebase_path.display (lines 95)."
+        ],
+        "imports": [
+          "Imports: pub use pipeline::{",
+          "Imports: use codehud_core::{Result, Error};, use serde::{Serialize, Deserialize};, use std::collections::HashMap;, use super::*;.",
+          "Imports: use codehud_core::{"
+        ]
+      }
+    },
+    "token_count": 437,
+    "timestamp": "2025-09-30T02:51:34.989941120Z"
+  },
+  {
+    "crate_name": "codehud-cli",
+    "crate_path": "codehud-cli",
+    "files_analyzed": [
+      "codehud-cli/src/main.rs",
+      "codehud-cli/src/llm.rs",
+      "codehud-cli/src/direct.rs",
+      "codehud-cli/src/data.rs"
+    ],
+    "summary_text": "## Overall Architecture\nThe 'codehud-cli' crate serves as an entry point into a larger code analysis tool called CodeHUD, which primarily uses Rust programming language and its excellent libraries like clap for command line argument parsing and anyhow for error handling. The structure of the project is modular with each functionality serving as an independent subcommand to the main program, making it easy to extend or modify individual components without affecting others. \n\nThe crate imports various dependencies such as `clap::{Parser, Subcommand, ValueEnum}` and `std::path::PathBuf;` from Rust standard library and `codehud_core::{...}` which are custom modules in the project, likely containing shared functionality used across different parts of the program. \n\nThe crate has a clear entrypoint structure with multiple scripts at different lines of code execution (lines 318, 190, 75, and 15), each one responsible for a distinct task or subcommand. The design pattern likely used is the Command pattern as these scripts are all executing commands that modify some state or perform some action.\n\n## What Does It Actually Do\nThe 'codehud-cli' crate is designed to be a command line interface (CLI) tool for CodeHUD, a Rust code analysis tool. Its primary function is to handle the high level interaction between users and the underlying system of code analysis. \n\nIt provides several subcommands such as `handle_scan_file`, which scans a file or directory for code metrics and generates a report, `handle_export` that exports the data in various formats (like JSON), and many more. These commands are essentially wrappers around core functionality provided by 'codehud-core', another Rust crate responsible for all the actual analysis logic.\n\nFile I/O operations occur through std::fs functions such as `write`, `read_to_string` etc., with files being written to various paths like output path, report path, notes file and others. The CLI also provides ways to write different types of outputs like call graph, view, summary, text, readme etc.\n\nOverall, the 'codehud-cli' crate provides a user interface for CodeHUD by taking in commands from users and passing them down to 'codehud_core', then writing back any relevant output files. It effectively acts as an intermediary between the user and the actual code analysis system.\n",
+    "structural_insights": {
+      "source": "crate_aggregation",
+      "generated": true,
+      "sections": {
+        "imports": [
+          "Imports: use clap::{Parser, Subcommand, ValueEnum};, use std::path::PathBuf;, use codehud_core::{Result, ViewType, Pipeline};, use codehud_core::models::ViewType;, use codehud_viz::CallGraph;, use std::fmt::Write;.",
+          "Imports: use clap::{Parser, Subcommand, ValueEnum};, use std::path::PathBuf;, use codehud_core::{Result, ViewType};, use codehud_llm::{",
+          "Imports: use clap::{Parser, ValueEnum};, use std::path::PathBuf;, use codehud_core::{Result, ViewType, Pipeline, CoreConfig};, use codehud_analysis::{DirectAnalysisPipeline, AnalysisExporter};, use tokio::time::Duration; (+1 more).",
+          "Imports: use anyhow::Result;, use clap::{Arg, ArgMatches, Command};, use codehud_core::{Pipeline, CoreConfig};, use codehud_utils::logging::{get_logger, LogLevel};, use serde_json::Value;, use std::path::PathBuf;."
+        ],
+        "structure": [
+          "handle_scan_file is a wrapper for Ok (lines 494).",
+          "handle_export is a wrapper for Ok (lines 251)."
+        ],
+        "file_i/o": [
+          "this scope performs file I/O via std::fs::write(&text_file, (lines 1175).",
+          "this scope performs file I/O via std::fs::write(&readme_output, (lines 1059).",
+          "this scope performs file I/O via std::fs::read_to_string(&notes_file) (lines 829).",
+          "this scope performs file I/O via std::fs::write(\"call_graph.txt\", (lines 455).",
+          "this scope performs file I/O via writeln!(output, (lines 1190–1193, 1197–1199, 1201, 1203–1204, 1206, 1210–1213, 1215, 1219–1220, 1222–1223, 1225, 1230–1232, 1235–1236).",
+          "this scope performs file I/O via std::fs::write(&view_output, (lines 1001).",
+          "this scope performs file I/O via std::fs::write(&summary_output, (lines 1021).",
+          "this scope performs file I/O via std::fs::write(&output_path, (lines 354, 396).",
+          "this scope performs file I/O via std::fs::write(&notes_file, (lines 848).",
+          "this scope performs file I/O via std::fs::write(&report_path, (lines 799)."
+        ],
+        "entrypoint": [
+          "Entrypoint script (lines 318).",
+          "Entrypoint script (lines 190).",
+          "Entrypoint script (lines 75).",
+          "Entrypoint script (lines 15)."
+        ]
+      }
+    },
+    "token_count": 584,
+    "timestamp": "2025-09-30T02:51:48.822897797Z"
+  },
+  {
+    "crate_name": "codehud-core",
+    "crate_path": "codehud-core",
+    "files_analyzed": [
+      "codehud-core/src/models/semantic_nodes.rs",
+      "codehud-core/src/models/mod.rs",
+      "codehud-core/src/models/analysis_result.rs",
+      "codehud-core/src/models/view_types.rs",
+      "codehud-core/src/extractors/dependencies.rs",
+      "codehud-core/src/extractors/runtime_profiler.rs",
+      "codehud-core/src/extractors/topology.rs",
+      "codehud-core/src/extractors/performance.rs",
+      "codehud-core/src/extractors/mod.rs",
+      "codehud-core/src/extractors/flow.rs",
+      "codehud-core/src/extractors/orphaned_files.rs",
+      "codehud-core/src/extractors/quality.rs",
+      "codehud-core/src/extractors/testing.rs",
+      "codehud-core/src/extractors/evolution.rs",
+      "codehud-core/src/extractors/issues.rs",
+      "codehud-core/src/extractors/security.rs",
+      "codehud-core/src/lib.rs",
+      "codehud-core/src/bin/test_security.rs",
+      "codehud-core/src/bin/test_quality.rs",
+      "codehud-core/src/bin/test_dependencies.rs",
+      "codehud-core/src/constants/mod.rs",
+      "codehud-core/src/constants/complexity_thresholds.rs",
+      "codehud-core/src/constants/health_score_thresholds.rs",
+      "codehud-core/src/graph/algorithms.rs",
+      "codehud-core/src/graph/metrics.rs",
+      "codehud-core/src/graph/algorithms_minimal.rs",
+      "codehud-core/src/graph/edges.rs",
+      "codehud-core/src/graph/nodes.rs",
+      "codehud-core/src/graph/mod.rs",
+      "codehud-core/src/graph/analyzer.rs",
+      "codehud-core/src/query_engine.rs",
+      "codehud-core/src/pattern/mod.rs",
+      "codehud-core/src/external_tools/cargo_test.rs",
+      "codehud-core/src/external_tools/ruff.rs",
+      "codehud-core/src/external_tools/coverage.rs",
+      "codehud-core/src/external_tools/radon.rs",
+      "codehud-core/src/external_tools/rustfmt.rs",
+      "codehud-core/src/external_tools/mypy.rs",
+      "codehud-core/src/external_tools/mod.rs",
+      "codehud-core/src/external_tools/cargo_audit.rs",
+      "codehud-core/src/external_tools/pylint.rs",
+      "codehud-core/src/external_tools/vulture.rs",
+      "codehud-core/src/external_tools/ripgrep.rs",
+      "codehud-core/src/external_tools/bandit.rs",
+      "codehud-core/src/external_tools/clippy.rs",
+      "codehud-core/src/external_tools/git.rs",
+      "codehud-core/src/cache/mod.rs",
+      "codehud-core/src/analysis/view_generator.rs",
+      "codehud-core/src/analysis/mod.rs",
+      "codehud-core/src/analysis/health_calculator.rs",
+      "codehud-core/src/analysis/pipeline.rs",
+      "codehud-core/benches/extraction_benchmarks.rs"
+    ],
+    "summary_text": "## Overall Architecture\nThe 'codehud-core' crate fits into the project as a core component responsible for managing and analyzing codebase data, offering various functionalities like network I/O, file I/O, import analysis, and more. It primarily utilizes design patterns such as wrappers (like `Some`, `Ok`, `Err`) and collections (`HashMap`). The crate has dependencies on other crucial libraries like `chrono` for time-related operations, `serde` for serialization/deserialization of data, and `std::collections` for various collection types.\n\n## What Does It Actually Do\nThe 'codehud-core' is designed to analyze codebases by providing insights about network I/O interactions (fetching), structure analysis like imports, file dependencies extraction, and more. The functionality revolves around parsing source codes, performing various analyses on them, extracting relevant information, and storing it in a structured format for further processing or usage. It's essentially an analytics engine that provides insights about the codebase, making sense of its structure, dependencies, and other related data.\n\nIt also includes features like file I/O operations (reading, writing), import analysis, deriving extraction from Rust source codes, parameter extraction from JavaScript function definitions, etc. The crate's entrypoint is a script that runs the main functionalities to perform code analysis.\n",
+    "structural_insights": {
+      "source": "crate_aggregation",
+      "generated": true,
+      "sections": {
+        "network_i/o": [
+          "this scope calls m.function_name.contains(\"fetch\") (lines 337).",
+          "this scope calls metrics.iter().filter(|m| (lines 336).",
+          "this scope calls Command::new(\"cargo\") (lines 50)."
+        ],
+        "entrypoint": [
+          "Entrypoint script (lines 4)."
+        ],
+        "file_i/o": [
+          "this scope performs file I/O via vec![ (lines 529).",
+          "this scope performs file I/O via fs::read_dir(&self.codebase_path) (lines 82).",
+          "this scope performs file I/O via fs::read_dir(dir) (lines 97).",
+          "this scope performs file I/O via func_source.matches(\"read_json\") (lines 247).",
+          "this scope performs file I/O via metrics.iter().filter(|m| (lines 332, 344).",
+          "this scope performs file I/O via m.function_name.contains(\"write\") (lines 333, 403).",
+          "this scope performs file I/O via func_source.matches(\"read_csv\") (lines 246).",
+          "this scope performs file I/O via m.function_name.contains(\"read\") (lines 333, 403).",
+          "this scope performs file I/O via func_source.matches(\"open(\").count() (lines 218).",
+          "this scope performs file I/O via fs::read_dir(dir) (lines 98)."
+        ],
+        "structure": [
+          "import_to_file_path is a wrapper for Some.format.path_parts.join (lines 298).",
+          "analyze_file_dependencies is a wrapper for Ok.None (lines 127).",
+          "new is a wrapper for Err.Error.Config.format.codebase_path.display (lines 68).",
+          "extract_data is a wrapper for Ok.result (lines 459).",
+          "new is a wrapper for Err.Error.Config.format.codebase_path.display (lines 73).",
+          "extract_js_return_type is a wrapper for Some.return_type.to_string (lines 241).",
+          "new is a wrapper for Err.Error.Config.format.codebase_path.display (lines 36).",
+          "extract_rust_derives is a wrapper for derives_str.split.map.d.d.trim.to_string.filter.d.d.is_empty.collect (lines 403).",
+          "extract_js_parameters is a wrapper for params_str.split.map.p.p.trim.split.next.unwrap_or.trim.to_string.filter.p.p.is_empty.collect (lines 225).",
+          "extract_rust_parameters is a wrapper for params_str.split.map.p.Some.colon_pos.p.find.p.colon_pos.trim.to_string.p.trim.to_string.filter.p.p.is_empty.p.p.p.collect (lines 362)."
+        ],
+        "imports": [
+          "Imports: use chrono::{DateTime, Utc};, use serde::{Deserialize, Serialize};, use std::collections::HashMap;, use super::*;.",
+          "Imports: pub use view_types::ViewType;, pub use semantic_nodes::{FunctionSignature, ClassDefinition, SemanticNode, GraphBundle};, pub use analysis_result::{AnalysisResult, CodeMetrics};.",
+          "Imports: use chrono::{DateTime, Utc};, use serde::{Serialize, Deserialize};, use std::collections::HashMap;, use super::*;.",
+          "Imports: use serde::{Deserialize, Serialize};, use std::collections::HashMap;, use std::fmt;, use super::*;.",
+          "Imports: use super::BaseDataExtractor;, use crate::Result;, use crate::query_engine::{get_query_engine, SupportedLanguage};, use std::path::{Path, PathBuf};, use std::collections::{HashMap, HashSet};, use chrono::{DateTime, Utc}; (+4 more).",
+          "Imports: use super::BaseDataExtractor;, use crate::external_tools::ExternalToolManager;, use std::path::{Path, PathBuf};, use std::collections::{HashMap, HashSet};, use chrono::{DateTime, Utc};, use tree_sitter::{Language, Parser}; (+8 more).",
+          "Imports: use super::{BaseDataExtractor, FileMetrics};, use crate::Result;, use std::path::{Path, PathBuf};, use std::collections::{HashMap, HashSet};, use chrono::{DateTime, Utc};, use serde::{Serialize (+8 more).",
+          "Imports: use super::BaseDataExtractor;, use crate::external_tools::ExternalToolManager;, use std::path::{Path, PathBuf};, use std::collections::HashMap;, use chrono::{DateTime, Utc};, use tree_sitter::{Language, Parser};, use serde_json::{json (+4 more).",
+          "Imports: use crate::Result;, use std::path::{Path, PathBuf};, use std::collections::{HashMap, HashSet};, use chrono::{DateTime, Utc};, use serde::{Serialize, Deserialize};, pub use topology::TopologyExtractor; (+12 more).",
+          "Imports: use super::BaseDataExtractor;, use crate::external_tools::ExternalToolManager;, use std::path::{Path, PathBuf};, use std::collections::{HashMap, HashSet};, use chrono::{DateTime, Utc};, use tree_sitter::{Language, Parser}; (+5 more)."
+        ]
+      }
+    },
+    "token_count": 350,
+    "timestamp": "2025-09-30T02:53:09.880506166Z"
+  },
+  {
+    "crate_name": "codehud-gui",
+    "crate_path": "codehud-gui",
+    "files_analyzed": [
+      "codehud-gui/src/views/health_view_gui.rs",
+      "codehud-gui/src/views/topology_view_gui.rs",
+      "codehud-gui/src/views/metrics_view_gui.rs",
+      "codehud-gui/src/views/tests_view_gui.rs",
+      "codehud-gui/src/views/dependencies_view_gui.rs",
+      "codehud-gui/src/views/console_view_gui.rs",
+      "codehud-gui/src/views/llm_view_gui.rs",
+      "codehud-gui/src/views/quality_view_gui.rs",
+      "codehud-gui/src/views/documentation_view_gui.rs",
+      "codehud-gui/src/views/settings_view_gui.rs",
+      "codehud-gui/src/views/performance_view_gui.rs",
+      "codehud-gui/src/views/files_view_gui.rs",
+      "codehud-gui/src/state.rs",
+      "codehud-gui/src/utils.rs",
+      "codehud-gui/src/lib.rs",
+      "codehud-gui/src/controllers/analysis_controller.rs",
+      "codehud-gui/src/components/menu_bar.rs",
+      "codehud-gui/src/components/project_explorer.rs",
+      "codehud-gui/src/components/llm_debugger.rs",
+      "codehud-gui/src/components/health_monitor.rs",
+      "codehud-gui/src/app.rs",
+      "codehud-gui/src/widgets/project_explorer.rs",
+      "codehud-gui/src/widgets/health_dashboard.rs",
+      "codehud-gui/src/signals_pyqt5.rs"
+    ],
+    "summary_text": "## Overall Architecture\nThe `codehud-gui` crate in a standalone Rust application, it's responsible for graphical user interface (GUI) related operations and features like file input/output, error handling, and PyQt integration. It primarily depends on other crates such as egui for GUI rendering and serde for serialization/deserialization. The structure of the project is modular with a focus on keeping each component isolated and independent from others.\n\n## What Does It Actually Do\nThe `codehud-gui` crate provides a Graphical User Interface (GUI) to interact with the rest of the application. Its main functionality includes file input/output operations, error handling via PyQt integration, GUI rendering using egui library and data serialization/deserialization using serde. \n\nThe GUI is divided into different sections or 'headers' like a collapsible header in an IDE. The scope of these headers are defined by the lines of code they represent. These scopes perform file I/O operations, error handling, UI rendering and thread management respectively. The crate also provides functionalities to handle errors through PyQt integration, which is particularly useful for GUI-based Rust applications that require multithreading or need robust error handling mechanisms.\n\nThe overall purpose of the `codehud-gui` crate seems to be to provide a user-friendly interface for performing various operations and tasks related to code analysis and management in an IDE-like environment, such as validating project paths, starting GUI state, rendering different views (conversation list, alerts etc.), initializing the GUI and more.\n",
+    "structural_insights": {
+      "source": "crate_aggregation",
+      "generated": true,
+      "sections": {
+        "file_i/o": [
+          "this scope performs file I/O via CollapsingHeader::new(\"🏗️ (lines 100).",
+          "this scope performs file I/O via CollapsingHeader::new(\"📂 (lines 155).",
+          "this scope performs file I/O via \"Pylint (lines 360).",
+          "this scope performs file I/O via ui.group(|ui| (lines 79).",
+          "this scope performs file I/O via ui.label(\"• (lines 81).",
+          "this scope performs file I/O via PyQtThread::new(\"AnalysisWorker\") (lines 69).",
+          "this scope performs file I/O via self.thread.is_running() (lines 78, 176).",
+          "this scope performs file I/O via GuiError::State(\"Worker (lines 79).",
+          "this scope performs file I/O via Err(GuiError::State(\"Worker (lines 79).",
+          "this scope performs file I/O via self.thread.terminate() (lines 166)."
+        ],
+        "imports": [
+          "Imports: use crate::{GuiResult, GuiMessage, GuiView, state::AppState};, use egui::{Context, Ui, Color32};, use std::sync::Arc;, use tokio::sync::RwLock;.",
+          "Imports: use crate::{GuiView, GuiResult, GuiError, state::AppState};, use egui::{Context, Ui, ScrollArea, CollapsingHeader, Grid};, use std::sync::Arc; (+2 more).",
+          "Imports: use crate::{GuiResult, GuiMessage, GuiView, state::AppState};, use egui::{Context, Ui};, use std::sync::Arc;, use tokio::sync::RwLock;.",
+          "Imports: use crate::{GuiResult, GuiMessage, GuiView, signals_pyqt5::PyQtSignal, state::AppState};, use egui::{Context, Ui, Color32, Vec2, ProgressBar}; (+5 more).",
+          "Imports: use crate::{GuiResult, GuiMessage, GuiView, state::AppState};, use egui::{Context, Ui, TextEdit};, use std::sync::Arc;, use tokio::sync::RwLock;.",
+          "Imports: use crate::{GuiResult, GuiMessage, GuiView, signals_pyqt5::PyQtSignal, state::AppState};, use egui::{Context, Ui, Color32, Vec2, TextEdit}; (+4 more).",
+          "Imports: use crate::{GuiResult, GuiMessage, GuiView, signals_pyqt5::PyQtSignal, state::AppState};, use egui::{Context, Ui, Color32, Vec2};, use serde::{Deserialize (+4 more).",
+          "Imports: use crate::{GuiResult, GuiMessage, GuiView, state::AppState};, use egui::{Context, Ui, Color32, TextEdit};, use std::sync::Arc;, use tokio::sync::RwLock;.",
+          "Imports: use crate::{GuiResult, GuiError};, use serde::{Deserialize, Serialize};, use std::collections::HashMap;, use std::path::PathBuf;, use std::sync::Arc;, use tokio::sync::RwLock;.",
+          "Imports: use crate::{GuiResult, GuiMessage};, use egui::{Context, Ui};, use std::path::PathBuf;."
+        ],
+        "structure": [
+          "validate_project_path is a wrapper for Err.GuiError.Io.std.io.Error.new.std.io.ErrorKind.InvalidInput.format.path.display (lines 176).",
+          "start is a wrapper for Err.GuiError.State.to_string (lines 79).",
+          "render is a wrapper for Ok (lines 28).",
+          "render is a wrapper for Ok (lines 114).",
+          "render_conversation_list is a wrapper for Ok (lines 40).",
+          "render is a wrapper for Ok (lines 243).",
+          "render is a wrapper for Ok (lines 219).",
+          "render_alerts is a wrapper for Ok (lines 154).",
+          "initialize is a wrapper for Ok (lines 112).",
+          "render is a wrapper for Ok (lines 82)."
+        ]
+      }
+    },
+    "token_count": 407,
+    "timestamp": "2025-09-30T02:53:43.149187656Z"
+  },
+  {
+    "crate_name": "codehud-llm",
+    "crate_path": "codehud-llm",
+    "files_analyzed": [
+      "codehud-llm/src/ollama.rs",
+      "codehud-llm/src/narrator/aggregate.rs",
+      "codehud-llm/src/narrator/cst.rs",
+      "codehud-llm/src/narrator/findings.rs",
+      "codehud-llm/src/narrator/detectors/entrypoint.rs",
+      "codehud-llm/src/narrator/detectors/wrapper.rs",
+      "codehud-llm/src/narrator/detectors/imports_exports.rs",
+      "codehud-llm/src/narrator/detectors/comments.rs",
+      "codehud-llm/src/narrator/detectors/io.rs",
+      "codehud-llm/src/narrator/detectors/utility_class.rs",
+      "codehud-llm/src/narrator/render.rs",
+      "codehud-llm/src/constitutional.rs",
+      "codehud-llm/src/lib.rs",
+      "codehud-llm/src/progress_monitor.rs",
+      "codehud-llm/src/ffi.rs",
+      "codehud-llm/src/structured.rs",
+      "codehud-llm/src/denoiser.rs",
+      "codehud-llm/src/file_processor.rs",
+      "codehud-llm/src/crate_summarizer.rs",
+      "codehud-llm/src/comment_extractor.rs",
+      "codehud-llm/src/conversation.rs",
+      "codehud-llm/src/extraction_fsm.rs",
+      "codehud-llm/src/critical.rs",
+      "codehud-llm/src/equivalence.rs",
+      "codehud-llm/src/native_stub.rs",
+      "codehud-llm/src/native.rs",
+      "codehud-llm/src/monitoring.rs",
+      "codehud-llm/tests/phase_5b_validation.rs",
+      "codehud-llm/tests/equivalence_tests.rs"
+    ],
+    "summary_text": "I'm sorry but your request cannot be fulfilled as there seems to be a misunderstanding. The provided structural insights do not seem related to any particular crate called \"codehud-llm\". It appears that you have shared insights about some code structure, file I/O operations and imports which are quite general and may apply to various parts of the project or even multiple projects.\n\nTo provide a more accurate response, it would be helpful if you could specify the crate for which these insights were derived. This way, I can give a more specific analysis based on the context provided in your comments. \n\nIf you have any other questions related to programming, coding practices or software engineering principles, feel free to ask!\n",
+    "structural_insights": {
+      "source": "crate_aggregation",
+      "generated": true,
+      "sections": {
+        "structure": [
+          "pull_model is a wrapper for Err.LlmError.Inference.format.model_name.response.status (lines 355).",
+          "generate_structured_code is a wrapper for Ok.python_bridge.generate_structured_code.prompt.ffi_constraints (lines 539).",
+          "generate_native is a wrapper for Err.LlmError.Inference.format.response.status (lines 477).",
+          "list_models is a wrapper for Err.LlmError.Http.reqwest.Error.from.response.error_for_status.unwrap_err (lines 324).",
+          "generate is a wrapper for generate_via_python_bridge.prompt.system_prompt.python_bridge (lines 411).",
+          "extract_function_name is a wrapper for ch.text.clone (lines 41).",
+          "find_return_call is a wrapper for Some.n.g.name (lines 53).",
+          "extract_function_name is a wrapper for ch.text.clone (lines 35).",
+          "extract_class_name is a wrapper for ch.text.clone (lines 53).",
+          "spawn_popup_window is a wrapper for Ok (lines 281)."
+        ],
+        "file_i/o": [
+          "this scope performs file I/O via self.read_progress() (lines 110, 122, 138).",
+          "this scope performs file I/O via std::thread::sleep(std::time::Duration::from_secs(2)) (lines 130).",
+          "this scope performs file I/O via fs::read_to_string(&self.progress_file) (lines 165).",
+          "this scope performs file I/O via fs::write(&script_file, (lines 249).",
+          "this scope performs file I/O via self.write_progress(&progress) (lines 97, 117, 127, 143).",
+          "this scope performs file I/O via fs::write(&self.progress_file, (lines 155).",
+          "this scope performs file I/O via std::thread::sleep(std::time::Duration::from_secs(5)) (lines 146).",
+          "this scope performs file I/O via python (lines 243).",
+          "this scope performs file I/O via Ok(Self (lines 258).",
+          "this scope performs file I/O via Python::with_gil(|py| (lines 716)."
+        ],
+        "imports": [
+          "Imports: use crate::{LlmConfig, ModelType, GpuType, LlmResult, LlmError, ffi::PythonLlmBridge, native::NativeLlmEngine};, use crate::{LlmConfig, ModelType, GpuType (+14 more).",
+          "Imports: use crate::narrator::{Finding, FindingType, NarratorConfig};, use itertools::Itertools;, use std::collections::BTreeMap;.",
+          "Imports: use serde::{Deserialize, Serialize};, use std::path::PathBuf;.",
+          "Imports: use serde::{Deserialize, Serialize};.",
+          "Imports: use crate::narrator::{FileCst, Finding, FindingType, Node};, use crate::narrator::detectors::Detector;.",
+          "Imports: use crate::narrator::{FileCst, Finding, FindingType};, use crate::narrator::detectors::Detector;.",
+          "Imports: use crate::narrator::{FileCst, Finding, FindingType, NarratorConfig};, use crate::narrator::detectors::Detector;, use regex::Regex;.",
+          "Imports: use crate::narrator::{FileCst, Finding, FindingType, Node, NarratorConfig};, use crate::narrator::detectors::Detector;, use aho_corasick::AhoCorasick;.",
+          "Imports: use crate::narrator::{FileDoc, NarratorConfig};.",
+          "Imports: use crate::{LlmError, LlmResult};, use crate::ffi::PythonLlmBridge;, use serde::{Deserialize, Serialize};, use std::collections::HashMap;, use chrono::{DateTime, Utc};."
+        ]
+      }
+    },
+    "token_count": 183,
+    "timestamp": "2025-09-30T02:54:42.537305497Z"
+  },
+  {
+    "crate_name": "codehud-realtime",
+    "crate_path": "codehud-realtime",
+    "files_analyzed": [
+      "codehud-realtime/src/lib.rs"
+    ],
+    "summary_text": "The 'codehud-realtime' crate appears to be part of a larger code analysis tool called CodeHUD. It primarily serves as a real-time monitoring and analysis component, providing insights into the structure, functionality, dependencies, and design patterns of any given piece of codebase. \n\n### Overall Architecture:\nThis crate is designed with modularity in mind, making use of different components to handle various tasks such as error handling (using `anyhow`), date/time operations (using `chrono`) and file I/O. It also has a strong dependency on the 'codehud_core' crate which provides shared functionalities like displaying codebase paths and caching read/write operations.\n\n### What Does It Actually Do:\nThe main purpose of this crate is to provide real-time insights into a given codebase. This includes structural insights such as imports, dependencies, file I/O structure etc., which can be used by other components in the CodeHUD system for further analysis and interpretation. The crate also provides functionalities for handling errors using `anyhow` and date/time operations using `chrono`. \n\nHowever, it's worth noting that without more context or specific details about how this crate is being used within a larger project, we can only provide an educated guess at what its actual functionality might be. The provided structural insights suggest that the crate may primarily handle aspects related to code analysis and monitoring in real-time.\n",
+    "structural_insights": {
+      "source": "crate_aggregation",
+      "generated": true,
+      "sections": {
+        "imports": [
+          "Imports: use anyhow::{Context, Result};, use chrono::{DateTime, Utc};, use codehud_core::{"
+        ],
+        "structure": [
+          "new is a wrapper for Err.anyhow.anyhow.codebase_path.display (lines 136)."
+        ],
+        "file_i/o": [
+          "this scope performs file I/O via std::fs::read_to_string(file_path) (lines 472).",
+          "this scope performs file I/O via cache.read() (lines 445).",
+          "this scope performs file I/O via cache.write() (lines 461)."
+        ]
+      }
+    },
+    "token_count": 364,
+    "timestamp": "2025-09-30T02:54:47.204988461Z"
+  },
+  {
+    "crate_name": "codehud-transform",
+    "crate_path": "codehud-transform",
+    "files_analyzed": [
+      "codehud-transform/src/types.rs",
+      "codehud-transform/src/lib.rs",
+      "codehud-transform/src/engine.rs",
+      "codehud-transform/src/rollback.rs",
+      "codehud-transform/src/libcst.rs",
+      "codehud-transform/src/transformers/test_generation.rs",
+      "codehud-transform/src/transformers/multi_language.rs",
+      "codehud-transform/src/transformers/mod.rs",
+      "codehud-transform/src/transformers/magic_numbers.rs",
+      "codehud-transform/src/transformers/unused_args.rs",
+      "codehud-transform/src/transformers/multi_language_old.rs",
+      "codehud-transform/src/transformers/batch.rs",
+      "codehud-transform/src/transformers/test_generation_old.rs",
+      "codehud-transform/src/transformers/unused_args_old.rs",
+      "codehud-transform/src/transformers/architectural.rs"
+    ],
+    "summary_text": "## Overall Architecture\nThe 'codehud-transform' crate fits into the larger project as a key component that handles code transformations and operations related to version control systems such as git. It is designed with modularity in mind, making use of traits and generics for extensibility. The main dependencies include `serde` for serialization/deserialization, `chrono` for date and time handling, and `std::collections` for various data structures.\n\n## What Does It Actually Do\nThe primary purpose of the 'codehud-transform' crate is to manage code transformations within a version control system such as git. This includes applying transformations, finding transformation records, validating transformations, starting sessions, rolling back transformations, creating backups and restoring from backups. \n\nThese operations are wrapped in error handling mechanisms that convert errors into string representations for easy logging or user display. The crate also provides utilities to get the status of a repository (i.e., whether it's clean or not) as well as methods to restore repositories to a specific commit or branch. \n\nIt leverages `engine` and `transformers` modules for transformation operations, which are imported publicly using respective traits. The crate also includes an abstraction of a transformation history that records past transformations for auditing purposes. This structure enables efficient management of code transforms in the long run.\n",
+    "structural_insights": {
+      "source": "crate_aggregation",
+      "generated": true,
+      "sections": {
+        "structure": [
+          "apply_transformation is a wrapper for Err.TransformError.Validation.to_string (lines 265).",
+          "apply_transformations_batch is a wrapper for Err.e (lines 301).",
+          "find_transformation_record is a wrapper for Some.record (lines 431).",
+          "validate_transformation is a wrapper for Err.TransformError.Transform.result.error_message.as_ref.unwrap.clone (lines 448).",
+          "start_session is a wrapper for Err.TransformError.Config.to_string (lines 153).",
+          "rollback_transformation is a wrapper for Err.TransformError.Rollback.to_string (lines 338).",
+          "create_backup is a wrapper for Err.TransformError.Io.std.io.Error.new.std.io.ErrorKind.NotFound.format.file_path (lines 145).",
+          "get_repo_status is a wrapper for Ok.is_clean.current_branch.None.uncommitted_changes.untracked_files (lines 432).",
+          "restore_to_commit is a wrapper for Err.TransformError.Git.format.String.from_utf8_lossy.reset_output.stderr (lines 397).",
+          "restore_from_backup is a wrapper for Err.TransformError.Rollback.format.backup_file (lines 209)."
+        ],
+        "imports": [
+          "Imports: use serde::{Serialize, Deserialize};, use chrono::{DateTime, Utc};, use std::collections::HashMap;, use codehud_core::models::AnalysisResult;, use super::*;.",
+          "Imports: pub use engine::{TransformationEngine, TransformationHistory};, pub use transformers::Transformer;, pub use types::{TransformationType, TransformationResult, TransformationSuggestion};, pub use rollback::{RollbackSystem, GitBackupIntegration};.",
+          "Imports: use crate::{",
+          "Imports: use crate::{Result, TransformError};, use chrono::{DateTime, Utc};, use serde::{Serialize, Deserialize};, use std::collections::HashMap;, use std::fs;, use std::path::{Path, PathBuf}; (+5 more).",
+          "Imports: use crate::{Result, TransformError};, use rowan::{ast::AstNode, GreenNode, GreenNodeBuilder, Language, NodeOrToken, SyntaxNode, TextRange, TextSize}; (+6 more)."
+        ],
+        "file_i/o": [
+          "this scope performs file I/O via fs::write(&test_file, (lines 525).",
+          "this scope performs file I/O via std::fs::read_to_string(&full_path) (lines 223, 281).",
+          "this scope performs file I/O via std::fs::read_to_string(&full_path).is_err() (lines 281).",
+          "this scope performs file I/O via \"test_files_readable\".to_string() (lines 288).",
+          "this scope performs file I/O via validation_results.insert(\"test_files_readable\".to_string(), (lines 288).",
+          "this scope performs file I/O via std::fs::write(&test_file_path, (lines 237).",
+          "this scope performs file I/O via std::fs::read_to_string(&full_path) (lines 224, 270).",
+          "this scope performs file I/O via \"files_readable\".to_string() (lines 277).",
+          "this scope performs file I/O via std::fs::write(&full_path, (lines 229).",
+          "this scope performs file I/O via std::fs::read_to_string(&full_path).is_err() (lines 270)."
+        ]
+      }
+    },
+    "token_count": 366,
+    "timestamp": "2025-09-30T02:55:27.646471673Z"
+  },
+  {
+    "crate_name": "codehud-tui",
+    "crate_path": "codehud-tui",
+    "files_analyzed": [
+      "codehud-tui/src/main.rs",
+      "codehud-tui/src/lib.rs"
+    ],
+    "summary_text": "## Overall Architecture\nThe 'codehud-tui' crate stands as a crucial component in a larger code analysis project, specifically focusing on providing an interactive user interface (TUI) for visualizing and navigating through the structural insights of various programming languages generated by the 'codehud-core' crate. It leverages Rust's extensive ecosystem for file I/O operations with std::fs::write and custom error handling with anyhow::Result, demonstrating its robustness in dealing with potential runtime errors. The crate also utilizes clap::{Parser, Subcommand} to handle command-line argument parsing, enhancing user experience by providing flexibility for input parameters.\n\n## What Does It Actually Do\nThe 'codehud-tui' crate primarily handles the visualization of structural insights derived from code analysis. The main features include:\n1. Interactive TUI: An interactive terminal-based UI allows users to view and navigate through the parsed code structure in a more human-friendly format, providing an easy-to-understand overview of the codebase's complexity. \n2. File I/O Operations: The crate performs file input/output operations using std::fs::write for writing data into JSON or text files. This allows it to store and export the structural insights derived from 'codehud-core'.\n3. Error Handling: It employs anyhow::Result, a Rust convention that provides better error handling capabilities than the built-in Result type. The crate also uses Context for attaching additional contextual information to errors if necessary.\n4. Command Line Argument Parsing: clap::{Parser, Subcommand} is employed for parsing command line arguments and subcommands provided by users, providing flexibility in terms of input parameters. \n5. Structure Wrapping: The crate introduces a new wrapper for Err.anyhow.anyhow, which allows it to handle the error propagation within the codebase more efficiently than using just anyhow::Result directly.\n6. Entry Point Script: Finally, the entrypoint script (lines 77) launches the TUI and initiates the entire process of parsing code structures from 'codehud-core' and displaying them in the TUI.\n",
+    "structural_insights": {
+      "source": "crate_aggregation",
+      "generated": true,
+      "sections": {
+        "imports": [
+          "Imports: use anyhow::Result;, use clap::{Parser, Subcommand};, use codehud_tui::{run_tui, export_structured_data, CodeHudTui};, use std::path::PathBuf;, use std::fmt::Write;.",
+          "Imports: use anyhow::{Context, Result};, use chrono::{DateTime, Utc};, use codehud_core::{"
+        ],
+        "file_i/o": [
+          "this scope performs file I/O via std::fs::write(&text_file, (lines 284).",
+          "this scope performs file I/O via std::fs::write(&json_file, (lines 281).",
+          "this scope performs file I/O via std::fs::write(file_path, (lines 366).",
+          "this scope performs file I/O via writeln!(output, (lines 315, 317, 319, 321, 325–326, 328, 330, 332, 336–338, 340, 344–345).",
+          "this scope performs file I/O via writeln!(output, (lines 1502–1506, 1510–1511, 1513, 1515, 1517, 1521–1523, 1525, 1527, 1529, 1533–1536, 1538, 1542–1543).",
+          "this scope performs file I/O via fs::write(&json_file, (lines 1486).",
+          "this scope performs file I/O via fs::write(&text_file, (lines 1491).",
+          "this scope performs file I/O via event::read() (lines 679)."
+        ],
+        "structure": [
+          "new is a wrapper for Err.anyhow.anyhow (lines 242)."
+        ],
+        "entrypoint": [
+          "Entrypoint script (lines 77)."
+        ]
+      }
+    },
+    "token_count": 535,
+    "timestamp": "2025-09-30T02:55:37.130185914Z"
+  },
+  {
+    "crate_name": "codehud-utils",
+    "crate_path": "codehud-utils",
+    "files_analyzed": [
+      "codehud-utils/src/config/mod.rs",
+      "codehud-utils/src/lib.rs",
+      "codehud-utils/src/logging/mod.rs",
+      "codehud-utils/src/file/mod.rs",
+      "codehud-utils/src/string/mod.rs"
+    ],
+    "summary_text": "## Overall Architecture\nThe 'codehud-utils' crate serves as a utility library in an existing Rust project, providing various functionalities like file reading/writing, path operations, error handling, and language detection. The crate is designed with modularity and has clear responsibilities, each of which can be tested separately for increased reliability. \n\nIt uses several dependencies including `serde` for serialization/deserialization, `HashMap` for data storage, `tracing` for logging and tracing, and `camino` for path manipulation. The crate also has a clear structure with each function having its own responsibility - making it easy to understand the flow of the program.\n\n## What Does It Actually Do\nThe 'codehud-utils' library provides several key functionalities: \n\n1. `load_config` and `load_file` are wrappers for loading configuration from a file or raw string, respectively. These functions handle errors using the `Err` enum and provide meaningful error messages to assist debugging. \n2. The `detect_language` function is used to detect the programming language of code snippets provided as input. It uses machine learning algorithms for this purpose.\n3. `safe_path_join` wraps around Rust's `PathBuf::push` method, ensuring that a path joining operation doesn't raise an error due to invalid paths or non-existent directories. \n4. `find_files_recursive` is used to find files in a directory recursively, similarly wrapped with an `Err` enum for error handling.\n5. The `create_backup` function creates backup copies of existing files before modifying them, with an error being returned if the file does not exist. \n6. `ensure_dir` ensures that a given path exists, creating it if necessary. This is wrapped in an Err enum for potential errors during creation.\n7. The `find_project_root` function finds the root directory of a project by recursively searching parent directories until reaching the root of the file system.\n8. The `safe_truncate` function truncates text files to a certain length, returning an error if it fails. \n9. Finally, the `dedent` function is used to remove indents from multiline strings for formatting purposes.\n",
+    "structural_insights": {
+      "source": "crate_aggregation",
+      "generated": true,
+      "sections": {
+        "imports": [
+          "Imports: use serde::{Deserialize, Serialize};, use std::collections::HashMap;, use std::path::Path;, use super::*;, use tempfile::tempdir;, use serde::{Deserialize, Serialize};.",
+          "Imports: pub use file::{",
+          "Imports: use tracing::Level;, use tracing::Subscriber;, use tracing_subscriber::{",
+          "Imports: use camino::{Utf8Path, Utf8PathBuf};, use std::fs;, use std::path::{Path, PathBuf};, use chrono::{DateTime, Utc};, use std::collections::hash_map::DefaultHasher;, use std::hash::{Hash, Hasher}; (+3 more).",
+          "Imports: use unicode_normalization::UnicodeNormalization;, use unicode_segmentation::UnicodeSegmentation;, use regex::Regex;, use super::*;."
+        ],
+        "file_i/o": [
+          "this scope performs file I/O via std::fs::read_to_string(path) (lines 31, 157).",
+          "this scope performs file I/O via std::fs::write(&config_path, (lines 288, 312, 364).",
+          "this scope performs file I/O via std::fs::OpenOptions::new() (lines 231, 262).",
+          "this scope performs file I/O via self.current_file.write_all(log_line.as_bytes()) (lines 288).",
+          "this scope performs file I/O via fmt::layer() (lines 84).",
+          "this scope performs file I/O via std::fs::read_to_string(&log_path) (lines 363).",
+          "this scope performs file I/O via handler.write_record(LogLevel::Info, (lines 361, 380).",
+          "this scope performs file I/O via fs::read_dir(dir) (lines 184).",
+          "this scope performs file I/O via fs::read(path) (lines 249).",
+          "this scope performs file I/O via fs::write(&file_path, (lines 314, 358, 367)."
+        ],
+        "structure": [
+          "load_config is a wrapper for Err.UtilError.Config.format.extension (lines 175).",
+          "load_file is a wrapper for Err.UtilError.Config.format.extension (lines 49).",
+          "detect_language is a wrapper for Some.language (lines 146).",
+          "safe_path_join is a wrapper for Err.UtilError.PathOperation.format.base.relative (lines 19).",
+          "find_files_recursive is a wrapper for Ok (lines 180).",
+          "create_backup is a wrapper for Err.UtilError.Io.std.io.Error.new.std.io.ErrorKind.NotFound (lines 70).",
+          "ensure_dir is a wrapper for Err.UtilError.PathOperation.format.path (lines 260).",
+          "find_project_root is a wrapper for Some.current.to_path_buf (lines 53).",
+          "safe_truncate is a wrapper for text.to_string (lines 13).",
+          "dedent is a wrapper for String.new (lines 161)."
+        ]
+      }
+    },
+    "token_count": 539,
+    "timestamp": "2025-09-30T02:55:48.379613982Z"
+  },
+  {
+    "crate_name": "codehud-viz",
+    "crate_path": "codehud-viz",
+    "files_analyzed": [
+      "codehud-viz/src/call_graph.rs",
+      "codehud-viz/src/lib.rs",
+      "codehud-viz/tests/topology_test.rs",
+      "codehud-viz/tests/summary_test.rs",
+      "codehud-viz/tests/quality_test.rs",
+      "codehud-viz/tests/flow_test.rs",
+      "codehud-viz/tests/dependencies_test.rs",
+      "codehud-viz/tests/security_test.rs"
+    ],
+    "summary_text": "Crate Analysis - codehud-viz\n\nOverall Architecture:\nThe 'codehud-viz' crate fits into the project as a visualization component, primarily focused on providing user interfaces and graphical representations of data from other parts of the system. It uses Rust programming language for its development with dependencies on several external crates such as ratatui, anyhow, chrono, and codehud_core. The crate imports are mainly used for error handling (anyhow), time tracking/calculation (chrono), and core functionalities of the 'codehud' system (codehud_core).\n\nThe structure of the crate appears to be organized in a modular way, with each feature or module containing its own set of responsibilities. For instance, there may be modules responsible for handling UI rendering logic, error handling, and time tracking/calculation respectively. The dependencies between these modules are managed by Rust's cargo system ensuring that the crate is easy to maintain and evolve over time.\n\nWhat Does It Actually Do:\nThe primary functionality of 'codehud-viz' seems to be providing a graphical user interface (GUI) for interacting with data visualized from other parts of the 'codehud' system. This could include features like showing code metrics in charts, histograms or tables, and also provides an interactive terminal-based dashboard for users to review their codebase over time.\n\nThis crate is designed using Rust's type safety features to ensure that it doesn't have any runtime errors, which would be difficult if not impossible with languages like C++. It makes use of the 'ratatui' library (Rust alternative for ncurses) for creating a text-based user interface and provides an efficient way to handle keyboard/mouse events in Rust.\n\nThe crate is intended to make it easier for developers to understand their codebase over time by providing visual representations of data like the number or type of lines of code, complexity metrics etc., which can be helpful in identifying areas that need improvement. It also aims to provide a more intuitive way for users to interact with complex systems such as tracking code changes over time and making better-informed decisions about their coding practices.\n",
+    "structural_insights": {
+      "source": "crate_aggregation",
+      "generated": true,
+      "sections": {
+        "imports": [
+          "Imports: use ratatui::{",
+          "Imports: use anyhow::{Context, Result};, use chrono::{DateTime, Utc};, use codehud_core::{",
+          "Imports: use codehud_core::{"
+        ]
+      }
+    },
+    "token_count": 550,
+    "timestamp": "2025-09-30T02:56:04.744286019Z"
+  }
+]

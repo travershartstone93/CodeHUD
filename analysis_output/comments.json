@@ -1,0 +1,1105 @@
+{
+  "./codehud-llm/src/narrator/cst.rs": {
+    "file": "./codehud-llm/src/narrator/cst.rs",
+    "language": "rust",
+    "extraction_method": "enhanced_tree_sitter",
+    "comments": [
+      {
+        "text": "Minimal JSON shape compatible with `tree-sitter parse --json`.",
+        "comment_type": "Doc",
+        "start_byte": 62,
+        "end_byte": 128,
+        "start_position": {
+          "line": 4,
+          "column": 0
+        },
+        "end_position": {
+          "line": 4,
+          "column": 66
+        },
+        "context": {
+          "function_name": null,
+          "class_name": "Node",
+          "module_path": "",
+          "adjacent_code": "use serde::{Deserialize, Serialize};\nuse std::path::PathBuf;\n\n/// Minimal JSON shape compatible with `tree-sitter parse --json`.\n/// We only rely on `type`, `children`, `text`, and `startPoint`.\n#[derive(Debug, Clone, Serialize, Deserialize)]\npub struct Node {",
+          "documents_following_code": true
+        }
+      },
+      {
+        "text": "We only rely on `type`, `children`, `text`, and `startPoint`.",
+        "comment_type": "Doc",
+        "start_byte": 129,
+        "end_byte": 194,
+        "start_position": {
+          "line": 5,
+          "column": 0
+        },
+        "end_position": {
+          "line": 5,
+          "column": 65
+        },
+        "context": {
+          "function_name": null,
+          "class_name": "Node",
+          "module_path": "",
+          "adjacent_code": "use std::path::PathBuf;\n\n/// Minimal JSON shape compatible with `tree-sitter parse --json`.\n/// We only rely on `type`, `children`, `text`, and `startPoint`.\n#[derive(Debug, Clone, Serialize, Deserialize)]\npub struct Node {\n    #[serde(rename = \"type\")]",
+          "documents_following_code": true
+        }
+      },
+      {
+        "text": "original source path if embedded; else the CST file path",
+        "comment_type": "Line",
+        "start_byte": 683,
+        "end_byte": 742,
+        "start_position": {
+          "line": 26,
+          "column": 25
+        },
+        "end_position": {
+          "line": 26,
+          "column": 84
+        },
+        "context": {
+          "function_name": null,
+          "class_name": "FileCst",
+          "module_path": "",
+          "adjacent_code": "\n#[derive(Debug, Clone)]\npub struct FileCst {\n    pub path: PathBuf,   // original source path if embedded; else the CST file path\n    pub root: Node,\n    pub source_text: Option<String>, // optional (not always present in CST JSON)\n}",
+          "documents_following_code": true
+        }
+      },
+      {
+        "text": "optional (not always present in CST JSON)",
+        "comment_type": "Line",
+        "start_byte": 800,
+        "end_byte": 844,
+        "start_position": {
+          "line": 28,
+          "column": 37
+        },
+        "end_position": {
+          "line": 28,
+          "column": 81
+        },
+        "context": {
+          "function_name": null,
+          "class_name": "FileCst",
+          "module_path": "",
+          "adjacent_code": "pub struct FileCst {\n    pub path: PathBuf,   // original source path if embedded; else the CST file path\n    pub root: Node,\n    pub source_text: Option<String>, // optional (not always present in CST JSON)\n}\n\n// Helper functions for Node",
+          "documents_following_code": true
+        }
+      },
+      {
+        "text": "Helper functions for Node",
+        "comment_type": "Line",
+        "start_byte": 848,
+        "end_byte": 876,
+        "start_position": {
+          "line": 31,
+          "column": 0
+        },
+        "end_position": {
+          "line": 31,
+          "column": 28
+        },
+        "context": {
+          "function_name": "line",
+          "class_name": "Node",
+          "module_path": "",
+          "adjacent_code": "    pub source_text: Option<String>, // optional (not always present in CST JSON)\n}\n\n// Helper functions for Node\nimpl Node {\n    pub fn line(&self) -> usize {\n        self.start_point.as_ref().map(|p| p.row + 1).unwrap_or(1)",
+          "documents_following_code": true
+        }
+      },
+      {
+        "text": "Get all text content from this node and its children",
+        "comment_type": "Doc",
+        "start_byte": 1234,
+        "end_byte": 1290,
+        "start_position": {
+          "line": 48,
+          "column": 4
+        },
+        "end_position": {
+          "line": 48,
+          "column": 60
+        },
+        "context": {
+          "function_name": "collect_text",
+          "class_name": null,
+          "module_path": "",
+          "adjacent_code": "        }\n    }\n\n    /// Get all text content from this node and its children\n    pub fn collect_text(&self) -> String {\n        let mut result = String::new();\n        self.collect_text_recursive(&mut result);",
+          "documents_following_code": true
+        }
+      }
+    ],
+    "structural_insights": {
+      "source": "ast_analysis",
+      "generated": true,
+      "sections": {
+        "functions": [
+          "- Defines line()",
+          "- Defines collect_text()",
+          "- Defines walk()",
+          "- Defines is_kind()",
+          "- Defines collect_text_recursive()"
+        ],
+        "imports": [
+          "- Uses serde::{Deserialize, Serialize}",
+          "- Uses std::path::PathBuf"
+        ]
+      }
+    },
+    "stats": {
+      "total_comments": 6,
+      "comments_by_type": {
+        "line": 3,
+        "doc": 3
+      },
+      "total_lines": 64,
+      "processing_time_ms": 10,
+      "extraction_successful": true,
+      "error_message": null
+    }
+  },
+  "./codehud-llm/src/narrator/render.rs": {
+    "file": "./codehud-llm/src/narrator/render.rs",
+    "language": "rust",
+    "extraction_method": "enhanced_tree_sitter",
+    "comments": [
+      {
+        "text": "Don't include the file path header, we'll integrate this differently",
+        "comment_type": "Line",
+        "start_byte": 177,
+        "end_byte": 248,
+        "start_position": {
+          "line": 6,
+          "column": 4
+        },
+        "end_position": {
+          "line": 6,
+          "column": 75
+        },
+        "context": {
+          "function_name": "render_markdown",
+          "class_name": null,
+          "module_path": "",
+          "adjacent_code": "pub fn render_markdown(_rel_path: &str, doc: &FileDoc, _cfg: &NarratorConfig) -> String {\n    let mut out = String::new();\n\n    // Don't include the file path header, we'll integrate this differently\n    if let Some(role) = &doc.role_line {\n        out.push_str(&format!(\"Role: {}\\n\", ensure_period(role)));\n    }",
+          "documents_following_code": true
+        }
+      },
+      {
+        "text": "Render bullet points in a compact format for LLM consumption",
+        "comment_type": "Doc",
+        "start_byte": 759,
+        "end_byte": 823,
+        "start_position": {
+          "line": 26,
+          "column": 0
+        },
+        "end_position": {
+          "line": 26,
+          "column": 64
+        },
+        "context": {
+          "function_name": "render_bullets_compact",
+          "class_name": null,
+          "module_path": "",
+          "adjacent_code": "    out\n}\n\n/// Render bullet points in a compact format for LLM consumption\npub fn render_bullets_compact(doc: &FileDoc) -> String {\n    let mut out = String::new();\n",
+          "documents_following_code": true
+        }
+      }
+    ],
+    "structural_insights": {
+      "source": "ast_analysis",
+      "generated": true,
+      "sections": {
+        "functions": [
+          "- Defines render_markdown()",
+          "- Defines render_bullets_compact()",
+          "- Defines ensure_period()"
+        ],
+        "imports": [
+          "- Uses crate::narrator::{FileDoc, NarratorConfig}"
+        ]
+      }
+    },
+    "stats": {
+      "total_comments": 2,
+      "comments_by_type": {
+        "line": 1,
+        "doc": 1
+      },
+      "total_lines": 59,
+      "processing_time_ms": 4,
+      "extraction_successful": true,
+      "error_message": null
+    }
+  },
+  "./codehud-llm/src/narrator/detectors/imports_exports.rs": {
+    "file": "./codehud-llm/src/narrator/detectors/imports_exports.rs",
+    "language": "rust",
+    "extraction_method": "enhanced_tree_sitter",
+    "comments": [
+      {
+        "text": "Python/Java",
+        "comment_type": "Line",
+        "start_byte": 468,
+        "end_byte": 482,
+        "start_position": {
+          "line": 16,
+          "column": 16
+        },
+        "end_position": {
+          "line": 16,
+          "column": 30
+        },
+        "context": {
+          "function_name": "Some",
+          "class_name": null,
+          "module_path": "",
+          "adjacent_code": "\n        for n in nodes {\n            match n.kind.as_str() {\n                // Python/Java\n                \"import_statement\" | \"import_from_statement\" => {\n                    if let Some(txt) = &n.text {\n                        imports.push(txt.trim().to_string());",
+          "documents_following_code": true
+        }
+      },
+      {
+        "text": "JavaScript/TypeScript/Go",
+        "comment_type": "Line",
+        "start_byte": 716,
+        "end_byte": 743,
+        "start_position": {
+          "line": 22,
+          "column": 16
+        },
+        "end_position": {
+          "line": 22,
+          "column": 43
+        },
+        "context": {
+          "function_name": "Some",
+          "class_name": null,
+          "module_path": "",
+          "adjacent_code": "                        imports.push(txt.trim().to_string());\n                    }\n                }\n                // JavaScript/TypeScript/Go\n                \"import_declaration\" => {\n                    if let Some(txt) = &n.text {\n                        imports.push(txt.trim().to_string());",
+          "documents_following_code": true
+        }
+      },
+      {
+        "text": "Go specific",
+        "comment_type": "Line",
+        "start_byte": 953,
+        "end_byte": 967,
+        "start_position": {
+          "line": 28,
+          "column": 16
+        },
+        "end_position": {
+          "line": 28,
+          "column": 30
+        },
+        "context": {
+          "function_name": "Some",
+          "class_name": null,
+          "module_path": "",
+          "adjacent_code": "                        imports.push(txt.trim().to_string());\n                    }\n                }\n                // Go specific\n                \"import_spec\" => {\n                    if let Some(txt) = &n.text {\n                        imports.push(txt.trim().to_string());",
+          "documents_following_code": true
+        }
+      }
+    ],
+    "structural_insights": {
+      "source": "ast_analysis",
+      "generated": true,
+      "sections": {
+        "imports": [
+          "- Uses crate::narrator::detectors::Detector",
+          "- Uses crate::narrator::{FileCst, Finding, FindingType}"
+        ],
+        "functions": [
+          "- Defines detect()"
+        ]
+      }
+    },
+    "stats": {
+      "total_comments": 3,
+      "comments_by_type": {
+        "line": 3
+      },
+      "total_lines": 62,
+      "processing_time_ms": 7,
+      "extraction_successful": true,
+      "error_message": null
+    }
+  },
+  "./codehud-llm/src/narrator/findings.rs": {
+    "file": "./codehud-llm/src/narrator/findings.rs",
+    "language": "rust",
+    "extraction_method": "enhanced_tree_sitter",
+    "comments": [
+      {
+        "text": "e.g., TODO text",
+        "comment_type": "Line",
+        "start_byte": 664,
+        "end_byte": 682,
+        "start_position": {
+          "line": 29,
+          "column": 30
+        },
+        "end_position": {
+          "line": 29,
+          "column": 48
+        },
+        "context": {
+          "function_name": null,
+          "class_name": null,
+          "module_path": "",
+          "adjacent_code": "    pub owner: Option<String>,\n    pub lines: Vec<usize>,\n    pub notes: Vec<String>,\n    pub text: Option<String>, // e.g., TODO text\n    pub extra: serde_json::Value,\n}\n",
+          "documents_following_code": true
+        }
+      }
+    ],
+    "structural_insights": {
+      "source": "ast_analysis",
+      "generated": true,
+      "sections": {
+        "functions": [
+          "- Defines with_subject()",
+          "- Defines with_owner()",
+          "- Defines with_text()",
+          "- Defines with_lines()",
+          "- Defines new()"
+        ],
+        "imports": [
+          "- Uses serde::{Deserialize, Serialize}"
+        ]
+      }
+    },
+    "stats": {
+      "total_comments": 1,
+      "comments_by_type": {
+        "line": 1
+      },
+      "total_lines": 67,
+      "processing_time_ms": 2,
+      "extraction_successful": true,
+      "error_message": null
+    }
+  },
+  "./codehud-llm/src/narrator/config.rs": {
+    "file": "./codehud-llm/src/narrator/config.rs",
+    "language": "rust",
+    "extraction_method": "enhanced_tree_sitter",
+    "comments": [],
+    "structural_insights": {
+      "source": "ast_analysis",
+      "generated": true,
+      "sections": {
+        "imports": [
+          "- Uses serde::{Deserialize, Serialize}"
+        ],
+        "functions": [
+          "- Defines default()"
+        ]
+      }
+    },
+    "stats": {
+      "total_comments": 0,
+      "comments_by_type": {},
+      "total_lines": 116,
+      "processing_time_ms": 1,
+      "extraction_successful": true,
+      "error_message": null
+    }
+  },
+  "./codehud-llm/src/narrator/detectors/entrypoint.rs": {
+    "file": "./codehud-llm/src/narrator/detectors/entrypoint.rs",
+    "language": "rust",
+    "extraction_method": "enhanced_tree_sitter",
+    "comments": [
+      {
+        "text": "Look for Python __name__ == \"__main__\" pattern and Rust main function",
+        "comment_type": "Line",
+        "start_byte": 256,
+        "end_byte": 328,
+        "start_position": {
+          "line": 9,
+          "column": 8
+        },
+        "end_position": {
+          "line": 9,
+          "column": 80
+        },
+        "context": {
+          "function_name": "detect",
+          "class_name": "Detector",
+          "module_path": "",
+          "adjacent_code": "\nimpl Detector for EntrypointDetector {\n    fn detect(&self, file: &FileCst) -> Vec<Finding> {\n        // Look for Python __name__ == \"__main__\" pattern and Rust main function\n        let mut nodes = Vec::new();\n        file.root.walk(&mut nodes);\n",
+          "documents_following_code": true
+        }
+      },
+      {
+        "text": "Python entrypoint pattern",
+        "comment_type": "Line",
+        "start_byte": 439,
+        "end_byte": 467,
+        "start_position": {
+          "line": 14,
+          "column": 12
+        },
+        "end_position": {
+          "line": 14,
+          "column": 40
+        },
+        "context": {
+          "function_name": null,
+          "class_name": null,
+          "module_path": "",
+          "adjacent_code": "        file.root.walk(&mut nodes);\n\n        for n in nodes {\n            // Python entrypoint pattern\n            if n.is_kind(\"if_statement\") {\n                let text_bag = n.collect_text();\n                if text_bag.contains(\"__name__\") && text_bag.contains(\"__main__\") {",
+          "documents_following_code": true
+        }
+      },
+      {
+        "text": "Rust main function",
+        "comment_type": "Line",
+        "start_byte": 850,
+        "end_byte": 871,
+        "start_position": {
+          "line": 23,
+          "column": 12
+        },
+        "end_position": {
+          "line": 23,
+          "column": 33
+        },
+        "context": {
+          "function_name": "if",
+          "class_name": null,
+          "module_path": "",
+          "adjacent_code": "                }\n            }\n\n            // Rust main function\n            if n.is_kind(\"function_item\") || n.is_kind(\"function_definition\") {\n                if let Some(name) = self.extract_function_name(n) {\n                    if name == \"main\" {",
+          "documents_following_code": true
+        }
+      }
+    ],
+    "structural_insights": {
+      "source": "ast_analysis",
+      "generated": true,
+      "sections": {
+        "functions": [
+          "- Defines detect()",
+          "- Defines extract_function_name()"
+        ],
+        "imports": [
+          "- Uses crate::narrator::{FileCst, Finding, FindingType, Node}",
+          "- Uses crate::narrator::detectors::Detector"
+        ]
+      }
+    },
+    "stats": {
+      "total_comments": 3,
+      "comments_by_type": {
+        "line": 3
+      },
+      "total_lines": 46,
+      "processing_time_ms": 5,
+      "extraction_successful": true,
+      "error_message": null
+    }
+  },
+  "./codehud-llm/src/narrator/mod.rs": {
+    "file": "./codehud-llm/src/narrator/mod.rs",
+    "language": "rust",
+    "extraction_method": "enhanced_tree_sitter",
+    "comments": [],
+    "structural_insights": {
+      "source": "ast_analysis",
+      "generated": true,
+      "sections": {
+        "imports": [
+          "- Uses findings::{Finding, FindingType}",
+          "- Uses config::NarratorConfig",
+          "- Uses cst::{FileCst, Node}",
+          "- Uses render::render_markdown",
+          "- Uses aggregate::{FileDoc, SectionDoc, aggregate_findings}",
+          "- Uses detectors::DetectorRegistry"
+        ]
+      }
+    },
+    "stats": {
+      "total_comments": 0,
+      "comments_by_type": {},
+      "total_lines": 13,
+      "processing_time_ms": 0,
+      "extraction_successful": true,
+      "error_message": null
+    }
+  },
+  "./codehud-llm/src/narrator/detectors/wrapper.rs": {
+    "file": "./codehud-llm/src/narrator/detectors/wrapper.rs",
+    "language": "rust",
+    "extraction_method": "enhanced_tree_sitter",
+    "comments": [
+      {
+        "text": "Detect functions that return a single call: return foo(...)",
+        "comment_type": "Doc",
+        "start_byte": 103,
+        "end_byte": 166,
+        "start_position": {
+          "line": 4,
+          "column": 0
+        },
+        "end_position": {
+          "line": 4,
+          "column": 63
+        },
+        "context": {
+          "function_name": "foo",
+          "class_name": "WrapperDetector",
+          "module_path": "",
+          "adjacent_code": "use crate::narrator::{FileCst, Finding, FindingType, Node};\nuse crate::narrator::detectors::Detector;\n\n/// Detect functions that return a single call: return foo(...)\n#[derive(Default)]\npub struct WrapperDetector;\n",
+          "documents_following_code": true
+        }
+      },
+      {
+        "text": "Look for a child block containing a single return_statement -> call_expression",
+        "comment_type": "Line",
+        "start_byte": 571,
+        "end_byte": 652,
+        "start_position": {
+          "line": 16,
+          "column": 16
+        },
+        "end_position": {
+          "line": 16,
+          "column": 97
+        },
+        "context": {
+          "function_name": "Some",
+          "class_name": null,
+          "module_path": "",
+          "adjacent_code": "\n        for n in nodes {\n            if n.is_kind(\"function_item\") || n.is_kind(\"function_definition\") || n.is_kind(\"function_declaration\") {\n                // Look for a child block containing a single return_statement -> call_expression\n                if let Some((ret, _call, callee)) = self.find_return_call(n) {\n                    let finding = Finding::new(&file.path.to_string_lossy(), ret.line(), FindingType::WrapperFunction)\n                        .with_owner(self.extract_function_name(n).unwrap_or_else(|| \"function\".to_string()))",
+          "documents_following_code": true
+        }
+      },
+      {
+        "text": "naive: find first child 'identifier'",
+        "comment_type": "Line",
+        "start_byte": 1263,
+        "end_byte": 1302,
+        "start_position": {
+          "line": 32,
+          "column": 8
+        },
+        "end_position": {
+          "line": 32,
+          "column": 47
+        },
+        "context": {
+          "function_name": "extract_function_name",
+          "class_name": "WrapperDetector",
+          "module_path": "",
+          "adjacent_code": "\nimpl WrapperDetector {\n    fn extract_function_name(&self, func: &Node) -> Option<String> {\n        // naive: find first child 'identifier'\n        for ch in &func.children {\n            if ch.is_kind(\"identifier\") {\n                return ch.text.clone();",
+          "documents_following_code": true
+        }
+      },
+      {
+        "text": "descend to find return -> call",
+        "comment_type": "Line",
+        "start_byte": 1737,
+        "end_byte": 1770,
+        "start_position": {
+          "line": 44,
+          "column": 16
+        },
+        "end_position": {
+          "line": 44,
+          "column": 49
+        },
+        "context": {
+          "function_name": "find_return_call",
+          "class_name": null,
+          "module_path": "",
+          "adjacent_code": "    fn find_return_call<'a>(&self, func: &'a Node) -> Option<(&'a Node, &'a Node, String)> {\n        for ch in &func.children {\n            if ch.is_kind(\"block\") || ch.is_kind(\"suite\") || ch.is_kind(\"statement_block\") || ch.is_kind(\"compound_statement\") {\n                // descend to find return -> call\n                let mut stack = vec![ch];\n                while let Some(n) = stack.pop() {\n                    if n.is_kind(\"return_statement\") || n.is_kind(\"return_expression\") {",
+          "documents_following_code": true
+        }
+      },
+      {
+        "text": "child call",
+        "comment_type": "Line",
+        "start_byte": 1976,
+        "end_byte": 1989,
+        "start_position": {
+          "line": 48,
+          "column": 24
+        },
+        "end_position": {
+          "line": 48,
+          "column": 37
+        },
+        "context": {
+          "function_name": "Some",
+          "class_name": null,
+          "module_path": "",
+          "adjacent_code": "                let mut stack = vec![ch];\n                while let Some(n) = stack.pop() {\n                    if n.is_kind(\"return_statement\") || n.is_kind(\"return_expression\") {\n                        // child call\n                        for g in &n.children {\n                            if g.kind.contains(\"call\") || g.is_kind(\"call_expression\") || g.is_kind(\"call\") {\n                                // find callee identifier",
+          "documents_following_code": true
+        }
+      },
+      {
+        "text": "find callee identifier",
+        "comment_type": "Line",
+        "start_byte": 2179,
+        "end_byte": 2204,
+        "start_position": {
+          "line": 51,
+          "column": 32
+        },
+        "end_position": {
+          "line": 51,
+          "column": 57
+        },
+        "context": {
+          "function_name": "Some",
+          "class_name": null,
+          "module_path": "",
+          "adjacent_code": "                        // child call\n                        for g in &n.children {\n                            if g.kind.contains(\"call\") || g.is_kind(\"call_expression\") || g.is_kind(\"call\") {\n                                // find callee identifier\n                                if let Some(name) = self.find_callee_name(g) {\n                                    return Some((n, g, name));\n                                }",
+          "documents_following_code": true
+        }
+      },
+      {
+        "text": "try to find 'identifier' or 'property_identifier'",
+        "comment_type": "Line",
+        "start_byte": 2699,
+        "end_byte": 2751,
+        "start_position": {
+          "line": 68,
+          "column": 8
+        },
+        "end_position": {
+          "line": 68,
+          "column": 60
+        },
+        "context": {
+          "function_name": "find_callee_name",
+          "class_name": null,
+          "module_path": "",
+          "adjacent_code": "    }\n\n    fn find_callee_name(&self, call: &Node) -> Option<String> {\n        // try to find 'identifier' or 'property_identifier'\n        let mut flat = Vec::new();\n        call.walk(&mut flat);\n        let mut parts = Vec::new();",
+          "documents_following_code": true
+        }
+      }
+    ],
+    "structural_insights": {
+      "source": "ast_analysis",
+      "generated": true,
+      "sections": {
+        "imports": [
+          "- Uses crate::narrator::{FileCst, Finding, FindingType, Node}",
+          "- Uses crate::narrator::detectors::Detector"
+        ],
+        "functions": [
+          "- Defines detect()",
+          "- Defines extract_function_name()",
+          "- Defines find_return_call()",
+          "- Defines find_callee_name()"
+        ]
+      }
+    },
+    "stats": {
+      "total_comments": 7,
+      "comments_by_type": {
+        "line": 6,
+        "doc": 1
+      },
+      "total_lines": 85,
+      "processing_time_ms": 12,
+      "extraction_successful": true,
+      "error_message": null
+    }
+  },
+  "./codehud-llm/src/narrator/detectors/mod.rs": {
+    "file": "./codehud-llm/src/narrator/detectors/mod.rs",
+    "language": "rust",
+    "extraction_method": "enhanced_tree_sitter",
+    "comments": [],
+    "structural_insights": {
+      "source": "ast_analysis",
+      "generated": true,
+      "sections": {
+        "imports": [
+          "- Uses crate::narrator::{FileCst, Finding, NarratorConfig}"
+        ],
+        "functions": [
+          "- Defines detect()",
+          "- Defines detect_all()",
+          "- Defines new()"
+        ]
+      }
+    },
+    "stats": {
+      "total_comments": 0,
+      "comments_by_type": {},
+      "total_lines": 38,
+      "processing_time_ms": 1,
+      "extraction_successful": true,
+      "error_message": null
+    }
+  },
+  "./codehud-llm/src/narrator/detectors/utility_class.rs": {
+    "file": "./codehud-llm/src/narrator/detectors/utility_class.rs",
+    "language": "rust",
+    "extraction_method": "enhanced_tree_sitter",
+    "comments": [
+      {
+        "text": "crude: look for 'static' token or @staticmethod nearby",
+        "comment_type": "Line",
+        "start_byte": 993,
+        "end_byte": 1050,
+        "start_position": {
+          "line": 28,
+          "column": 20
+        },
+        "end_position": {
+          "line": 28,
+          "column": 77
+        },
+        "context": {
+          "function_name": null,
+          "class_name": null,
+          "module_path": "",
+          "adjacent_code": "                    || ch.is_kind(\"function_item\")\n                    || ch.is_kind(\"associated_function\") {\n                    methods += 1;\n                    // crude: look for 'static' token or @staticmethod nearby\n                    let text_bag = ch.collect_text();\n                    if text_bag.contains(\"@staticmethod\")\n                        || text_bag.contains(\"static \")",
+          "documents_following_code": true
+        }
+      }
+    ],
+    "structural_insights": {
+      "source": "ast_analysis",
+      "generated": true,
+      "sections": {
+        "functions": [
+          "- Defines extract_class_name()",
+          "- Defines detect()"
+        ],
+        "imports": [
+          "- Uses crate::narrator::detectors::Detector",
+          "- Uses crate::narrator::{FileCst, Finding, FindingType, Node}"
+        ]
+      }
+    },
+    "stats": {
+      "total_comments": 1,
+      "comments_by_type": {
+        "line": 1
+      },
+      "total_lines": 58,
+      "processing_time_ms": 3,
+      "extraction_successful": true,
+      "error_message": null
+    }
+  },
+  "./codehud-llm/src/narrator/aggregate.rs": {
+    "file": "./codehud-llm/src/narrator/aggregate.rs",
+    "language": "rust",
+    "extraction_method": "enhanced_tree_sitter",
+    "comments": [
+      {
+        "text": "Role line: first NoteComment becomes \"Role\" sentence (trimmed)",
+        "comment_type": "Line",
+        "start_byte": 604,
+        "end_byte": 669,
+        "start_position": {
+          "line": 25,
+          "column": 4
+        },
+        "end_position": {
+          "line": 25,
+          "column": 69
+        },
+        "context": {
+          "function_name": "Some",
+          "class_name": null,
+          "module_path": "",
+          "adjacent_code": "        role_line: None,\n    };\n\n    // Role line: first NoteComment becomes \"Role\" sentence (trimmed)\n    if let Some(f) = findings\n        .iter()\n        .find(|f| f.typ == FindingType::NoteComment && f.text.as_deref().unwrap_or(\"\").len() > 0)",
+          "documents_following_code": true
+        }
+      },
+      {
+        "text": "Buckets",
+        "comment_type": "Line",
+        "start_byte": 908,
+        "end_byte": 918,
+        "start_position": {
+          "line": 33,
+          "column": 4
+        },
+        "end_position": {
+          "line": 33,
+          "column": 14
+        },
+        "context": {
+          "function_name": null,
+          "class_name": null,
+          "module_path": "",
+          "adjacent_code": "        doc.role_line = Some(capitalize_sentence(f.text.as_ref().unwrap()));\n    }\n\n    // Buckets\n    let mut risks = vec![];\n    let mut entry = vec![];\n    let mut structure = vec![];",
+          "documents_following_code": true
+        }
+      },
+      {
+        "text": "Group same (type, owner, subject) and merge lines",
+        "comment_type": "Line",
+        "start_byte": 1185,
+        "end_byte": 1237,
+        "start_position": {
+          "line": 44,
+          "column": 4
+        },
+        "end_position": {
+          "line": 44,
+          "column": 56
+        },
+        "context": {
+          "function_name": "same",
+          "class_name": null,
+          "module_path": "",
+          "adjacent_code": "    let mut exports = vec![];\n    let mut tests = vec![];\n\n    // Group same (type, owner, subject) and merge lines\n    let grouped = findings.iter().into_group_map_by(|f| {\n        (\n            std::mem::discriminant(&f.typ),",
+          "documents_following_code": true
+        }
+      },
+      {
+        "text": "handled as role",
+        "comment_type": "Line",
+        "start_byte": 4345,
+        "end_byte": 4363,
+        "start_position": {
+          "line": 115,
+          "column": 16
+        },
+        "end_position": {
+          "line": 115,
+          "column": 34
+        },
+        "context": {
+          "function_name": null,
+          "class_name": null,
+          "module_path": "",
+          "adjacent_code": "                    .replace(\"{text}\", first.text.as_deref().unwrap_or(\"\").trim()),\n            ),\n            FindingType::NoteComment => {\n                // handled as role\n            }\n            FindingType::StaticUtilityClass => structure.push(\n                cfg.templates",
+          "documents_following_code": true
+        }
+      },
+      {
+        "text": "Install sections in configured order",
+        "comment_type": "Line",
+        "start_byte": 4727,
+        "end_byte": 4766,
+        "start_position": {
+          "line": 126,
+          "column": 4
+        },
+        "end_position": {
+          "line": 126,
+          "column": 43
+        },
+        "context": {
+          "function_name": null,
+          "class_name": null,
+          "module_path": "",
+          "adjacent_code": "        }\n    }\n\n    // Install sections in configured order\n    for key in &cfg.sections.order {\n        match key.as_str() {\n            \"role\" => {",
+          "documents_following_code": true
+        }
+      },
+      {
+        "text": "rendered in render.rs header",
+        "comment_type": "Line",
+        "start_byte": 4873,
+        "end_byte": 4904,
+        "start_position": {
+          "line": 130,
+          "column": 16
+        },
+        "end_position": {
+          "line": 130,
+          "column": 47
+        },
+        "context": {
+          "function_name": null,
+          "class_name": null,
+          "module_path": "",
+          "adjacent_code": "    for key in &cfg.sections.order {\n        match key.as_str() {\n            \"role\" => {\n                // rendered in render.rs header\n            }\n            \"entrypoint\" => add_if_nonempty(&mut doc, \"Entrypoint\", std::mem::take(&mut entry)),\n            \"exports\" => add_if_nonempty(&mut doc, \"Exports\", std::mem::take(&mut exports)),",
+          "documents_following_code": true
+        }
+      }
+    ],
+    "structural_insights": {
+      "source": "ast_analysis",
+      "generated": true,
+      "sections": {
+        "imports": [
+          "- Uses itertools::Itertools",
+          "- Uses std::collections::BTreeMap",
+          "- Uses crate::narrator::{Finding, FindingType, NarratorConfig}"
+        ],
+        "functions": [
+          "- Defines group_ranges()",
+          "- Defines format_template()",
+          "- Defines add_if_nonempty()",
+          "- Defines render_list()",
+          "- Defines fmt_ranges()",
+          "- Defines capitalize_sentence()"
+        ]
+      }
+    },
+    "stats": {
+      "total_comments": 6,
+      "comments_by_type": {
+        "line": 6
+      },
+      "total_lines": 225,
+      "processing_time_ms": 65,
+      "extraction_successful": true,
+      "error_message": null
+    }
+  },
+  "./codehud-llm/src/narrator/detectors/comments.rs": {
+    "file": "./codehud-llm/src/narrator/detectors/comments.rs",
+    "language": "rust",
+    "extraction_method": "enhanced_tree_sitter",
+    "comments": [
+      {
+        "text": "Walk and find \"comment\" nodes (tree-sitter common name)",
+        "comment_type": "Line",
+        "start_byte": 716,
+        "end_byte": 774,
+        "start_position": {
+          "line": 25,
+          "column": 8
+        },
+        "end_position": {
+          "line": 25,
+          "column": 66
+        },
+        "context": {
+          "function_name": "detect",
+          "class_name": "Detector",
+          "module_path": "",
+          "adjacent_code": "\nimpl Detector for CommentsDetector {\n    fn detect(&self, file: &FileCst) -> Vec<Finding> {\n        // Walk and find \"comment\" nodes (tree-sitter common name)\n        let mut nodes = Vec::new();\n        file.root.walk(&mut nodes);\n",
+          "documents_following_code": true
+        }
+      },
+      {
+        "text": "First comment for \"Role\"",
+        "comment_type": "Line",
+        "start_byte": 890,
+        "end_byte": 917,
+        "start_position": {
+          "line": 30,
+          "column": 8
+        },
+        "end_position": {
+          "line": 30,
+          "column": 35
+        },
+        "context": {
+          "function_name": null,
+          "class_name": null,
+          "module_path": "",
+          "adjacent_code": "        file.root.walk(&mut nodes);\n\n        let mut out = Vec::new();\n        // First comment for \"Role\"\n        let mut header_done = !self.header_role;\n\n        for n in nodes {",
+          "documents_following_code": true
+        }
+      },
+      {
+        "text": "First non-empty trimmed comment line becomes \"Note\" we map later to \"Role\" section in render.",
+        "comment_type": "Line",
+        "start_byte": 1183,
+        "end_byte": 1279,
+        "start_position": {
+          "line": 39,
+          "column": 16
+        },
+        "end_position": {
+          "line": 39,
+          "column": 112
+        },
+        "context": {
+          "function_name": null,
+          "class_name": null,
+          "module_path": "",
+          "adjacent_code": "            let line = n.line();\n\n            if !header_done {\n                // First non-empty trimmed comment line becomes \"Note\" we map later to \"Role\" section in render.\n                if text.trim().len() > 2 {\n                    let cleaned_text = text.trim()\n                        .trim_start_matches(|c| c == '#' || c == '/' || c == '*')",
+          "documents_following_code": true
+        }
+      }
+    ],
+    "structural_insights": {
+      "source": "ast_analysis",
+      "generated": true,
+      "sections": {
+        "functions": [
+          "- Defines new()",
+          "- Defines detect()"
+        ],
+        "imports": [
+          "- Uses crate::narrator::detectors::Detector",
+          "- Uses regex::Regex",
+          "- Uses crate::narrator::{FileCst, Finding, FindingType, NarratorConfig}"
+        ]
+      }
+    },
+    "stats": {
+      "total_comments": 3,
+      "comments_by_type": {
+        "line": 3
+      },
+      "total_lines": 71,
+      "processing_time_ms": 6,
+      "extraction_successful": true,
+      "error_message": null
+    }
+  },
+  "./codehud-llm/src/narrator/detectors/io.rs": {
+    "file": "./codehud-llm/src/narrator/detectors/io.rs",
+    "language": "rust",
+    "extraction_method": "enhanced_tree_sitter",
+    "comments": [
+      {
+        "text": "pick first meaningful token from the bag",
+        "comment_type": "Line",
+        "start_byte": 1722,
+        "end_byte": 1765,
+        "start_position": {
+          "line": 51,
+          "column": 8
+        },
+        "end_position": {
+          "line": 51,
+          "column": 51
+        },
+        "context": {
+          "function_name": "extract_subject",
+          "class_name": null,
+          "module_path": "",
+          "adjacent_code": "    }\n\n    fn extract_subject(&self, bag: &str) -> String {\n        // pick first meaningful token from the bag\n        bag.split_whitespace()\n            .next()\n            .unwrap_or_default()",
+          "documents_following_code": true
+        }
+      }
+    ],
+    "structural_insights": {
+      "source": "ast_analysis",
+      "generated": true,
+      "sections": {
+        "functions": [
+          "- Defines make_finding()",
+          "- Defines detect()",
+          "- Defines new()",
+          "- Defines extract_subject()"
+        ],
+        "imports": [
+          "- Uses crate::narrator::{FileCst, Finding, FindingType, Node, NarratorConfig}",
+          "- Uses crate::narrator::detectors::Detector",
+          "- Uses aho_corasick::AhoCorasick"
+        ]
+      }
+    },
+    "stats": {
+      "total_comments": 1,
+      "comments_by_type": {
+        "line": 1
+      },
+      "total_lines": 57,
+      "processing_time_ms": 2,
+      "extraction_successful": true,
+      "error_message": null
+    }
+  }
+}

@@ -1,0 +1,924 @@
+{
+  "classes": [],
+  "coupling": {
+    "average_dependencies": 4.5,
+    "highly_coupled_files": [
+      [
+        "src/data.rs",
+        6
+      ],
+      [
+        "src/direct.rs",
+        5
+      ],
+      [
+        "src/main.rs",
+        4
+      ],
+      [
+        "src/llm.rs",
+        3
+      ]
+    ],
+    "total_dependencies": 18
+  },
+  "dependencies": {
+    "src/data.rs": [
+      "codehud_core",
+      "anyhow",
+      "clap",
+      "codehud_utils",
+      "std",
+      "serde_json"
+    ],
+    "src/direct.rs": [
+      "std",
+      "codehud_core",
+      "tokio",
+      "clap",
+      "codehud_analysis"
+    ],
+    "src/llm.rs": [
+      "clap",
+      "codehud_core",
+      "std"
+    ],
+    "src/main.rs": [
+      "codehud_core",
+      "codehud_viz",
+      "std",
+      "clap"
+    ]
+  },
+  "files": [
+    {
+      "classes": [],
+      "code_lines": 1069,
+      "complexity": 235,
+      "dependencies": [
+        "clap",
+        "std",
+        "codehud_core",
+        "codehud_core",
+        "codehud_viz",
+        "std"
+      ],
+      "error": null,
+      "extension": ".rs",
+      "file_size_bytes": 53882,
+      "functions": [
+        {
+          "complexity": 1,
+          "file_path": "./src/main.rs",
+          "is_async": true,
+          "line_number": 208,
+          "name": "extract_real_call_graph",
+          "parameters": [
+            "codebase_path"
+          ],
+          "return_type": "anyhow::Result<codehud_viz::CallGraph>"
+        },
+        {
+          "complexity": 1,
+          "file_path": "./src/main.rs",
+          "is_async": true,
+          "line_number": 208,
+          "name": "extract_real_call_graph",
+          "parameters": [
+            "codebase_path"
+          ],
+          "return_type": "anyhow::Result<codehud_viz::CallGraph>"
+        },
+        {
+          "complexity": 1,
+          "file_path": "./src/main.rs",
+          "is_async": false,
+          "line_number": 294,
+          "name": "extract_module_name",
+          "parameters": [
+            "file_path"
+          ],
+          "return_type": "String"
+        },
+        {
+          "complexity": 1,
+          "file_path": "./src/main.rs",
+          "is_async": true,
+          "line_number": 318,
+          "name": "main",
+          "parameters": [],
+          "return_type": "Result<()>"
+        },
+        {
+          "complexity": 1,
+          "file_path": "./src/main.rs",
+          "is_async": true,
+          "line_number": 318,
+          "name": "main",
+          "parameters": [],
+          "return_type": "Result<()>"
+        },
+        {
+          "complexity": 1,
+          "file_path": "./src/main.rs",
+          "is_async": true,
+          "line_number": 1091,
+          "name": "export_visualizations",
+          "parameters": [
+            "codebase_path",
+            "output_dir",
+            "views"
+          ],
+          "return_type": "Result<()>"
+        },
+        {
+          "complexity": 1,
+          "file_path": "./src/main.rs",
+          "is_async": true,
+          "line_number": 1091,
+          "name": "export_visualizations",
+          "parameters": [
+            "codebase_path",
+            "output_dir",
+            "views"
+          ],
+          "return_type": "Result<()>"
+        },
+        {
+          "complexity": 1,
+          "file_path": "./src/main.rs",
+          "is_async": true,
+          "line_number": 1145,
+          "name": "run_analysis_for_view",
+          "parameters": [
+            "codebase_path",
+            "view_type",
+            "output_dir"
+          ],
+          "return_type": "Result<()>"
+        },
+        {
+          "complexity": 1,
+          "file_path": "./src/main.rs",
+          "is_async": true,
+          "line_number": 1145,
+          "name": "run_analysis_for_view",
+          "parameters": [
+            "codebase_path",
+            "view_type",
+            "output_dir"
+          ],
+          "return_type": "Result<()>"
+        },
+        {
+          "complexity": 1,
+          "file_path": "./src/main.rs",
+          "is_async": false,
+          "line_number": 1186,
+          "name": "format_visualization_as_text",
+          "parameters": [
+            "view"
+          ],
+          "return_type": "String"
+        },
+        {
+          "complexity": 1,
+          "file_path": "./src/main.rs",
+          "is_async": false,
+          "line_number": 1244,
+          "name": "show_visualization_summary",
+          "parameters": [
+            "view"
+          ],
+          "return_type": null
+        }
+      ],
+      "is_test": false,
+      "last_modified": "2025-09-23T05:27:35.974941731Z",
+      "path": "src/main.rs",
+      "total_lines": 1267
+    },
+    {
+      "classes": [],
+      "code_lines": 210,
+      "complexity": 33,
+      "dependencies": [
+        "clap",
+        "std",
+        "codehud_core"
+      ],
+      "error": null,
+      "extension": ".rs",
+      "file_size_bytes": 8070,
+      "functions": [
+        {
+          "complexity": 1,
+          "file_path": "./src/llm.rs",
+          "is_async": false,
+          "line_number": 86,
+          "name": "fmt",
+          "parameters": [
+            "f"
+          ],
+          "return_type": "std::fmt::Result"
+        },
+        {
+          "complexity": 1,
+          "file_path": "./src/llm.rs",
+          "is_async": false,
+          "line_number": 96,
+          "name": "main",
+          "parameters": [],
+          "return_type": "Result<()>"
+        },
+        {
+          "complexity": 1,
+          "file_path": "./src/llm.rs",
+          "is_async": false,
+          "line_number": 229,
+          "name": "test_backend_display",
+          "parameters": [],
+          "return_type": null
+        },
+        {
+          "complexity": 1,
+          "file_path": "./src/llm.rs",
+          "is_async": false,
+          "line_number": 237,
+          "name": "test_temperature_validation",
+          "parameters": [],
+          "return_type": null
+        }
+      ],
+      "is_test": false,
+      "last_modified": "2025-09-12T22:26:25.688767382Z",
+      "path": "src/llm.rs",
+      "total_lines": 246
+    },
+    {
+      "classes": [],
+      "code_lines": 230,
+      "complexity": 47,
+      "dependencies": [
+        "clap",
+        "std",
+        "codehud_core",
+        "codehud_analysis",
+        "tokio"
+      ],
+      "error": null,
+      "extension": ".rs",
+      "file_size_bytes": 9483,
+      "functions": [
+        {
+          "complexity": 1,
+          "file_path": "./src/direct.rs",
+          "is_async": false,
+          "line_number": 55,
+          "name": "from",
+          "parameters": [
+            "choice"
+          ],
+          "return_type": "Self"
+        },
+        {
+          "complexity": 1,
+          "file_path": "./src/direct.rs",
+          "is_async": false,
+          "line_number": 65,
+          "name": "fmt",
+          "parameters": [
+            "f"
+          ],
+          "return_type": "std::fmt::Result"
+        },
+        {
+          "complexity": 1,
+          "file_path": "./src/direct.rs",
+          "is_async": true,
+          "line_number": 75,
+          "name": "main",
+          "parameters": [],
+          "return_type": "Result<()>"
+        },
+        {
+          "complexity": 1,
+          "file_path": "./src/direct.rs",
+          "is_async": true,
+          "line_number": 75,
+          "name": "main",
+          "parameters": [],
+          "return_type": "Result<()>"
+        },
+        {
+          "complexity": 1,
+          "file_path": "./src/direct.rs",
+          "is_async": true,
+          "line_number": 153,
+          "name": "run_direct_analysis",
+          "parameters": [
+            "codebase_path",
+            "cli"
+          ],
+          "return_type": "Result<()>"
+        },
+        {
+          "complexity": 1,
+          "file_path": "./src/direct.rs",
+          "is_async": true,
+          "line_number": 153,
+          "name": "run_direct_analysis",
+          "parameters": [
+            "codebase_path",
+            "cli"
+          ],
+          "return_type": "Result<()>"
+        },
+        {
+          "complexity": 1,
+          "file_path": "./src/direct.rs",
+          "is_async": false,
+          "line_number": 263,
+          "name": "test_pipeline_conversion",
+          "parameters": [],
+          "return_type": null
+        },
+        {
+          "complexity": 1,
+          "file_path": "./src/direct.rs",
+          "is_async": false,
+          "line_number": 270,
+          "name": "test_pipeline_display",
+          "parameters": [],
+          "return_type": null
+        }
+      ],
+      "is_test": false,
+      "last_modified": "2025-09-13T02:16:48.603465018Z",
+      "path": "src/direct.rs",
+      "total_lines": 275
+    },
+    {
+      "classes": [],
+      "code_lines": 313,
+      "complexity": 86,
+      "dependencies": [
+        "anyhow",
+        "clap",
+        "codehud_core",
+        "codehud_utils",
+        "serde_json",
+        "std"
+      ],
+      "error": null,
+      "extension": ".rs",
+      "file_size_bytes": 12504,
+      "functions": [
+        {
+          "complexity": 1,
+          "file_path": "./src/data.rs",
+          "is_async": true,
+          "line_number": 15,
+          "name": "main",
+          "parameters": [],
+          "return_type": "Result<()>"
+        },
+        {
+          "complexity": 1,
+          "file_path": "./src/data.rs",
+          "is_async": true,
+          "line_number": 15,
+          "name": "main",
+          "parameters": [],
+          "return_type": "Result<()>"
+        },
+        {
+          "complexity": 1,
+          "file_path": "./src/data.rs",
+          "is_async": false,
+          "line_number": 39,
+          "name": "build_cli",
+          "parameters": [],
+          "return_type": "Command"
+        },
+        {
+          "complexity": 1,
+          "file_path": "./src/data.rs",
+          "is_async": true,
+          "line_number": 186,
+          "name": "handle_export",
+          "parameters": [
+            "matches"
+          ],
+          "return_type": "Result<()>"
+        },
+        {
+          "complexity": 1,
+          "file_path": "./src/data.rs",
+          "is_async": true,
+          "line_number": 186,
+          "name": "handle_export",
+          "parameters": [
+            "matches"
+          ],
+          "return_type": "Result<()>"
+        },
+        {
+          "complexity": 1,
+          "file_path": "./src/data.rs",
+          "is_async": true,
+          "line_number": 263,
+          "name": "handle_import",
+          "parameters": [
+            "matches"
+          ],
+          "return_type": "Result<()>"
+        },
+        {
+          "complexity": 1,
+          "file_path": "./src/data.rs",
+          "is_async": true,
+          "line_number": 263,
+          "name": "handle_import",
+          "parameters": [
+            "matches"
+          ],
+          "return_type": "Result<()>"
+        },
+        {
+          "complexity": 1,
+          "file_path": "./src/data.rs",
+          "is_async": true,
+          "line_number": 284,
+          "name": "handle_convert",
+          "parameters": [
+            "matches"
+          ],
+          "return_type": "Result<()>"
+        },
+        {
+          "complexity": 1,
+          "file_path": "./src/data.rs",
+          "is_async": true,
+          "line_number": 284,
+          "name": "handle_convert",
+          "parameters": [
+            "matches"
+          ],
+          "return_type": "Result<()>"
+        },
+        {
+          "complexity": 1,
+          "file_path": "./src/data.rs",
+          "is_async": true,
+          "line_number": 305,
+          "name": "handle_validate",
+          "parameters": [
+            "matches"
+          ],
+          "return_type": "Result<()>"
+        },
+        {
+          "complexity": 1,
+          "file_path": "./src/data.rs",
+          "is_async": true,
+          "line_number": 305,
+          "name": "handle_validate",
+          "parameters": [
+            "matches"
+          ],
+          "return_type": "Result<()>"
+        },
+        {
+          "complexity": 1,
+          "file_path": "./src/data.rs",
+          "is_async": true,
+          "line_number": 330,
+          "name": "handle_merge",
+          "parameters": [
+            "matches"
+          ],
+          "return_type": "Result<()>"
+        },
+        {
+          "complexity": 1,
+          "file_path": "./src/data.rs",
+          "is_async": true,
+          "line_number": 330,
+          "name": "handle_merge",
+          "parameters": [
+            "matches"
+          ],
+          "return_type": "Result<()>"
+        }
+      ],
+      "is_test": false,
+      "last_modified": "2025-09-13T02:04:46.484331407Z",
+      "path": "src/data.rs",
+      "total_lines": 348
+    }
+  ],
+  "functions": [
+    {
+      "complexity": 1,
+      "file_path": "./src/main.rs",
+      "is_async": true,
+      "line_number": 208,
+      "name": "extract_real_call_graph",
+      "parameters": [
+        "codebase_path"
+      ],
+      "return_type": "anyhow::Result<codehud_viz::CallGraph>"
+    },
+    {
+      "complexity": 1,
+      "file_path": "./src/main.rs",
+      "is_async": true,
+      "line_number": 208,
+      "name": "extract_real_call_graph",
+      "parameters": [
+        "codebase_path"
+      ],
+      "return_type": "anyhow::Result<codehud_viz::CallGraph>"
+    },
+    {
+      "complexity": 1,
+      "file_path": "./src/main.rs",
+      "is_async": false,
+      "line_number": 294,
+      "name": "extract_module_name",
+      "parameters": [
+        "file_path"
+      ],
+      "return_type": "String"
+    },
+    {
+      "complexity": 1,
+      "file_path": "./src/main.rs",
+      "is_async": true,
+      "line_number": 318,
+      "name": "main",
+      "parameters": [],
+      "return_type": "Result<()>"
+    },
+    {
+      "complexity": 1,
+      "file_path": "./src/main.rs",
+      "is_async": true,
+      "line_number": 318,
+      "name": "main",
+      "parameters": [],
+      "return_type": "Result<()>"
+    },
+    {
+      "complexity": 1,
+      "file_path": "./src/main.rs",
+      "is_async": true,
+      "line_number": 1091,
+      "name": "export_visualizations",
+      "parameters": [
+        "codebase_path",
+        "output_dir",
+        "views"
+      ],
+      "return_type": "Result<()>"
+    },
+    {
+      "complexity": 1,
+      "file_path": "./src/main.rs",
+      "is_async": true,
+      "line_number": 1091,
+      "name": "export_visualizations",
+      "parameters": [
+        "codebase_path",
+        "output_dir",
+        "views"
+      ],
+      "return_type": "Result<()>"
+    },
+    {
+      "complexity": 1,
+      "file_path": "./src/main.rs",
+      "is_async": true,
+      "line_number": 1145,
+      "name": "run_analysis_for_view",
+      "parameters": [
+        "codebase_path",
+        "view_type",
+        "output_dir"
+      ],
+      "return_type": "Result<()>"
+    },
+    {
+      "complexity": 1,
+      "file_path": "./src/main.rs",
+      "is_async": true,
+      "line_number": 1145,
+      "name": "run_analysis_for_view",
+      "parameters": [
+        "codebase_path",
+        "view_type",
+        "output_dir"
+      ],
+      "return_type": "Result<()>"
+    },
+    {
+      "complexity": 1,
+      "file_path": "./src/main.rs",
+      "is_async": false,
+      "line_number": 1186,
+      "name": "format_visualization_as_text",
+      "parameters": [
+        "view"
+      ],
+      "return_type": "String"
+    },
+    {
+      "complexity": 1,
+      "file_path": "./src/main.rs",
+      "is_async": false,
+      "line_number": 1244,
+      "name": "show_visualization_summary",
+      "parameters": [
+        "view"
+      ],
+      "return_type": null
+    },
+    {
+      "complexity": 1,
+      "file_path": "./src/llm.rs",
+      "is_async": false,
+      "line_number": 86,
+      "name": "fmt",
+      "parameters": [
+        "f"
+      ],
+      "return_type": "std::fmt::Result"
+    },
+    {
+      "complexity": 1,
+      "file_path": "./src/llm.rs",
+      "is_async": false,
+      "line_number": 96,
+      "name": "main",
+      "parameters": [],
+      "return_type": "Result<()>"
+    },
+    {
+      "complexity": 1,
+      "file_path": "./src/llm.rs",
+      "is_async": false,
+      "line_number": 229,
+      "name": "test_backend_display",
+      "parameters": [],
+      "return_type": null
+    },
+    {
+      "complexity": 1,
+      "file_path": "./src/llm.rs",
+      "is_async": false,
+      "line_number": 237,
+      "name": "test_temperature_validation",
+      "parameters": [],
+      "return_type": null
+    },
+    {
+      "complexity": 1,
+      "file_path": "./src/direct.rs",
+      "is_async": false,
+      "line_number": 55,
+      "name": "from",
+      "parameters": [
+        "choice"
+      ],
+      "return_type": "Self"
+    },
+    {
+      "complexity": 1,
+      "file_path": "./src/direct.rs",
+      "is_async": false,
+      "line_number": 65,
+      "name": "fmt",
+      "parameters": [
+        "f"
+      ],
+      "return_type": "std::fmt::Result"
+    },
+    {
+      "complexity": 1,
+      "file_path": "./src/direct.rs",
+      "is_async": true,
+      "line_number": 75,
+      "name": "main",
+      "parameters": [],
+      "return_type": "Result<()>"
+    },
+    {
+      "complexity": 1,
+      "file_path": "./src/direct.rs",
+      "is_async": true,
+      "line_number": 75,
+      "name": "main",
+      "parameters": [],
+      "return_type": "Result<()>"
+    },
+    {
+      "complexity": 1,
+      "file_path": "./src/direct.rs",
+      "is_async": true,
+      "line_number": 153,
+      "name": "run_direct_analysis",
+      "parameters": [
+        "codebase_path",
+        "cli"
+      ],
+      "return_type": "Result<()>"
+    },
+    {
+      "complexity": 1,
+      "file_path": "./src/direct.rs",
+      "is_async": true,
+      "line_number": 153,
+      "name": "run_direct_analysis",
+      "parameters": [
+        "codebase_path",
+        "cli"
+      ],
+      "return_type": "Result<()>"
+    },
+    {
+      "complexity": 1,
+      "file_path": "./src/direct.rs",
+      "is_async": false,
+      "line_number": 263,
+      "name": "test_pipeline_conversion",
+      "parameters": [],
+      "return_type": null
+    },
+    {
+      "complexity": 1,
+      "file_path": "./src/direct.rs",
+      "is_async": false,
+      "line_number": 270,
+      "name": "test_pipeline_display",
+      "parameters": [],
+      "return_type": null
+    },
+    {
+      "complexity": 1,
+      "file_path": "./src/data.rs",
+      "is_async": true,
+      "line_number": 15,
+      "name": "main",
+      "parameters": [],
+      "return_type": "Result<()>"
+    },
+    {
+      "complexity": 1,
+      "file_path": "./src/data.rs",
+      "is_async": true,
+      "line_number": 15,
+      "name": "main",
+      "parameters": [],
+      "return_type": "Result<()>"
+    },
+    {
+      "complexity": 1,
+      "file_path": "./src/data.rs",
+      "is_async": false,
+      "line_number": 39,
+      "name": "build_cli",
+      "parameters": [],
+      "return_type": "Command"
+    },
+    {
+      "complexity": 1,
+      "file_path": "./src/data.rs",
+      "is_async": true,
+      "line_number": 186,
+      "name": "handle_export",
+      "parameters": [
+        "matches"
+      ],
+      "return_type": "Result<()>"
+    },
+    {
+      "complexity": 1,
+      "file_path": "./src/data.rs",
+      "is_async": true,
+      "line_number": 186,
+      "name": "handle_export",
+      "parameters": [
+        "matches"
+      ],
+      "return_type": "Result<()>"
+    },
+    {
+      "complexity": 1,
+      "file_path": "./src/data.rs",
+      "is_async": true,
+      "line_number": 263,
+      "name": "handle_import",
+      "parameters": [
+        "matches"
+      ],
+      "return_type": "Result<()>"
+    },
+    {
+      "complexity": 1,
+      "file_path": "./src/data.rs",
+      "is_async": true,
+      "line_number": 263,
+      "name": "handle_import",
+      "parameters": [
+        "matches"
+      ],
+      "return_type": "Result<()>"
+    },
+    {
+      "complexity": 1,
+      "file_path": "./src/data.rs",
+      "is_async": true,
+      "line_number": 284,
+      "name": "handle_convert",
+      "parameters": [
+        "matches"
+      ],
+      "return_type": "Result<()>"
+    },
+    {
+      "complexity": 1,
+      "file_path": "./src/data.rs",
+      "is_async": true,
+      "line_number": 284,
+      "name": "handle_convert",
+      "parameters": [
+        "matches"
+      ],
+      "return_type": "Result<()>"
+    },
+    {
+      "complexity": 1,
+      "file_path": "./src/data.rs",
+      "is_async": true,
+      "line_number": 305,
+      "name": "handle_validate",
+      "parameters": [
+        "matches"
+      ],
+      "return_type": "Result<()>"
+    },
+    {
+      "complexity": 1,
+      "file_path": "./src/data.rs",
+      "is_async": true,
+      "line_number": 305,
+      "name": "handle_validate",
+      "parameters": [
+        "matches"
+      ],
+      "return_type": "Result<()>"
+    },
+    {
+      "complexity": 1,
+      "file_path": "./src/data.rs",
+      "is_async": true,
+      "line_number": 330,
+      "name": "handle_merge",
+      "parameters": [
+        "matches"
+      ],
+      "return_type": "Result<()>"
+    },
+    {
+      "complexity": 1,
+      "file_path": "./src/data.rs",
+      "is_async": true,
+      "line_number": 330,
+      "name": "handle_merge",
+      "parameters": [
+        "matches"
+      ],
+      "return_type": "Result<()>"
+    }
+  ],
+  "structure": {
+    "directories": {
+      "src": 4
+    },
+    "max_depth": 2,
+    "total_directories": 1
+  },
+  "summary": {
+    "average_complexity": 100.25,
+    "language_distribution": {
+      ".rs": 4
+    },
+    "test_files": 0,
+    "total_classes": 0,
+    "total_code_lines": 1822,
+    "total_files": 4,
+    "total_functions": 36,
+    "total_lines": 2136
+  }
+}

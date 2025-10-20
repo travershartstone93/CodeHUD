@@ -1,0 +1,14 @@
+{
+  "view_type": "security",
+  "title": "CodeHUD - security Analysis",
+  "content": {
+    "Security": {
+      "risk_level": "low",
+      "vulnerabilities_by_severity": {},
+      "top_security_issues": [],
+      "security_score": 100.0,
+      "files_with_issues": []
+    }
+  },
+  "timestamp": "2025-09-22T06:10:47.467235009Z"
+}

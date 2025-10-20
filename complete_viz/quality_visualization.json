@@ -1,0 +1,14 @@
+{
+  "view_type": "quality",
+  "title": "CodeHUD - quality Analysis",
+  "content": {
+    "Quality": {
+      "health_score": 0.0,
+      "issues_by_severity": {},
+      "top_problematic_files": [],
+      "complexity_trend": [],
+      "maintainability_scores": []
+    }
+  },
+  "timestamp": "2025-09-22T06:10:45.688401742Z"
+}

@@ -1,0 +1,11 @@
+/home/travers/Desktop/CodeHUD (copy)/Rust_copy/target/debug/deps/mio_uds-ba6ed2bcb1808e98.d: /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/mio-uds-0.6.8/src/lib.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/mio-uds-0.6.8/src/datagram.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/mio-uds-0.6.8/src/listener.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/mio-uds-0.6.8/src/socket.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/mio-uds-0.6.8/src/stream.rs
+
+/home/travers/Desktop/CodeHUD (copy)/Rust_copy/target/debug/deps/libmio_uds-ba6ed2bcb1808e98.rlib: /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/mio-uds-0.6.8/src/lib.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/mio-uds-0.6.8/src/datagram.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/mio-uds-0.6.8/src/listener.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/mio-uds-0.6.8/src/socket.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/mio-uds-0.6.8/src/stream.rs
+
+/home/travers/Desktop/CodeHUD (copy)/Rust_copy/target/debug/deps/libmio_uds-ba6ed2bcb1808e98.rmeta: /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/mio-uds-0.6.8/src/lib.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/mio-uds-0.6.8/src/datagram.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/mio-uds-0.6.8/src/listener.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/mio-uds-0.6.8/src/socket.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/mio-uds-0.6.8/src/stream.rs
+
+/home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/mio-uds-0.6.8/src/lib.rs:
+/home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/mio-uds-0.6.8/src/datagram.rs:
+/home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/mio-uds-0.6.8/src/listener.rs:
+/home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/mio-uds-0.6.8/src/socket.rs:
+/home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/mio-uds-0.6.8/src/stream.rs:

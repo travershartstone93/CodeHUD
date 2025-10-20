@@ -1,0 +1,133 @@
+[workspace]
+resolver = "2"
+members = [
+    "codehud-core",        # Core analysis engine with 11+ extractors
+    "codehud-analysis",    # Analysis pipeline and rendering (20+ modules)
+    "codehud-cli",         # Command-line interfaces (4 CLI systems)
+    "codehud-tui",         # Terminal user interface with Textual compatibility
+    "codehud-viz",         # Visualization system (10+ view types)
+    "codehud-realtime",    # Real-time monitoring and file watching
+    "codehud-transform",   # Code transformation engine (7+ transformers)
+    "codehud-llm",         # LLM integration (29+ components)
+    "codehud-gui",         # Graphical interface (25+ components)
+    "codehud-utils",       # Utility functions with Python compatibility
+]
+
+[workspace.dependencies]
+# ============= CORE INFRASTRUCTURE =============
+serde = { version = "1.0", features = ["derive", "rc"] }
+tokio = { version = "1.35", features = ["full"] }
+async-trait = "0.1"
+anyhow = "1.0"
+thiserror = "1.0"
+uuid = { version = "1.6", features = ["v4", "serde"] }
+chrono = { version = "0.4", features = ["serde"] }
+
+# ============= ANALYSIS ENGINE =============
+tree-sitter = "0.20"
+tree-sitter-python = "0.20"
+tree-sitter-javascript = "0.20" 
+tree-sitter-typescript = "0.20"
+tree-sitter-rust = "0.20"
+tree-sitter-java = "0.20"
+petgraph = "0.6"         # Graph data structures (NetworkX replacement)
+nalgebra = "0.32"        # Linear algebra (SciPy replacement)
+
+# ============= FILE OPERATIONS =============
+walkdir = "2.4"          # Directory traversal
+notify = "6.1"           # File system monitoring (watchdog replacement)
+globset = "0.4"          # Glob pattern matching
+rayon = "1.8"            # Data parallelism
+tokio-stream = "0.1"     # Async streams
+
+# ============= EXTERNAL TOOLS =============
+tokio-process = "0.2"    # Subprocess management
+which = "4.4"            # Tool availability detection
+regex = "1.10"           # Pattern matching
+memchr = "2.6"           # Fast string searching
+
+# ============= CLI & TERMINAL =============
+clap = { version = "4.4", features = ["derive", "env", "string"] }
+clap_complete = "4.4"    # Shell completion
+ratatui = "0.25"         # Terminal UI framework
+crossterm = "0.27"       # Cross-platform terminal
+syntect = "5.1"          # Syntax highlighting
+unicode-width = "0.1"    # Unicode text width
+indicatif = "0.17"       # Progress bars
+
+# ============= GUI =============
+eframe = "0.25"          # egui framework
+egui = "0.26"            # Immediate mode GUI
+egui_extras = "0.26"     # Additional widgets
+egui-wgpu = "0.26"       # GPU rendering backend
+winit = "0.29"           # Window management
+
+# ============= LLM INTEGRATION =============
+reqwest = { version = "0.11", features = ["json", "stream", "rustls-tls"], default-features = false }
+candle-core = "0.6"      # PyTorch replacement
+candle-nn = "0.6"        # Neural network layers
+candle-transformers = "0.6" # Transformer models
+tokenizers = "0.15"      # HuggingFace tokenizers
+hf-hub = "0.3"          # Model hub integration
+pyo3 = { version = "0.20", features = ["auto-initialize"] } # FFI bridge
+jsonschema = "0.18"      # Schema validation
+serde_json = "1.0"       # JSON handling
+
+# ============= CODE TRANSFORMATION =============
+syn = { version = "2.0", features = ["full", "extra-traits", "visit-mut"] }
+quote = "1.0"            # Code generation
+proc-macro2 = "1.0"      # Token manipulation
+
+# ============= CACHING & STORAGE =============
+cacache = "12.0"         # Content-addressable cache
+sled = "0.34"            # Embedded database
+bincode = "1.3"          # Binary serialization
+
+# ============= MARKDOWN & EXPORT =============
+pulldown-cmark = "0.9"   # Markdown parser
+pulldown-cmark-to-cmark = "10.0" # Markdown generator
+comrak = "0.21"          # CommonMark parser
+
+# ============= PERFORMANCE & PROFILING =============
+criterion = "0.5"        # Benchmarking framework
+pprof = "0.12"          # CPU profiling
+memory-stats = "1.1"     # Memory usage tracking
+sysinfo = "0.30"         # System information
+
+# ============= UTILITIES =============
+camino = "1.1"           # UTF-8 paths
+path-clean = "1.0"       # Path normalization
+unicode-normalization = "0.1" # Unicode normalization
+unicode-segmentation = "1.10" # Text segmentation
+toml = "0.8"            # TOML parsing
+serde_yaml = "0.9"      # YAML parsing
+config = "0.13"         # Configuration management
+tracing = "0.1"         # Structured logging
+tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt"] } # Log subscribers
+log = "0.4"             # Logging facade
+eyre = "0.6"            # Error reporting
+color-eyre = "0.6"      # Colored error reports
+num_cpus = "1.16"       # CPU count detection (used in CoreConfig)
+
+# ============= TESTING =============
+proptest = "1.4"        # Property-based testing
+tempfile = "3.8"        # Temporary file management
+assert_cmd = "2.0"      # CLI testing
+predicates = "3.0"      # Test predicates
+wiremock = "0.5"        # HTTP mocking
+
+[profile.release]
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
+
+[profile.dev]
+debug = true
+opt-level = 0
+
+# Performance profiling build
+[profile.profiling]
+inherits = "release"
+debug = true
+strip = false

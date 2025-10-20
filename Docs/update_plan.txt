@@ -1,0 +1,279 @@
+CODEHUD-LLM HIERARCHICAL SUMMARIZATION UPDATE PLAN
+==================================================
+
+Current Status:
+- ✅ File-level analysis working (1.4M tokens generated)
+- ✅ Narrator integration complete (structural insights)
+- ✅ Basic denoiser implemented (25% reduction proven)
+- ❌ Context window overflow causing hallucinated summaries
+- ❌ No hierarchical architecture (feeding 1.4M tokens to single LLM call)
+
+PHASE 1: CRATE-LEVEL SUMMARIZATION ARCHITECTURE
+===============================================
+
+1.1 Crate Discovery & Grouping
+------------------------------
+- [ ] Add crate detection logic to extraction_fsm.rs
+- [ ] Group files by crate based on Cargo.toml locations
+- [ ] Create CrateSummary data structure
+- [ ] Add crate metadata extraction (name, version, description)
+
+File: codehud-llm/src/crate_summarizer.rs (NEW)
+```rust
+pub struct CrateSummary {
+    pub crate_name: String,
+    pub crate_path: PathBuf,
+    pub files_analyzed: Vec<String>,
+    pub summary_text: String,
+    pub structural_insights: StructuralInsights,
+    pub token_count: usize,
+}
+
+pub struct CrateGrouper {
+    // Logic to group files by crate
+}
+```
+
+1.2 Crate-Level LLM Analysis
+----------------------------
+- [ ] Create crate summary generation pipeline
+- [ ] Implement 4K token budget per crate
+- [ ] Add crate-specific prompts (architecture, purpose, patterns)
+- [ ] Integrate with existing Ollama pipeline
+
+File: codehud-llm/src/crate_summarizer.rs
+```rust
+impl CrateSummarizer {
+    async fn generate_crate_summary(&self, crate_files: &[FileCommentExtraction]) -> LlmResult<CrateSummary>
+    async fn analyze_crate_architecture(&self, crate_files: &[FileCommentExtraction]) -> ArchitecturalInsights
+}
+```
+
+1.3 Update FSM for Hierarchical Processing
+------------------------------------------
+- [ ] Modify extraction_fsm.rs to support crate-level processing
+- [ ] Add new FSM states: CrateGrouping, CrateSummarizing, CrateComplete
+- [ ] Update project scan workflow for two-phase processing
+
+File: codehud-llm/src/extraction_fsm.rs
+```rust
+pub enum ExtractionState {
+    // Existing states...
+    CrateGrouping { project_path: PathBuf },
+    CrateSummarizing { current_crate: String, processed_crates: Vec<String> },
+    GeneratingFinalSummary { crate_summaries: Vec<CrateSummary> },
+}
+```
+
+PHASE 2: DUAL-STAGE DENOISING SYSTEM
+====================================
+
+2.1 Stage 1 Denoiser (Crate-Level Input)
+----------------------------------------
+- [ ] Enhance existing denoiser for crate summary input preparation
+- [ ] Target 40% reduction for crate-level LLM calls
+- [ ] Preserve essential structural insights
+- [ ] Remove file-level metadata overhead
+
+File: codehud-llm/src/denoiser.rs (ENHANCE)
+```rust
+impl LlmContextDenoiser {
+    pub fn denoise_for_crate_summary(&mut self, files: &[FileCommentExtraction]) -> (Vec<CleanedFileData>, DenoiserStats)
+    pub fn strip_metadata_overhead(&self, extraction: &FileCommentExtraction) -> CleanedFileData
+}
+
+pub struct CleanedFileData {
+    pub file_path: String,
+    pub key_comments: Vec<String>,
+    pub structural_insights: StructuralInsights,
+    // Remove: positions, contexts, metadata
+}
+```
+
+2.2 Stage 2 Denoiser (Final Summary Input)
+------------------------------------------
+- [ ] Create crate summary denoiser for final LLM call
+- [ ] Target 60% reduction from crate summaries to final input
+- [ ] Consolidate repeated architectural patterns
+- [ ] Preserve unique insights from each crate
+
+File: codehud-llm/src/denoiser.rs (ENHANCE)
+```rust
+impl LlmContextDenoiser {
+    pub fn denoise_crate_summaries(&mut self, summaries: &[CrateSummary]) -> (Vec<DenoisedCrateSummary>, DenoiserStats)
+    pub fn consolidate_architectural_patterns(&self, summaries: &[CrateSummary]) -> ConsolidatedPatterns
+    pub fn remove_redundant_descriptions(&self, text: &str) -> String
+}
+```
+
+PHASE 3: CHAT MEMORY & CONTEXT ACCUMULATION
+===========================================
+
+3.1 Conversation Memory System
+------------------------------
+- [ ] Enhance existing conversation.rs for context accumulation
+- [ ] Implement sliding window context management
+- [ ] Add project-level memory persistence
+
+File: codehud-llm/src/conversation.rs (ENHANCE)
+```rust
+pub struct ProjectAnalysisMemory {
+    pub project_context: String,
+    pub discovered_patterns: Vec<String>,
+    pub architectural_insights: Vec<String>,
+    pub crate_relationships: HashMap<String, Vec<String>>,
+}
+
+impl ConversationTracker {
+    pub fn accumulate_project_context(&mut self, crate_summary: &CrateSummary)
+    pub fn build_enhanced_context(&self) -> String // For final summary
+}
+```
+
+3.2 Context-Aware Crate Analysis
+--------------------------------
+- [ ] Use previous crate insights to enhance current crate analysis
+- [ ] Build inter-crate relationship understanding
+- [ ] Progressive context building throughout scan
+
+File: codehud-llm/src/crate_summarizer.rs (ENHANCE)
+```rust
+impl CrateSummarizer {
+    pub fn analyze_with_context(&self, crate_files: &[FileCommentExtraction],
+                               project_memory: &ProjectAnalysisMemory) -> LlmResult<CrateSummary>
+}
+```
+
+PHASE 4: FINAL SUMMARY GENERATION WITH CHAT MEMORY
+==================================================
+
+4.1 Enhanced Final Summary Pipeline
+-----------------------------------
+- [ ] Replace current generate_comprehensive_project_summary_enhanced
+- [ ] Use accumulated project memory + denoised crate summaries
+- [ ] Implement 12K token budget with smart truncation
+- [ ] Add architectural relationship analysis
+
+File: codehud-llm/src/extraction_fsm.rs (REPLACE)
+```rust
+async fn generate_hierarchical_project_summary(&self,
+    crate_summaries: &[CrateSummary],
+    project_memory: &ProjectAnalysisMemory) -> LlmResult<String> {
+
+    // Stage 2 denoising
+    let denoised_summaries = self.denoiser.denoise_crate_summaries(crate_summaries);
+
+    // Build enhanced context from memory
+    let enhanced_context = project_memory.build_enhanced_context();
+
+    // Generate within 12K token budget
+    let final_prompt = self.build_hierarchical_prompt(&denoised_summaries, &enhanced_context);
+
+    self.processor.generate_text_summary(&final_prompt).await
+}
+```
+
+PHASE 5: OUTPUT & METADATA PRESERVATION
+=======================================
+
+5.1 Enhanced Output Structure
+-----------------------------
+- [ ] Update output directory structure for hierarchical results
+- [ ] Preserve all original data + add hierarchical summaries
+- [ ] Add denoising statistics and token usage reports
+
+Output Structure:
+```
+project_scan_output/
+├── extracted_comments.json (original full data)
+├── extracted_comments_stage1_cleaned.json (crate input)
+├── crate_summaries/
+│   ├── codehud-core_summary.json
+│   ├── codehud-llm_summary.json
+│   └── ...
+├── crate_summaries_stage2_cleaned.json (final input)
+├── comprehensive_summary.md (factual, non-hallucinated)
+├── denoising_stats.json
+└── analysis_metadata.json
+```
+
+5.2 Integration with CLI
+------------------------
+- [ ] Update CLI to show hierarchical progress
+- [ ] Add option to skip hierarchical mode for testing
+- [ ] Display token usage and denoising statistics
+
+File: codehud-cli/src/llm.rs (ENHANCE)
+```rust
+async fn handle_scan_project(cli: &Cli, project_path: Option<PathBuf>) -> codehud_core::Result<()> {
+    // Add hierarchical mode flag
+    // Show progress for each phase
+    // Display token statistics
+}
+```
+
+IMPLEMENTATION ORDER & PRIORITIES
+=================================
+
+Priority 1 (Critical Path):
+1. Crate discovery and grouping logic
+2. Basic crate summarization pipeline
+3. Hierarchical FSM state management
+4. Stage 1 denoiser for crate inputs
+
+Priority 2 (Core Functionality):
+5. Stage 2 denoiser for final summary
+6. Enhanced final summary generation
+7. Output structure updates
+
+Priority 3 (Optimization):
+8. Chat memory integration
+9. Context-aware crate analysis
+10. CLI enhancements and statistics
+
+TESTING STRATEGY
+===============
+
+Test Cases:
+- [ ] Single crate project (simple case)
+- [ ] Multi-crate workspace (complex case)
+- [ ] Large crate with many files (stress test)
+- [ ] Token budget validation (ensure < 12K final)
+- [ ] Denoising effectiveness measurement
+- [ ] Comparison: hierarchical vs direct (quality improvement)
+
+Success Criteria:
+- ✅ Final summary < 12K tokens (no context overflow)
+- ✅ No hallucinated content (factual accuracy)
+- ✅ Preserves key architectural insights
+- ✅ Maintains structural insights from narrator
+- ✅ Reasonable processing time (< 5min for large projects)
+
+ROLLBACK PLAN
+============
+
+If hierarchical approach fails:
+1. Keep current file-level analysis (working)
+2. Implement simple truncation as emergency fallback
+3. Add warning about potential context overflow
+4. Maintain denoiser as standalone improvement
+
+ESTIMATED TIMELINE
+==================
+
+Phase 1: 2-3 days (crate summarization core)
+Phase 2: 1-2 days (dual denoising)
+Phase 3: 1-2 days (chat memory)
+Phase 4: 1 day (final integration)
+Phase 5: 1 day (output & CLI)
+
+Total: 6-9 days for complete implementation
+
+NOTES
+=====
+
+- Preserve backward compatibility with current output
+- All denoising should be configurable (enable/disable)
+- Chat memory should be optional for simple use cases
+- Focus on factual accuracy over speed optimization
+- Token budgets should be configurable via CLI/config

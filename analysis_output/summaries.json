@@ -1,0 +1,41 @@
+{
+  "./codehud-llm/src/narrator/detectors/mod.rs": {
+    "file": "./codehud-llm/src/narrator/detectors/mod.rs",
+    "themes": [],
+    "dependencies": [],
+    "purpose": "Insufficient comments for summary.",
+    "confidence": "Low",
+    "llm_model": "deepseek-coder:7b",
+    "analysis_timestamp": "2025-09-26T05:11:41.967382012+00:00",
+    "token_usage": {
+      "input": 0,
+      "output": 0
+    }
+  },
+  "./codehud-llm/src/narrator/mod.rs": {
+    "file": "./codehud-llm/src/narrator/mod.rs",
+    "themes": [],
+    "dependencies": [],
+    "purpose": "Insufficient comments for summary.",
+    "confidence": "Low",
+    "llm_model": "deepseek-coder:7b",
+    "analysis_timestamp": "2025-09-26T05:11:41.967363993+00:00",
+    "token_usage": {
+      "input": 0,
+      "output": 0
+    }
+  },
+  "./codehud-llm/src/narrator/config.rs": {
+    "file": "./codehud-llm/src/narrator/config.rs",
+    "themes": [],
+    "dependencies": [],
+    "purpose": "Insufficient comments for summary.",
+    "confidence": "Low",
+    "llm_model": "deepseek-coder:7b",
+    "analysis_timestamp": "2025-09-26T05:11:41.967352073+00:00",
+    "token_usage": {
+      "input": 0,
+      "output": 0
+    }
+  }
+}

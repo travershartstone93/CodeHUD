@@ -1,0 +1,255 @@
+Comment Extractor Tool: Detailed Plan and Code Description
+Overview
+The goal is to build a Rust-based comment extractor for multi-language codebases that extracts comments with node metadata, generates per-file purpose summaries using a local 8B LLM, and produces a system-wide summary by analyzing all file summaries together. The tool uses tree-sitter for comment extraction and ollama-rs for LLM inference, ensuring modular processing to handle large codebases without overwhelming the LLM’s context window. Outputs are structured as JSON for easy integration with later steps (e.g., call graph-based comment linking).
+Plan Workflow
+The tool operates in three main phases:
+
+Comment Extraction per File:
+
+Use tree-sitter to parse each code file into a concrete syntax tree (CST), where comments are explicit nodes (e.g., comment or doc_comment).
+Extract comments with metadata (text, node type, byte offsets, line/column positions) and store in a JSON file (comments.json), with one object per file.
+Example JSON structure:{
+    "example.rs": {
+        "file": "example.rs",
+        "comments": [
+            {
+                "text": "// Main function entry point",
+                "type": "comment",
+                "start_byte": 0,
+                "end_byte": 23,
+                "start_position": { "line": 1, "column": 1 },
+                "end_position": { "line": 1, "column": 24 }
+            }
+        ]
+    }
+}
+
+
+
+
+Per-File Summarization:
+
+Read comments.json and process one file’s comment data at a time.
+Feed each file’s JSON to the LLM (via Ollama, e.g., Llama 3 8B) with a prompt to deduce the file’s purpose, themes, and dependencies.
+Prompt example:You are a code analyst. Below is a JSON object containing comments extracted from a code file, with their metadata (e.g., position, type). Your task is to deduce the overall function and purpose of the file based solely on these comments.
+
+Input JSON: {file_comments}
+
+Steps:
+1. Identify key themes or topics in the comments (e.g., "authentication", "data processing").
+2. Note any mentioned dependencies, functions, or modules.
+3. Summarize the file's purpose in 1-2 sentences.
+4. If comments are insufficient, output "Insufficient comments for summary."
+
+Output in JSON:
+{
+  "file": "{file_name}",
+  "themes": ["theme1", "theme2"],
+  "dependencies": ["dep1", "dep2"],
+  "purpose": "Brief summary here.",
+  "confidence": "High/Medium/Low"
+}
+
+
+Collect summaries into a summaries.json file, e.g.:{
+    "example.rs": {
+        "file": "example.rs",
+        "themes": ["main entry", "initialization"],
+        "dependencies": [],
+        "purpose": "Serves as the main entry point for the application.",
+        "confidence": "High"
+    }
+}
+
+
+
+
+System-Wide Summary:
+
+Read summaries.json and combine all file summaries into a single prompt for the LLM.
+Prompt the LLM to analyze all summaries and generate a system-wide description of the codebase’s purpose, key components, and relationships (e.g., via call graph insights if available).
+Prompt example:You are a code analyst. Below is a JSON object containing summaries of all files in a codebase, each with their deduced purpose, themes, and dependencies based on comments.
+
+Input JSON: {all_summaries}
+
+Steps:
+1. Identify overarching themes across all files (e.g., "web server", "data pipeline").
+2. Note key dependencies or interactions between files (e.g., based on mentioned modules).
+3. Summarize the entire codebase’s purpose and structure in 2-4 sentences.
+4. If summaries are insufficient, output "Insufficient data for system summary."
+
+Output in JSON:
+{
+  "system_themes": ["theme1", "theme2"],
+  "key_dependencies": ["dep1", "dep2"],
+  "system_purpose": "Brief system summary here.",
+  "confidence": "High/Medium/Low"
+}
+
+
+Save the result to system_summary.json.
+
+
+
+Code Description
+1. Comment Extraction (extract_comments.rs)
+This Rust program uses tree-sitter to parse files and extract comments with node metadata, outputting to comments.json.
+
+Dependencies:
+
+tree-sitter: For parsing code into CSTs and querying comment nodes.
+serde_json: For JSON serialization.
+Standard library (std::fs, std::io, std::path) for file handling.
+
+
+Key Functions:
+
+extract_comments_to_json(file_path: &Path) -> io::Result<Value>:
+Parses a file using tree-sitter for a given language (e.g., Rust via tree_sitter_rust).
+Queries for comment nodes with (comment) @comment.
+Collects metadata (text, type, byte offsets, line/column positions).
+Returns a JSON object: {"file": "name", "comments": [...]}.
+
+
+process_files_to_json(file_paths: &[&str], output_path: &str) -> io::Result<()>:
+Loops over files, calls extract_comments_to_json for each.
+Aggregates into a single JSON object and writes to output_path.
+
+
+
+
+Features:
+
+Multi-language support by swapping grammar crates (e.g., tree_sitter_python).
+Lightweight: Only extracts comments, keeping JSON small (e.g., <1K tokens per file).
+Error handling for parsing and file I/O.
+
+
+
+2. Per-File Summarization and System Summary (process_comments_with_llm.rs)
+This Rust program reads comments.json, sends one file’s comments per LLM prompt, collects per-file summaries, and generates a final system summary.
+
+Dependencies:
+
+ollama-rs: For async LLM calls (assumes Ollama running locally with Llama 3 8B).
+serde_json: For JSON parsing and serialization.
+tokio: For async runtime.
+Standard library for file I/O.
+
+
+Key Functions:
+
+process_file_comments(ollama: &Ollama, file_name: &str, comment_data: &Value) -> io::Result<Value>:
+Constructs a prompt with one file’s JSON comment data.
+Sends to LLM via Ollama’s GenerationRequest.
+Parses LLM’s JSON response (e.g., {"file": "...", "purpose": "..."}).
+
+
+process_comments_json(input_path: &str, output_path: &str) -> io::Result<()>:
+Reads comments.json and iterates over each file’s entry.
+Calls process_file_comments for each file, ensuring one prompt per file.
+Writes per-file summaries to summaries.json.
+
+
+generate_system_summary(ollama: &Ollama, summaries_path: &str, output_path: &str) -> io::Result<()> (added here for completeness):
+Reads summaries.json.
+Constructs a prompt with all summaries.
+Sends to LLM and writes response to system_summary.json.
+
+
+
+
+Extended Code for System Summary (not in previous artifact, added here):
+async fn generate_system_summary(
+    ollama: &Ollama,
+    summaries_path: &str,
+    output_path: &str,
+) -> io::Result<()> {
+    let summaries_data = fs::read_to_string(summaries_path)?;
+    let summaries: Value = serde_json::from_str(&summaries_data)?;
+
+    let prompt = format!(
+        r#"
+You are a code analyst. Below is a JSON object containing summaries of all files in a codebase, each with their deduced purpose, themes, and dependencies based on comments.
+
+Input JSON: {}
+
+Steps:
+1. Identify overarching themes across all files (e.g., "web server", "data pipeline").
+2. Note key dependencies or interactions between files (e.g., based on mentioned modules).
+3. Summarize the entire codebase’s purpose and structure in 2-4 sentences.
+4. If summaries are insufficient, output "Insufficient data for system summary."
+
+Output in JSON:
+{{
+  "system_themes": ["theme1", "theme2"],
+  "key_dependencies": ["dep1", "dep2"],
+  "system_purpose": "Brief system summary here.",
+  "confidence": "High/Medium/Low"
+}}
+"#,
+        serde_json::to_string_pretty(&summaries)?
+    );
+
+    let request = GenerationRequest::new("llama3:8b".to_string(), prompt);
+    let response = ollama.generate(request).await.map_err(|e| {
+        io::Error::new(io::ErrorKind::Other, format!("LLM error: {}", e))
+    })?;
+
+    let output: Value = serde_json::from_str(&response.response)?;
+    fs::write(output_path, serde_json::to_string_pretty(&output)?)?;
+    Ok(())
+}
+
+
+Main Function Update:
+#[tokio::main]
+async fn main() -> io::Result<()> {
+    // Step 1: Process comments to summaries
+    process_comments_json("comments.json", "summaries.json").await?;
+    // Step 2: Generate system summary
+    let ollama = Ollama::default();
+    generate_system_summary(&ollama, "summaries.json", "system_summary.json").await
+}
+
+
+Features:
+
+Ensures one file’s comments per prompt, keeping token usage low (e.g., <1K tokens per file).
+Async processing for LLM calls, scalable for large codebases.
+Structured JSON outputs for both per-file and system summaries.
+Handles edge cases (e.g., insufficient comments).
+
+
+
+Integration with Broader Goals
+
+AST/CST Support: The tree-sitter extraction already provides node metadata (e.g., positions), which can be extended to include adjacent code elements (e.g., functions via queries like (function_definition) @func) for richer context.
+Call Graph Linking: After generating summaries.json, you can build a call graph (e.g., using petgraph for Rust or pydeps for Python) and feed pairs of adjacent file summaries to the LLM to link comments across files. Example prompt:Summaries: {fileA_summary}, {fileB_summary}
+Link relevant comments between these adjacent files based on call graph edges.
+Output: {"linked_comments": [{"from": "A commentX", "to": "B commentY", "reason": "..."}]}
+
+
+Token Management: Per-file prompts are small (e.g., 500–1000 tokens), and the system summary prompt aggregates only summaries (not raw comments), keeping it manageable (e.g., <4K tokens for 50 files). Use tiktoken-rs to monitor if needed.
+Multi-Language: Swap tree_sitter_rust for other grammars (e.g., tree_sitter_python). Ensure queries match language-specific comment kinds.
+
+Setup and Dependencies
+
+Cargo.toml:[dependencies]
+tree-sitter = "0.22"
+tree-sitter-rust = "0.21" # Add other grammars as needed
+serde_json = "1.0"
+ollama-rs = "0.1"
+tokio = { version = "1.0", features = ["full"] }
+
+
+Ollama Setup: Run locally (e.g., ollama run llama3:8b) on localhost:11434.
+Testing: Start with a small codebase (e.g., 2–3 files). Verify JSON outputs and LLM responses for accuracy.
+
+Future Enhancements
+
+Parallel Processing: Use tokio tasks to parallelize LLM calls for faster processing.
+Call Graph Integration: Add petgraph to build call graphs from ASTs and include edges in summaries.json.
+Fine-Tuning: If LLM outputs are noisy, fine-tune the 8B model on comment-summary pairs using LoRA.
+
+This plan and code provide a robust, scalable solution for extracting comments, summarizing files, and generating a system summary, all while keeping LLM prompts focused and efficient.

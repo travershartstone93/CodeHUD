@@ -1,0 +1,14 @@
+/home/travers/Desktop/CodeHUD (copy)/Rust_copy/target/release/deps/pyo3_build_config-10e65a550f93766f.d: /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pyo3-build-config-0.20.3/src/lib.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pyo3-build-config-0.20.3/src/errors.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pyo3-build-config-0.20.3/src/impl_.rs /home/travers/Desktop/CodeHUD\ (copy)/Rust_copy/target/release/build/pyo3-build-config-ea283243418f7338/out/pyo3-build-config-file.txt /home/travers/Desktop/CodeHUD\ (copy)/Rust_copy/target/release/build/pyo3-build-config-ea283243418f7338/out/pyo3-build-config.txt
+
+/home/travers/Desktop/CodeHUD (copy)/Rust_copy/target/release/deps/libpyo3_build_config-10e65a550f93766f.rlib: /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pyo3-build-config-0.20.3/src/lib.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pyo3-build-config-0.20.3/src/errors.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pyo3-build-config-0.20.3/src/impl_.rs /home/travers/Desktop/CodeHUD\ (copy)/Rust_copy/target/release/build/pyo3-build-config-ea283243418f7338/out/pyo3-build-config-file.txt /home/travers/Desktop/CodeHUD\ (copy)/Rust_copy/target/release/build/pyo3-build-config-ea283243418f7338/out/pyo3-build-config.txt
+
+/home/travers/Desktop/CodeHUD (copy)/Rust_copy/target/release/deps/libpyo3_build_config-10e65a550f93766f.rmeta: /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pyo3-build-config-0.20.3/src/lib.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pyo3-build-config-0.20.3/src/errors.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pyo3-build-config-0.20.3/src/impl_.rs /home/travers/Desktop/CodeHUD\ (copy)/Rust_copy/target/release/build/pyo3-build-config-ea283243418f7338/out/pyo3-build-config-file.txt /home/travers/Desktop/CodeHUD\ (copy)/Rust_copy/target/release/build/pyo3-build-config-ea283243418f7338/out/pyo3-build-config.txt
+
+/home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pyo3-build-config-0.20.3/src/lib.rs:
+/home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pyo3-build-config-0.20.3/src/errors.rs:
+/home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pyo3-build-config-0.20.3/src/impl_.rs:
+/home/travers/Desktop/CodeHUD\ (copy)/Rust_copy/target/release/build/pyo3-build-config-ea283243418f7338/out/pyo3-build-config-file.txt:
+/home/travers/Desktop/CodeHUD\ (copy)/Rust_copy/target/release/build/pyo3-build-config-ea283243418f7338/out/pyo3-build-config.txt:
+
+# env-dep:CARGO_PKG_VERSION=0.20.3
+# env-dep:OUT_DIR=/home/travers/Desktop/CodeHUD (copy)/Rust_copy/target/release/build/pyo3-build-config-ea283243418f7338/out

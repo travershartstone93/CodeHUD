@@ -1,0 +1,50 @@
+[package]
+name = "codehud-gui"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# GUI Framework
+egui = "0.28"
+eframe = { version = "0.28", default-features = false, features = [
+    "default_fonts",
+    "glow",
+    "persistence",
+] }
+
+# Local dependencies
+codehud-core = { path = "../codehud-core" }
+# codehud-llm = { path = "../codehud-llm" }  # Temporarily disabled to fix compilation
+
+# Async runtime
+tokio = { version = "1.0", features = ["full"] }
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# Logging
+log = "0.4"
+env_logger = "0.10"
+
+# Threading
+crossbeam-channel = "0.5"
+
+# File system
+walkdir = { workspace = true }
+
+# Time
+chrono = { version = "0.4", features = ["serde"] }
+
+# Error handling
+anyhow = "1.0"
+thiserror = "1.0"
+
+# Collections
+indexmap = "2.0"
+
+# System integration
+open = "5.0"
+
+[features]
+default = []

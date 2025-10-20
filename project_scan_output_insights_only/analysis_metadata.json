@@ -1,0 +1,69 @@
+{
+  "analysis_method": "hierarchical-crate-analysis",
+  "crates_processed": [
+    {
+      "files_processed": 3,
+      "files_with_comments": 3,
+      "name": "codehud-analysis",
+      "timestamp": "2025-09-30T02:51:31.501061928+00:00"
+    },
+    {
+      "files_processed": 4,
+      "files_with_comments": 4,
+      "name": "codehud-cli",
+      "timestamp": "2025-09-30T02:51:44.061053027+00:00"
+    },
+    {
+      "files_processed": 52,
+      "files_with_comments": 52,
+      "name": "codehud-core",
+      "timestamp": "2025-09-30T02:53:06.893737347+00:00"
+    },
+    {
+      "files_processed": 24,
+      "files_with_comments": 24,
+      "name": "codehud-gui",
+      "timestamp": "2025-09-30T02:53:39.914701233+00:00"
+    },
+    {
+      "files_processed": 29,
+      "files_with_comments": 29,
+      "name": "codehud-llm",
+      "timestamp": "2025-09-30T02:54:40.944207777+00:00"
+    },
+    {
+      "files_processed": 1,
+      "files_with_comments": 1,
+      "name": "codehud-realtime",
+      "timestamp": "2025-09-30T02:54:44.474968699+00:00"
+    },
+    {
+      "files_processed": 15,
+      "files_with_comments": 15,
+      "name": "codehud-transform",
+      "timestamp": "2025-09-30T02:55:24.892700684+00:00"
+    },
+    {
+      "files_processed": 2,
+      "files_with_comments": 2,
+      "name": "codehud-tui",
+      "timestamp": "2025-09-30T02:55:32.914687125+00:00"
+    },
+    {
+      "files_processed": 5,
+      "files_with_comments": 5,
+      "name": "codehud-utils",
+      "timestamp": "2025-09-30T02:55:43.824629239+00:00"
+    },
+    {
+      "files_processed": 8,
+      "files_with_comments": 8,
+      "name": "codehud-viz",
+      "timestamp": "2025-09-30T02:56:00.725598011+00:00"
+    }
+  ],
+  "last_updated": "2025-09-30T02:56:00.725608071+00:00",
+  "started_timestamp": "2025-09-30T02:51:31.501049498+00:00",
+  "total_files_processed": 143,
+  "total_files_with_comments": 143
+}

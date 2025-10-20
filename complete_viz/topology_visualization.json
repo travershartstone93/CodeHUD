@@ -1,0 +1,24 @@
+{
+  "view_type": "topology",
+  "title": "CodeHUD - topology Analysis",
+  "content": {
+    "Topology": {
+      "file_tree": {
+        "root": {
+          "name": "root",
+          "path": "/",
+          "is_directory": true,
+          "size": null,
+          "children": [],
+          "metrics": null
+        },
+        "total_files": 0,
+        "total_directories": 1
+      },
+      "language_distribution": {},
+      "complexity_distribution": [],
+      "coupling_metrics": []
+    }
+  },
+  "timestamp": "2025-09-22T06:10:53.600219916Z"
+}

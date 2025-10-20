@@ -1,0 +1,75 @@
+digraph CrateArchitecture {
+  graph [rankdir=TB, splines=polyline, nodesep=0.5, ranksep=2.5, newrank=true, bgcolor="#f8f9fa", dpi=96];
+  node [shape=box, style="filled,rounded", fontname="Helvetica Bold", fontsize=22, height=1.5, width=5.0];
+  edge [fontname="Helvetica Bold", fontsize=18, penwidth=2.5, arrowsize=1.2];
+
+  // External dependency boxes (one per crate)
+  ext_deps_codehud_core [shape=box, label="codehud-core External Deps\n\n• anyhow\n• async-trait\n• bincode\n• cacache\n• camino\n• chrono\n• clap\n• eyre\n• globset\n• lazy_static\n• nalgebra\n• notify\n• path-clean\n• petgraph\n• rayon\n• regex\n• serde\n• serde_json\n• serde_yaml\n• sled\n• thiserror\n• tokio\n• tokio-process\n• tokio-stream\n• toml\n• tracing\n• tree-sitter\n• tree-sitter-java\n• tree-sitter-javascript\n• tree-sitter-python\n• tree-sitter-rust\n• tree-sitter-typescript\n• uuid\n• walkdir\n• which\n", fillcolor="#ffcdd2", fontsize=10, width=4.0, height=2.0];
+  ext_deps_codehud_cli [shape=box, label="codehud-cli External Deps\n\n• anyhow\n• chrono\n• clap\n• clap_complete\n• petgraph\n• serde\n• serde_json\n• serde_yaml\n• thiserror\n• tokio\n• tokio-process\n• walkdir\n• which\n", fillcolor="#ffcdd2", fontsize=10, width=4.0, height=2.0];
+  ext_deps_codehud_gui [shape=box, label="codehud-gui External Deps\n\n• anyhow\n• chrono\n• crossbeam-channel\n• eframe\n• egui\n• env_logger\n• indexmap\n• log\n• open\n• serde\n• serde_json\n• thiserror\n• tokio\n• walkdir\n", fillcolor="#ffcdd2", fontsize=10, width=4.0, height=2.0];
+  ext_deps_codehud_tui [shape=box, label="codehud-tui External Deps\n\n• anyhow\n• atty\n• chrono\n• clap\n• crossterm\n• ratatui\n• serde\n• serde_json\n• syntect\n• thiserror\n• tokio\n• unicode-width\n", fillcolor="#ffcdd2", fontsize=10, width=4.0, height=2.0];
+  ext_deps_codehud_llm [shape=box, label="codehud-llm External Deps\n\n• aho-corasick\n• anyhow\n• async-trait\n• chrono\n• indicatif\n• itertools\n• jsonschema\n• log\n• pyo3\n• regex\n• reqwest\n• serde\n• serde_json\n• syn\n• thiserror\n• tokio\n• tokio-process\n• toml\n• tree-sitter\n• uuid\n• walkdir\n", fillcolor="#ffcdd2", fontsize=10, width=4.0, height=2.0];
+  ext_deps_codehud_viz [shape=box, label="codehud-viz External Deps\n\n• anyhow\n• chrono\n• crossterm\n• petgraph\n• ratatui\n• serde\n• serde_json\n• syntect\n• thiserror\n• tokio\n", fillcolor="#ffcdd2", fontsize=10, width=4.0, height=2.0];
+  ext_deps_codehud_analysis [shape=box, label="codehud-analysis External Deps\n\n• anyhow\n• async-trait\n• bincode\n• cacache\n• chrono\n• comrak\n• memory-stats\n• pprof\n• pulldown-cmark\n• pulldown-cmark-to-cmark\n• regex\n• serde\n• serde_json\n• serde_yaml\n• sled\n• sysinfo\n• thiserror\n• tokio\n• tokio-process\n• which\n", fillcolor="#ffcdd2", fontsize=10, width=4.0, height=2.0];
+  ext_deps_codehud_transform [shape=box, label="codehud-transform External Deps\n\n• anyhow\n• async-trait\n• chrono\n• git2\n• proc-macro2\n• quote\n• rayon\n• regex\n• ropey\n• rowan\n• serde\n• serde_json\n• serde_yaml\n• similar\n• syn\n• tempfile\n• thiserror\n• tokio\n• tokio-process\n• toml\n• tree-sitter\n• tree-sitter-java\n• tree-sitter-javascript\n• tree-sitter-python\n• tree-sitter-rust\n• tree-sitter-typescript\n• uuid\n• walkdir\n• which\n", fillcolor="#ffcdd2", fontsize=10, width=4.0, height=2.0];
+  ext_deps_codehud_utils [shape=box, label="codehud-utils External Deps\n\n• anyhow\n• camino\n• chrono\n• config\n• log\n• path-clean\n• regex\n• serde\n• serde_json\n• serde_yaml\n• thiserror\n• toml\n• tracing\n• tracing-subscriber\n• unicode-normalization\n• unicode-segmentation\n", fillcolor="#ffcdd2", fontsize=10, width=4.0, height=2.0];
+  ext_deps_codehud_realtime [shape=box, label="codehud-realtime External Deps\n\n• anyhow\n• chrono\n• notify\n• serde\n• serde_json\n• thiserror\n• tokio\n• tokio-stream\n", fillcolor="#ffcdd2", fontsize=10, width=4.0, height=2.0];
+  { rank=min; ext_deps_codehud_core; ext_deps_codehud_cli; ext_deps_codehud_gui; ext_deps_codehud_tui; ext_deps_codehud_llm; ext_deps_codehud_viz; ext_deps_codehud_analysis; ext_deps_codehud_transform; ext_deps_codehud_utils; ext_deps_codehud_realtime; }
+
+  // Internal crates (stacked vertically)
+  codehud_utils [label="codehud-utils\n5 files, 95 functions\n\nconfig\nlogging\nfile\nstring\n", fillcolor="#f9a825"];
+  codehud_core [label="codehud-core\n51 files, 783 functions\n\nmodels\nextractors\nbin\nconstants\ngraph\npattern\nexternal_tools\ncache\n... 1 more", fillcolor="#3498db"];
+  codehud_analysis [label="codehud-analysis\n3 files, 31 functions", fillcolor="#dcedc8"];
+  codehud_transform [label="codehud-transform\n15 files, 314 functions\n\ntransformers\n", fillcolor="#ffcdd2"];
+  codehud_cli [label="codehud-cli\n4 files, 32 functions", fillcolor="#c8e6c9"];
+  codehud_gui [label="codehud-gui\n63 files, 496 functions\n\nsignals\nviews\nutils\ncontrollers\ncomponents\nwidgets\n", fillcolor="#ffe0b2"];
+  codehud_tui [label="codehud-tui\n2 files, 64 functions", fillcolor="#f0f4c3"];
+  codehud_llm [label="codehud-llm\n33 files, 497 functions\n\nnarrator\n", fillcolor="#e1bee7"];
+  codehud_viz [label="codehud-viz\n5 files, 130 functions", fillcolor="#29b6f6"];
+  codehud_realtime [label="codehud-realtime\n1 files, 14 functions", fillcolor="#4fc3f7"];
+  // Invisible edges to enforce layout (external deps above internal crates)
+  ext_deps_codehud_core -> codehud_core [style=invis, weight=10];
+  ext_deps_codehud_cli -> codehud_cli [style=invis, weight=10];
+  ext_deps_codehud_gui -> codehud_gui [style=invis, weight=10];
+  ext_deps_codehud_tui -> codehud_tui [style=invis, weight=10];
+  ext_deps_codehud_llm -> codehud_llm [style=invis, weight=10];
+  ext_deps_codehud_viz -> codehud_viz [style=invis, weight=10];
+  ext_deps_codehud_analysis -> codehud_analysis [style=invis, weight=10];
+  ext_deps_codehud_transform -> codehud_transform [style=invis, weight=10];
+  ext_deps_codehud_utils -> codehud_utils [style=invis, weight=10];
+  ext_deps_codehud_realtime -> codehud_realtime [style=invis, weight=10];
+
+  // Inter-crate dependencies from Cargo.toml
+  codehud_viz -> codehud_core [color="#0097a7", penwidth=2.5, weight=2];
+  codehud_viz -> codehud_utils [color="#0097a7", penwidth=2.5, weight=2];
+  codehud_core -> codehud_utils [color="#1976d2", penwidth=2.5, weight=2];
+  codehud_realtime -> codehud_core [color="#0288d1", penwidth=2.5, weight=2];
+  codehud_realtime -> codehud_utils [color="#0288d1", penwidth=2.5, weight=2];
+  codehud_cli -> codehud_core [color="#388e3c", penwidth=2.5, weight=2];
+  codehud_cli -> codehud_analysis [color="#388e3c", penwidth=2.5, weight=2];
+  codehud_cli -> codehud_utils [color="#388e3c", penwidth=2.5, weight=2];
+  codehud_cli -> codehud_viz [color="#388e3c", penwidth=2.5, weight=2];
+  codehud_cli -> codehud_llm [color="#388e3c", penwidth=2.5, weight=2];
+  codehud_tui -> codehud_core [color="#5d4037", penwidth=2.5, weight=2];
+  codehud_tui -> codehud_analysis [color="#5d4037", penwidth=2.5, weight=2];
+  codehud_tui -> codehud_utils [color="#5d4037", penwidth=2.5, weight=2];
+  codehud_tui -> codehud_viz [color="#5d4037", penwidth=2.5, weight=2];
+  codehud_llm -> codehud_core [color="#7b1fa2", penwidth=2.5, weight=2];
+  codehud_llm -> codehud_utils [color="#7b1fa2", penwidth=2.5, weight=2];
+  codehud_gui -> codehud_core [color="#f57c00", penwidth=2.5, weight=2];
+  codehud_transform -> codehud_core [color="#c62828", penwidth=2.5, weight=2];
+  codehud_transform -> codehud_utils [color="#c62828", penwidth=2.5, weight=2];
+  codehud_analysis -> codehud_core [color="#689f38", penwidth=2.5, weight=2];
+  codehud_analysis -> codehud_utils [color="#689f38", penwidth=2.5, weight=2];
+  // Edges to external dependency boxes
+  codehud_viz -> ext_deps_codehud_viz [style=dashed, color="black", penwidth=0.8, constraint=false];
+  codehud_core -> ext_deps_codehud_core [style=dashed, color="black", penwidth=0.8, constraint=false];
+  codehud_realtime -> ext_deps_codehud_realtime [style=dashed, color="black", penwidth=0.8, constraint=false];
+  codehud_cli -> ext_deps_codehud_cli [style=dashed, color="black", penwidth=0.8, constraint=false];
+  codehud_tui -> ext_deps_codehud_tui [style=dashed, color="black", penwidth=0.8, constraint=false];
+  codehud_llm -> ext_deps_codehud_llm [style=dashed, color="black", penwidth=0.8, constraint=false];
+  codehud_utils -> ext_deps_codehud_utils [style=dashed, color="black", penwidth=0.8, constraint=false];
+  codehud_gui -> ext_deps_codehud_gui [style=dashed, color="black", penwidth=0.8, constraint=false];
+  codehud_transform -> ext_deps_codehud_transform [style=dashed, color="black", penwidth=0.8, constraint=false];
+  codehud_analysis -> ext_deps_codehud_analysis [style=dashed, color="black", penwidth=0.8, constraint=false];
+}

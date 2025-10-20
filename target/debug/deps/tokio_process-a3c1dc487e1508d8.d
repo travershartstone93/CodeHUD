@@ -1,0 +1,11 @@
+/home/travers/Desktop/CodeHUD (copy)/Rust_copy/target/debug/deps/tokio_process-a3c1dc487e1508d8.d: /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tokio-process-0.2.5/src/lib.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tokio-process-0.2.5/src/unix/mod.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tokio-process-0.2.5/src/unix/orphan.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tokio-process-0.2.5/src/unix/reap.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tokio-process-0.2.5/src/kill.rs
+
+/home/travers/Desktop/CodeHUD (copy)/Rust_copy/target/debug/deps/libtokio_process-a3c1dc487e1508d8.rlib: /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tokio-process-0.2.5/src/lib.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tokio-process-0.2.5/src/unix/mod.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tokio-process-0.2.5/src/unix/orphan.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tokio-process-0.2.5/src/unix/reap.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tokio-process-0.2.5/src/kill.rs
+
+/home/travers/Desktop/CodeHUD (copy)/Rust_copy/target/debug/deps/libtokio_process-a3c1dc487e1508d8.rmeta: /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tokio-process-0.2.5/src/lib.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tokio-process-0.2.5/src/unix/mod.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tokio-process-0.2.5/src/unix/orphan.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tokio-process-0.2.5/src/unix/reap.rs /home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tokio-process-0.2.5/src/kill.rs
+
+/home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tokio-process-0.2.5/src/lib.rs:
+/home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tokio-process-0.2.5/src/unix/mod.rs:
+/home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tokio-process-0.2.5/src/unix/orphan.rs:
+/home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tokio-process-0.2.5/src/unix/reap.rs:
+/home/travers/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tokio-process-0.2.5/src/kill.rs:

@@ -1,0 +1,1027 @@
+Here’s a deterministic Narrator for extractinng code shapes and then turning them into human readable bullet points. it is designed to be used with the tree sitter pipeline and callgraph metadata we made. theres a lot of hard coding and regex that will need to be totally revamped with what tools we already have availabe visa vis call graphs and so on. this is really just a prototype so you can get an idea of what im looking to integrate into the current tree sitter comment query pipeline, this should integrate with that such that the extracted comments and the bullet point doc are in the same doc and are fed to the LLM as the same doc.
+
+
+📦 Project layout
+
+narrator/
+├─ Cargo.toml
+├─ configs/
+│  └─ narrator.defaults.yaml
+└─ src/
+   ├─ main.rs
+   ├─ config.rs
+   ├─ cst.rs
+   ├─ findings.rs
+   ├─ aggregate.rs
+   ├─ render.rs
+   ├─ writer.rs
+   └─ detectors/
+      ├─ mod.rs
+      ├─ comments.rs
+      ├─ entrypoint_py.rs
+      ├─ wrapper.rs
+      ├─ io.rs
+      ├─ imports_exports.rs
+      └─ utility_class.rs
+
+
+⸻
+
+Cargo.toml
+
+[package]
+name = "narrator"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1.0"
+clap = { version = "4.5", features = ["derive"] }
+rayon = "1.10"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+serde_yaml = "0.9"
+regex = "1.10"
+itertools = "0.13"
+walkdir = "2.5"
+aho-corasick = "1.1"
+pathdiff = "0.2"
+percent-encoding = "2.3"
+
+configs/narrator.defaults.yaml
+
+sections:
+  order: [role, entrypoint, exports, risks, io_network, io_db, io_fs, structure, imports, tests]
+
+templates:
+  wrapper_function: "{owner} is a wrapper for {subject} (lines {range})."
+  network_call: "{owner} calls {subject} (lines {range})."
+  db_call: "{owner} touches DB via {subject} (lines {range})."
+  fs_io: "{owner} performs file I/O via {subject} (lines {range})."
+  entrypoint_script: "Entrypoint script (lines {range})."
+  todo_comment: "TODO (line {line}): {text}"
+  fixme_comment: "FIXME (line {line}): {text}"
+  note_comment: "NOTE (line {line}): {text}"
+  export_symbol: "Exports: {list}"
+  import_symbol: "Imports: {list}"
+  static_utility_class: "Utility class: {subject}."
+
+limits:
+  todos_per_file: 5
+  imports_max: 10
+  exports_max: 10
+
+io:
+  network_callees: ["fetch", "axios", "requests.get", "requests.post", "http.request", "urllib.request"]
+  db_callees: ["cursor.execute", "Session.query", "prisma", "sequelize", "typeorm"]
+  fs_callees: ["open", "read", "write", "fs.readFile", "fs.writeFile", "fs.open"]
+
+roles:
+  # First non-empty file header comment becomes the "Role:"
+  enable_header_comment_role: true
+
+src/main.rs
+
+mod config;
+mod cst;
+mod findings;
+mod aggregate;
+mod render;
+mod writer;
+mod detectors;
+
+use anyhow::{Context, Result};
+use clap::Parser;
+use rayon::prelude::*;
+use std::{fs, path::{Path, PathBuf}};
+use walkdir::WalkDir;
+use config::Config;
+use cst::{FileCst, load_cst_from_file};
+use detectors::DetectorRegistry;
+use aggregate::aggregate_findings;
+use render::render_markdown;
+use writer::write_markdown;
+
+#[derive(Parser, Debug)]
+#[command(name="narrator", about="Deterministic per-file bullet-point generator from Tree-sitter CST JSON")]
+struct Args {
+    /// Directory containing CST JSON files (from `tree-sitter parse --json`)
+    #[arg(long)]
+    cst_dir: PathBuf,
+
+    /// Optional source root to compute relative paths
+    #[arg(long)]
+    src_root: Option<PathBuf>,
+
+    /// Output directory (will be created)
+    #[arg(long, default_value = "Per file bullet points")]
+    out: PathBuf,
+
+    /// Config YAML (templates/limits/io lists)
+    #[arg(long)]
+    config: Option<PathBuf>,
+
+    /// Max parallel workers
+    #[arg(long, default_value_t = num_cpus::get())]
+    max_workers: usize,
+}
+
+fn main() -> Result<()> {
+    let args = Args::parse();
+    rayon::ThreadPoolBuilder::new()
+        .num_threads(args.max_workers)
+        .build_global()
+        .ok();
+
+    fs::create_dir_all(&args.out).context("creating output directory")?;
+
+    let cfg = Config::load(args.config.as_deref())
+        .context("loading config")?;
+
+    let mut files = Vec::new();
+    for entry in WalkDir::new(&args.cst_dir).into_iter().filter_map(|e| e.ok()) {
+        if entry.file_type().is_file() && entry.path().extension().map(|e| e == "json").unwrap_or(false) {
+            files.push(entry.into_path());
+        }
+    }
+
+    if files.is_empty() {
+        anyhow::bail!("No CST JSON files found in {}", args.cst_dir.display());
+    }
+
+    let registry = DetectorRegistry::new(&cfg);
+
+    files.par_iter().try_for_each(|cst_path| -> Result<()> {
+        let file_cst: FileCst = load_cst_from_file(cst_path)?;
+        let rel_src = relative_source_path(&file_cst.path, args.src_root.as_deref());
+        let findings = registry.detect_all(&file_cst);
+        let doc = aggregate_findings(&rel_src, &findings, &cfg);
+        let md = render_markdown(&rel_src, &doc, &cfg);
+        write_markdown(&args.out, &rel_src, &md)?;
+        Ok(())
+    })?;
+
+    Ok(())
+}
+
+fn relative_source_path(real: &Path, src_root: Option<&Path>) -> String {
+    if let Some(root) = src_root {
+        if let Ok(rel) = pathdiff::diff_paths(real, root) {
+            return rel.to_string_lossy().to_string();
+        }
+    }
+    real.to_string_lossy().to_string()
+}
+
+src/config.rs
+
+use anyhow::{Context, Result};
+use serde::{Deserialize, Serialize};
+use std::{fs, path::Path};
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct Config {
+    pub sections: Sections,
+    pub templates: Templates,
+    pub limits: Limits,
+    pub io: IoLists,
+    pub roles: RoleRules,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct Sections {
+    pub order: Vec<String>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct Templates {
+    pub wrapper_function: String,
+    pub network_call: String,
+    pub db_call: String,
+    pub fs_io: String,
+    pub entrypoint_script: String,
+    pub todo_comment: String,
+    pub fixme_comment: String,
+    pub note_comment: String,
+    pub export_symbol: String,
+    pub import_symbol: String,
+    pub static_utility_class: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct Limits {
+    pub todos_per_file: usize,
+    pub imports_max: usize,
+    pub exports_max: usize,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct IoLists {
+    pub network_callees: Vec<String>,
+    pub db_callees: Vec<String>,
+    pub fs_callees: Vec<String>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct RoleRules {
+    pub enable_header_comment_role: bool,
+}
+
+impl Config {
+    pub fn load(path: Option<&Path>) -> Result<Self> {
+        let s = if let Some(p) = path {
+            fs::read_to_string(p).with_context(|| format!("reading {}", p.display()))?
+        } else {
+            include_str!("../configs_fallback.yaml").to_string()
+        };
+        let cfg: Self = serde_yaml::from_str(&s).context("parsing YAML config")?;
+        Ok(cfg)
+    }
+}
+
+// Inline fallback so the binary runs without external file.
+const _: &str = include_str!("../configs_fallback.yaml");
+
+Create src/configs_fallback.yaml with the same contents as configs/narrator.defaults.yaml so the binary has baked-in defaults:
+
+src/configs_fallback.yaml
+
+sections:
+  order: [role, entrypoint, exports, risks, io_network, io_db, io_fs, structure, imports, tests]
+
+templates:
+  wrapper_function: "{owner} is a wrapper for {subject} (lines {range})."
+  network_call: "{owner} calls {subject} (lines {range})."
+  db_call: "{owner} touches DB via {subject} (lines {range})."
+  fs_io: "{owner} performs file I/O via {subject} (lines {range})."
+  entrypoint_script: "Entrypoint script (lines {range})."
+  todo_comment: "TODO (line {line}): {text}"
+  fixme_comment: "FIXME (line {line}): {text}"
+  note_comment: "NOTE (line {line}): {text}"
+  export_symbol: "Exports: {list}"
+  import_symbol: "Imports: {list}"
+  static_utility_class: "Utility class: {subject}."
+
+limits:
+  todos_per_file: 5
+  imports_max: 10
+  exports_max: 10
+
+io:
+  network_callees: ["fetch", "axios", "requests.get", "requests.post", "http.request", "urllib.request"]
+  db_callees: ["cursor.execute", "Session.query", "prisma", "sequelize", "typeorm"]
+  fs_callees: ["open", "read", "write", "fs.readFile", "fs.writeFile", "fs.open"]
+
+roles:
+  enable_header_comment_role: true
+
+src/cst.rs
+
+use anyhow::{Context, Result};
+use serde::{Deserialize, Serialize};
+use std::{fs, path::PathBuf};
+
+/// Minimal JSON shape compatible with `tree-sitter parse --json`.
+/// We only rely on `type`, `children`, `text`, and `startPoint`.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct Node {
+    #[serde(rename = "type")]
+    pub kind: String,
+    #[serde(default)]
+    pub children: Vec<Node>,
+    #[serde(default)]
+    pub text: Option<String>,
+    #[serde(default, rename = "startPoint")]
+    pub start_point: Option<Point>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct Point {
+    pub row: usize,
+    pub column: usize,
+}
+
+#[derive(Debug, Clone)]
+pub struct FileCst {
+    pub path: PathBuf,   // original source path if embedded; else the CST file path
+    pub root: Node,
+    pub source_text: Option<String>, // optional (not always present in CST JSON)
+}
+
+pub fn load_cst_from_file(cst_json_path: &std::path::Path) -> Result<FileCst> {
+    let data = fs::read_to_string(cst_json_path)
+        .with_context(|| format!("reading CST JSON {}", cst_json_path.display()))?;
+    let mut root: Node = serde_json::from_str(&data)
+        .with_context(|| format!("parsing JSON {}", cst_json_path.display()))?;
+    // Heuristic: some exports embed `path` or `source`—not standardized. We keep it simple.
+    Ok(FileCst {
+        path: guess_source_path(cst_json_path, &mut root),
+        root,
+        source_text: None,
+    })
+}
+
+// If CST JSON lacks source path, we assume same name as CST file without .json.
+fn guess_source_path(cst_json_path: &std::path::Path, _root: &mut Node) -> PathBuf {
+    let mut p = cst_json_path.to_path_buf();
+    if p.extension().map(|e| e == "json").unwrap_or(false) {
+        p.set_extension(""); // "file.ts.json" -> "file.ts."
+        if p.extension().is_none() {
+            // fallback: add .src
+            p.set_extension("src");
+        } else {
+            // remove trailing dot if present
+            let s = p.to_string_lossy().trim_end_matches('.').to_string();
+            return PathBuf::from(s);
+        }
+    }
+    p
+}
+
+// Helpers
+impl Node {
+    pub fn line(&self) -> usize {
+        self.start_point.as_ref().map(|p| p.row + 1).unwrap_or(1)
+    }
+    pub fn is_kind(&self, k: &str) -> bool {
+        self.kind == k
+    }
+    pub fn walk<'a>(&'a self, acc: &mut Vec<&'a Node>) {
+        acc.push(self);
+        for ch in &self.children {
+            ch.walk(acc);
+        }
+    }
+}
+
+src/findings.rs
+
+use serde::{Deserialize, Serialize};
+
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, Hash)]
+#[serde(rename_all = "snake_case")]
+pub enum FindingType {
+    TodoComment,
+    FixmeComment,
+    NoteComment,
+    EntrypointScript,
+    WrapperFunction,
+    NetworkCall,
+    DbCall,
+    FsIo,
+    ExportSymbol,
+    ImportSymbol,
+    StaticUtilityClass,
+    TestCase,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct Finding {
+    pub file: String,
+    pub line: usize,
+    pub typ: FindingType,
+    pub subject: Option<String>,
+    pub owner: Option<String>,
+    pub lines: Vec<usize>,
+    pub notes: Vec<String>,
+    pub text: Option<String>, // e.g., TODO text
+    pub extra: serde_json::Value,
+}
+
+impl Finding {
+    pub fn new(file: &str, line: usize, typ: FindingType) -> Self {
+        Self {
+            file: file.to_string(),
+            line,
+            typ,
+            subject: None,
+            owner: None,
+            lines: vec![line],
+            notes: vec![],
+            text: None,
+            extra: serde_json::json!({}),
+        }
+    }
+}
+
+src/detectors/mod.rs
+
+use crate::{cst::FileCst, findings::Finding};
+use crate::config::Config;
+
+pub mod comments;
+pub mod entrypoint_py;
+pub mod wrapper;
+pub mod io;
+pub mod imports_exports;
+pub mod utility_class;
+
+pub trait Detector {
+    fn detect(&self, file: &FileCst) -> Vec<Finding>;
+}
+
+pub struct DetectorRegistry<'a> {
+    detectors: Vec<Box<dyn Detector + Send + Sync>>,
+    _cfg: &'a Config,
+}
+
+impl<'a> DetectorRegistry<'a> {
+    pub fn new(cfg: &'a Config) -> Self {
+        let mut detectors: Vec<Box<dyn Detector + Send + Sync>> = vec![
+            Box::new(comments::CommentsDetector::new(cfg)),
+            Box::new(entrypoint_py::EntrypointPyDetector::default()),
+            Box::new(wrapper::WrapperDetector::default()),
+            Box::new(io::IoDetector::new(cfg)),
+            Box::new(imports_exports::ImportsExportsDetector::default()),
+            Box::new(utility_class::UtilityClassDetector::default()),
+        ];
+        Self { detectors, _cfg: cfg }
+    }
+
+    pub fn detect_all(&self, file: &FileCst) -> Vec<Finding> {
+        let mut out = Vec::new();
+        for d in &self.detectors {
+            out.extend(d.detect(file));
+        }
+        out
+    }
+}
+
+src/detectors/comments.rs
+
+use crate::{cst::FileCst, findings::{Finding, FindingType}};
+use crate::detectors::Detector;
+use crate::config::Config;
+use regex::Regex;
+
+pub struct CommentsDetector {
+    todo: Regex,
+    fixme: Regex,
+    note: Regex,
+    header_role: bool,
+}
+
+impl CommentsDetector {
+    pub fn new(cfg: &Config) -> Self {
+        Self {
+            todo: Regex::new(r"(?i)\bTODO\b[:\-]?\s*(.*)").unwrap(),
+            fixme: Regex::new(r"(?i)\bFIXME\b[:\-]?\s*(.*)").unwrap(),
+            note: Regex::new(r"(?i)\bNOTE\b[:\-]?\s*(.*)").unwrap(),
+            header_role: cfg.roles.enable_header_comment_role,
+        }
+    }
+}
+
+impl Detector for CommentsDetector {
+    fn detect(&self, file: &FileCst) -> Vec<Finding> {
+        // Walk and find "comment" nodes (tree-sitter common name)
+        let mut nodes = Vec::new();
+        file.root.walk(&mut nodes);
+
+        let mut out = Vec::new();
+        // First comment for "Role"
+        let mut header_done = !self.header_role;
+        for n in nodes {
+            if n.kind != "comment" { continue; }
+            let text = n.text.clone().unwrap_or_default();
+            let line = n.line();
+
+            if !header_done {
+                // First non-empty trimmed comment line becomes "Note" we map later to "Role" section in render.
+                if text.trim().len() > 2 {
+                    let mut f = Finding::new(&file.path.to_string_lossy(), line, FindingType::NoteComment);
+                    f.text = Some(text.trim().trim_start_matches(|c| c=='#' || c=='/' || c=='*').trim().to_string());
+                    out.push(f);
+                    header_done = true;
+                }
+            }
+
+            if let Some(cap) = self.todo.captures(&text) {
+                let mut f = Finding::new(&file.path.to_string_lossy(), line, FindingType::TodoComment);
+                f.text = cap.get(1).map(|m| m.as_str().trim().to_string());
+                out.push(f);
+            } else if let Some(cap) = self.fixme.captures(&text) {
+                let mut f = Finding::new(&file.path.to_string_lossy(), line, FindingType::FixmeComment);
+                f.text = cap.get(1).map(|m| m.as_str().trim().to_string());
+                out.push(f);
+            } else if let Some(cap) = self.note.captures(&text) {
+                let mut f = Finding::new(&file.path.to_string_lossy(), line, FindingType::NoteComment);
+                f.text = cap.get(1).map(|m| m.as_str().trim().to_string());
+                out.push(f);
+            }
+        }
+        out
+    }
+}
+
+src/detectors/entrypoint_py.rs
+
+use crate::{cst::{FileCst, Node}, findings::{Finding, FindingType}};
+use crate::detectors::Detector;
+
+#[derive(Default)]
+pub struct EntrypointPyDetector;
+
+impl Detector for EntrypointPyDetector {
+    fn detect(&self, file: &FileCst) -> Vec<Finding> {
+        // Look for literal text in nodes: simple heuristic
+        let mut nodes = Vec::new();
+        file.root.walk(&mut nodes);
+        for n in nodes {
+            if n.kind == "if_statement" {
+                // naive: look for __name__ and __main__ in subtree text
+                let mut bag = String::new();
+                collect_text(n, &mut bag);
+                if bag.contains("__name__") && bag.contains("__main__") {
+                    let mut f = Finding::new(&file.path.to_string_lossy(), n.line(), FindingType::EntrypointScript);
+                    return vec![f];
+                }
+            }
+        }
+        vec![]
+    }
+}
+
+fn collect_text(node: &Node, acc: &mut String) {
+    if let Some(t) = &node.text {
+        acc.push_str(t);
+        acc.push(' ');
+    }
+    for ch in &node.children {
+        collect_text(ch, acc);
+    }
+}
+
+src/detectors/wrapper.rs
+
+use crate::{cst::{FileCst, Node}, findings::{Finding, FindingType}};
+use crate::detectors::Detector;
+
+/// Detect functions that return a single call: return foo(...)
+#[derive(Default)]
+pub struct WrapperDetector;
+
+impl Detector for WrapperDetector {
+    fn detect(&self, file: &FileCst) -> Vec<Finding> {
+        let mut nodes = Vec::new();
+        file.root.walk(&mut nodes);
+        let mut out = Vec::new();
+
+        for n in nodes {
+            if n.kind == "function_definition" || n.kind == "function_declaration" {
+                // Look for a child block containing a single return_statement -> call_expression
+                if let Some((ret, call, callee)) = find_return_call(n) {
+                    let mut f = Finding::new(&file.path.to_string_lossy(), ret.line(), FindingType::WrapperFunction);
+                    f.owner = func_name(n);
+                    f.subject = Some(callee);
+                    f.lines = vec![ret.line()];
+                    out.push(f);
+                }
+            }
+        }
+        out
+    }
+}
+
+fn func_name(func: &Node) -> Option<String> {
+    // naive: find first child 'identifier'
+    for ch in &func.children {
+        if ch.kind == "identifier" {
+            return ch.text.clone();
+        }
+    }
+    None
+}
+
+fn find_return_call(func: &Node) -> Option<(&Node, &Node, String)> {
+    for ch in &func.children {
+        if ch.kind == "block" || ch.kind == "suite" || ch.kind == "statement_block" {
+            // descend to find return -> call
+            let mut stack = vec![ch];
+            while let Some(n) = stack.pop() {
+                if n.kind == "return_statement" {
+                    // child call
+                    for g in &n.children {
+                        if g.kind.contains("call") || g.kind.contains("call_expression") || g.kind == "call" {
+                            // find callee identifier
+                            if let Some(name) = find_callee_name(g) {
+                                return Some((n, g, name));
+                            }
+                        }
+                    }
+                }
+                for cc in &n.children { stack.push(cc); }
+            }
+        }
+    }
+    None
+}
+
+fn find_callee_name(call: &Node) -> Option<String> {
+    // try to find 'identifier' or 'property_identifier'
+    let mut flat = Vec::new();
+    call.walk(&mut flat);
+    let mut parts = Vec::new();
+    for n in flat {
+        if n.kind == "identifier" || n.kind == "property_identifier" {
+            if let Some(t) = &n.text { parts.push(t.clone()); }
+        }
+    }
+    if parts.is_empty() { None } else { Some(parts.join(".")) }
+}
+
+src/detectors/io.rs
+
+use crate::{cst::{FileCst, Node}, findings::{Finding, FindingType}};
+use crate::detectors::Detector;
+use crate::config::Config;
+use aho_corasick::AhoCorasick;
+
+pub struct IoDetector {
+    net: AhoCorasick,
+    db: AhoCorasick,
+    fs: AhoCorasick,
+}
+
+impl IoDetector {
+    pub fn new(cfg: &Config) -> Self {
+        Self {
+            net: AhoCorasick::new(cfg.io.network_callees.clone()).unwrap(),
+            db: AhoCorasick::new(cfg.io.db_callees.clone()).unwrap(),
+            fs: AhoCorasick::new(cfg.io.fs_callees.clone()).unwrap(),
+        }
+    }
+}
+
+impl Detector for IoDetector {
+    fn detect(&self, file: &FileCst) -> Vec<Finding> {
+        let mut nodes = Vec::new();
+        file.root.walk(&mut nodes);
+        let mut out = Vec::new();
+
+        for n in nodes {
+            if n.kind.contains("call") || n.kind == "call_expression" || n.kind == "call" {
+                let mut bag = String::new();
+                collect_ident_chain(n, &mut bag);
+                if self.net.is_match(&bag) {
+                    out.push(make(&file, n, FindingType::NetworkCall, &bag));
+                } else if self.db.is_match(&bag) {
+                    out.push(make(&file, n, FindingType::DbCall, &bag));
+                } else if self.fs.is_match(&bag) {
+                    out.push(make(&file, n, FindingType::FsIo, &bag));
+                }
+            }
+        }
+        out
+    }
+}
+
+fn make(file: &FileCst, node: &Node, typ: FindingType, bag: &str) -> Finding {
+    let mut f = Finding::new(&file.path.to_string_lossy(), node.line(), typ);
+    f.subject = extract_subject(bag);
+    f.owner = None; // could be set by walking up to nearest function/class if desired
+    f
+}
+
+fn extract_subject(bag: &str) -> Option<String> {
+    // pick last dotted segment pair if present
+    let s = bag.split_whitespace().next().unwrap_or_default().to_string();
+    Some(s)
+}
+
+fn collect_ident_chain(node: &Node, acc: &mut String) {
+    if let Some(t) = &node.text {
+        acc.push_str(t);
+        acc.push(' ');
+    }
+    for ch in &node.children {
+        collect_ident_chain(ch, acc);
+    }
+}
+
+src/detectors/imports_exports.rs
+
+use crate::{cst::FileCst, findings::{Finding, FindingType}};
+use crate::detectors::Detector;
+
+#[derive(Default)]
+pub struct ImportsExportsDetector;
+
+impl Detector for ImportsExportsDetector {
+    fn detect(&self, file: &FileCst) -> Vec<Finding> {
+        let mut nodes = Vec::new();
+        file.root.walk(&mut nodes);
+        let mut imports = vec![];
+        let mut exports = vec![];
+
+        for n in nodes {
+            match n.kind.as_str() {
+                "import_statement" | "import_declaration" => {
+                    if let Some(txt) = &n.text { imports.push(txt.trim().to_string()); }
+                }
+                "export_statement" | "export_clause" | "export_declaration" => {
+                    if let Some(txt) = &n.text { exports.push(txt.trim().to_string()); }
+                }
+                _ => {}
+            }
+        }
+
+        let mut out = vec![];
+        if !exports.is_empty() {
+            let mut f = Finding::new(&file.path.to_string_lossy(), 1, FindingType::ExportSymbol);
+            f.subject = Some(exports.join(", "));
+            out.push(f);
+        }
+        if !imports.is_empty() {
+            let mut f = Finding::new(&file.path.to_string_lossy(), 1, FindingType::ImportSymbol);
+            f.subject = Some(imports.join(", "));
+            out.push(f);
+        }
+        out
+    }
+}
+
+src/detectors/utility_class.rs
+
+use crate::{cst::FileCst, findings::{Finding, FindingType}};
+use crate::detectors::Detector;
+
+#[derive(Default)]
+pub struct UtilityClassDetector;
+
+impl Detector for UtilityClassDetector {
+    fn detect(&self, file: &FileCst) -> Vec<Finding> {
+        let mut nodes = Vec::new();
+        file.root.walk(&mut nodes);
+        let mut out = Vec::new();
+
+        for class in nodes.into_iter().filter(|n| n.kind == "class_definition" || n.kind == "class_declaration") {
+            let mut methods = 0usize;
+            let mut static_like = 0usize;
+            for ch in &class.children {
+                if ch.kind.contains("method") || ch.kind == "function_definition" {
+                    methods += 1;
+                    // crude: look for 'static' token or @staticmethod nearby
+                    let mut bag = String::new();
+                    collect_text(ch, &mut bag);
+                    if bag.contains("@staticmethod") || bag.contains("static ") {
+                        static_like += 1;
+                    }
+                }
+            }
+            if methods > 0 && methods == static_like {
+                let mut f = Finding::new(&file.path.to_string_lossy(), class.line(), FindingType::StaticUtilityClass);
+                f.subject = class_name(&class);
+                out.push(f);
+            }
+        }
+        out
+    }
+}
+
+fn class_name(class: &crate::cst::Node) -> Option<String> {
+    for ch in &class.children {
+        if ch.kind == "identifier" {
+            return ch.text.clone();
+        }
+    }
+    None
+}
+
+fn collect_text(node: &crate::cst::Node, acc: &mut String) {
+    if let Some(t) = &node.text { acc.push_str(t); acc.push(' '); }
+    for c in &node.children { collect_text(c, acc); }
+}
+
+src/aggregate.rs
+
+use crate::{findings::{Finding, FindingType}, config::Config};
+use itertools::Itertools;
+use std::collections::BTreeMap;
+
+#[derive(Debug, Clone)]
+pub struct SectionDoc {
+    pub title: String,
+    pub bullets: Vec<String>,
+}
+
+#[derive(Debug, Clone)]
+pub struct FileDoc {
+    pub file: String,
+    pub sections: BTreeMap<String, SectionDoc>,
+    pub role_line: Option<String>,
+}
+
+pub fn aggregate_findings(file: &str, findings: &[Finding], cfg: &Config) -> FileDoc {
+    let mut doc = FileDoc {
+        file: file.to_string(),
+        sections: BTreeMap::new(),
+        role_line: None,
+    };
+
+    // Role line: first NoteComment becomes "Role" sentence (trimmed)
+    if let Some(f) = findings.iter().find(|f| f.typ == FindingType::NoteComment && f.text.as_deref().unwrap_or("").len() > 0) {
+        doc.role_line = Some(capitalize_sentence(f.text.as_ref().unwrap()));
+    }
+
+    // Buckets
+    let mut risks = vec![];
+    let mut entry = vec![];
+    let mut structure = vec![];
+    let mut io_net = vec![];
+    let mut io_db = vec![];
+    let mut io_fs = vec![];
+    let mut imports = vec![];
+    let mut exports = vec![];
+    let mut tests = vec![];
+
+    // Group same (type, owner, subject) and merge lines
+    let grouped = findings.iter().into_group_map_by(|f| (std::mem::discriminant(&f.typ), f.owner.clone(), f.subject.clone()));
+    for ((_disc, owner, subject), items) in grouped {
+        let mut lines: Vec<usize> = items.iter().flat_map(|i| i.lines.clone()).collect();
+        lines.sort_unstable();
+        lines.dedup();
+        let range = fmt_ranges(group_ranges(&lines));
+        let first = items[0].clone();
+
+        match first.typ {
+            FindingType::EntrypointScript => entry.push(format_template(&cfg.templates.entrypoint_script, &[("range", range.as_str())])),
+            FindingType::WrapperFunction => structure.push(cfg.templates.wrapper_function
+                .replace("{owner}", owner.as_deref().unwrap_or("this function"))
+                .replace("{subject}", subject.as_deref().unwrap_or("callee"))
+                .replace("{range}", &range)),
+            FindingType::NetworkCall => io_net.push(cfg.templates.network_call
+                .replace("{owner}", owner.as_deref().unwrap_or("this scope"))
+                .replace("{subject}", subject.as_deref().unwrap_or("network call"))
+                .replace("{range}", &range)),
+            FindingType::DbCall => io_db.push(cfg.templates.db_call
+                .replace("{owner}", owner.as_deref().unwrap_or("this scope"))
+                .replace("{subject}", subject.as_deref().unwrap_or("db call"))
+                .replace("{range}", &range)),
+            FindingType::FsIo => io_fs.push(cfg.templates.fs_io
+                .replace("{owner}", owner.as_deref().unwrap_or("this scope"))
+                .replace("{subject}", subject.as_deref().unwrap_or("fs io"))
+                .replace("{range}", &range)),
+            FindingType::ExportSymbol => exports.push(render_list(&cfg.templates.export_symbol, subject.as_deref().unwrap_or(""), cfg.limits.exports_max)),
+            FindingType::ImportSymbol => imports.push(render_list(&cfg.templates.import_symbol, subject.as_deref().unwrap_or(""), cfg.limits.imports_max)),
+            FindingType::TodoComment => risks.push(cfg.templates.todo_comment
+                .replace("{line}", &first.line.to_string())
+                .replace("{text}", first.text.as_deref().unwrap_or("").trim())),
+            FindingType::FixmeComment => risks.push(cfg.templates.fixme_comment
+                .replace("{line}", &first.line.to_string())
+                .replace("{text}", first.text.as_deref().unwrap_or("").trim())),
+            FindingType::NoteComment => {}, // handled as role
+            FindingType::StaticUtilityClass => structure.push(cfg.templates.static_utility_class
+                .replace("{subject}", subject.as_deref().unwrap_or("class"))),
+            FindingType::TestCase => tests.push(format!("- Test case at line {}", first.line)),
+        }
+    }
+
+    // Install sections in configured order
+    for key in &cfg.sections.order {
+        match key.as_str() {
+            "role" => {
+                // rendered in render.rs header
+            }
+            "entrypoint" => add_if_nonempty(&mut doc, "Entrypoint", entry),
+            "exports" => add_if_nonempty(&mut doc, "Exports", exports),
+            "risks" => add_if_nonempty(&mut doc, "Risks", risks),
+            "io_network" => add_if_nonempty(&mut doc, "Network I/O", io_net),
+            "io_db" => add_if_nonempty(&mut doc, "Database I/O", io_db),
+            "io_fs" => add_if_nonempty(&mut doc, "File I/O", io_fs),
+            "structure" => add_if_nonempty(&mut doc, "Structure", structure),
+            "imports" => add_if_nonempty(&mut doc, "Imports", imports),
+            "tests" => add_if_nonempty(&mut doc, "Tests", tests),
+            _ => {}
+        }
+    }
+
+    doc
+}
+
+fn add_if_nonempty(doc: &mut FileDoc, title: &str, bullets: Vec<String>) {
+    if bullets.is_empty() { return; }
+    doc.sections.insert(title.to_string(), SectionDoc { title: title.to_string(), bullets });
+}
+
+fn capitalize_sentence(s: String) -> String {
+    let mut c = s.chars();
+    match c.next() {
+        None => s,
+        Some(f) => f.to_uppercase().collect::<String>() + c.as_str()
+    }
+}
+
+fn group_ranges(lines: &[usize]) -> Vec<(usize, usize)> {
+    if lines.is_empty() { return vec![]; }
+    let mut out = vec![];
+    let mut start = lines[0];
+    let mut last = lines[0];
+    for &l in &lines[1..] {
+        if l == last + 1 { last = l; } else { out.push((start, last)); start = l; last = l; }
+    }
+    out.push((start, last));
+    out
+}
+
+fn fmt_ranges(ranges: Vec<(usize, usize)>) -> String {
+    ranges.into_iter().map(|(a,b)| if a==b { a.to_string() } else { format!("{a}–{b}") }).collect::<Vec<_>>().join(", ")
+}
+
+fn render_list(tpl: &str, csv: &str, max_items: usize) -> String {
+    let items: Vec<&str> = csv.split(',').map(|s| s.trim()).filter(|s| !s.is_empty()).collect();
+    let (head, tail) = if items.len() > max_items {
+        (items[..max_items].join(", "), Some(items.len() - max_items))
+    } else { (items.join(", "), None) };
+    let list = if let Some(n) = tail { format!("{head} (+{n} more)") } else { head };
+    tpl.replace("{list}", &list)
+}
+
+fn format_template(tpl: &str, pairs: &[(&str, &str)]) -> String {
+    let mut s = tpl.to_string();
+    for (k,v) in pairs {
+        s = s.replace(&format!("{{{}}}", k), v);
+    }
+    s
+}
+
+src/render.rs
+
+use crate::aggregate::FileDoc;
+use crate::config::Config;
+
+pub fn render_markdown(rel_path: &str, doc: &FileDoc, _cfg: &Config) -> String {
+    let mut out = String::new();
+    out.push_str(&format!("{}\n", rel_path));
+    if let Some(role) = &doc.role_line {
+        out.push_str(&format!("  Role: {}\n\n", ensure_period(role)));
+    } else {
+        out.push('\n');
+    }
+
+    for section in doc.sections.values() {
+        out.push_str(&format!("  {}\n", section.title));
+        for b in &section.bullets {
+            let line = if b.starts_with("- ") { b.clone() } else { format!("- {}", ensure_period(b)) };
+            out.push_str(&format!("  {}\n", line));
+        }
+        out.push('\n');
+    }
+    out
+}
+
+fn ensure_period(s: &str) -> String {
+    let t = s.trim();
+    if t.ends_with('.') { t.to_string() } else { format!("{t}.") }
+}
+
+src/writer.rs
+
+use anyhow::{Context, Result};
+use percent_encoding::{utf8_percent_encode, NON_ALPHANUMERIC};
+use std::{fs, path::{Path, PathBuf}};
+
+pub fn write_markdown(out_dir: &Path, rel_src: &str, content: &str) -> Result<()> {
+    let sanitized = rel_src.replace(std::path::MAIN_SEPARATOR, "_");
+    let encoded = utf8_percent_encode(&sanitized, NON_ALPHANUMERIC).to_string();
+    let filename = format!("{encoded}.md");
+    let dest = out_dir.join(filename);
+    fs::write(&dest, content).with_context(|| format!("writing {}", dest.display()))?;
+    Ok(())
+}
+
+
+⸻
+
+🛠️ How to run (after you generate CST JSON)
+	1.	Generate CST JSON per file (example):
+
+# repeat per source file (or script it):
+tree-sitter parse --json src/client.py > cst/src_client.py.json
+
+(You can mirror your source tree under cst/.)
+
+	2.	Build + run narrator:
+
+cargo build --release
+./target/release/narrator \
+  --cst-dir ./cst \
+  --src-root . \
+  --out "Per file bullet points" \
+  --config configs/narrator.defaults.yaml
+
+
+	3.	Output: Markdown files in Per file bullet points/, one per source file, e.g.:
+
+Per file bullet points/src_client.py.md
+
+
+
+⸻
+
+✍️ Notes & next steps
+	•	Owner/subject enrichment: Right now, “owner” is populated for wrapper functions; you can generalize by walking upward to the nearest function_definition/class_definition for any finding.
+	•	Language adapters: If you want higher accuracy, add small helpers per language (e.g., Python’s suite, JS’s call_expression differences).
+	•	Meta ingestion: If you already compute imports/exports/centrality elsewhere, you can thread a meta.json loader and emit extra bullets (the skeleton’s ready for it).
+	•	Tests: Add golden tests by snapshotting expected Markdown for tiny CST fixtures.
+	•	Detectors to add: tests (describe/it / pytest), retry/backoff patterns, feature flags, CLI arg parsing, HTTP route registration, etc.

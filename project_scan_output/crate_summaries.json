@@ -1,0 +1,862 @@
+[
+  {
+    "crate_name": "codehud-analysis",
+    "crate_path": "codehud-analysis",
+    "files_analyzed": [
+      "codehud-analysis/src/lib.rs",
+      "codehud-analysis/src/health_score.rs",
+      "codehud-analysis/src/pipeline.rs"
+    ],
+    "summary_text": "## Overall Architecture\n\nThe `codehud-analysis` crate is a Rust-based system designed to provide comprehensive code analysis capabilities. It leverages several external libraries and tools for specific functionalities:\n- **Rust Standard Library**: For general-purpose programming constructs and utilities.\n- **serde, serde_json, serde_yaml**: For serialization and deserialization of data into JSON and YAML formats, respectively.\n- **tokio**: For asynchronous execution to handle parallel processing efficiently.\n\nThis crate fits into a larger project aimed at continuous code quality monitoring. It serves as a critical component by providing detailed analysis results that can be integrated into various tools or dashboards for real-time insights into code health.\n\n## What Does It Actually Do\n\n**PRIMARY OUTPUT**: The `codehud-analysis` crate generates comprehensive code analysis reports, including a health score and detailed recommendations. These reports are exported in JSON, YAML, and markdown formats, allowing users to integrate the analysis into their preferred workflows or documentation systems.\n\n**SECONDARY FEATURES**:\n- **Health Score Calculation**: Computes scores for functionality, security, performance, and maintainability using algorithms that closely mirror those in the original Python implementation.\n- **Analysis Pipeline**: Orchestrates multiple extractors (e.g., QualityExtractor, DependenciesExtractor) to gather data on code quality, dependencies, and other relevant metrics. It supports parallel execution for efficiency.\n- **Markdown Export**: Provides detailed markdown reports, which are user-friendly and can be easily integrated into documentation or shared within teams.\n\nThe crate's internal operations include initializing extractors, setting execution timeouts, processing data in parallel, calculating health scores, and exporting results. However, these processes are designed to support the primary output of generating actionable analysis reports for end users.",
+    "structural_insights": {
+      "source": "crate_aggregation",
+      "generated": true,
+      "sections": {
+        "Imports": [
+          "Imports: pub use pipeline::{",
+          "Imports: pub use health_score::{HealthScoreCalculator, HealthScore};.",
+          "Imports: use std::collections::HashMap;.",
+          "use super::*;.",
+          "Imports: use super::*;.",
+          "Imports: use serde::{Serialize, Deserialize};.",
+          "Imports: use codehud_core::{Result, Error};.",
+          "Imports: use std::path::{Path, PathBuf};.",
+          "Imports: use codehud_core::{",
+          "use crate::health_score::{HealthScoreCalculator, HealthScore};."
+        ],
+        "Exports": [
+          "pub use pipeline::{",
+          "pub use health_score::{HealthScoreCalculator, HealthScore};."
+        ],
+        "Structure": [
+          "calls serde_json::Map::new.",
+          "calculate_performance_score is a wrapper for Ok (lines 259).",
+          "calls Error::Analysis.",
+          "calls serde_json::Value::Object.",
+          "calls HealthScoreCalculator::default.",
+          "calls HashMap::new.",
+          "calculate_security_score is a wrapper for Ok (lines 233).",
+          "calculate_functionality_score is a wrapper for Ok (lines 171).",
+          "calls serde_yaml::to_string.",
+          "calls Utc::now."
+        ],
+        "File I/O": [
+          "this scope performs file I/O via std::thread::available_parallelism() (lines 419)."
+        ]
+      }
+    },
+    "token_count": 501,
+    "timestamp": "2025-10-18T01:38:43.366135465Z"
+  },
+  {
+    "crate_name": "codehud-cli",
+    "crate_path": "codehud-cli",
+    "files_analyzed": [
+      "codehud-cli/src/main.rs",
+      "codehud-cli/src/llm.rs",
+      "codehud-cli/src/direct.rs",
+      "codehud-cli/src/data.rs"
+    ],
+    "summary_text": "## Overall Architecture\n\nThe `codehud-cli` crate is a comprehensive command-line interface (CLI) tool built in Rust, designed to provide advanced code analysis capabilities. It leverages several external libraries and tools for its operations:\n\n- **clap**: A command-line argument parser that structures the CLI framework, enabling users to interact with various commands and options.\n- **serde_json** and **serde_yaml**: These libraries handle serialization and deserialization of JSON and YAML data formats, crucial for exporting and importing analysis results.\n- **OpenAI's GPT-4**: Used as a backend for language learning model (LLM) functionalities, providing AI-powered insights and documentation generation.\n\nThe `codehud-cli` crate integrates seamlessly into the broader CodeHUD project by extending its capabilities to include command-line interfaces. It enhances the system with direct user interaction through various commands, ensuring that users can leverage both graphical and textual interfaces for their analysis needs.\n\n## What Does It Actually Do\n\n### Primary Output\n\n- **Generates Comprehensive Analysis Reports**: Users receive detailed reports on code quality, security, dependencies, and other critical metrics when they run `codehud analyze`. These reports provide actionable insights into the codebase's health and potential issues.\n\n### Secondary Features\n\n- **Interactive LLM Sessions**: Allows users to engage in real-time discussions with a language model about their codebases, using sessions for persistent conversations.\n- **Exportable Data**: Supports exporting analysis data in multiple formats such as JSON, Markdown, and HTML, enabling easy sharing and further processing.\n- **Direct Code Analysis**: Provides tools for direct analysis of Python projects, offering options to focus on specific entities and perform AST-based or CLI-based analyses.\n- **Data Management**: Includes commands for importing, converting, validating, and merging data files, streamlining the integration of external data sources into the analysis pipeline.\n\nThese features collectively empower users to conduct thorough code analyses, generate documentation, and manage data efficiently through a robust command-line interface.",
+    "structural_insights": {
+      "source": "crate_aggregation",
+      "generated": true,
+      "sections": {
+        "Imports": [
+          "Imports: use codehud_core::{Result, ViewType, Pipeline};.",
+          "Imports: use codehud_core::query_engine;.",
+          "Imports: use std::collections::{HashMap, HashSet};.",
+          "Imports: use std::fmt::Write;.",
+          "Imports: use walkdir::WalkDir;.",
+          "Imports: use clap::{Parser, Subcommand, ValueEnum};.",
+          "Imports: use std::path::PathBuf;.",
+          "Imports: use codehud_viz::{DotExporter, check_graphviz_installed, render_dot_to_file, analyze_graph};.",
+          "Imports: use codehud_core::graph::{CallNode, CallEdge};.",
+          "Imports: use std::collections::HashMap;."
+        ],
+        "File I/O": [
+          "this scope performs file I/O via std::fs::write(&main_output, (lines 1169).",
+          "this scope performs file I/O via std::fs::write(&summary_output, (lines 1203).",
+          "this scope performs file I/O via std::fs::write(&output_path, (lines 475, 517).",
+          "this scope performs file I/O via std::fs::read_to_string(&notes_file) (lines 1011).",
+          "this scope performs file I/O via std::fs::write(&report_path, (lines 981).",
+          "this scope performs file I/O via std::fs::write(&notes_file, (lines 1030).",
+          "this scope performs file I/O via writeln!(output, (lines 1372–1375, 1379–1381, 1383, 1385–1386, 1388, 1392–1395, 1397, 1401–1402, 1404–1405, 1407, 1412–1414, 1417–1418).",
+          "this scope performs file I/O via std::fs::write(&readme_output, (lines 1241).",
+          "this scope performs file I/O via std::fs::write(&text_file, (lines 1357).",
+          "this scope performs file I/O via std::fs::write(&json_file, (lines 1352)."
+        ],
+        "Entrypoint": [
+          "Entrypoint script (lines 439).",
+          "Entrypoint script (lines 195).",
+          "Entrypoint script (lines 75).",
+          "Entrypoint script (lines 15)."
+        ],
+        "Structure": [
+          "calls WalkDir::new.",
+          "calls serde_json::to_value.",
+          "calls codehud_core::analysis::AnalysisPipeline::run.",
+          "calls DotExporter::new.",
+          "calls codehud_core::Error::Analysis.",
+          "calls HashMap::new.",
+          "calls Graph::new.",
+          "calls codehud_utils::logging::basic_config.",
+          "calls codehud_analysis::pipeline::DirectAnalysisPipeline::new.",
+          "calls codehud_viz::VisualizationEngine::new."
+        ]
+      }
+    },
+    "token_count": 559,
+    "timestamp": "2025-10-18T01:39:05.266577163Z"
+  },
+  {
+    "crate_name": "codehud-core",
+    "crate_path": "codehud-core",
+    "files_analyzed": [
+      "codehud-core/src/models/semantic_nodes.rs",
+      "codehud-core/src/models/mod.rs",
+      "codehud-core/src/models/analysis_result.rs",
+      "codehud-core/src/models/view_types.rs",
+      "codehud-core/src/extractors/dependencies.rs",
+      "codehud-core/src/extractors/runtime_profiler.rs",
+      "codehud-core/src/extractors/topology.rs",
+      "codehud-core/src/extractors/performance.rs",
+      "codehud-core/src/extractors/mod.rs",
+      "codehud-core/src/extractors/flow.rs",
+      "codehud-core/src/extractors/orphaned_files.rs",
+      "codehud-core/src/extractors/quality.rs",
+      "codehud-core/src/extractors/testing.rs",
+      "codehud-core/src/extractors/evolution.rs",
+      "codehud-core/src/extractors/issues.rs",
+      "codehud-core/src/extractors/security.rs",
+      "codehud-core/src/lib.rs",
+      "codehud-core/src/bin/test_security.rs",
+      "codehud-core/src/bin/test_quality.rs",
+      "codehud-core/src/bin/test_dependencies.rs",
+      "codehud-core/src/constants/mod.rs",
+      "codehud-core/src/constants/complexity_thresholds.rs",
+      "codehud-core/src/constants/health_score_thresholds.rs",
+      "codehud-core/src/graph/algorithms.rs",
+      "codehud-core/src/graph/metrics.rs",
+      "codehud-core/src/graph/algorithms_minimal.rs",
+      "codehud-core/src/graph/edges.rs",
+      "codehud-core/src/graph/nodes.rs",
+      "codehud-core/src/graph/mod.rs",
+      "codehud-core/src/graph/analyzer.rs",
+      "codehud-core/src/query_engine.rs",
+      "codehud-core/src/pattern/mod.rs",
+      "codehud-core/src/external_tools/cargo_test.rs",
+      "codehud-core/src/external_tools/ruff.rs",
+      "codehud-core/src/external_tools/coverage.rs",
+      "codehud-core/src/external_tools/radon.rs",
+      "codehud-core/src/external_tools/rustfmt.rs",
+      "codehud-core/src/external_tools/mypy.rs",
+      "codehud-core/src/external_tools/mod.rs",
+      "codehud-core/src/external_tools/cargo_audit.rs",
+      "codehud-core/src/external_tools/pylint.rs",
+      "codehud-core/src/external_tools/vulture.rs",
+      "codehud-core/src/external_tools/ripgrep.rs",
+      "codehud-core/src/external_tools/bandit.rs",
+      "codehud-core/src/external_tools/clippy.rs",
+      "codehud-core/src/external_tools/git.rs",
+      "codehud-core/src/cache/mod.rs",
+      "codehud-core/src/analysis/view_generator.rs",
+      "codehud-core/src/analysis/mod.rs",
+      "codehud-core/src/analysis/health_calculator.rs",
+      "codehud-core/src/analysis/pipeline.rs",
+      "codehud-core/benches/extraction_benchmarks.rs"
+    ],
+    "summary_text": "## Overall Architecture\n\nThe `codehud-core` crate leverages several external libraries and tools for its comprehensive code analysis capabilities. These include:\n- **petgraph**: A library used for graph data structures, algorithms, and metrics in the `src/graph` subcrate.\n- **tree-sitter**: Enables parsing and analyzing source code across multiple languages.\n- **Clippy**, **Pylint**, **MyPy**, **Bandit**, **Radon**: Various static analysis tools integrated through the `src/external_tools` subcrate to assess code quality, security, complexity, and performance.\n- **serde**: Used for efficient serialization and deserialization of data structures.\n- **chrono**: For handling timestamps in analysis results.\n\nWithin the CodeHUD project, `codehud-core` acts as the central analysis engine. It integrates with other crates like `codehud-analysis` and `codehud-cli`, providing foundational capabilities that enable detailed code analysis across Rust and Python projects. By orchestrating various extractors and external tools, it ensures a unified framework for comprehensive static code analysis.\n\n## What Does It Actually Do\n\nThe primary output of the `codehud-core` crate is a **comprehensive codebase analysis report**. When users run this crate, they receive detailed insights into their code's structure, dependencies, performance, security, and quality metrics. The report includes:\n\n1. **Health Scores**: An overall health score (0-100) that reflects the codebase's maintainability, security, and efficiency.\n2. **Dependency Analysis**: Visualizations and metrics detailing code dependencies across multiple languages.\n3. **Performance Metrics**: Identifies bottlenecks and evaluates function complexity to optimize performance.\n4. **Security Findings**: Detects potential vulnerabilities and provides actionable insights for securing the codebase.\n5. **Quality Assessments**: Highlights code quality issues, such as unsafe blocks, error handling patterns, and test coverage.\n\nSecondary features include:\n\n- **Graph Analysis**: Provides detailed structural graphs of call, dependency, and inheritance relationships.\n- **Test Coverage Reports**: Evaluates test quality and identifies slow or flaky tests.\n- **Code Evolution Tracking**: Analyzes changes over time to assess stability and identify high-risk areas.\n- **Visualization Support**: Generates various visual representations for different analysis results, aiding in easier interpretation.\n\nInternally, the crate orchestrates multiple extractors and external tools to gather data efficiently. It uses a modular architecture with intelligent caching and parallel processing capabilities to ensure zero degradation in performance while providing comprehensive and actionable insights into code quality and security.",
+    "structural_insights": {
+      "source": "crate_aggregation",
+      "generated": true,
+      "sections": {
+        "Structure": [
+          "calls Self::new.",
+          "calls serde_json::from_str.",
+          "calls HashMap::new.",
+          "calls Utc::now.",
+          "calls ClassDefinition::new.",
+          "calls GraphBundle::new.",
+          "calls FunctionSignature::new.",
+          "calls serde_json::to_string.",
+          "calls AnalysisResult::new.",
+          "calls CodeMetrics::default."
+        ],
+        "File I/O": [
+          "this scope performs file I/O via fs::read_dir(dir) (lines 97).",
+          "this scope performs file I/O via vec![ (lines 529).",
+          "this scope performs file I/O via fs::read_dir(&self.codebase_path) (lines 82).",
+          "this scope performs file I/O via func_source.matches(\"open(\") (lines 218).",
+          "this scope performs file I/O via metrics.iter().filter(|m| (lines 332, 344).",
+          "this scope performs file I/O via m.function_name.contains(\"read\") (lines 333, 403).",
+          "this scope performs file I/O via func_source.matches(\"open(\").count() (lines 218).",
+          "this scope performs file I/O via func_source.matches(\"read_csv\").count() (lines 246).",
+          "this scope performs file I/O via metrics (lines 401).",
+          "this scope performs file I/O via func_source.matches(\"read_csv\") (lines 246)."
+        ],
+        "Entrypoint": [
+          "Entrypoint script (lines 4)."
+        ],
+        "Exports": [
+          "pub use analysis_result::{AnalysisResult, CodeMetrics};.",
+          "pub use semantic_nodes::{FunctionSignature, ClassDefinition, SemanticNode, GraphBundle};.",
+          "pub use view_types::ViewType;.",
+          "pub use evolution::EvolutionExtractor;.",
+          "pub use security::SecurityExtractor;.",
+          "pub use performance::PerformanceExtractor;.",
+          "pub use issues::IssuesExtractor;.",
+          "pub use orphaned_files::OrphanedFilesExtractor;.",
+          "pub use flow::FlowExtractor;.",
+          "pub use testing::TestingExtractor;."
+        ],
+        "Network I/O": [
+          "this scope calls metrics.iter().filter(|m| (lines 336).",
+          "this scope calls m.function_name.contains(\"fetch\") (lines 337).",
+          "this scope calls Command::new(\"cargo\") (lines 50)."
+        ],
+        "Imports": [
+          "use super::*;.",
+          "Imports: use serde::{Deserialize, Serialize};.",
+          "Imports: use super::*;.",
+          "Imports: use std::collections::HashMap;.",
+          "Imports: use chrono::{DateTime, Utc};.",
+          "Imports: pub use analysis_result::{AnalysisResult, CodeMetrics};.",
+          "Imports: pub use view_types::ViewType;.",
+          "Imports: pub use semantic_nodes::{FunctionSignature, ClassDefinition, SemanticNode, GraphBundle};.",
+          "Imports: use serde::{Serialize, Deserialize};.",
+          "Imports: use std::fmt;."
+        ]
+      }
+    },
+    "token_count": 694,
+    "timestamp": "2025-10-18T01:39:39.823298164Z",
+    "subcrates": {
+      "src/external_tools": {
+        "name": "src/external_tools",
+        "file_count": 14,
+        "files": [
+          "codehud-core/src/external_tools/cargo_test.rs",
+          "codehud-core/src/external_tools/ruff.rs",
+          "codehud-core/src/external_tools/coverage.rs",
+          "codehud-core/src/external_tools/radon.rs",
+          "codehud-core/src/external_tools/rustfmt.rs",
+          "codehud-core/src/external_tools/mypy.rs",
+          "codehud-core/src/external_tools/mod.rs",
+          "codehud-core/src/external_tools/cargo_audit.rs",
+          "codehud-core/src/external_tools/pylint.rs",
+          "codehud-core/src/external_tools/vulture.rs",
+          "codehud-core/src/external_tools/ripgrep.rs",
+          "codehud-core/src/external_tools/bandit.rs",
+          "codehud-core/src/external_tools/clippy.rs",
+          "codehud-core/src/external_tools/git.rs"
+        ],
+        "summary": "**Technical Summary**\n\nThe `codehud-core` crate, specifically its `src/external_tools` subcrate, serves as a centralized integration layer for various external code analysis tools. It primarily provides robust, zero-degradation integrations with both Rust and Python tools, enabling comprehensive static analysis, testing, security scanning, and formatting checks across different languages. Key components include:\n\n- **Rust Integrations**: Functions to analyze code quality using Clippy, perform test coverage analysis with Coverage.py, execute tests with Cargo, check for security vulnerabilities with Cargo Audit, format code with rustfmt, and ensure adherence to style guidelines.\n- **Python Integrations**: Tools like Ruff for static analysis, MyPy for type checking, Pylint for code quality assessment, Bandit for security scanning, Vulture for dead code detection, and Ripgrep for text search, ensuring seamless analysis of Python projects.\n\n**Integration**\n\nComponents work together by coordinating the execution of these tools based on project language (Rust or Python) and requirements. The `mod.rs` file manages the overall workflow, checking tool availability, executing specific analyses, and combining results into comprehensive reports. This ensures that CodeHUD can provide a unified view of code quality, security, and maintainability across various programming languages and projects, maintaining performance and functionality consistency throughout the analysis process.",
+        "token_count": 193,
+        "total_size_kb": 150.35546875
+      },
+      "src/extractors": {
+        "name": "src/extractors",
+        "file_count": 12,
+        "files": [
+          "codehud-core/src/extractors/dependencies.rs",
+          "codehud-core/src/extractors/runtime_profiler.rs",
+          "codehud-core/src/extractors/topology.rs",
+          "codehud-core/src/extractors/performance.rs",
+          "codehud-core/src/extractors/mod.rs",
+          "codehud-core/src/extractors/flow.rs",
+          "codehud-core/src/extractors/orphaned_files.rs",
+          "codehud-core/src/extractors/quality.rs",
+          "codehud-core/src/extractors/testing.rs",
+          "codehud-core/src/extractors/evolution.rs",
+          "codehud-core/src/extractors/issues.rs",
+          "codehud-core/src/extractors/security.rs"
+        ],
+        "summary": "### Technical Summary\n\n**Primary Purpose:**\nThe `codehud-core` crate provides a comprehensive set of tools for analyzing and optimizing codebases, focusing on dependency management, performance profiling, security assessment, and quality metrics.\n\n**Key Components:**\n- **Dependency Analysis:** Extracts and visualizes dependencies across multiple languages using tree-sitter queries.\n- **Performance Profiling:** Identifies bottlenecks by evaluating function complexity and resource usage in Rust codebases.\n- **Code Quality & Health:** Assesses code maintainability through static analysis tools like ruff and pylint, detecting issues such as unsafe blocks and error handling patterns.\n- **Security Assessment:** Detects security vulnerabilities in Python and Rust codebases using AST analysis and external tools.\n- **Test Coverage Analysis:** Evaluates test quality and coverage, identifying slow or flaky tests.\n- **Code Evolution Tracking:** Analyzes changes over time to assess stability and identify high-risk areas.\n\n**Integration:**\nComponents work together by sharing data through a modular architecture. For instance, the dependency analysis tool leverages file I/O operations and tree-sitter queries, while the performance profiler uses these same tools to evaluate specific functions' execution patterns. Additionally, security and quality assessments utilize external static analysis tools in parallel, ensuring comprehensive coverage without degradation in performance. Each component is designed to be independent yet interconnected, providing a holistic view of the codebase's structure, performance, and health.",
+        "token_count": 209,
+        "total_size_kb": 276.880859375
+      },
+      "src/graph": {
+        "name": "src/graph",
+        "file_count": 7,
+        "files": [
+          "codehud-core/src/graph/algorithms.rs",
+          "codehud-core/src/graph/metrics.rs",
+          "codehud-core/src/graph/algorithms_minimal.rs",
+          "codehud-core/src/graph/edges.rs",
+          "codehud-core/src/graph/nodes.rs",
+          "codehud-core/src/graph/mod.rs",
+          "codehud-core/src/graph/analyzer.rs"
+        ],
+        "summary": "**Technical Summary**\n\n**Primary Purpose:**\nThe `codehud-core/src/graph` subcrate provides a robust graph analysis engine for codebases, enabling comprehensive structural and dependency assessments through various centrality and coupling metrics.\n\n**Key Components:**\n- **Algorithms & Metrics:** Implementations of graph algorithms (centrality calculations, cycle detection) and metrics (coupling, network structure) to assess codebase health.\n- **Graph Types & Nodes:** Definitions for different graph types (`CallGraph`, `DependencyGraph`, `InheritanceGraph`) and node types (`CallNode`, `ModuleNode`, `ClassNode`), supporting detailed analysis of call, dependency, and inheritance relationships.\n- **Edge Management:** Implementation of edge types (`CallEdge`, `DependencyEdge`, `InheritanceEdge`) with metadata for managing relationships between nodes.\n\n**Integration:**\nThe subcrate integrates various components to provide a unified graph analysis framework. The `GraphAnalyzer` orchestrates the use of algorithms and metrics, leveraging the `petgraph` library for efficient graph traversal and analysis. This integration allows users to gain insights into code complexity, coupling patterns, and potential issues within their codebase through detailed centrality and structural metric calculations.",
+        "token_count": 152,
+        "total_size_kb": 82.8876953125
+      }
+    }
+  },
+  {
+    "crate_name": "codehud-gui",
+    "crate_path": "codehud-gui",
+    "files_analyzed": [
+      "codehud-gui/src/views/health_view_gui.rs",
+      "codehud-gui/src/views/topology_view_gui.rs",
+      "codehud-gui/src/views/metrics_view_gui.rs",
+      "codehud-gui/src/views/tests_view_gui.rs",
+      "codehud-gui/src/views/dependencies_view_gui.rs",
+      "codehud-gui/src/views/console_view_gui.rs",
+      "codehud-gui/src/views/llm_view_gui.rs",
+      "codehud-gui/src/views/quality_view_gui.rs",
+      "codehud-gui/src/views/documentation_view_gui.rs",
+      "codehud-gui/src/views/call_graph_view_gui.rs",
+      "codehud-gui/src/views/settings_view_gui.rs",
+      "codehud-gui/src/views/performance_view_gui.rs",
+      "codehud-gui/src/views/files_view_gui.rs",
+      "codehud-gui/src/state.rs",
+      "codehud-gui/src/utils.rs",
+      "codehud-gui/src/lib.rs",
+      "codehud-gui/src/controllers/analysis_controller.rs",
+      "codehud-gui/src/components/menu_bar.rs",
+      "codehud-gui/src/components/project_explorer.rs",
+      "codehud-gui/src/components/llm_debugger.rs",
+      "codehud-gui/src/components/health_monitor.rs",
+      "codehud-gui/src/app.rs",
+      "codehud-gui/src/widgets/project_explorer.rs",
+      "codehud-gui/src/widgets/health_dashboard.rs",
+      "codehud-gui/src/signals_pyqt5.rs"
+    ],
+    "summary_text": "## Overall Architecture\n\nThe `codehud-gui` crate integrates several external libraries and tools, including `egui` for interactive GUI elements, `tokio` for asynchronous operations, and PyQt5-style signal management. It leverages Rust's concurrency primitives like `Arc`, `Mutex`, and `RwLock` to ensure thread-safe data handling and uses crossbeam channels for inter-component communication. The crate is modular, with components organized into subdirectories such as `views`, `controllers`, and `components`. This structure ensures that each component handles specific functionality, promoting code reusability and maintainability.\n\nThe `codehud-gui` crate fits within the CodeHUD application framework by providing a comprehensive set of graphical user interfaces for analyzing various aspects of a codebase. It interacts with other crates like `codehud-analysis`, `codehud-cli`, and `codehud-core` to gather data and perform analyses, then visualizes this information in an intuitive manner.\n\n## What Does It Actually Do\n\n**Primary Output:**\nThe primary output of the `codehud-gui` crate is a set of interactive graphical user interfaces (GUIs) that provide real-time analysis and visualization of codebase health metrics, architecture topology, performance data, and more. When users run this crate, they receive a comprehensive dashboard that allows them to quickly assess and optimize their projects through intuitive visualizations and interactive tools.\n\n**Secondary Features:**\n- **Health Analysis:** Displays real-time health metrics such as code coverage and status indicators.\n- **Architecture Visualization:** Renders architectural topologies and file structures using vertical layouts and detailed tables.\n- **Metrics Dashboard:** Presents comprehensive code metrics in collapsible sections and grid layouts.\n- **Test Management:** Manages test results, coverage, and provides a test execution interface.\n- **Dependencies Analysis:** Displays module dependencies with coupling scores and risk levels.\n- **Console Interface:** Provides an interactive console for viewing logs, executing commands, and managing command history.\n- **LLM Integration:** Offers LLM-powered debugging and auto-fixing capabilities in various tabs.\n- **Quality Metrics:** Analyzes code quality, maintainability, and technical debt.\n- **Documentation Management:** Manages and displays project documentation with text input fields and scroll areas.\n- **Call Graphs:** Visualizes call graphs for module-level architecture and function-level interactions.\n- **Settings Configuration:** Allows users to manage application settings through a vertical scrollable area.\n- **Performance Analysis:** Displays performance bottlenecks, optimization opportunities, and detailed metrics.\n\nThe crate ensures that all these features are integrated seamlessly within the CodeHUD application, providing a cohesive user experience.",
+    "structural_insights": {
+      "source": "crate_aggregation",
+      "generated": true,
+      "sections": {
+        "Entrypoint": [
+          "Entrypoint script (lines 5)."
+        ],
+        "Exports": [
+          "pub use files_view_gui::FilesViewGui;.",
+          "pub use tests_view_gui::TestsViewGui;.",
+          "pub use quality_view_gui::QualityViewGui;.",
+          "pub use documentation_view_gui::DocumentationViewGui;.",
+          "pub use topology_view_gui::TopologyViewGui;.",
+          "pub use settings_view_gui::SettingsViewGui;.",
+          "pub use dependencies_view_gui::DependenciesViewGui;.",
+          "pub use metrics_view_gui::MetricsViewGui;.",
+          "pub use health_view_gui::HealthViewGui;.",
+          "pub use call_graph_view_gui::CallGraphViewGui;."
+        ],
+        "File I/O": [
+          "this scope performs file I/O via CollapsingHeader::new(\"🏗️ (lines 100).",
+          "this scope performs file I/O via CollapsingHeader::new(\"📂 (lines 155).",
+          "this scope performs file I/O via \"Pylint (lines 360).",
+          "this scope performs file I/O via open::that(&graph.path) (lines 266).",
+          "this scope performs file I/O via CollapsingHeader::new(\"📊 (lines 203).",
+          "this scope performs file I/O via CollapsingHeader::new(\"⚙️ (lines 130).",
+          "this scope performs file I/O via CollapsingHeader::new(&format!(\"🖼️ (lines 281).",
+          "this scope performs file I/O via CollapsingHeader::new(\"📁 (lines 244).",
+          "this scope performs file I/O via Some(format!(\"Failed (lines 267).",
+          "this scope performs file I/O via ScrollArea::vertical() (lines 247)."
+        ],
+        "Structure": [
+          "calls Arc::new.",
+          "calls HashMap::new.",
+          "calls GuiError::State.",
+          "calls Self::new.",
+          "calls Mutex::new.",
+          "calls CollapsingHeader::new.",
+          "calls Grid::new.",
+          "calls ScrollArea::vertical.",
+          "calls ProgressBar::new.",
+          "calls egui::Grid::new."
+        ],
+        "Imports": [
+          "Imports: use std::sync::{Arc, Mutex};.",
+          "Imports: use std::collections::HashMap;.",
+          "Imports: use crate::{GuiMessage, GuiResult, GuiError};.",
+          "Imports: use crossbeam_channel::{Receiver, Sender, unbounded};.",
+          "use crate::{GuiMessage, GuiResult, GuiError};.",
+          "Imports: use egui::{Context, Ui, Color32};.",
+          "Imports: use crate::{GuiResult, GuiMessage, GuiView, state::AppState};.",
+          "use crate::{GuiResult, GuiMessage, GuiView, state::AppState};.",
+          "Imports: use std::sync::Arc;.",
+          "Imports: use tokio::sync::RwLock;."
+        ]
+      }
+    },
+    "token_count": 725,
+    "timestamp": "2025-10-18T01:40:11.446597250Z",
+    "subcrates": {
+      "src/views": {
+        "name": "src/views",
+        "file_count": 13,
+        "files": [
+          "codehud-gui/src/views/health_view_gui.rs",
+          "codehud-gui/src/views/topology_view_gui.rs",
+          "codehud-gui/src/views/metrics_view_gui.rs",
+          "codehud-gui/src/views/tests_view_gui.rs",
+          "codehud-gui/src/views/dependencies_view_gui.rs",
+          "codehud-gui/src/views/console_view_gui.rs",
+          "codehud-gui/src/views/llm_view_gui.rs",
+          "codehud-gui/src/views/quality_view_gui.rs",
+          "codehud-gui/src/views/documentation_view_gui.rs",
+          "codehud-gui/src/views/call_graph_view_gui.rs",
+          "codehud-gui/src/views/settings_view_gui.rs",
+          "codehud-gui/src/views/performance_view_gui.rs",
+          "codehud-gui/src/views/files_view_gui.rs"
+        ],
+        "summary": "### Technical Summary\n\n**Primary Purpose:** The `codehud-gui` subcrate provides a comprehensive set of graphical user interfaces for analyzing various aspects of a codebase, including health metrics, architecture topology, performance analysis, and more. It ensures that developers can quickly assess and optimize their projects through intuitive visualizations and interactive tools.\n\n**Key Components:**\n- **Health Analysis:** Displays real-time health metrics like code coverage and status indicators.\n- **Architecture Visualization:** Renders architectural topologies and file structures using vertical layouts and detailed tables.\n- **Metrics Dashboard:** Presents comprehensive code metrics in collapsible sections and grid layouts.\n- **Test Management:** Manages test results, coverage, and provides a test execution interface.\n- **Dependencies Analysis:** Displays module dependencies with coupling scores and risk levels.\n- **Console Interface:** Provides an interactive console for viewing logs, executing commands, and managing command history.\n- **LLM Integration:** Offers LLM-powered debugging and auto-fixing capabilities in various tabs.\n- **Quality Metrics:** Analyzes code quality, maintainability, and technical debt.\n- **Documentation Management:** Manages and displays project documentation with text input fields and scroll areas.\n- **Call Graphs:** Visualizes call graphs for module-level architecture and function-level interactions.\n- **Settings Configuration:** Allows users to manage application settings through a vertical scrollable area.\n- **Performance Analysis:** Displays performance bottlenecks, optimization opportunities, and detailed metrics.\n\n**Integration:**\nThe components work together within the CodeHUD application framework, leveraging Rust's concurrency primitives like `Arc`, `Mutex`, and `RwLock` for thread-safe data management. They communicate via crossbeam channels to handle messages and updates, ensuring real-time synchronization across different views. The use of asynchronous operations with `tokio` allows for efficient handling of potentially time-consuming tasks without blocking the UI. The `egui` library is central to creating interactive GUI elements, providing a consistent look and feel across all components.",
+        "token_count": 284,
+        "total_size_kb": 104.8701171875
+      }
+    }
+  },
+  {
+    "crate_name": "codehud-llm",
+    "crate_path": "codehud-llm",
+    "files_analyzed": [
+      "codehud-llm/src/ollama.rs",
+      "codehud-llm/src/narrator/aggregate.rs",
+      "codehud-llm/src/narrator/cst.rs",
+      "codehud-llm/src/narrator/findings.rs",
+      "codehud-llm/src/narrator/detectors/entrypoint.rs",
+      "codehud-llm/src/narrator/detectors/wrapper.rs",
+      "codehud-llm/src/narrator/detectors/imports_exports.rs",
+      "codehud-llm/src/narrator/detectors/comments.rs",
+      "codehud-llm/src/narrator/detectors/io.rs",
+      "codehud-llm/src/narrator/detectors/module_relationships.rs",
+      "codehud-llm/src/narrator/detectors/utility_class.rs",
+      "codehud-llm/src/narrator/render.rs",
+      "codehud-llm/src/constitutional.rs",
+      "codehud-llm/src/lib.rs",
+      "codehud-llm/src/gemini.rs",
+      "codehud-llm/src/progress_monitor.rs",
+      "codehud-llm/src/ffi.rs",
+      "codehud-llm/src/structured.rs",
+      "codehud-llm/src/denoiser.rs",
+      "codehud-llm/src/file_processor.rs",
+      "codehud-llm/src/crate_summarizer.rs",
+      "codehud-llm/src/comment_extractor.rs",
+      "codehud-llm/src/conversation.rs",
+      "codehud-llm/src/extraction_fsm.rs",
+      "codehud-llm/src/critical.rs",
+      "codehud-llm/src/equivalence.rs",
+      "codehud-llm/src/native_stub.rs",
+      "codehud-llm/src/native.rs",
+      "codehud-llm/src/monitoring.rs",
+      "codehud-llm/tests/phase_5b_validation.rs",
+      "codehud-llm/tests/equivalence_tests.rs"
+    ],
+    "summary_text": "## Overall Architecture\n\nThe `codehud-llm` crate integrates multiple external libraries and tools for comprehensive code analysis, including:\n- **Tree-sitter**: For high-performance multi-language syntax parsing.\n- **serde/serde_json**: For efficient JSON configuration handling and data serialization/deserialization.\n- **PyO3**: To preserve Python LLM behavior through a Foreign Function Interface (FFI) bridge.\n- **Candle-core**: For native Rust Large Language Model (LLM) engine operations.\n- **Gemini API**: For hierarchical summarization capabilities.\n- **JSON Schema**: For structured code generation validation.\n\nThis crate is integral to the CodeHUD project, providing advanced LLM-based functionalities while maintaining compatibility with Python implementations. It serves as a central hub for integrating various detectors and analyzers, ensuring seamless processing of codebases through modular components.\n\n## What Does It Actually Do\n\n**PRIMARY OUTPUT:** The `codehud-llm` crate **generates comprehensive summaries and analyses** of codebases. Users receive detailed insights into their code's structure, dependencies, and quality, including hierarchical summaries of Rust crates, detection of critical mistakes, structured code generation with JSON schema validation, and equivalence testing to ensure consistency between Rust and Python implementations.\n\n**SECONDARY FEATURES:**\n- **Comment Extraction**: Detailed metadata on comments for enhanced analysis.\n- **Critical Mistake Detection**: Identification and correction of common coding issues.\n- **Progress Monitoring**: Real-time updates during background operations via a popup terminal.\n- **LLM Integration**: Leveraging various models like Ollama, Gemini Flash, and native Rust engines for advanced code processing.\n- **Equivalence Testing**: Ensures consistency between Rust FFI bridge operations and direct Python calls.\n\n**INTERNAL OPERATIONS:** The crate processes codebases through multiple detectors that leverage abstract syntax trees (ASTs) or concrete syntax trees (CSTs) for detailed analysis. Components work together to extract patterns, comments, I/O operations, module relationships, and utility classes, integrating seamlessly using shared interfaces and data structures.",
+    "structural_insights": {
+      "source": "crate_aggregation",
+      "generated": true,
+      "sections": {
+        "Exports": [
+          "pub use config::NarratorConfig;.",
+          "pub use aggregate::{FileDoc, SectionDoc, aggregate_findings};.",
+          "pub use detectors::DetectorRegistry;.",
+          "pub use cst::{FileCst, Node};.",
+          "pub use findings::{Finding, FindingType};.",
+          "pub use render::render_markdown;.",
+          "pub use equivalence::{EquivalenceTester, EquivalenceTestSuite};.",
+          "pub use extraction_fsm::{CommentExtractionFSM, CommentExtractionCLI, ExtractionState, ScanResult, GUIIntegration};.",
+          "pub use denoiser::{LlmContextDenoiser, DenoiserConfig, DenoiserStats};.",
+          "pub use ollama::{OllamaPipeline, OllamaConfig};."
+        ],
+        "File I/O": [
+          "this scope performs file I/O via std::thread::sleep(std::time::Duration::from_secs(2)) (lines 201).",
+          "this scope performs file I/O via fs::write(&self.progress_file, (lines 226).",
+          "this scope performs file I/O via std::thread::sleep(std::time::Duration::from_secs(5)) (lines 217).",
+          "this scope performs file I/O via self.write_progress(&progress) (lines 134, 157, 164, 171, 188, 198, 214).",
+          "this scope performs file I/O via fs::read_to_string(&self.progress_file) (lines 236).",
+          "this scope performs file I/O via fs::write(&script_file, (lines 326).",
+          "this scope performs file I/O via self.read_progress() (lines 145, 162, 169, 176, 193, 209).",
+          "this scope performs file I/O via openhands_bridge.into() (lines 271).",
+          "this scope performs file I/O via python (lines 243).",
+          "this scope performs file I/O via Python::with_gil(|python| (lines 180)."
+        ],
+        "Imports": [
+          "Imports: use tokio::process::Command;.",
+          "Imports: use crate::{LlmConfig, ModelType, GpuType, LlmResult, LlmError, ffi::PythonLlmBridge, native::NativeLlmEngine};.",
+          "Imports: use serde::{Deserialize, Serialize};.",
+          "Imports: use pyo3::types::PyDict;.",
+          "Imports: use pyo3::prelude::*;.",
+          "Imports: use crate::{LlmConfig, ModelType, GpuType, LlmResult, LlmError, ffi::PythonLlmBridge, native_stub::NativeLlmEngine};.",
+          "Imports: use reqwest::Client;.",
+          "use crate::{LlmConfig, ModelType, GpuType, LlmResult, LlmError, ffi::PythonLlmBridge, native::NativeLlmEngine};.",
+          "Imports: use super::*;.",
+          "Imports: use tokio;."
+        ],
+        "Structure": [
+          "calls Self::new.",
+          "calls OllamaPipeline::new.",
+          "calls ModelParameters::default.",
+          "calls ContextWindow::default.",
+          "calls Duration::from_secs.",
+          "calls GpuConfig::default.",
+          "calls SessionConfig::default.",
+          "calls LlmError::Inference.",
+          "generate_native is a wrapper for Err.LlmError.Inference.format.response.status (lines 477).",
+          "calls LlmError::Http."
+        ]
+      }
+    },
+    "token_count": 565,
+    "timestamp": "2025-10-18T01:40:40.524135849Z",
+    "subcrates": {
+      "src/narrator": {
+        "name": "src/narrator",
+        "file_count": 4,
+        "files": [
+          "codehud-llm/src/narrator/aggregate.rs",
+          "codehud-llm/src/narrator/cst.rs",
+          "codehud-llm/src/narrator/findings.rs",
+          "codehud-llm/src/narrator/render.rs"
+        ],
+        "summary": "### Technical Summary\n\n**Primary Purpose:** The `codehud-llm` subcrate within CodeHUD is designed to detect specific patterns in code entries, such as entry points for Python and Rust scripts, comments, I/O operations, module relationships, and utility classes. It leverages serde for JSON configuration handling and abstract syntax trees (ASTs) or concrete syntax trees (CSTs) for detailed code analysis.\n\n**Key Components:**\n- **Entry Point Detection:** Identifies Python entrypoints using the `__name__ == \"__main__\"` pattern and Rust's main function signature.\n- **Pattern Matching:** Detects patterns like single return statements containing function calls, import/export statements, and utility class identifiers.\n- **Comment Analysis:** Extracts comments from CSTs to categorize roles and notes in code reviews.\n- **I/O Operation Detection:** Scans code for I/O operations to identify potential security risks.\n- **Module Relationships:** Analyzes module interactions within a crate, focusing on intra-crate imports, re-exports, and function calls.\n- **Utility Class Identification:** Detects utility classes using regular expressions and generates findings for refactoring opportunities.\n\n**Nested Subcrates:**\n- `src/narrator/detectors`: Contains various detectors focused on different aspects of code analysis, such as entry points, comments, I/O operations, module relationships, and utility classes.\n\n**Integration:**\nComponents work together by processing code through various detectors that leverage ASTs/CSTs for in-depth analysis. Each detector focuses on a specific aspect of the codebase (e.g., entry points, comments, I/O operations) and integrates seamlessly with other components using shared interfaces and data structures. The use of serde enables efficient configuration management, while the modular design allows for easy extension and maintenance of the system.",
+        "token_count": 248,
+        "total_size_kb": 30.5546875,
+        "subcrates": {
+          "src/narrator/detectors": {
+            "name": "src/narrator/src/narrator/detectors",
+            "file_count": 7,
+            "files": [
+              "codehud-llm/src/narrator/detectors/entrypoint.rs",
+              "codehud-llm/src/narrator/detectors/wrapper.rs",
+              "codehud-llm/src/narrator/detectors/imports_exports.rs",
+              "codehud-llm/src/narrator/detectors/comments.rs",
+              "codehud-llm/src/narrator/detectors/io.rs",
+              "codehud-llm/src/narrator/detectors/module_relationships.rs",
+              "codehud-llm/src/narrator/detectors/utility_class.rs"
+            ],
+            "summary": "### Technical Summary\n\n**Primary Purpose:**\nThe `codehud-llm` subcrate within CodeHUD is designed to detect specific patterns in code entries, such as entry points for Python and Rust scripts, comments, I/O operations, module relationships, and utility classes. It leverages serde for JSON configuration handling and abstract syntax trees (ASTs) or concrete syntax trees (CSTs) for detailed code analysis.\n\n**Key Components:**\n- **Entry Point Detection:** Identifies Python entrypoints using the `__name__ == \"__main__\"` pattern and Rust's main function signature.\n- **Pattern Matching:** Detects patterns like single return statements containing function calls, import/export statements, and utility class identifiers.\n- **Comment Analysis:** Extracts comments from CSTs to categorize roles and notes in code reviews.\n- **I/O Operation Detection:** Scans code for I/O operations to identify potential security risks.\n- **Module Relationships:** Analyzes module interactions within a crate, focusing on intra-crate imports, re-exports, and function calls.\n- **Utility Class Identification:** Detects utility classes using regular expressions and generates findings for refactoring opportunities.\n\n**Integration:**\nComponents work together by processing code through various detectors that leverage ASTs/CSTs for in-depth analysis. Each detector focuses on a specific aspect of the codebase (e.g., entry points, comments, I/O operations) and integrates seamlessly with other components using shared interfaces and data structures. The use of serde enables efficient configuration management, while the modular design allows for easy extension and maintenance of the system.",
+            "token_count": 222,
+            "total_size_kb": 17.705078125
+          }
+        }
+      }
+    }
+  },
+  {
+    "crate_name": "codehud-realtime",
+    "crate_path": "codehud-realtime",
+    "files_analyzed": [
+      "codehud-realtime/src/lib.rs"
+    ],
+    "summary_text": "## Overall Architecture\n\nThe `codehud-realtime` crate is a critical component of the CodeHud project, specifically designed for real-time monitoring and analysis of codebases. It integrates several external libraries and tools to achieve its functionality:\n- **`notify`**: Used for file system monitoring to detect changes in files.\n- **Tokio**: An asynchronous runtime that enables efficient event handling and processing of file changes.\n- **Caching Mechanisms**: Likely leveraging Rust's standard library or third-party crates like `cached` for caching analysis results.\n\nThe crate fits into the project by providing real-time insights into code changes, which is essential for continuous integration, development, and maintenance. It operates as a backend service that interacts with other components of the CodeHud ecosystem, such as the CLI, GUI, and LLM modules, to deliver up-to-date analysis results.\n\n## What Does It Actually Do\n\nThe primary output of the `codehud-realtime` crate is **real-time analysis reports** for end users. When a user runs this crate, it continuously monitors their codebase for any changes and performs incremental analyses on modified files. The analysis includes topology (structure), quality (metrics like cyclomatic complexity), and security checks.\n\nSecondary features include:\n- **Configurable Debounce Delay**: Allows users to adjust the sensitivity of change detection.\n- **Maximum Batch Size**: Enables control over the number of files processed in a single batch, optimizing performance.\n- **Asynchronous Processing**: Ensures minimal impact on system performance by handling file changes efficiently without blocking operations.\n\nThe crate's user-facing capability is centered around providing immediate feedback and insights into code modifications, enhancing productivity and enabling proactive decision-making during development.",
+    "structural_insights": {
+      "source": "crate_aggregation",
+      "generated": true,
+      "sections": {
+        "Structure": [
+          "calls AnalysisCache::default.",
+          "calls DefaultHasher::new.",
+          "calls Arc::new.",
+          "calls serde_json::to_value.",
+          "calls Duration::from_millis.",
+          "calls Self::analyze_single_file.",
+          "calls Self::should_skip_file.",
+          "calls Self::update_cache.",
+          "calls HashSet::new.",
+          "calls RwLock::new."
+        ],
+        "File I/O": [
+          "this scope performs file I/O via std::fs::read_to_string(file_path) (lines 472).",
+          "this scope performs file I/O via cache.read() (lines 445).",
+          "this scope performs file I/O via cache.write() (lines 461)."
+        ],
+        "Imports": [
+          "Imports: use std::{",
+          "Imports: use chrono::{DateTime, Utc};.",
+          "Imports: use codehud_core::{",
+          "Imports: use notify::{Event, EventKind, RecommendedWatcher, RecursiveMode, Watcher};.",
+          "Imports: use serde::{Deserialize, Serialize};.",
+          "Imports: use tokio::{",
+          "Imports: use std::collections::hash_map::DefaultHasher;.",
+          "Imports: use codehud_utils::logging::get_logger;.",
+          "Imports: use tokio_stream::{wrappers::ReceiverStream, StreamExt};.",
+          "Imports: use std::hash::{Hash, Hasher};."
+        ]
+      }
+    },
+    "token_count": 469,
+    "timestamp": "2025-10-18T01:40:58.506769347Z"
+  },
+  {
+    "crate_name": "codehud-transform",
+    "crate_path": "codehud-transform",
+    "files_analyzed": [
+      "codehud-transform/src/types.rs",
+      "codehud-transform/src/lib.rs",
+      "codehud-transform/src/engine.rs",
+      "codehud-transform/src/rollback.rs",
+      "codehud-transform/src/libcst.rs",
+      "codehud-transform/src/transformers/test_generation.rs",
+      "codehud-transform/src/transformers/multi_language.rs",
+      "codehud-transform/src/transformers/mod.rs",
+      "codehud-transform/src/transformers/magic_numbers.rs",
+      "codehud-transform/src/transformers/unused_args.rs",
+      "codehud-transform/src/transformers/multi_language_old.rs",
+      "codehud-transform/src/transformers/batch.rs",
+      "codehud-transform/src/transformers/test_generation_old.rs",
+      "codehud-transform/src/transformers/unused_args_old.rs",
+      "codehud-transform/src/transformers/architectural.rs"
+    ],
+    "summary_text": "## Overall Architecture\n\nThe `codehud-transform` crate integrates several external libraries and tools that are crucial for its functionality:\n- **Tree-sitter**: A language-agnostic syntax parser used for parsing source code from multiple languages including Rust, Java, Python, JavaScript, and TypeScript. It provides a robust foundation for analyzing and transforming code.\n- **Rowan**: A library for managing abstract syntax trees (ASTs) that works seamlessly with Tree-sitter to provide a CST-like structure in Rust.\n- **LibCST**: Although not directly used, the crate's CST implementation is inspired by Python’s LibCST, aiming to provide similar capabilities of preserving formatting and comments during transformations.\n\nThe `codehud-transform` crate serves as a core component within the broader CodeHUD ecosystem. It leverages these external tools to offer advanced code transformation and refactoring capabilities, aligning with the modular architecture of the project. The crate interacts with other components such as `codehud-core`, `codehud-cli`, and `codehud-gui` to provide a comprehensive toolset for developers.\n\n## What Does It Actually Do\n\nThe primary output of the `codehud-transform` crate is:\n- **Automated Code Transformations**: Users receive transformed code that includes improvements in terms of test generation, refactoring, dead code elimination, and architectural enhancements. The transformations are applied atomically, ensuring minimal risk of degradation.\n\nSecondary features include:\n- **Test Generation**: Automatically creates unit and property-based tests for Python and JavaScript.\n- **Multi-Language Refactoring**: Applies consistent transformations across different programming languages.\n- **Dead Code Removal**: Identifies and removes unused code elements in Rust projects.\n- **Architectural Suggestions**: Provides recommendations for improving class hierarchies, design patterns, module organization, and dependency injection.\n\nThe crate ensures that all transformations preserve the original formatting and comments, providing a seamless experience for developers. It operates by parsing code with Tree-sitter, applying transformations using its CST implementation, and validating results through Git-integrated rollback systems to ensure data integrity.",
+    "structural_insights": {
+      "source": "crate_aggregation",
+      "generated": true,
+      "sections": {
+        "Imports": [
+          "use super::*;.",
+          "Imports: use serde::{Serialize, Deserialize};.",
+          "Imports: use super::*;.",
+          "Imports: use codehud_core::models::AnalysisResult;.",
+          "Imports: use chrono::{DateTime, Utc};.",
+          "Imports: use std::collections::HashMap;.",
+          "Imports: pub use engine::{TransformationEngine, TransformationHistory};.",
+          "Imports: pub use types::{TransformationType, TransformationResult, TransformationSuggestion};.",
+          "Imports: pub use transformers::Transformer;.",
+          "Imports: pub use rollback::{RollbackSystem, GitBackupIntegration};."
+        ],
+        "Exports": [
+          "pub use types::{TransformationType, TransformationResult, TransformationSuggestion};.",
+          "pub use rollback::{RollbackSystem, GitBackupIntegration};.",
+          "pub use engine::{TransformationEngine, TransformationHistory};.",
+          "pub use transformers::Transformer;.",
+          "pub use test_generation::TestGenerationTransformer;.",
+          "pub use unused_args::UnusedArgumentRemover;.",
+          "pub use magic_numbers::MagicNumberTransformer;.",
+          "pub use batch::BatchTransformer;.",
+          "pub use architectural::ArchitecturalRefactorer;.",
+          "pub use multi_language::MultiLanguageTransformer;."
+        ],
+        "File I/O": [
+          "this scope performs file I/O via fs::write(&test_file, (lines 525).",
+          "this scope performs file I/O via std::fs::read_to_string(&full_path) (lines 223, 281).",
+          "this scope performs file I/O via validation_results.insert(\"test_files_readable\".to_string(), (lines 288).",
+          "this scope performs file I/O via std::fs::write(&test_file_path, (lines 237).",
+          "this scope performs file I/O via std::fs::read_to_string(&full_path).is_err() (lines 281).",
+          "this scope performs file I/O via \"test_files_readable\".to_string() (lines 288).",
+          "this scope performs file I/O via std::fs::write(&full_path, (lines 229).",
+          "this scope performs file I/O via std::fs::read_to_string(&full_path) (lines 224, 270).",
+          "this scope performs file I/O via \"files_readable\".to_string() (lines 277).",
+          "this scope performs file I/O via validation_results.insert(\"files_readable\".to_string(), (lines 277)."
+        ],
+        "Structure": [
+          "calls TransformationType::all.",
+          "calls TransformConfig::default.",
+          "calls HashMap::new.",
+          "calls TransformError::Query.",
+          "calls TransformError::Language.",
+          "validate_transformation is a wrapper for Err.TransformError.Transform.result.error_message.as_ref.unwrap.clone (lines 448).",
+          "rollback_transformation is a wrapper for Err.TransformError.Rollback.to_string (lines 338).",
+          "calls UnusedArgumentRemover::new.",
+          "calls MagicNumberTransformer::new.",
+          "start_session is a wrapper for Err.TransformError.Config.to_string (lines 153)."
+        ]
+      }
+    },
+    "token_count": 575,
+    "timestamp": "2025-10-18T01:41:21.816598619Z",
+    "subcrates": {
+      "src/transformers": {
+        "name": "src/transformers",
+        "file_count": 10,
+        "files": [
+          "codehud-transform/src/transformers/test_generation.rs",
+          "codehud-transform/src/transformers/multi_language.rs",
+          "codehud-transform/src/transformers/mod.rs",
+          "codehud-transform/src/transformers/magic_numbers.rs",
+          "codehud-transform/src/transformers/unused_args.rs",
+          "codehud-transform/src/transformers/multi_language_old.rs",
+          "codehud-transform/src/transformers/batch.rs",
+          "codehud-transform/src/transformers/test_generation_old.rs",
+          "codehud-transform/src/transformers/unused_args_old.rs",
+          "codehud-transform/src/transformers/architectural.rs"
+        ],
+        "summary": "### Technical Summary\n\n**Primary Purpose:**  \nThe `codehud-transform` crate provides a comprehensive set of code transformation tools for the CodeHUD ecosystem, focusing on automated test generation, multi-language code refactoring, and architectural improvements.\n\n**Key Components:**\n- **Test Generation:** Automatically creates unit and property-based tests for Python and JavaScript using tree-sitter parsers.\n- **Multi-Language Refactoring:** Applies consistent transformations across different programming languages (Rust, Java, Python) using pattern matching and Tree-sitter parsers.\n- **Dead Code Elimination:** Removes unused function arguments, variables, and imports from Rust codebases.\n- **Architectural Refactoring:** Detects and suggests large-scale improvements for class hierarchies, design patterns, module organization, and dependency injection in TypeScript, Python, and JavaScript.\n\n**Integration:**\nComponents work together seamlessly to provide a holistic transformation experience. For instance, the multi-language refactoring engine can detect unused arguments using `UnusedArgumentRemover` before applying broader architectural changes or generating tests. Each transformer leverages shared functionalities like configuration management, syntax validation, and backup operations, ensuring consistency across the ecosystem. The modular design allows for easy extension and customization of transformation rules, making it adaptable to various development needs.",
+        "token_count": 173,
+        "total_size_kb": 223.939453125
+      }
+    }
+  },
+  {
+    "crate_name": "codehud-tui",
+    "crate_path": "codehud-tui",
+    "files_analyzed": [
+      "codehud-tui/src/main.rs",
+      "codehud-tui/src/lib.rs"
+    ],
+    "summary_text": "## Overall Architecture\n\nThe `codehud-tui` crate integrates into the CodeHUD ecosystem by providing a comprehensive terminal-based user interface (TUI) for analyzing codebases and visualizing analysis results. This crate leverages several external libraries and tools, including:\n\n- **Textual**: A library for building rich terminal UIs.\n- **Clap**: A command-line argument parser to handle configuration options like file paths, output files, and visualization preferences.\n- **serde_json**: For JSON serialization and deserialization of analysis data.\n- **crossterm**: Provides cross-platform terminal interactions.\n\nWithin the CodeHUD project, `codehud-tui` functions as a crucial component for users who prefer a text-based interface to interact with their code analysis. It fits seamlessly within the modular architecture by providing an interactive layer that can be configured through command-line arguments and supports various visualization formats.\n\n## What Does It Actually Do\n\nThe primary output of the `codehud-tui` crate is:\n\n- **Generates Interactive Terminal Visualizations**: Users receive a dynamic, text-based interface where they can navigate through different views of their code analysis results. This includes visual representations of quality metrics, security assessments, dependencies, performance bottlenecks, and issues.\n\nSecondary features include:\n\n- **Supports Headless Mode**: Users can run the TUI in headless mode without interactive elements for automation or server-side integration.\n- **Exports Analysis Data**: The crate provides functionality to export analysis results to JSON and text files for further inspection or reporting.\n- **Real-Time Updates**: Automatically refreshes data at specified intervals, ensuring users always have the latest insights into their codebase.\n\nInternally, the crate processes and aggregates comprehensive analysis data, rendering it in structured formats suitable for both human consumption and AI integration. It supports interactive navigation with tabs, filtering, and sorting options, enhancing user experience.",
+    "structural_insights": {
+      "source": "crate_aggregation",
+      "generated": true,
+      "sections": {
+        "Structure": [
+          "calls CodeHudTui::new_headless.",
+          "calls Cli::parse.",
+          "calls codehud_core::models::AnalysisResult::new.",
+          "calls serde_json::to_value.",
+          "calls codehud_viz::VisualizationEngine::new.",
+          "calls atty::is.",
+          "calls serde_json::to_string_pretty.",
+          "calls crossterm::terminal::size.",
+          "calls Terminal::new.",
+          "calls List::new."
+        ],
+        "Imports": [
+          "Imports: use clap::{Parser, Subcommand};.",
+          "Imports: use std::path::PathBuf;.",
+          "Imports: use anyhow::Result;.",
+          "Imports: use codehud_tui::{run_tui, export_structured_data, CodeHudTui};.",
+          "Imports: use std::fmt::Write;.",
+          "Imports: use serde::{Deserialize, Serialize};.",
+          "Imports: use codehud_viz::{VisualizationEngine, VizConfig, ColorScheme as VizColorScheme};.",
+          "Imports: use syntect::{",
+          "Imports: use anyhow::{Context, Result};.",
+          "Imports: use codehud_core::{"
+        ],
+        "File I/O": [
+          "this scope performs file I/O via std::fs::write(&text_file, (lines 284).",
+          "this scope performs file I/O via std::fs::write(&json_file, (lines 281).",
+          "this scope performs file I/O via writeln!(output, (lines 315, 317, 319, 321, 325–326, 328, 330, 332, 336–338, 340, 344–345).",
+          "this scope performs file I/O via std::fs::write(file_path, (lines 366).",
+          "this scope performs file I/O via event::read() (lines 679).",
+          "this scope performs file I/O via fs::write(&text_file, (lines 1491).",
+          "this scope performs file I/O via writeln!(output, (lines 1502–1506, 1510–1511, 1513, 1515, 1517, 1521–1523, 1525, 1527, 1529, 1533–1536, 1538, 1542–1543).",
+          "this scope performs file I/O via fs::write(&json_file, (lines 1486)."
+        ],
+        "Entrypoint": [
+          "Entrypoint script (lines 77)."
+        ]
+      }
+    },
+    "token_count": 521,
+    "timestamp": "2025-10-18T01:41:41.983988021Z"
+  },
+  {
+    "crate_name": "codehud-utils",
+    "crate_path": "codehud-utils",
+    "files_analyzed": [
+      "codehud-utils/src/config/mod.rs",
+      "codehud-utils/src/lib.rs",
+      "codehud-utils/src/logging/mod.rs",
+      "codehud-utils/src/file/mod.rs",
+      "codehud-utils/src/string/mod.rs"
+    ],
+    "summary_text": "## Overall Architecture\n\nThe `codehud-utils` crate leverages several external libraries and tools to provide a comprehensive suite of utility functions for Rust applications. Specifically, it uses:\n- **TOML**: For handling configuration files in the TOML format.\n- **JSON**: For JSON file parsing and manipulation.\n- **YAML**: For YAML file management.\n- **tracing**: A structured logging library for Rust that mimics Python's logging capabilities.\n\nThis crate fits into the larger CodeHUD project by serving as a foundational layer of utilities. It ensures cross-language compatibility, particularly between Rust and Python, by providing familiar interfaces and behaviors from Python development in Rust projects. The modular design allows it to be easily integrated with other components like `codehud-cli`, `codehud-core`, and `codehud-gui`, enhancing their functionality with essential utility functions.\n\n## What Does It Actually Do\n\nThe primary output of the `codehud-utils` crate is a set of utility functions that replicate Python's behavior, ensuring seamless integration for developers familiar with Python. Specifically:\n\n1. **Provides Python-like Utility Functions**: Users receive a collection of functions that handle tasks such as configuration management (`load_config`, `merge_configs`), file operations (`safe_path_join`, `find_project_root`), string processing (`snake_to_camel_case`, `calculate_similarity`), and logging (`Logger`, `FileHandler`).\n\n2. **Enhanced Compatibility**: Users get a more Pythonic interface for common tasks in Rust, reducing the learning curve and effort required to transition from Python to Rust projects.\n\n3. **Comprehensive Logging Capabilities**: Users receive robust logging functionality with support for different log levels, file handlers, and structured logging, ensuring that applications can be effectively monitored and debugged.\n\n4. **Cross-language Consistency**: Users benefit from a consistent set of utility functions across different programming languages, improving code readability and maintainability.\n\nThese utilities are designed to be easily imported and used within Rust projects, offering developers a powerful toolset for handling common tasks without degrading functionality or performance.",
+    "structural_insights": {
+      "source": "crate_aggregation",
+      "generated": true,
+      "sections": {
+        "Exports": [
+          "pub use file::{",
+          "pub use config::{load_config, merge_configs, validate_config};.",
+          "pub use string::{"
+        ],
+        "Imports": [
+          "Imports: use super::*;.",
+          "use super::*;.",
+          "Imports: use tempfile::tempdir;.",
+          "Imports: use std::path::Path;.",
+          "Imports: use std::collections::HashMap;.",
+          "Imports: use serde::{Deserialize, Serialize};.",
+          "Imports: pub use config::{load_config, merge_configs, validate_config};.",
+          "Imports: pub use string::{",
+          "Imports: pub use file::{",
+          "Imports: use std::path::PathBuf;."
+        ],
+        "File I/O": [
+          "this scope performs file I/O via std::fs::write(&config_path, (lines 288, 312, 364).",
+          "this scope performs file I/O via std::fs::read_to_string(path) (lines 31, 157).",
+          "this scope performs file I/O via std::fs::read_to_string(&log_path) (lines 363).",
+          "this scope performs file I/O via fmt::layer() (lines 84).",
+          "this scope performs file I/O via std::fs::OpenOptions::new() (lines 231, 262).",
+          "this scope performs file I/O via self.current_file.write_all(log_line.as_bytes()) (lines 288).",
+          "this scope performs file I/O via handler.write_record(LogLevel::Info, (lines 361, 380).",
+          "this scope performs file I/O via fs::read(path) (lines 249).",
+          "this scope performs file I/O via fs::write(root.join(\"test.js\"), (lines 332).",
+          "this scope performs file I/O via fs::write(root.join(\"test.py\"), (lines 331)."
+        ],
+        "Structure": [
+          "calls ConfigBuilder::new.",
+          "load_config is a wrapper for Err.UtilError.Config.format.extension (lines 175).",
+          "calls HashMap::new.",
+          "calls serde_json::to_value.",
+          "calls crate::UtilError::Config.",
+          "calls Self::new.",
+          "calls serde_yaml::from_str.",
+          "calls serde_json::from_value.",
+          "calls T::default.",
+          "calls crate::UtilError::Serialization."
+        ]
+      }
+    },
+    "token_count": 566,
+    "timestamp": "2025-10-18T01:42:04.615849971Z"
+  },
+  {
+    "crate_name": "codehud-viz",
+    "crate_path": "codehud-viz",
+    "files_analyzed": [
+      "codehud-viz/src/call_graph.rs",
+      "codehud-viz/src/graph_dot.rs",
+      "codehud-viz/src/lib.rs",
+      "codehud-viz/src/graph_analysis.rs",
+      "codehud-viz/src/graphviz.rs",
+      "codehud-viz/tests/topology_test.rs",
+      "codehud-viz/tests/summary_test.rs",
+      "codehud-viz/tests/quality_test.rs",
+      "codehud-viz/tests/flow_test.rs",
+      "codehud-viz/tests/dependencies_test.rs",
+      "codehud-viz/tests/security_test.rs"
+    ],
+    "summary_text": "## Overall Architecture\n\nThe `codehud-viz` crate leverages several external libraries and tools to provide comprehensive visualization capabilities within the CodeHUD project. These include:\n- **Graphviz**: For rendering DOT format graphs into various output formats like SVG, PNG, and PDF.\n- **ratatui**: A TUI library for creating terminal-based user interfaces, used for visualizing call graphs and other metrics directly in the terminal.\n- **syntect**: For syntax highlighting of code within visualizations, enhancing readability.\n- **Graphviz DOT format**: Used for exporting and rendering call graphs with detailed attributes such as cycle detection, complexity coloring, and edge weights.\n\nThe `codehud-viz` crate integrates seamlessly into the modular architecture of CodeHUD. It acts as a visualization engine that consumes analysis results from other crates like `codehud-analysis` and `codehud-llm`, and produces rich, actionable visualizations for end users.\n\n## What Does It Actually Do\n\n**PRIMARY OUTPUT**: The `codehud-viz` crate **generates comprehensive visualizations** of code metrics, including call graphs, dependencies, quality issues, security vulnerabilities, and more. These visualizations are delivered directly in the terminal using `ratatui`, providing an interactive dashboard with multi-panel views.\n\n**SECONDARY FEATURES**:\n- **Graphviz Integration**: Converts graph data into DOT format and renders it using Graphviz for detailed static visualizations.\n- **Multi-Panel Dashboard**: Displays a wide range of code quality and security metrics in separate panels, such as health scores, core metrics, issues, dependencies, performance, and test coverage.\n- **Syntax Highlighting**: Enhances code readability within visualizations by applying syntax highlighting.\n- **Interactivity**: Allows users to navigate through different views and drill down into specific details using keyboard controls.\n\nThe crate processes analysis results from various extractors, converts them into a JSON-compatible format, and generates visual representations that are both informative and easy to understand. This ensures that developers can quickly assess and act on insights about their codebase's quality, security, and performance.",
+    "structural_insights": {
+      "source": "crate_aggregation",
+      "generated": true,
+      "sections": {
+        "Exports": [
+          "pub use graph_analysis::{",
+          "pub use graphviz::{OutputFormat, LayoutEngine, check_graphviz_installed, render_dot_to_file, render_dot_to_string};.",
+          "pub use call_graph::{CallGraph, CallGraphNode, CallGraphEdge};.",
+          "pub use graph_dot::DotExporter;."
+        ],
+        "Imports": [
+          "Imports: use ratatui::{",
+          "Imports: use std::collections::HashMap;.",
+          "Imports: use serde::{Deserialize, Serialize};.",
+          "use super::*;.",
+          "Imports: use super::*;.",
+          "Imports: use petgraph::visit::{EdgeRef, IntoNodeReferences};.",
+          "Imports: use std::path::Path;.",
+          "use crate::graph_analysis::{",
+          "Imports: use petgraph::{Direction, Graph, Directed};.",
+          "use crate::graphviz::LayoutEngine;."
+        ],
+        "Structure": [
+          "calls Paragraph::new.",
+          "calls Style::default.",
+          "calls Self::new.",
+          "calls Block::default.",
+          "calls Constraint::Min.",
+          "calls Layout::default.",
+          "calls BarChart::default.",
+          "calls ListItem::new.",
+          "calls List::new.",
+          "calls Constraint::Length."
+        ],
+        "File I/O": [
+          "this scope performs file I/O via fs::read_dir(dir) (lines 595).",
+          "this scope performs file I/O via fs::read_to_string(&cargo_path) (lines 553).",
+          "this scope performs file I/O via fs::read_to_string(&path) (lines 603).",
+          "this scope performs file I/O via fs::read_dir(Path::new(crate_name).join(\"src\")) (lines 593).",
+          "this scope performs file I/O via stdin.write_all(dot_content.as_bytes()) (lines 203).",
+          "this scope performs file I/O via std::fs::write(&dot_file, (lines 158)."
+        ]
+      }
+    },
+    "token_count": 561,
+    "timestamp": "2025-10-18T01:42:29.186669093Z"
+  }
+]

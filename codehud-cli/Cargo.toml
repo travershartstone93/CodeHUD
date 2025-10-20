@@ -1,0 +1,59 @@
+[package]
+name = "codehud-cli"
+version = "0.1.0"
+edition = "2021"
+description = "Command-line interfaces (4 CLI systems) - Zero degradation from Python"
+
+[[bin]]
+name = "codehud"
+path = "src/main.rs"
+
+[[bin]]
+name = "codehud-direct"
+path = "src/direct.rs"
+
+[[bin]]
+name = "codehud-llm"
+path = "src/llm.rs"
+
+[[bin]]
+name = "codehud-data"
+path = "src/data.rs"
+
+[dependencies]
+# Core infrastructure
+serde = { workspace = true }
+tokio = { workspace = true }
+anyhow = { workspace = true }
+thiserror = { workspace = true }
+
+# CLI framework
+clap = { workspace = true }
+clap_complete = { workspace = true }
+
+# Analysis integration
+codehud-core = { path = "../codehud-core", features = ["clap"] }
+codehud-analysis = { path = "../codehud-analysis" }
+codehud-utils = { path = "../codehud-utils" }
+codehud-viz = { path = "../codehud-viz" }
+codehud-llm = { path = "../codehud-llm" }
+
+# External tools
+tokio-process = { workspace = true }
+which = { workspace = true }
+
+# JSON/YAML
+serde_json = { workspace = true }
+serde_yaml = { workspace = true }
+chrono = { workspace = true }
+
+# File system
+walkdir = { workspace = true }
+
+# Graph visualization
+petgraph = { workspace = true }
+
+[dev-dependencies]
+assert_cmd = { workspace = true }
+predicates = { workspace = true }
+tempfile = { workspace = true }
